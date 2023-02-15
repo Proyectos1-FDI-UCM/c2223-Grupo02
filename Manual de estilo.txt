@@ -1,0 +1,29 @@
+Dividimos el código en las siguientes regiones
+-Accesores(getters y setters)
+-Parameters(todo lo que se tenga q ver en el editor)
+-Properties(variables privadas)
+-Methods
+
+Los nombres de todas las variables y métodos van en Inglés.
+
+Las variables privadas dentro de una clase (script) van en barrabaja,minúscula y camel.
+Ejemplo: _miVariablePrivada;
+
+Las variables públicas y los accesores van en mayúscula y camel.
+Ejemplo: LaVariablePublica;
+
+Los nombres de los métodos también van en mayúscula y camel.
+Ejemplo: MetodoRandom
+
+Las variables de dentro de un metodo van sin barrabaja,y en minuscula (menos estrictos, camel opcional).
+Ejemplo: direccion, estadoActual,estadoactual.
+
+TODOS LOS METODOS están OBLIGADOS a llevar un summary, por mas obvio que sea,y en los
+metodos mas complejos se recomienda que esten detalladamente explicados.
+
+Los comentarios y los summary van en español.
+
+CONSEJO: Guardaros siempre unos 15 minutos al final de cada sesión de programación únicamente para comentar el código,
+así no teneis que estar parando todo el tiempo a comentar.
+
+===================================================================================================
