@@ -1,0 +1,34 @@
+{
+    "name": "PlayerInput",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "ea99980f-70fb-4860-80a1-0b80e7e9ef22",
+            "actions": [
+                {
+                    "name": "Atack",
+                    "type": "Button",
+                    "id": "b9a2c3d9-4f4e-4306-892f-41e189a3d985",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "676835bd-0d29-40c1-b25b-df77fd4ab0fd",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Atack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
