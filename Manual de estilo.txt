@@ -6,7 +6,7 @@ Dividimos el código en las siguientes regiones
 
 Los nombres de todas las variables y métodos van en Inglés.
 
-Las variables privadas dentro de una clase (script) van en barrabaja,minúscula y camel.
+Las variables privadas dentro de una clase (script) van en barrabaja, minúscula y camel.
 Ejemplo: _miVariablePrivada;
 
 Las variables públicas y los accesores van en mayúscula y camel.
