@@ -45,12 +45,12 @@ public class AtackComponent : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //si nuestro collider está activo(está en los frames de la animacion) y entra en contacto con algo que tenga un lifeComponent
+        //si nuestro collider está activo(está en los frames de la animacion) y entra en contacto con algo que tenga un lifeComponent y que es de distinto tag
         //le inflinge daño a dicha entidad
 
         LifeComponent lc = collision.GetComponent<LifeComponent>();
 
-        if (lc != null)
+        if (lc != null && collision.tag != tag)
         {
             lc.ReciveDamage(_damage);
         }
