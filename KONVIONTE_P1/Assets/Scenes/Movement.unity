@@ -266,8 +266,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ccca61728d8454696bf7480d46a008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 5
+  _maxMovementSpeed: 250
   _jumpForce: 0
+  _speedStabilizer: 25
 --- !u!114 &1048334225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,7 +299,19 @@ MonoBehaviour:
     m_ActionId: b9a2c3d9-4f4e-4306-892f-41e189a3d985
     m_ActionName: Player/Atack[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1048334224}
+        m_TargetAssemblyTypeName: MovementComponent, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 91da619b-5d94-41ad-89be-3bf97d0caa55
     m_ActionName: Player/Horizontal Move[/Keyboard/d,/Keyboard/a]
   - m_PersistentCalls:
