@@ -6,14 +6,15 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     #region parameters
-
-    #endregion
-
-    #region properties
     /// <summary>
     /// El tiempo asignado a cada sección del nivel
     /// </summary>
-    private float _levelTime;
+    [SerializeField] float _sectionTime;
+
+    /// <summary>
+    /// El texto que modificaremos 
+    /// </summary>
+    [SerializeField] TMP_Text _TimeLeft;
     #endregion
 
     #region methods
@@ -30,6 +31,6 @@ public class Timer : MonoBehaviour
     void Update()
     {
         //Contador de tiempo
-        _levelTime = _levelTime - Time.deltaTime;
+        _sectionTime = _sectionTime - Time.deltaTime;
     }
 }
