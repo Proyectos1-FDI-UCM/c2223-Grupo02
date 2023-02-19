@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//ESTE SCRIPT VA ATACHADO AL OBJETO CONTENEDOR DEL TRIGGER DE ATAQUE, VALIDO PARA JUGADOR Y PARA ENEMIGOS
 public class AtackComponent : MonoBehaviour
 {
     #region Parameters
@@ -13,8 +14,11 @@ public class AtackComponent : MonoBehaviour
 
     #region Properties  
     private Animator _animator;
-
+    
+    private bool _impacted = false;
+    LifeComponent _collisionLifeComponent;
     #endregion
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,26 +37,56 @@ public class AtackComponent : MonoBehaviour
     /// Para mas informacion ir al input en el editor
     /// </summary>
     /// <param name="context"></param>
-    public void Atack(InputAction.CallbackContext context)
+    public void Atack()
     {
         //Al comienzo de la pulsación de la tecla q hayamos escogido, se llama al animator para lanzar un trigger(una acción)
         //dicho trigger, activa la animacion de ataque(esta luego se desactiva sola por exit time). 
         //En dicha animación hay colocadas en ciertos frames acciones, que activan el collider al principio de la animacion
         //y lo desactivan al final. De esta manera el ataque se detecta solo en ese lapso de las animaciones
-        if(context.started) _animator.SetTrigger("New Trigger");
         
-        //if(context.canceled) _myTrigger.enabled = false;
+        _animator.SetTrigger("IsAtacking");
+                
     }
+  
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //si nuestro collider está activo(está en los frames de la animacion) y entra en contacto con algo que tenga un lifeComponent y que es de distinto tag
+        //si nuestro collider está activo(está en los frames de la animacion) y entra en contacto con algo que tenga un lifeComponent y que es de distinta layer
         //le inflinge daño a dicha entidad
 
-        LifeComponent lc = collision.GetComponent<LifeComponent>();
+        if(_collisionLifeComponent == null)_collisionLifeComponent = collision.GetComponent<LifeComponent>();
 
-        if (lc != null && collision.tag != tag)
+        if (_collisionLifeComponent != null && collision.gameObject.layer != gameObject.layer)
         {
-            lc.ReciveDamage(_damage);
+            //_collisionLifeComponent.ReciveDamage(_damage);
+            _impacted = true;
+        }
+    }
+    /// <summary>
+    /// Se llama al acabar la animacion, chequea si se ha impactado con algo para saber si se puede hacer daño o no
+    /// </summary>
+    public void TryAtack()
+    {
+        //Debug.Log("0");
+
+        if (_impacted)
+        {
+            //Debug.Log("1");
+           
+            if (gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                _collisionLifeComponent.ReciveDamage(_damage);
+                //Debug.Log("2");
+
+            }
+            else//si es el enemigo
+            {
+                //Debug.Log("3");
+
+                //primero chequeamos si ha habido parry
+                _collisionLifeComponent.ReciveDamage(_damage);
+            }
+            _impacted =false;
+            _collisionLifeComponent=null;
         }
     }
 }

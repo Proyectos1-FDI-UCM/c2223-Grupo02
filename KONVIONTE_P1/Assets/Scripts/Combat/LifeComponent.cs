@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//ESTE SCRIPT VA ATACHADO TANTO AL JUGADOR COMO A LOS ENEMIGOS
 public class LifeComponent : MonoBehaviour
 {
     #region Parameters

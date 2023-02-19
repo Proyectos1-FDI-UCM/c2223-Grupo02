@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//ESTE SCRIPT VA ATACHADO AL OBJETO PLAYER
 public class DirectionComponent : MonoBehaviour
 {
 
@@ -33,8 +34,16 @@ public class DirectionComponent : MonoBehaviour
     {
 
         //detects and proccess input logic
-        if (mando != null){ directionGizmo = EightAxis(mando.rightStick.ReadValue()); Debug.Log(" mando"); }
-        else { directionGizmo = EightAxis(Camera.main.ScreenToWorldPoint( mouse.position.ReadValue())- transform.position); Debug.Log("no mando"); }
+        if (mando != null)
+        { 
+            directionGizmo = EightAxis(mando.rightStick.ReadValue());
+            //Debug.Log(" mando"); 
+        }
+        else
+        {
+            directionGizmo = EightAxis(Camera.main.ScreenToWorldPoint( mouse.position.ReadValue())- transform.position); 
+            //Debug.Log("no mando"); 
+        }
 
     }
     /// <summary>
