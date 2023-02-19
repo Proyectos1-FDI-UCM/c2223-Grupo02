@@ -39,24 +39,23 @@ public class JumpComponent : MonoBehaviour
         _myTransform = GetComponent<Transform>();
         _actions = new PlayerInputActions();
         _actions.Player.Enable();
-        _gravity = -(2 * _heightToPeak * Mathf.Pow(_footSpeed,2))/Mathf.Pow(_distanceToPeak, 2);
+        _gravity = - (2 * _heightToPeak * Mathf.Pow(_footSpeed,2)) / Mathf.Pow(_distanceToPeak, 2);
 
     }
     //fixed update para regular la gravedad
     private void FixedUpdate()
     {
         //gravedad Magia de la física de la ESO
-        _velocity += _gravity * Time.deltaTime;
-        _position += _velocity * Time.deltaTime +
-            0.5f * _gravity * Time.deltaTime * Time.deltaTime;
+        _velocity += _gravity * Time.fixedDeltaTime;
+        _position += _velocity * Time.fixedDeltaTime + 0.5f * _gravity * Mathf.Pow(Time.fixedDeltaTime, 2);
         _myTransform.position += _position * (Vector3)Vector2.up;
     }
     public void Jump(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            _gravity = -_footSpeed / _heightToPeak;
-            _velocity = _gravity * Time.deltaTime +_jumpForceVal;
+            _gravity = - (2 * _heightToPeak * Mathf.Pow(_footSpeed, 2)) / Mathf.Pow(_distanceToPeak, 2);
+            _velocity = _jumpForceVal + _gravity * Time.deltaTime;
         }
     }
     private void OnTriggerEnter2D(Collider2D other)

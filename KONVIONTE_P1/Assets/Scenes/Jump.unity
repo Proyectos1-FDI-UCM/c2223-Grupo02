@@ -385,7 +385,7 @@ MonoBehaviour:
   _footSpeed: 0.1
   _heightToPeak: 1
   _distanceToPeak: 1
-  _jumpForceVal: 0.1
+  _jumpForceVal: 0.05
 --- !u!114 &429838465
 MonoBehaviour:
   m_ObjectHideFlags: 0
