@@ -383,9 +383,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _footSpeed: 0.1
-  _heightToPeak: 1
-  _distanceToPeak: 1
-  _jumpForceVal: 0.05
+  _heightToPeak: 5
+  _distanceToPeak: 3
+  _jumpForceVal: 1
+  _velocity: 0
+  _position: 0
+  _gravity: 0
 --- !u!114 &429838465
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -28,15 +28,18 @@ public class JumpComponent : MonoBehaviour
     private float _jumpForceVal;
     #endregion
     #region Properties
+    [SerializeField]
     private float _velocity;
+    [SerializeField]
     private float _position;
+    [SerializeField]
     private float _gravity;
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        _myTransform = GetComponent<Transform>();
+        _myTransform = transform;
         _actions = new PlayerInputActions();
         _actions.Player.Enable();
         _gravity = - (2 * _heightToPeak * Mathf.Pow(_footSpeed,2)) / Mathf.Pow(_distanceToPeak, 2);
@@ -47,7 +50,7 @@ public class JumpComponent : MonoBehaviour
     {
         //gravedad Magia de la física de la ESO
         _velocity += _gravity * Time.fixedDeltaTime;
-        _position += _velocity * Time.fixedDeltaTime + 0.5f * _gravity * Mathf.Pow(Time.fixedDeltaTime, 2);
+        _position = _velocity * Time.fixedDeltaTime + 0.5f * _gravity * Mathf.Pow(Time.fixedDeltaTime, 2);
         _myTransform.position += _position * (Vector3)Vector2.up;
     }
     public void Jump(InputAction.CallbackContext context)

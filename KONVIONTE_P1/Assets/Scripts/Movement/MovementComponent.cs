@@ -7,87 +7,60 @@ using UnityEngine.UIElements;
 
 public class MovementComponent : MonoBehaviour
 {
-
-    #region Refences
-    private CharacterController _myCharacterController;
+    
+    #region Refences  
     private PlayerInputActions _playerInputActions;
-
-    // Moviemiento por transform
+    
     private Transform _myTransform;
     #endregion
     #region Properties
-    private Vector2 _movementSpeedVector;
-
-    // Moviemiento por transform
-    [SerializeField] private float _velocity;
-    private float _acceleration;
-    private float _position;
-    #endregion
-    #region Parameters
-    private float _speed = 0f;
-    [SerializeField] private float _maxMovementSpeed;
-    [SerializeField] private float _jumpForce;
-    [SerializeField] private float _speedStabilizer;
-
-    // Moviemiento por transform
-    [SerializeField] private float _time;
+    private Vector3 _directionVector;
+    private Vector3 _lastDirection;
+    
+    [SerializeField] private float _speed = 0f;
     #endregion
 
-    /*public void Jump()  
-    {
-        _myCharacterController.Move(Vector2.up * Time.deltaTime * _jumpForce);
-    }*/
+    #region Parameters  
+    [SerializeField] private float _maxMovementSpeed;   
+    
+    [Header("Tiempos")]
+    [SerializeField] private float _accelerationTime;
+    [SerializeField] private float _deccelerationTime;
+    #endregion
 
+    
     // Start is called before the first frame update
     void Start()
     {
-        _myCharacterController = GetComponent<CharacterController>();
         _myTransform = transform;
         _playerInputActions = new PlayerInputActions();
-        _playerInputActions.Player.Enable();
-        _acceleration = _maxMovementSpeed / Mathf.Pow(_time, 2);
+        _playerInputActions.Player.Enable();            
     }
-
+ 
+    // Update is called once per frame
     void FixedUpdate()
     {
-        if (_playerInputActions.Player.HorizontalMove.ReadValue<Vector2>().magnitude != 0)
+        _directionVector = _playerInputActions.Player.HorizontalMove.ReadValue<Vector2>();
+
+        if(_directionVector.magnitude != 0)
         {
-            _movementSpeedVector = _playerInputActions.Player.HorizontalMove.ReadValue<Vector2>();
-            _velocity += _acceleration * Time.fixedDeltaTime;
-            _position += _velocity * Time.fixedDeltaTime + 0.5f * _acceleration * Time.fixedDeltaTime * Time.fixedDeltaTime;
-            _myTransform.position += _position * (Vector3)_movementSpeedVector;
-            if (_time <= 0)
+            //ACELERACION
+            if(_speed < _maxMovementSpeed)
             {
-                _acceleration = 0f;
+                _speed += Time.fixedDeltaTime*_maxMovementSpeed / _accelerationTime;
             }
+            
+            _lastDirection = _directionVector;
         }
         else
         {
-            _velocity = 0f;
-            _acceleration = _maxMovementSpeed / Mathf.Pow(_time, 2);
-            _time = 0.5f;
+            //DECELERACION
+            if (_speed > 0)
+            {
+                _speed -= Time.fixedDeltaTime * _maxMovementSpeed / _deccelerationTime;
+            }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //_movementSpeedVector = _playerInputActions.Player.HorizontalMove.ReadValue<Vector2>();
-        //_myCharacterController.Move(_movementSpeedVector * Time.deltaTime * (_speed / _speedStabilizer));
-        //Debug.Log(_speed);
-        //// Si mantenemos la tecla (si el vector velocidad no es cero)
-        //if (_movementSpeedVector != Vector2.zero && _speed < _maxMovementSpeed)
-        //{
-        //    _speed++; // Aumentamos la velocidad por frame para provocar sensacion de aceleracion hasta llegar a la máxima velocidad
-        //}
-        //// Si soltamos la tecla (esto hay que cambiarlo porque solo funciona para teclado)
-        //if (Keyboard.current.dKey.wasReleasedThisFrame || Keyboard.current.aKey.wasReleasedThisFrame)
-        //{
-        //    _speed = 0f; // La velocidad vuelve a cero para poder volver a acelerar
-        //}
-        if(_playerInputActions.Player.HorizontalMove.ReadValue<Vector2>().magnitude != 0)
-        {
-            _time -= Time.deltaTime;
-        }
+         _speed = Mathf.Clamp(_speed, 0f, _maxMovementSpeed);
+        _myTransform.position += _speed * _lastDirection * Time.fixedDeltaTime;
     }
 }
