@@ -17,7 +17,7 @@ public class MovementComponent : MonoBehaviour
     private Vector3 _directionVector;
     private Vector3 _lastDirection;
     
-    [SerializeField] private float _speed = 0f;
+    private float _speed = 0f;
     #endregion
 
     #region Parameters  
