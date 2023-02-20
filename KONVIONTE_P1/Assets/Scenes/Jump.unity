@@ -227,7 +227,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 107506144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.007, y: -4.0192, z: 0}
+  m_LocalPosition: {x: 0.007, y: -1.49, z: 0}
   m_LocalScale: {x: 21.3939, y: 1.9983, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -310,7 +310,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429838459}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.28, y: 1.31, z: 0.17719221}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -382,16 +382,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0cb8262f8d617949a7308f4f4181889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _footSpeed: 4
-  _heightToPeak: 9
-  _distanceToPeak: 2.5
-  _jumpForceVal: 20
-  _ascensionTime: 0
-  _descensionTime: 2
-  _velocity: 0
-  _position: 0
-  _gravity: 0
-  _upIniSpeed: 0
+  _heightToPeak: 5
+  _speedDivider: 0.756
+  _ascensionTime: 1
+  _descensionTime: 1
 --- !u!114 &429838465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,7 +517,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 953661700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 4.05, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
