@@ -10,6 +10,15 @@ public class PlayerCombatController : MonoBehaviour
 
     AtackComponent _playerAtackComponent;
     DirectionComponent _directionComponent;
+    Transform _playerTransform;
+
+    PlayerInputActions _playerInputActions;
+
+    private Vector2 _verticalAtack;
+    [SerializeField]
+    private float _atackTriggerOffset = 1.2f;
+
+    private Transform _atackTriggerTransform;
 
     #endregion
 
@@ -20,6 +29,11 @@ public class PlayerCombatController : MonoBehaviour
         _playerAtackComponent = transform.GetChild(0).GetComponent<AtackComponent>();
 
         _directionComponent = GetComponent<DirectionComponent>();
+
+        _playerTransform = transform;
+        _playerInputActions = new PlayerInputActions();
+        _playerInputActions.Enable();
+        _atackTriggerTransform = _playerTransform.GetChild(0).transform;//solo funciona si se cumple bien la jerarquía
     }
 
     // Update is called once per frame
@@ -36,10 +50,41 @@ public class PlayerCombatController : MonoBehaviour
     {
         if (context.started)
         {
+            ColocarCollider();
             _playerAtackComponent.Atack();
             //Debug.Log("Atack");
         } 
     }
+    /// <summary>
+    /// Coloca el collider del ataque en el sitio correcto segun el input
+    /// </summary>
+    public void ColocarCollider()
+    {
+        _verticalAtack = _playerInputActions.Player.VerticalAtack.ReadValue<Vector2>();
+        if (_verticalAtack != Vector2.zero)
+        {
+            if(_verticalAtack.y > 0)
+            {
+                _atackTriggerTransform.localPosition = new Vector3(0,
+                                                           _atackTriggerOffset,
+                                                           0);
+            }
+            else // _verticalAtack.y <0
+            {
+                _atackTriggerTransform.localPosition = new Vector3(0,
+                                                           -_atackTriggerOffset,
+                                                           0);
+            }
+        }
+        else
+        {
+            _atackTriggerTransform.localPosition = new Vector3(  _atackTriggerOffset,
+                                                            0,
+                                                            0);
+            
+        }
+    }
+
     /// <summary>
     /// Llama a la funcion TryAtack del AtackComponent del jugador
     /// </summary>

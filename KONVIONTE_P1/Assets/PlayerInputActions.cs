@@ -53,13 +53,33 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""VerticalAtack"",
+                    ""type"": ""Value"",
+                    ""id"": ""92a13df6-d52d-4962-a9b8-42ff93167b50"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""676835bd-0d29-40c1-b25b-df77fd4ab0fd"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Atack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1807a2f9-8ab7-49c7-9bec-5bf3ce21d861"",
+                    ""path"": """",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -176,6 +196,39 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""8903f3d4-aaf8-4692-9ddd-6e819943eba8"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""VerticalAtack"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""bb019a1b-0da4-47f8-b8e0-bb15006b702b"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""VerticalAtack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""d8887071-da53-4aec-932f-7bbf6db02026"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""VerticalAtack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -187,6 +240,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_Atack = m_Player.FindAction("Atack", throwIfNotFound: true);
         m_Player_HorizontalMove = m_Player.FindAction("Horizontal Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        m_Player_VerticalAtack = m_Player.FindAction("VerticalAtack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -249,6 +303,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Atack;
     private readonly InputAction m_Player_HorizontalMove;
     private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_VerticalAtack;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -256,6 +311,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Atack => m_Wrapper.m_Player_Atack;
         public InputAction @HorizontalMove => m_Wrapper.m_Player_HorizontalMove;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        public InputAction @VerticalAtack => m_Wrapper.m_Player_VerticalAtack;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -274,6 +330,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @VerticalAtack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnVerticalAtack;
+                @VerticalAtack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnVerticalAtack;
+                @VerticalAtack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnVerticalAtack;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -287,6 +346,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @VerticalAtack.started += instance.OnVerticalAtack;
+                @VerticalAtack.performed += instance.OnVerticalAtack;
+                @VerticalAtack.canceled += instance.OnVerticalAtack;
             }
         }
     }
@@ -296,5 +358,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnAtack(InputAction.CallbackContext context);
         void OnHorizontalMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnVerticalAtack(InputAction.CallbackContext context);
     }
 }

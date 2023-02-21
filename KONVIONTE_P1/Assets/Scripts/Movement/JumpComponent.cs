@@ -92,16 +92,19 @@ public class JumpComponent : MonoBehaviour
 
     public void Gravity()
     {
-        Debug.Log("tuviejaGravity");
+        //Debug.Log("tuviejaGravity");
         _myTransform.position -= Vector3.up * _fallSpeed * Time.fixedDeltaTime;
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        if(other.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        {
+            Debug.Log("TuviejaTrigger");
+            _velocity = 0;
+            _gravity = 0;
+            _position = 0;
 
-        Debug.Log("TuviejaTrigger");
-        _velocity = 0;
-        _gravity = 0;
-        _position = 0;
+        }
     }
 }

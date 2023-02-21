@@ -44,7 +44,10 @@ public class AtackComponent : MonoBehaviour
         //En dicha animación hay colocadas en ciertos frames acciones, que activan el collider al principio de la animacion
         //y lo desactivan al final. De esta manera el ataque se detecta solo en ese lapso de las animaciones
         
-        _animator.SetTrigger("IsAtacking");
+
+        //NOTA PARA EL PLAYER NO HACE FALTA
+        //CUIDADO, QUIZAS HAGA FALTA MIGRAR SISTEMAS
+        //_animator.SetTrigger("IsAtacking");
                 
     }
   

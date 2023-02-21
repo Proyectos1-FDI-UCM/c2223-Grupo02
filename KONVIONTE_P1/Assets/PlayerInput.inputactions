@@ -31,13 +31,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "VerticalAtack",
+                    "type": "Value",
+                    "id": "92a13df6-d52d-4962-a9b8-42ff93167b50",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "676835bd-0d29-40c1-b25b-df77fd4ab0fd",
-                    "path": "<Keyboard>/space",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Atack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1807a2f9-8ab7-49c7-9bec-5bf3ce21d861",
+                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -154,6 +174,39 @@
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "8903f3d4-aaf8-4692-9ddd-6e819943eba8",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VerticalAtack",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "bb019a1b-0da4-47f8-b8e0-bb15006b702b",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VerticalAtack",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "d8887071-da53-4aec-932f-7bbf6db02026",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "VerticalAtack",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
