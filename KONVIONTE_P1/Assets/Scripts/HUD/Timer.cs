@@ -1,36 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    #region parameters
-    /// <summary>
-    /// El tiempo asignado a cada sección del nivel
-    /// </summary>
-    [SerializeField] float _sectionTime;
 
-    /// <summary>
-    /// El texto que modificaremos 
-    /// </summary>
-    [SerializeField] TMP_Text _TimeLeft;
-    #endregion
-
-    #region methods
+    #region Parameters
+    //Variables del tiempo que queremos contar
+    [SerializeField] int _min, _seg;
+    [SerializeField] Text _time;
 
     #endregion
+    //Tiempo restante para que termine 
+    private float _rest;
 
-    // Start is called before the first frame update
-    void Start()
+    //verífica si el contador está en marcha o para
+    private bool _go = true;
+
+    private void Awake()
     {
-        
+        _rest = (_min * 60) + _seg;
+        _go = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Contador de tiempo
-        _sectionTime = _sectionTime - Time.deltaTime;
+        if (_go)
+        {
+            _rest -= Time.deltaTime;
+            if (_rest < 1)
+            {
+                _go = true;
+                //MATAR AL PLAYER
+            }
+
+            //Cálculo de minutos y segundos
+            int _timeMin = Mathf.FloorToInt(_rest / 60);
+            int _timeSeg = Mathf.FloorToInt(_rest % 60);
+
+            _time.text = string.Format("{00.00}:{01:00}", _timeMin, _timeSeg);
+        }
     }
 }
