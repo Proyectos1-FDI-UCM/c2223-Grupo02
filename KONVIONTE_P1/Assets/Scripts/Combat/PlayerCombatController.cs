@@ -8,38 +8,35 @@ public class PlayerCombatController : MonoBehaviour
 {
     #region Properties
 
-    AtackComponent _playerAtackComponent;
-    DirectionComponent _directionComponent;
-    Transform _playerTransform;
+    private AtackComponent _myAtackComponent;
+    private Transform _myTransform;
+    private PlayerInputActions _playerInputActions;
 
-    PlayerInputActions _playerInputActions;
-
-    private Vector2 _verticalAtack;
-    [SerializeField]
-    private float _atackTriggerOffset = 1.2f;
 
     private Transform _atackTriggerTransform;
+    [SerializeField]
+    private float _atackTriggerOffset;
 
+    private Vector2 _verticalAtack;
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        //PARA QUE ESTO FUNCIONE, EL OBJETO DE ATAQUE DEL JUGADOR DEBE SER EL PRIMER HIJO EN LA JERARQUÍA
-        _playerAtackComponent = transform.GetChild(0).GetComponent<AtackComponent>();
+        //PARA QUE ESTO FUNCIONE, EL OBJETO DE ATAQUE DE LA ENTIDAD DEBE SER EL PRIMER HIJO EN LA JERARQUÍA
+        _myAtackComponent = transform.GetChild(0).GetComponent<AtackComponent>();
+        
 
-        _directionComponent = GetComponent<DirectionComponent>();
-
-        _playerTransform = transform;
+        _myTransform = transform;
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Enable();
-        _atackTriggerTransform = _playerTransform.GetChild(0).transform;//solo funciona si se cumple bien la jerarquía
+        _atackTriggerTransform = _myTransform.GetChild(0).transform;//solo funciona si se cumple bien la jerarquía
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(_playerInputActions.Player.VerticalAtack.ReadValue<Vector2>());
     }
 
     /// <summary>
@@ -51,7 +48,7 @@ public class PlayerCombatController : MonoBehaviour
         if (context.started)
         {
             ColocarCollider();
-            _playerAtackComponent.Atack();
+            _myAtackComponent.Atack();
             //Debug.Log("Atack");
         } 
     }
@@ -87,6 +84,6 @@ public class PlayerCombatController : MonoBehaviour
     {
         //Debug.Log("aaa");
 
-        _playerAtackComponent.TryAtack();
+        _myAtackComponent.TryAtack();
     }
 }

@@ -75,7 +75,7 @@ public class AtackComponent : MonoBehaviour
         {
             //Debug.Log("1");
            
-            if (gameObject.layer == LayerMask.NameToLayer("Player"))
+            if (gameObject.layer == LayerMask.NameToLayer("Player"))//si es el jugador, aplica el daño directamente al enemigo
             {
                 _collisionLifeComponent.ReciveDamage(_damage);
                 //Debug.Log("2");
