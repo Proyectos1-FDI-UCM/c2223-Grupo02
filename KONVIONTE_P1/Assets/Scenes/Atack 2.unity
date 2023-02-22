@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a534a251f067c904eadc9596fe22111c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _atackTriggerOffset: 1.2
+  _atackTriggerOffset: 0.8
 --- !u!114 &77055874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,7 +923,7 @@ GameObject:
   - component: {fileID: 1723200262}
   - component: {fileID: 1723200261}
   - component: {fileID: 1723200260}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: AtackTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -958,7 +958,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!4 &1723200262
 Transform:
   m_ObjectHideFlags: 0

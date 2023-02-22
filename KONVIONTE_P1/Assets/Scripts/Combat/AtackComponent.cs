@@ -48,7 +48,7 @@ public class AtackComponent : MonoBehaviour
         //NOTA PARA EL PLAYER NO HACE FALTA
         //CUIDADO, QUIZAS HAGA FALTA MIGRAR SISTEMAS
         //_animator.SetTrigger("IsAtacking");
-                
+        
     }
   
     private void OnTriggerEnter2D(Collider2D collision)
@@ -69,21 +69,21 @@ public class AtackComponent : MonoBehaviour
     /// </summary>
     public void TryAtack()
     {
-        //Debug.Log("0");
+        Debug.Log("0");
 
         if (_impacted)
         {
-            //Debug.Log("1");
+            Debug.Log("1");
            
             if (gameObject.layer == LayerMask.NameToLayer("Player"))
             {
                 _collisionLifeComponent.ReciveDamage(_damage);
-                //Debug.Log("2");
+                Debug.Log("2");
 
             }
             else//si es el enemigo
             {
-                //Debug.Log("3");
+                Debug.Log("3");
 
                 //primero chequeamos si ha habido parry
                 _collisionLifeComponent.ReciveDamage(_damage);
