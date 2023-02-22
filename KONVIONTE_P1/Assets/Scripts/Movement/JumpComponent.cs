@@ -37,6 +37,7 @@ public class JumpComponent : MonoBehaviour
     #endregion
     #region Properties
     private bool _canceled;
+    private bool _isGrounded;
     private float _velocity;
     private float _position;
     private float _gravity;
@@ -55,6 +56,7 @@ public class JumpComponent : MonoBehaviour
         // La velocidad de bajada depende del tiempo y la altura a la que queramos llegar
         _fallSpeed = _heightToPeak / _descensionTime;
         _upIniSpeed = (2 * _heightToPeak) / _ascensionTime;
+        _isGrounded = true;
     }
 
     //fixed update para regular la gravedad
@@ -78,11 +80,14 @@ public class JumpComponent : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        Debug.Log(context.performed);
+        Debug.Log("grounded" + _isGrounded);
+        if (context.performed && _isGrounded)
         {
             _gravity = - (2 * _heightToPeak) / Mathf.Pow(_ascensionTime, 2);
             _velocity = _upIniSpeed;
             _canceled = false;
+            _isGrounded = false;
         }
         if (context.canceled)
         {
@@ -96,15 +101,20 @@ public class JumpComponent : MonoBehaviour
         _myTransform.position -= Vector3.up * _fallSpeed * Time.fixedDeltaTime;
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    //cambiar por rayos
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
         {
-            Debug.Log("TuviejaTrigger");
+            // Debug.Log("TuviejaTrigger");
+            _isGrounded = true;
             _velocity = 0;
             _gravity = 0;
             _position = 0;
 
         }
     }
+    
+        
+    
 }

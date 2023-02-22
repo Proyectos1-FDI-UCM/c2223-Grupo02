@@ -398,10 +398,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0cb8262f8d617949a7308f4f4181889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _heightToPeak: 5
+  _heightToPeak: 4
   _speedDivider: 0.83
-  _ascensionTime: 1
-  _descensionTime: 1
+  _ascensionTime: 0.7
+  _descensionTime: 0.5
 --- !u!50 &77055876
 Rigidbody2D:
   serializedVersion: 4

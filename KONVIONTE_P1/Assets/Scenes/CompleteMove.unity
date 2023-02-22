@@ -522,6 +522,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2cad27d0-f968-410e-ba55-ef0cb92e4258
     m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 92a13df6-d52d-4962-a9b8-42ff93167b50
+    m_ActionName: Player/VerticalAtack[/Keyboard/w,/Keyboard/s]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -537,7 +541,7 @@ Animator:
   m_GameObject: {fileID: 501448182}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 398693d8d8f221549afe0c292ffe5bad, type: 2}
+  m_Controller: {fileID: 9100000, guid: c73588a2382d0df498c3afc27bb35bc8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
