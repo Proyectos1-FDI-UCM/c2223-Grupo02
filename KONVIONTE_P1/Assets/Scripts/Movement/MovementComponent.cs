@@ -6,14 +6,10 @@ using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class MovementComponent : MonoBehaviour
-{
-    
-    #region Refences  
-    private PlayerInputActions _playerInputActions;
-    
-    private Transform _myTransform;
-    #endregion
+{      
     #region Properties
+    private Transform _myTransform;
+
     private Vector3 _directionVector;
     private Vector3 _lastDirection;
     
@@ -32,35 +28,59 @@ public class MovementComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _myTransform = transform;
-        _playerInputActions = new PlayerInputActions();
-        _playerInputActions.Player.Enable();            
+        _myTransform = transform;                   
     }
  
     // Update is called once per frame
     void FixedUpdate()
+    {        
+        //Llamamos al move solo cuando es necesario para optimizar costes
+        if(_directionVector != Vector3.zero || _speed != 0) Move();
+    }
+    /// <summary>
+    /// Mueve al jugador en el fixed update
+    /// </summary>
+    private void Move()
     {
-        _directionVector = _playerInputActions.Player.HorizontalMove.ReadValue<Vector2>();
-
-        if(_directionVector.magnitude != 0)
+        //si nos estamos moviemdo
+        if (_directionVector.magnitude != 0)
         {
             //ACELERACION
-            if(_speed < _maxMovementSpeed)
+
+            //Si no hemos alcanzado la velocidad maxima, le aplicamos la aceleracion correspondiente
+            if (_speed < _maxMovementSpeed)
             {
-                _speed += Time.fixedDeltaTime*_maxMovementSpeed / _accelerationTime;
+                //En el caso de que el tiempo de aceleracion sea 0, para evitar error, se setea la velocidad a la maxima instantaneamente
+                if(_accelerationTime != 0)_speed += Time.fixedDeltaTime * _maxMovementSpeed / _accelerationTime;
+                else _speed = _maxMovementSpeed;
             }
-            
+            //actualizamos la ultima direccion a la que nos hemos movido
             _lastDirection = _directionVector;
         }
-        else
+        else//si hemos dejado de movernos
         {
             //DECELERACION
+
+            //Si no hemos parado del todo, le aplicamos la deceleracion correspondiente
             if (_speed > 0)
             {
-                _speed -= Time.fixedDeltaTime * _maxMovementSpeed / _deccelerationTime;
+                //En el caso de que el tiempo de deceleracion sea 0, para evitar error, se setea la velocidad a 0 instantaneamente
+                if (_deccelerationTime != 0) _speed -= Time.fixedDeltaTime * _maxMovementSpeed / _deccelerationTime;
+                else _speed = 0;
             }
         }
-         _speed = Mathf.Clamp(_speed, 0f, _maxMovementSpeed);
+
+        //forzamos que la velocidad esté en el intervalo [0,_maxMovementSpeed] y despues nos movemos
+        _speed = Mathf.Clamp(_speed, 0f, _maxMovementSpeed);
         _myTransform.position += _speed * _lastDirection * Time.fixedDeltaTime;
+    }
+
+    /// <summary>
+    /// Setea el _directionVector, que es el vector que indica la direccion del movimiento
+    /// </summary>
+    /// <param name="direction"></param>
+    public void SetDirection(Vector3 direction)
+    {
+        _directionVector = direction;
     }
 }
