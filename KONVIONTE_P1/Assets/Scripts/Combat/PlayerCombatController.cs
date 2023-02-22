@@ -65,22 +65,16 @@ public class PlayerCombatController : MonoBehaviour
         {
             if(_verticalAtack.y > 0)
             {
-                _atackTriggerTransform.localPosition = new Vector3(0,
-                                                           _atackTriggerOffset,
-                                                           0);
+                _atackTriggerTransform.localPosition = new Vector3(0,_atackTriggerOffset,0);
             }
             else // _verticalAtack.y <0
             {
-                _atackTriggerTransform.localPosition = new Vector3(0,
-                                                           -_atackTriggerOffset,
-                                                           0);
+                _atackTriggerTransform.localPosition = new Vector3(0,-_atackTriggerOffset,0);
             }
         }
         else
         {
-            _atackTriggerTransform.localPosition = new Vector3(  _atackTriggerOffset,
-                                                            0,
-                                                            0);
+            _atackTriggerTransform.localPosition = new Vector3(  _atackTriggerOffset,0, 0);
             
         }
     }
