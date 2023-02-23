@@ -6,6 +6,15 @@
             "id": "ea99980f-70fb-4860-80a1-0b80e7e9ef22",
             "actions": [
                 {
+                    "name": "Teleport",
+                    "type": "Button",
+                    "id": "e2c0699c-82fc-4ed8-8399-42d533270388",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=1)",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Atack",
                     "type": "Button",
                     "id": "b9a2c3d9-4f4e-4306-892f-41e189a3d985",
@@ -207,6 +216,17 @@
                     "action": "VerticalAtack",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "e329860f-b84d-49ea-869b-1790f9f09b37",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Teleport",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

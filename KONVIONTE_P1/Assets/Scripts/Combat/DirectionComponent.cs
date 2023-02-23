@@ -51,7 +51,7 @@ public class DirectionComponent : MonoBehaviour
     /// </summary>
     /// <param name="dir"></param>
     /// <returns></returns>
-    public Vector2 EightAxis(Vector2 dir)
+    public Vector3 EightAxis(Vector2 dir)
     {
         if(mando != null) rotation = Vector2.SignedAngle(Vector2.right,dir) + rotationOffSet;
         else rotation = Vector2.SignedAngle(Vector2.right, dir) + rotationOffSet;
