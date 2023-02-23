@@ -46,6 +46,8 @@ public class ParryComponent : MonoBehaviour
     
     public void Parry()
     {
+
+
     }
 
     private void OnDrawGizmos()

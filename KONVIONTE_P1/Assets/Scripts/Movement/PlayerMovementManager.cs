@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //ESTE SCRIPT VA ATACHADO AL OBJETO PLAYER
+//Se encarga de enviar en el fixedUpdate la señal del input, al movimiento del jugador
 public class PlayerMovementManager : MonoBehaviour
 {
     #region Properties
