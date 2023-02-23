@@ -10,21 +10,15 @@ public class HealthBar : MonoBehaviour
     [Tooltip("Slider encargado del relleno de la barra")]
     [SerializeField] private Slider _slider;
 
+    [Tooltip("Vida máxima")]
+    [SerializeField] private int _maxHealth = 100;
+
     #endregion
 
     #region References
 
-    //Vida máxima
-    private int _maxHealth = 100;
-
     //Vida del personaje
     private int _currentHealth;
-
-    ////Daño realizado por cada enemigo
-    //private int _damage;
-
-    ////Vida que devuelve la cura
-    //private int _cure = 15;
 
     #endregion
 
@@ -44,7 +38,7 @@ public class HealthBar : MonoBehaviour
         _slider.maxValue = _maxHealth;
 
         //Y el valor actual
-        _slider.value = _currentHealth;
+        _slider.value = _maxHealth;
     }
 
     #endregion
