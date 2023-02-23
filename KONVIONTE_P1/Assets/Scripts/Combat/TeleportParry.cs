@@ -37,26 +37,36 @@ public class TeleportParry : MonoBehaviour
     void Update()
     {
         _time += Time.deltaTime;
+        //calculo de la posición futura
         _moveToVector = _myDirectionComponent.EightAxis(Camera.main.ScreenToWorldPoint(_mouse.position.ReadValue()) - _myTransform.position);
         _predictionTransform.localPosition = _moveToVector * _teleportDistance;
         //_predictionTransform.localPosition = _moveToVector * _teleportDistance;
-        if (_time > _timer)
+        if (_time > _timer && !_telepotDone)
         {
-            
+            Teleport();
         }
     }
-    public void Teleport(InputAction.CallbackContext context)
+    public void TriggerTeleport(InputAction.CallbackContext context)
     {
+        //Este proceso se debe relaizar la parrear PLACEHOLDER
         if (context.started)
         {
             _predictionTransform.gameObject.SetActive(true);
             _telepotDone = false;
+            _time = 0;
         }
-        if (context.performed || (context.canceled && !_telepotDone))
+    }
+    public void PerfomTeleport(InputAction.CallbackContext context)
+    {
+        if (context.performed && !_telepotDone)
         {
-            _predictionTransform.gameObject.SetActive(false);
-            _myTransform.localPosition += _moveToVector * _teleportDistance;
-            _telepotDone = true;
+            Teleport();
         }
+    }
+    private void Teleport()
+    {
+        _predictionTransform.gameObject.SetActive(false);
+        _myTransform.localPosition += _moveToVector * _teleportDistance;
+        _telepotDone = true;
     }
 }

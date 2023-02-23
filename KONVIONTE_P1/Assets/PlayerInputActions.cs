@@ -28,12 +28,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
             ""id"": ""ea99980f-70fb-4860-80a1-0b80e7e9ef22"",
             ""actions"": [
                 {
-                    ""name"": ""Teleport"",
+                    ""name"": ""PerformTeleport"",
                     ""type"": ""Button"",
                     ""id"": ""e2c0699c-82fc-4ed8-8399-42d533270388"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold(duration=1)"",
+                    ""interactions"": ""Tap"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -71,6 +71,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""StartTeleport / Parry"",
+                    ""type"": ""Button"",
+                    ""id"": ""d6324d2e-f151-4c01-a4b9-944791318f58"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -246,7 +255,18 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Teleport"",
+                    ""action"": ""PerformTeleport"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6aabdd31-b9c0-4ab3-9dfa-8998faf5ecf0"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StartTeleport / Parry"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -257,11 +277,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Teleport = m_Player.FindAction("Teleport", throwIfNotFound: true);
+        m_Player_PerformTeleport = m_Player.FindAction("PerformTeleport", throwIfNotFound: true);
         m_Player_Atack = m_Player.FindAction("Atack", throwIfNotFound: true);
         m_Player_HorizontalMove = m_Player.FindAction("Horizontal Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_VerticalAtack = m_Player.FindAction("VerticalAtack", throwIfNotFound: true);
+        m_Player_StartTeleportParry = m_Player.FindAction("StartTeleport / Parry", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -321,20 +342,22 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_Teleport;
+    private readonly InputAction m_Player_PerformTeleport;
     private readonly InputAction m_Player_Atack;
     private readonly InputAction m_Player_HorizontalMove;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_VerticalAtack;
+    private readonly InputAction m_Player_StartTeleportParry;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Teleport => m_Wrapper.m_Player_Teleport;
+        public InputAction @PerformTeleport => m_Wrapper.m_Player_PerformTeleport;
         public InputAction @Atack => m_Wrapper.m_Player_Atack;
         public InputAction @HorizontalMove => m_Wrapper.m_Player_HorizontalMove;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @VerticalAtack => m_Wrapper.m_Player_VerticalAtack;
+        public InputAction @StartTeleportParry => m_Wrapper.m_Player_StartTeleportParry;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -344,9 +367,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
             {
-                @Teleport.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTeleport;
-                @Teleport.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTeleport;
-                @Teleport.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTeleport;
+                @PerformTeleport.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPerformTeleport;
+                @PerformTeleport.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPerformTeleport;
+                @PerformTeleport.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPerformTeleport;
                 @Atack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAtack;
                 @Atack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAtack;
                 @Atack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAtack;
@@ -359,13 +382,16 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @VerticalAtack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnVerticalAtack;
                 @VerticalAtack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnVerticalAtack;
                 @VerticalAtack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnVerticalAtack;
+                @StartTeleportParry.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartTeleportParry;
+                @StartTeleportParry.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartTeleportParry;
+                @StartTeleportParry.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStartTeleportParry;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Teleport.started += instance.OnTeleport;
-                @Teleport.performed += instance.OnTeleport;
-                @Teleport.canceled += instance.OnTeleport;
+                @PerformTeleport.started += instance.OnPerformTeleport;
+                @PerformTeleport.performed += instance.OnPerformTeleport;
+                @PerformTeleport.canceled += instance.OnPerformTeleport;
                 @Atack.started += instance.OnAtack;
                 @Atack.performed += instance.OnAtack;
                 @Atack.canceled += instance.OnAtack;
@@ -378,16 +404,20 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @VerticalAtack.started += instance.OnVerticalAtack;
                 @VerticalAtack.performed += instance.OnVerticalAtack;
                 @VerticalAtack.canceled += instance.OnVerticalAtack;
+                @StartTeleportParry.started += instance.OnStartTeleportParry;
+                @StartTeleportParry.performed += instance.OnStartTeleportParry;
+                @StartTeleportParry.canceled += instance.OnStartTeleportParry;
             }
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
     public interface IPlayerActions
     {
-        void OnTeleport(InputAction.CallbackContext context);
+        void OnPerformTeleport(InputAction.CallbackContext context);
         void OnAtack(InputAction.CallbackContext context);
         void OnHorizontalMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnVerticalAtack(InputAction.CallbackContext context);
+        void OnStartTeleportParry(InputAction.CallbackContext context);
     }
 }

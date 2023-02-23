@@ -6,12 +6,12 @@
             "id": "ea99980f-70fb-4860-80a1-0b80e7e9ef22",
             "actions": [
                 {
-                    "name": "Teleport",
+                    "name": "PerformTeleport",
                     "type": "Button",
                     "id": "e2c0699c-82fc-4ed8-8399-42d533270388",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Hold(duration=1)",
+                    "interactions": "Tap",
                     "initialStateCheck": false
                 },
                 {
@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "StartTeleport / Parry",
+                    "type": "Button",
+                    "id": "d6324d2e-f151-4c01-a4b9-944791318f58",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -224,7 +233,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Teleport",
+                    "action": "PerformTeleport",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6aabdd31-b9c0-4ab3-9dfa-8998faf5ecf0",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StartTeleport / Parry",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
