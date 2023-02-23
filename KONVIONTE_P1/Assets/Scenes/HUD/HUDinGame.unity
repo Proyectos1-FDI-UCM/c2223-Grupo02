@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 101624977}
   - component: {fileID: 101624976}
   m_Layer: 0
-  m_Name: "Descripci\xF3nLogro"
+  m_Name: AchievementsDescription
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -522,7 +522,7 @@ GameObject:
   - component: {fileID: 598426019}
   - component: {fileID: 598426018}
   m_Layer: 0
-  m_Name: LogrosBG
+  m_Name: AchievementsBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -614,7 +614,7 @@ GameObject:
   - component: {fileID: 827503059}
   - component: {fileID: 827503058}
   m_Layer: 0
-  m_Name: "T\xEDtuloLogro"
+  m_Name: AchievementsTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -881,6 +881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slider: {fileID: 934824276}
+  _maxHealth: 100
 --- !u!1 &1498820606
 GameObject:
   m_ObjectHideFlags: 0
