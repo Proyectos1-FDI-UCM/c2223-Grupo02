@@ -55,13 +55,19 @@ public class AtackComponent : MonoBehaviour
                 //Debug.Log("3");
 
                 //primero chequeamos si ha habido parry
-                _collisionLifeComponent.ReciveDamage(_damage);
+                if (!_collisionLifeComponent.GetComponent<ParryComponent>()._parried)//si no ha parreado se le aplica el daño
+                {
+                    _collisionLifeComponent.ReciveDamage(_damage);
+                }
             }
             _impacted =false;
             _collisionLifeComponent=null;
         }
     }
-
+    public void SetDamage(int value)
+    {
+        _damage = value;
+    }
     #endregion
 
 

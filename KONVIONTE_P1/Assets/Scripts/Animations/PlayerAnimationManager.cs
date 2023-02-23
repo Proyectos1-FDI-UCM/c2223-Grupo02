@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 
 //ESTE SCRIPT DEBE IR ATACHADO AL JUGADOR
+//NOTA: es posible que haya que migrar la rotacion al movementComponent y tambien a lo mejor es util hacer un script solo para el input
 public class PlayerAnimationManager : MonoBehaviour
 {
     
@@ -46,11 +47,7 @@ public class PlayerAnimationManager : MonoBehaviour
         else
         {
             _myAnimator.SetBool("IsMoving", false);
-        }
-        
-
-
-        
+        }               
     }
     public void AtackAnim(InputAction.CallbackContext callbackContext)
     {
