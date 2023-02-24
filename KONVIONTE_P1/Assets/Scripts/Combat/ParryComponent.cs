@@ -4,6 +4,7 @@ using UnityEngine;
 
 //ESTE SCRIPT VA ATACHADO AL PLAYER
 //Falta comentar el codigo porque no esta terminado ni es definitivo
+//NOTA: Collision es con 2 L
 public class ParryComponent : MonoBehaviour
 {
     #region Parameters
