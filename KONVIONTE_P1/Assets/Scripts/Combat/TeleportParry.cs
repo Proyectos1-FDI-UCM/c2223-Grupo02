@@ -9,53 +9,56 @@ public class TeleportParry : MonoBehaviour
 {
     #region References
     [SerializeField]
-    Transform _predictionTransform;
-    DirectionComponent _myDirectionComponent;
-    Mouse _mouse;
-    Transform _myTransform;
+    private Transform _predictionTransform;
+    private DirectionComponent _myDirectionComponent;
+    private Mouse _mouse;
+    private Transform _myTransform;
+    private ParryComponent _parryComponent;
     #endregion
     #region Parameters
     [SerializeField]
     float _teleportDistance;
     [SerializeField]
-    float _timer;
+    float _limitTime;
     #endregion
     #region Properties
     Vector3 _moveToVector;
-    float _time;
+    float _currentTime;
     bool _telepotDone;
     #endregion
     // Start is called before the first frame update
     void Start()
     {
         _myDirectionComponent = GetComponent<DirectionComponent>();
+        _parryComponent= GetComponent<ParryComponent>();
         _myTransform = transform;
         _mouse = Mouse.current;
+        _currentTime = 0;
+        _telepotDone = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        _time += Time.deltaTime;
+        _currentTime += Time.deltaTime;
         //calculo de la posición futura
         _moveToVector = _myDirectionComponent.EightAxis(Camera.main.ScreenToWorldPoint(_mouse.position.ReadValue()) - _myTransform.position);
         _predictionTransform.localPosition = _moveToVector * _teleportDistance;
         //_predictionTransform.localPosition = _moveToVector * _teleportDistance;
-        if (_time > _timer && !_telepotDone)
+        if (_currentTime > _limitTime && !_telepotDone)
         {
             Teleport();
         }
+         
     }
-    public void TriggerTeleport(InputAction.CallbackContext context)
+    public void TriggerTeleport()
     {
-        //Este proceso se debe relaizar la parrear PLACEHOLDER
-        if (context.started)
-        {
-            _predictionTransform.gameObject.SetActive(true);
-            _telepotDone = false;
-            _time = 0;
-        }
+        _predictionTransform.gameObject.SetActive(true);
+        _telepotDone = false;
+        _currentTime = 0;                    
     }
+    
+    //mover al GM
     public void PerfomTeleport(InputAction.CallbackContext context)
     {
         if (context.performed && !_telepotDone)
@@ -68,5 +71,7 @@ public class TeleportParry : MonoBehaviour
         _predictionTransform.gameObject.SetActive(false);
         _myTransform.localPosition += _moveToVector * _teleportDistance;
         _telepotDone = true;
+        //cambiar por metodo
+        _parryComponent._parried = false;
     }
 }

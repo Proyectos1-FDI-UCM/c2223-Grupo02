@@ -51,7 +51,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "StartTeleport / Parry",
+                    "name": "Parry",
                     "type": "Button",
                     "id": "d6324d2e-f151-4c01-a4b9-944791318f58",
                     "expectedControlType": "Button",
@@ -244,7 +244,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "StartTeleport / Parry",
+                    "action": "Parry",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

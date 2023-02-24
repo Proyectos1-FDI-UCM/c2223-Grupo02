@@ -34,7 +34,7 @@ public class AtackComponent : MonoBehaviour
         }
     }
     /// <summary>
-    /// Se llama al acabar la animacion, chequea si se ha impactado con algo para saber si se puede hacer daño o no
+    /// Se llama al acabar la animacion(es un evento de animacion), chequea si se ha impactado con algo para saber si se puede hacer daño o no
     /// </summary>
     public void TryAtack()
     {
@@ -44,7 +44,7 @@ public class AtackComponent : MonoBehaviour
         {
             //Debug.Log("1");
            
-            if (gameObject.layer == LayerMask.NameToLayer("Player"))//si es el jugador, aplica el daño directamente al enemigo
+            if (transform.parent.GetComponent<ParryComponent>())//si es el jugador, aplica el daño directamente al enemigo
             {
                 _collisionLifeComponent.ReciveDamage(_damage);
                 //Debug.Log("2");
@@ -58,7 +58,10 @@ public class AtackComponent : MonoBehaviour
                 if (!_collisionLifeComponent.GetComponent<ParryComponent>()._parried)//si no ha parreado se le aplica el daño
                 {
                     _collisionLifeComponent.ReciveDamage(_damage);
+                    Debug.Log("He hecho daño al jugador");
                 }
+                Debug.Log("el");
+
             }
             _impacted =false;
             _collisionLifeComponent=null;

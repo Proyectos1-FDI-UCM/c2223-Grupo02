@@ -29,6 +29,8 @@ public class ParryComponent : MonoBehaviour
 
     AtackComponent _playerAtackComponent;
 
+    TeleportParry _playerTeleportComponent;
+
     private LayerMask _enemyAtackLayer;
     
     private Collider2D[] _colisions;
@@ -47,10 +49,12 @@ public class ParryComponent : MonoBehaviour
     void Start()
     {
         _enemyAtackLayer = LayerMask.GetMask("EnemyAtack");       
-        _playerAtackComponent = GetComponent<AtackComponent>();
+        _playerAtackComponent = transform.GetChild(0).GetComponent<AtackComponent>();
+        _playerTeleportComponent = GetComponent<TeleportParry>();
         _myTransform = transform;
         _parried = false;
         _canParry = true;
+        _parryCurrentTime = _parryTime;
     }
 
     // Update is called once per frame
@@ -65,10 +69,7 @@ public class ParryComponent : MonoBehaviour
             
             if (_colisions.Length > 0)
             {
-                _parried = true;
-                _parryCurrentTime += _parryTime;
-                _playerAtackComponent.SetDamage(_boostDamage);
-                _damageBoosted = true;
+                ParryEfects();
                 //_canParry=true;
             }
             else if(_parryCurrentTime >= _parryTime)
@@ -86,7 +87,7 @@ public class ParryComponent : MonoBehaviour
             }
         }        
     }
-    public void Parry()
+    public void PerformParry()
     {
         if (_canParry)
         {
@@ -94,11 +95,26 @@ public class ParryComponent : MonoBehaviour
             _canParry = false;
         }
     }
-
+    private void ParryEfects()
+    {
+        _parried = true;
+        _canParry = true;
+        _parryCurrentTime += _parryTime;
+        _playerAtackComponent.SetDamage(_boostDamage);
+        _damageBoosted = true;
+        _playerTeleportComponent.TriggerTeleport();
+    }
     //Llamar un frame despues del tryAtack para resetear?
+    /// <summary>
+    /// Resetea solo si es necesario
+    /// </summary>
     public void ResetDamage()
     {
-        _playerAtackComponent.SetDamage(_baseDamage);
+        if (_damageBoosted)
+        {
+            _playerAtackComponent.SetDamage(_baseDamage);
+            _damageBoosted= false;
+        }
     }
     private void OnDrawGizmos()
     {
