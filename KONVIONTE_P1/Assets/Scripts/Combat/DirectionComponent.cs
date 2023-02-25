@@ -8,18 +8,12 @@ public class DirectionComponent : MonoBehaviour
 {
 
     #region Properties
-
-    private Vector2 directionGizmo;
-    private Vector2[] direcciones = { Vector2.right,   new Vector2(1, 1),   Vector2.up, new Vector2(-1, 1),
-                                      Vector2.left , new Vector2(-1, -1), Vector2.down, new Vector2(1, -1)};
-
+    private Vector2 _directionGizmo;
+    
     private float rotation;
-    [SerializeField]
-    private float rotationOffSet = 22.5f;
-
+    
     private Mouse mouse;
     private Gamepad mando;
-
     #endregion
 
     // Start is called before the first frame update
@@ -35,13 +29,15 @@ public class DirectionComponent : MonoBehaviour
 
         //detects and proccess input logic
         if (mando != null)
-        { 
-            directionGizmo = EightAxis(mando.rightStick.ReadValue());
+        {           
+            _directionGizmo = X_Directions(mando.rightStick.ReadValue(), 8);
+
             //Debug.Log(" mando"); 
         }
         else
         {
-            directionGizmo = EightAxis(Camera.main.ScreenToWorldPoint( mouse.position.ReadValue())- transform.position); 
+            _directionGizmo = X_Directions(Camera.main.ScreenToWorldPoint(mouse.position.ReadValue()) - transform.position,8);
+            
             //Debug.Log("no mando"); 
         }
 
@@ -50,23 +46,28 @@ public class DirectionComponent : MonoBehaviour
     /// return the corresponding normalized vector in a 8 axis sistem form a given directional vector (<paramref name="dir"/>)
     /// </summary>
     /// <param name="dir"></param>
-    /// <returns></returns>
-    public Vector3 EightAxis(Vector2 dir)
-    {
-        if(mando != null) rotation = Vector2.SignedAngle(Vector2.right,dir) + rotationOffSet;
-        else rotation = Vector2.SignedAngle(Vector2.right, dir) + rotationOffSet;
-
-        rotation = (rotation + 360) % 360;
-
-        Vector2 directionGizmo;
-
-        int index = (int)rotation / 45;
-
-        directionGizmo = direcciones[index];
-        return directionGizmo.normalized;
-    }
+    /// <returns></returns>   
     private void OnDrawGizmos()
     {
-        Gizmos.DrawRay(transform.position, directionGizmo * 5.0f);
+        Gizmos.DrawRay(transform.position, _directionGizmo * 5.0f);
+    }
+    public Vector3 X_Directions(Vector2 dir,int n)
+    {
+        float offset = 360 / (2 * n);
+
+        rotation = Vector2.SignedAngle(Vector2.right, dir) + offset;        
+        //para quitar los angulos negativos
+        rotation = (rotation + 360) % 360;
+
+        //indice del tramo en el que estamos
+        int indice = (int)rotation / (360 / n);
+
+        //pasamos el indice a grados
+        rotation = indice * (360 / n);
+
+        //pasamos los grados a radianes
+        rotation = rotation * Mathf.Deg2Rad;
+        
+        return new Vector2(Mathf.Cos(rotation), Mathf.Sin(rotation)).normalized;                             
     }
 }

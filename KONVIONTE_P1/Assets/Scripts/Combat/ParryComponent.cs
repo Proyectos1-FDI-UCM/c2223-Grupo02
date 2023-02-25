@@ -79,8 +79,7 @@ public class ParryComponent : MonoBehaviour
             
             if (_colisions.Length > 0)
             {
-                ParryEfects();
-                //_canParry=true;
+                ParryEfects();                
             }
             else if(_parryCurrentTime >= _parryTime)
             {
