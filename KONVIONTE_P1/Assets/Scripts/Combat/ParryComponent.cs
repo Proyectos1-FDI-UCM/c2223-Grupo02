@@ -10,9 +10,11 @@ public class ParryComponent : MonoBehaviour
     #region Parameters
     [SerializeField]
     private int _baseDamage;
-    [SerializeField]
+    
     private int _boostDamage;
 
+    [SerializeField]
+    private int _boostMultiplier;
 
     [SerializeField]
     private float _radius;
@@ -21,6 +23,8 @@ public class ParryComponent : MonoBehaviour
     private float _parryTime;
     [SerializeField]
     private float _cooldownParryTime;
+    [SerializeField]
+    private float _boostDamageTime;
 
     #endregion
 
@@ -39,6 +43,8 @@ public class ParryComponent : MonoBehaviour
     private float _parryCurrentTime;
 
     private float _parryCooldownCurrentTime;
+    [HideInInspector]
+    public float _boostDamageCurrentTime;
 
     public bool _parried;
 
@@ -50,18 +56,21 @@ public class ParryComponent : MonoBehaviour
     void Start()
     {
         _enemyAtackLayer = LayerMask.GetMask("EnemyAtack");       
+        //CUIDADO ESTO SOLO FUNCIONA SEGUN LA JERARQUIA
         _playerAtackComponent = transform.GetChild(0).GetComponent<AtackComponent>();
         _playerTeleportComponent = GetComponent<TeleportParry>();
         _myTransform = transform;
         _parried = false;
         _canParry = true;
         _parryCurrentTime = _parryTime;
+
+        _boostDamage = _baseDamage * _boostMultiplier;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //para la deteccion del parry según cierto tiempo
         if(_parryCurrentTime < _parryTime && !_parried)
         {
             _parryCurrentTime += Time.deltaTime;
@@ -79,14 +88,24 @@ public class ParryComponent : MonoBehaviour
                 _canParry = false;
             }
         }
-        else if(_parryCooldownCurrentTime < _cooldownParryTime)
+        else if(_parryCooldownCurrentTime < _cooldownParryTime)//para el cooldown del parry
         {
             _parryCooldownCurrentTime += Time.deltaTime;
             if(_parryCooldownCurrentTime >= _cooldownParryTime)
             {
                 _canParry = true;
             }
-        }        
+        }
+
+        //quita el efecto del smite cuando pase el umbral de tiempo
+        if (_damageBoosted)
+        {
+            _boostDamageCurrentTime += Time.deltaTime;
+            if(_boostDamageCurrentTime > _boostDamageTime)
+            {
+                ResetDamage();                
+            }
+        }
     }
     public void PerformParry()
     {
@@ -104,6 +123,7 @@ public class ParryComponent : MonoBehaviour
         _playerAtackComponent.SetDamage(_boostDamage);
         _damageBoosted = true;
         _playerTeleportComponent.TriggerTeleport();
+        _boostDamageCurrentTime = 0;
     }
     //Llamar un frame despues del tryAtack para resetear?
     /// <summary>
