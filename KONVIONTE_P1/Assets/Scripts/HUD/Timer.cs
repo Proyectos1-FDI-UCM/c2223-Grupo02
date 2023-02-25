@@ -52,7 +52,7 @@ public class Timer : MonoBehaviour
     [Tooltip ("Texto de referencia")]
     public TMP_Text _timerText;
 
-    [Tooltip ("Tiempo en centésimas")]
+    [Tooltip ("Tiempo máximo en centésimas")]
     [SerializeField] public float _time;
 
     #endregion
@@ -64,7 +64,7 @@ public class Timer : MonoBehaviour
     #endregion
 
     // Update is called once per frame
-    private void FixedUpdate()
+    private void Update()
     {
         //Hacemos que el tiempo descienda
         _time -= Time.deltaTime;

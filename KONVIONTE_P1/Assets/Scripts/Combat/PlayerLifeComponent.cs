@@ -31,7 +31,7 @@ public class PlayerLifeComponent : MonoBehaviour
         _currentHealth -= _damage;
 
         //Ajustamos la barra a la vida actual
-        _healthBar.SetHealth();
+        //_healthBar.SetHealth();
 
     }
 
@@ -46,7 +46,7 @@ public class PlayerLifeComponent : MonoBehaviour
         }
 
         //Ajustamos la barra a la vida actual
-        _healthBar.SetHealth();
+        //_healthBar.SetHealth();
 
         //Recordad que la cura tiene su propio script que 
         //se encarga de su funcionamiento.
@@ -59,11 +59,11 @@ public class PlayerLifeComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Al empezar, la vida es máxima
-        _currentHealth = _maxHealth;
+        ////Al empezar, la vida es máxima
+        //_currentHealth = _maxHealth;
 
-        //Ajustamos la barra
-        _healthBar.SetMaxHealth();
+        ////Ajustamos la barra
+        //_healthBar.SetMaxHealth();
     }
 
     // Update is called once per frame

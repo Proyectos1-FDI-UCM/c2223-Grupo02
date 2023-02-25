@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Smite : MonoBehaviour
 {
-    #region references
+    #region References
     private ParryComponent _parryComponent;
 
     #endregion
@@ -16,34 +16,31 @@ public class Smite : MonoBehaviour
     [SerializeField] private float _time = 10;
 
     [Tooltip("Objeto que aparece")]
-    [SerializeField] private Image _object;
-
+    [SerializeField] private GameObject _object;
 
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        if (_parryComponent._damageBoosted == true)
-        {
-            _object = GameObject.Find("Smite").GetComponent<Image>();
-        }
-            
+        _parryComponent = GameManager.Instance._playerParryComponent;
+
+        Debug.Log(_parryComponent);
+        //Debería estar en False, pero para testing es True
+        _object.SetActive(true);        
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Si se hace el parry se muestra en el hud el smite
-            
-            _time -= Time.deltaTime;
+        /*Depende del ParryComponent, de forma que si _damageBoosted = true,
+        * aparece el Smite. Cuando _damageBoosted = false, 
+        * (Cuando termine el tiempo del smite) quitamos el Smite.
+        */
 
-            //Cuando termine el tiempo del smite quitamos el símbolo
-            if (_time < 0)
-            {
-                Destroy(this.gameObject);
-            }
-       
-       
+        //Esto se puede migrar al ParryComponent para optimizar llamadas
+
+        _object.SetActive(_parryComponent._damageBoosted);
+            
     }
 }

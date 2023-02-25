@@ -6,14 +6,14 @@ public class UIManager : MonoBehaviour
 {
     #region References
 
-    
-    [SerializeField] private GameObject _UITimer;
+    [Tooltip("El cronómetro")]
+    [SerializeField] private Timer _UITimer;
 
     [Tooltip("La barra de vida")]
     [SerializeField] private HealthBar _UIHealthBar;
 
-    [Tooltip("El ataque cargado")]
-    [SerializeField] private Smite _UISmite;
+    //[Tooltip("El ataque cargado")]
+    //[SerializeField] private Smite _UISmite;
 
     //[Tooltip("")]
     //[SerializeField] private Smite _UISmite;
@@ -28,7 +28,10 @@ public class UIManager : MonoBehaviour
 
     #region Methods
 
-
+    public void SetHealthBar(int CurrentHealth)
+    {
+        _UIHealthBar.SetHealthBar(CurrentHealth);
+    }
 
     #endregion
 
@@ -41,6 +44,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        ////Seteamos la vida de la barra 
+        //_UIHealthBar.SetHealthBar(100);
     }
 }
