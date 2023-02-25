@@ -53,6 +53,10 @@ public class GameManager : MonoBehaviour
     {
         
     }
+    void FixedUpdate()
+    {
+        _playerMovementComponent.SetDirection(_playerInputActions.Player.HorizontalMove.ReadValue<Vector2>());
+    }
     #region Methods
 
     #region Input methods

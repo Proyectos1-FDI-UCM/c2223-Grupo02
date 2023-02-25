@@ -89,9 +89,7 @@ public class JumpComponent : MonoBehaviour
         {
             _canceled = true;
         }
-    }
-    
-
+    }    
     public void Gravity()
     {
         //Debug.Log("tuviejaGravity");
@@ -110,8 +108,5 @@ public class JumpComponent : MonoBehaviour
             _position = 0;
 
         }
-    }
-    
-        
-    
+    }               
 }
