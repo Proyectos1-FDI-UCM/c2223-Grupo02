@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//ATTACHADO AL PLAYER (Y A ENEMIGOS, CUANDO LO GENERALICEMOS)
 public class PlayerLifeComponent : MonoBehaviour
 {
     #region Parameters
@@ -14,7 +15,7 @@ public class PlayerLifeComponent : MonoBehaviour
 
     #endregion
 
-    #region References
+    #region Properties
 
     //Vida del personaje
     private int _currentHealth;
@@ -75,6 +76,5 @@ public class PlayerLifeComponent : MonoBehaviour
         //Si coje cura, llamar a TakeCure(valor de la cura) ¿Comprobar la capa player?
 
     }
-
 
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//ATTACHADO A LA BARRA DE VIDA DEL HUD
 public class HealthBar : MonoBehaviour
 {
     #region Parameters
@@ -15,7 +16,7 @@ public class HealthBar : MonoBehaviour
 
     #endregion
 
-    #region References
+    #region Properties
 
     //Vida del personaje
     private int _currentHealth;
@@ -42,9 +43,5 @@ public class HealthBar : MonoBehaviour
     }
 
     #endregion
-
-    
-
-
 
 }
