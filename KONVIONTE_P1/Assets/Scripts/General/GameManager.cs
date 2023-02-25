@@ -11,11 +11,15 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject _player;
-    private ParryComponent _playerParryComponent;
+    public ParryComponent _playerParryComponent { get; private set; }
     private CombatController _playerCombatController;
     private TeleportParry _playerTeleportParry;
     private MovementComponent _playerMovementComponent;
     private JumpComponent _playerJumpComponent;
+
+    private LifeComponent _playerLifeComponent;
+    [SerializeField] private UIManager _UIManager;
+
 
     #region Accesors
     /// <summary>
@@ -36,23 +40,28 @@ public class GameManager : MonoBehaviour
         Instance = this;
         _playerInputActions= new PlayerInputActions();
         _playerInputActions.Enable();
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
         _playerParryComponent = _player.GetComponent<ParryComponent>();
         _playerMovementComponent = _player.GetComponent<MovementComponent>();
         _playerJumpComponent = _player.GetComponent<JumpComponent>();
         _playerCombatController = _player.GetComponent<CombatController>();
         _playerTeleportParry = _player.GetComponent<TeleportParry>();
+
+        _playerLifeComponent = _player.GetComponent<LifeComponent>();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        _UIManager.SetHealthBar(_playerLifeComponent.CurrentLife);
     }
+
     #region Methods
 
     #region Input methods

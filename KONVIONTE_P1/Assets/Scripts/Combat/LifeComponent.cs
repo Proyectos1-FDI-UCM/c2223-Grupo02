@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//ESTE SCRIPT VA ATACHADO TANTO AL JUGADOR COMO A LOS ENEMIGOS
+//ESTE SCRIPT VA ATTACHADO TANTO AL JUGADOR COMO A LOS ENEMIGOS
 public class LifeComponent : MonoBehaviour
 {
     #region Parameters
@@ -10,6 +10,13 @@ public class LifeComponent : MonoBehaviour
     private int _life;
 
     #endregion
+
+    #region Accesor
+
+    public int CurrentLife { get { return _life; }}
+
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
