@@ -48,14 +48,8 @@ public class PlayerAnimationManager : MonoBehaviour
         {
             _myAnimator.SetBool("IsMoving", false);
         }               
-    }
-    public void AtackAnim(InputAction.CallbackContext callbackContext)
-    {
-        if (callbackContext.performed)
-        {
-            _playerCombatController.Atack(_playerInputActions.Player.VerticalAtack.ReadValue<Vector2>());
-        }
-    }
+    }   
+
     public void SetIsAttakingFalse()
     {
         _myAnimator.SetBool("IsAttaking", false);

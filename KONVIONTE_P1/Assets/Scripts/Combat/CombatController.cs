@@ -11,9 +11,7 @@ public class CombatController : MonoBehaviour
 
     private Animator _animator;
     private AtackComponent _myAtackComponent;
-    private Transform _myTransform;
-    private PlayerInputActions _playerInputActions;
-
+    private Transform _myTransform;  
 
     private Transform _atackTriggerTransform;
     [SerializeField]
@@ -28,10 +26,7 @@ public class CombatController : MonoBehaviour
         //PARA QUE ESTO FUNCIONE, EL OBJETO DE ATAQUE DE LA ENTIDAD DEBE SER EL PRIMER HIJO EN LA JERARQUÍA
         _myAtackComponent = transform.GetChild(0).GetComponent<AtackComponent>();
         
-
         _myTransform = transform;
-        _playerInputActions = new PlayerInputActions();
-        _playerInputActions.Enable();
         _atackTriggerTransform = _myTransform.GetChild(0).transform;//solo funciona si se cumple bien la jerarquía
     }
 

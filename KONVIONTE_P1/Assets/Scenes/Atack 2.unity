@@ -497,10 +497,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseDamage: 20
-  _boostDamage: 100
+  _boostMultiplier: 10
   _radius: 0.5
   _parryTime: 0.5
   _cooldownParryTime: 1
+  _boostDamageTime: 2
+  _boostDamageCurrentTime: 0
   _parried: 0
   _damageBoosted: 0
 --- !u!114 &77055880
@@ -634,8 +636,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162023049}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7244, y: -3.0059202, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.72439957, y: -3.0059202, z: 0}
   m_LocalScale: {x: 28.428162, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -26,7 +26,7 @@ public class DirectionComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         //detects and proccess input logic
         if (mando != null)
         {           

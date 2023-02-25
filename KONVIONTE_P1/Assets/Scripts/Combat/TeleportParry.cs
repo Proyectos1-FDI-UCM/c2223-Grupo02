@@ -52,22 +52,22 @@ public class TeleportParry : MonoBehaviour
 
         if (_gamepad != null)
         {
-            _moveToVector = _myDirectionComponent.EightAxis(_gamepad.rightStick.ReadValue());
+            _moveToVector = _myDirectionComponent.X_Directions(_gamepad.rightStick.ReadValue(),8);
             //Debug.Log(" mando"); 
         }
         else
         {
             //Debug.Log("no mando"); 
-            _moveToVector = _myDirectionComponent.EightAxis(Camera.main.ScreenToWorldPoint(_mouse.position.ReadValue()) - _myTransform.position);
+            _moveToVector = _myDirectionComponent.X_Directions(Camera.main.ScreenToWorldPoint(_mouse.position.ReadValue()) - _myTransform.position,8);
         }
         if(_myTransform.localEulerAngles.y == 0)
         {
-            Debug.Log("TuviejaNormal");
+            //Debug.Log("TuviejaNormal");
             _predictionTransform.localPosition = _moveToVector * _teleportDistance;
         }
         else if(_myTransform.localEulerAngles.y == 180)
         {
-            Debug.Log("TuviejaInvertida");
+            //Debug.Log("TuviejaInvertida");
             _predictionTransform.localPosition = new Vector3(-_moveToVector.x, _moveToVector.y) * _teleportDistance;
         }
         //_predictionTransform.localPosition = _moveToVector * _teleportDistance;
@@ -79,7 +79,7 @@ public class TeleportParry : MonoBehaviour
 
         if(Physics2D.OverlapCircle(_predictionTransform.position,_predictionAreaRadius,_floorMask))
         {
-            Debug.Log("Tu vieja");
+            //Debug.Log("Tu vieja");
         }
     }
     public void TriggerTeleport()
@@ -89,11 +89,10 @@ public class TeleportParry : MonoBehaviour
         _currentTime = 0;
         GameManager.Instance.SetPhysics(false);
     }
-    
-    //mover al GM
-    public void PerfomTeleport(InputAction.CallbackContext context)
+       
+    public void PerfomTeleport()
     {
-        if (context.performed && !_telepotDone)
+        if (!_telepotDone)
         {
             Teleport();
         }
