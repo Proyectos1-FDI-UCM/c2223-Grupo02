@@ -6,8 +6,9 @@ using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class MovementComponent : MonoBehaviour
-{      
+{
     #region Properties
+    private Animator _myAnimator;
     private Transform _myTransform;
 
     private Vector3 _directionVector;
@@ -28,7 +29,8 @@ public class MovementComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _myTransform = transform;                   
+        _myTransform = transform;  
+        _myAnimator = GetComponent<Animator>();
     }
  
     // Update is called once per frame
@@ -45,6 +47,9 @@ public class MovementComponent : MonoBehaviour
         //si nos estamos moviemdo
         if (_directionVector.magnitude != 0)
         {
+            //Cambiar el bool de la animacion
+            _myAnimator.SetBool("IsMoving", true);
+
             //ACELERACION
 
             //Si no hemos alcanzado la velocidad maxima, le aplicamos la aceleracion correspondiente
@@ -59,6 +64,10 @@ public class MovementComponent : MonoBehaviour
         }
         else//si hemos dejado de movernos
         {
+            //Cambiar el bool de la animacion
+            _myAnimator.SetBool("IsMoving", false);
+
+
             //DECELERACION
 
             //Si no hemos parado del todo, le aplicamos la deceleracion correspondiente
@@ -73,6 +82,16 @@ public class MovementComponent : MonoBehaviour
         //forzamos que la velocidad esté en el intervalo [0,_maxMovementSpeed] y despues nos movemos
         _speed = Mathf.Clamp(_speed, 0f, _maxMovementSpeed);
         _myTransform.position += _speed * _lastDirection * Time.fixedDeltaTime;
+
+        //flipeo de la entidad segun la ultima posicion a la que se mueve
+        if (_lastDirection.x > 0 && _myTransform.localEulerAngles.y != 0)
+        {
+            _myTransform.localEulerAngles = new Vector3(_myTransform.localRotation.x, 0, _myTransform.localRotation.z);
+        }
+        else if (_lastDirection.x < 0 && _myTransform.localEulerAngles.y != 180)
+        {
+            _myTransform.localEulerAngles = new Vector3(_myTransform.localRotation.x, 180, _myTransform.localRotation.z);
+        }
     }
 
     /// <summary>

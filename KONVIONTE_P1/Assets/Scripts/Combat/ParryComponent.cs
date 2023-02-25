@@ -133,7 +133,7 @@ public class ParryComponent : MonoBehaviour
         if (_damageBoosted)
         {
             _playerAtackComponent.SetDamage(_baseDamage);
-            _damageBoosted= false;
+            _damageBoosted = false;
         }
     }
     private void OnDrawGizmos()

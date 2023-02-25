@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 77055870}
   - component: {fileID: 77055869}
-  - component: {fileID: 77055868}
   - component: {fileID: 77055867}
   - component: {fileID: 77055871}
   - component: {fileID: 77055872}
@@ -179,120 +178,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.9484064}
   m_EdgeRadius: 0
---- !u!114 &77055868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77055866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: a38bc1d0b7e755a47bbc89919b3da666, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 77055873}
-        m_TargetAssemblyTypeName: PlayerCombatController, Assembly-CSharp
-        m_MethodName: Atack
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 77055877}
-        m_TargetAssemblyTypeName: PlayerAnimationManager, Assembly-CSharp
-        m_MethodName: AtackAnim
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: b9a2c3d9-4f4e-4306-892f-41e189a3d985
-    m_ActionName: Player/Atack[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 91da619b-5d94-41ad-89be-3bf97d0caa55
-    m_ActionName: Player/Horizontal Move[/Keyboard/s,/Keyboard/a,/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 77055875}
-        m_TargetAssemblyTypeName: JumpComponent, Assembly-CSharp
-        m_MethodName: Jump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 2cad27d0-f968-410e-ba55-ef0cb92e4258
-    m_ActionName: Player/Jump[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 92a13df6-d52d-4962-a9b8-42ff93167b50
-    m_ActionName: Player/VerticalAtack[/Keyboard/w,/Keyboard/s]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 77055880}
-        m_TargetAssemblyTypeName: TeleportParry, Assembly-CSharp
-        m_MethodName: PerfomTeleport
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: e2c0699c-82fc-4ed8-8399-42d533270388
-    m_ActionName: Player/PerformTeleport[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2065237816}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ParreameEsta
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: d6324d2e-f151-4c01-a4b9-944791318f58
-    m_ActionName: Player/StartTeleport / Parry[/Mouse/rightButton]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!212 &77055869
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -394,7 +279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 164adf2e155b12e40b6cec3ed4c98199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationOffSet: 22.5
 --- !u!114 &77055873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,6 +356,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a1c7ba9630ae843bc76bd16c2f105d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _myTransform: {fileID: 0}
+  _myAnimator: {fileID: 0}
+  _playerCombatController: {fileID: 0}
+  _horizontalVector: {x: 0, y: 0}
 --- !u!114 &77055878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,7 +390,7 @@ MonoBehaviour:
   _parryTime: 0.5
   _cooldownParryTime: 1
   _boostDamageTime: 0
-  _myTransform: {fileID: 77055870}
+  _myTransform: {fileID: 0}
   _boostDamageCurrentTime: 0
   _parried: 0
   _damageBoosted: 0
@@ -521,7 +409,7 @@ MonoBehaviour:
   _predictionTransform: {fileID: 1810163667}
   _teleportDistance: 4
   _limitTime: 1
-  _predictionAreaRadius: 0.35
+  _predictionAreaRadius: 0.4
 --- !u!114 &77055881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1729,6 +1617,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2065237817}
   - component: {fileID: 2065237816}
+  - component: {fileID: 2065237818}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1764,3 +1653,105 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2065237818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065237815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: a38bc1d0b7e755a47bbc89919b3da666, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2065237816}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PlayerAtack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b9a2c3d9-4f4e-4306-892f-41e189a3d985
+    m_ActionName: Player/Atack[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 91da619b-5d94-41ad-89be-3bf97d0caa55
+    m_ActionName: Player/Horizontal Move[/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2065237816}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2cad27d0-f968-410e-ba55-ef0cb92e4258
+    m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 92a13df6-d52d-4962-a9b8-42ff93167b50
+    m_ActionName: Player/VerticalAtack[/Keyboard/w,/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2065237816}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PerfomTeleport
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e2c0699c-82fc-4ed8-8399-42d533270388
+    m_ActionName: Player/PerformTeleport[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2065237816}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ParreameEsta
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d6324d2e-f151-4c01-a4b9-944791318f58
+    m_ActionName: Player/StartTeleport / Parry[/Mouse/rightButton]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
