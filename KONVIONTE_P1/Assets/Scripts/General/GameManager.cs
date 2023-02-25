@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject _player;
     private ParryComponent _playerParryComponent;
+    private MovementComponent _playerMovementComponent;
+    private JumpComponent _playerJumpComponent;
 
     #region Accesors
     /// <summary>
@@ -19,6 +21,10 @@ public class GameManager : MonoBehaviour
     static public GameManager Instance
     {
         get;private set;
+    }
+    public GameObject Player
+    {
+        get { return _player; }
     }
     #endregion
 
@@ -33,6 +39,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _playerParryComponent = _player.GetComponent<ParryComponent>();
+        _playerMovementComponent = _player.GetComponent<MovementComponent>();
+        _playerJumpComponent = _player.GetComponent<JumpComponent>();
     }
 
     // Update is called once per frame
@@ -54,7 +62,11 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-
+    public void SetPhysics(bool On)
+    {
+        _playerJumpComponent.enabled = On;
+        _playerMovementComponent.enabled = On;
+    }
     #endregion
 
 
