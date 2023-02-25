@@ -25,7 +25,7 @@ public class ParryComponent : MonoBehaviour
     #endregion
 
     #region Properties
-
+    [SerializeField]
     Transform _myTransform;
 
     AtackComponent _playerAtackComponent;

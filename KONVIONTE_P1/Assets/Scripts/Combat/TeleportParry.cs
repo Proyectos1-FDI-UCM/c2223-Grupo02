@@ -25,6 +25,7 @@ public class TeleportParry : MonoBehaviour
     Vector3 _moveToVector;
     float _currentTime;
     bool _telepotDone;
+    LayerMask _floorMask;
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,7 @@ public class TeleportParry : MonoBehaviour
         _mouse = Mouse.current;
         _currentTime = 0;
         _telepotDone = true;
+        _floorMask = LayerMask.GetMask("Floor");
     }
 
     // Update is called once per frame
@@ -43,13 +45,25 @@ public class TeleportParry : MonoBehaviour
         _currentTime += Time.deltaTime;
         //calculo de la posición futura
         _moveToVector = _myDirectionComponent.EightAxis(Camera.main.ScreenToWorldPoint(_mouse.position.ReadValue()) - _myTransform.position);
-        _predictionTransform.localPosition = _moveToVector * _teleportDistance;
+        if(_myTransform.localEulerAngles.y == 0)
+        {
+            Debug.Log("TuviejaNormal");
+            _predictionTransform.localPosition = _moveToVector * _teleportDistance;
+        }
+        else if(_myTransform.localEulerAngles.y == 180)
+        {
+            Debug.Log("TuviejaInvertida");
+            _predictionTransform.localPosition = new Vector3(-_moveToVector.x, _moveToVector.y) * _teleportDistance;
+        }
         //_predictionTransform.localPosition = _moveToVector * _teleportDistance;
         if (_currentTime > _limitTime && !_telepotDone)
         {
             Teleport();
         }
-         
+        if(Physics2D.OverlapArea(_myTransform.position - new Vector3(1,1),new Vector2(1,1),_floorMask))
+        {
+            Debug.Log("Tu vieja");
+        }
     }
     public void TriggerTeleport()
     {
@@ -73,5 +87,10 @@ public class TeleportParry : MonoBehaviour
         _telepotDone = true;
         //cambiar por metodo
         _parryComponent._parried = false;
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(_predictionTransform.position, new Vector3(1, 1, 0));
     }
 }
