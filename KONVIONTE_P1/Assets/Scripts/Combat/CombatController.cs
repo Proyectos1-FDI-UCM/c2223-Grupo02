@@ -64,13 +64,28 @@ public class CombatController : MonoBehaviour
 
         _atackTriggerTransform.localPosition = aux;
     }
+    /// <summary>
+    /// Cuando acabe la animacion del ataque
+    /// </summary>
+    public void OnEndAttackAnimation()
+    {
+        TryAplyDamage();
+        SetIsAttakingFalse();
+    }
 
     /// <summary>
     /// Llama a la funcion TryAtack del AtackComponent del jugador
     /// </summary>
     /// <param name="context"></param>
-    public void TryAtack()
+    private void TryAplyDamage()
     {        
-        _myAtackComponent.TryAtack();
+        _myAtackComponent.TryAplyDamage();
+    }
+    /// <summary>
+    /// Desactiva el booleano del animator 
+    /// </summary>
+    private void SetIsAttakingFalse()
+    {
+        _animator.SetBool("IsAttaking", false);
     }
 }

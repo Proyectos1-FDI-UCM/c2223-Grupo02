@@ -36,7 +36,7 @@ public class AtackComponent : MonoBehaviour
     /// <summary>
     /// Se llama al acabar la animacion(es un evento de animacion), chequea si se ha impactado con algo para saber si se puede hacer daño o no
     /// </summary>
-    public void TryAtack()
+    public void TryAplyDamage()
     {
         //Debug.Log("0");
 
