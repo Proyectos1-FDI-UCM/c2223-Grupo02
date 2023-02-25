@@ -18,7 +18,7 @@ public class JumpComponent : MonoBehaviour
 {
     #region References
     private Transform _myTransform;
-    private PlayerInputActions _actions;
+    
     #endregion
     #region Prarameters
     [SerializeField]
@@ -48,9 +48,7 @@ public class JumpComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _myTransform = transform;
-        _actions = new PlayerInputActions();
-        _actions.Player.Enable();
+        _myTransform = transform;        
         _gravity = - (2 * _heightToPeak) / Mathf.Pow(_ascensionTime, 2);
 
         // La velocidad de bajada depende del tiempo y la altura a la que queramos llegar
@@ -78,22 +76,21 @@ public class JumpComponent : MonoBehaviour
         }
     }
 
-    public void Jump(InputAction.CallbackContext context)
-    {
-        Debug.Log(context.performed);
-        Debug.Log("grounded" + _isGrounded);
-        if (context.performed && _isGrounded)
+    public void Jump(bool performed,bool canceled)
+    {        
+        if (performed && _isGrounded)
         {
             _gravity = - (2 * _heightToPeak) / Mathf.Pow(_ascensionTime, 2);
             _velocity = _upIniSpeed;
             _canceled = false;
             _isGrounded = false;
         }
-        if (context.canceled)
+        if (canceled)
         {
             _canceled = true;
         }
     }
+    
 
     public void Gravity()
     {
