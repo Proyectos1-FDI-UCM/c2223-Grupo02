@@ -1,58 +1,90 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro.EditorUtilities;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class FollowCamera : MonoBehaviour
 {
+    #region Referencias
     [SerializeField] private Transform _myTargetTransform;
+    private Transform _myTransform;
+    #endregion
+    #region Parametros
+    [SerializeField] private float _interpolationSpeed;
     [SerializeField] private float _zOffset;
     [SerializeField] private float _yOffset;
     [SerializeField] private float _xOffset;
+    #endregion
+    #region Propiedades
+    private bool _canFollow;
     private float _interpolation;
-    private Transform _myTransform;
+    private float _direction;
     private float _horizontalMovement;
-    private PlayerInputActions _actions;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
     {
         _myTransform = transform;
         _interpolation = 0f;
-        _actions = new PlayerInputActions();
-        _actions.Enable();
         _myTransform.position = new Vector3(_myTargetTransform.position.x, _myTargetTransform.position.y + _yOffset, _zOffset);
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        //_myTransform.position = new Vector3(_myTargetTransform.position.x, _myTransform.position.y, _zOffset);
-        if (_actions.Player.HorizontalMove.ReadValue<Vector2>() != Vector2.zero)
+        // Si la camara puede seguir al jugador
+        if (_canFollow)
         {
-            _horizontalMovement = Mathf.Lerp(_myTargetTransform.position.x, _myTargetTransform.position.x + _xOffset, _interpolation);
-            _myTransform.position = new Vector3(_myTargetTransform.position.x + _horizontalMovement, _myTransform.position.y, _zOffset);
-            _interpolation += Time.deltaTime;
+            // Se hace un lerpeo entre la pos del player y la pos objetivo
+            // _direction cambia la direccion de movimiento de la camara segun la del jugador
+            _horizontalMovement = Mathf.Lerp(_myTargetTransform.position.x, _myTargetTransform.position.x + (_xOffset * _direction), _interpolation);
+            // Se modifica la pos de la camara
+            _myTransform.position = new Vector3(_horizontalMovement, _myTransform.position.y, _zOffset);
+            // Aumenta la interpolacion
+            _interpolation += _interpolationSpeed * Time.deltaTime;
         }
+        // Si no le puede seguir, centra al jugador con el mismo método que antes
         else
         {
-            _horizontalMovement = Mathf.Lerp(_myTransform.position.x, _myTargetTransform.position.x, Time.deltaTime);
-            _myTransform.position = new Vector3(_myTargetTransform.position.x, _myTransform.position.y, _zOffset);
+            _horizontalMovement = Mathf.Lerp(_myTransform.position.x, _myTargetTransform.position.x, _interpolation);
+            _myTransform.position = new Vector3(_horizontalMovement, _myTransform.position.y, _zOffset);
+            _interpolation += Time.deltaTime;
         }
     }
 
-    //public void CameraMovement(InputAction.CallbackContext context)
-    //{
-    //    if (context.performed)
-    //    {
-    //        _horizontalMovement = Mathf.Lerp(_myTargetTransform.position.x, _myTargetTransform.position.x + _xOffset, Time.deltaTime);
-    //        _myTransform.position = new Vector3(_myTargetTransform.position.x + _horizontalMovement, _myTransform.position.y, _zOffset);
-    //    }
-    //    else if (context.canceled)
-    //    {
-    //        _horizontalMovement = Mathf.Lerp(_myTransform.position.x, _myTargetTransform.position.x, Time.deltaTime);
-    //        _myTransform.position = new Vector3(_myTargetTransform.position.x, _myTransform.position.y, _zOffset);
-    //    }
-    //}   
+    /// <summary>
+    /// Habilita a la camara a seguir al jugador si este se mueve
+    /// </summary>
+    /// <param name="context"></param>
+    public void CanFollow(InputAction.CallbackContext context)
+    {
+        // Si el jugador se mueve
+        if (context.performed)
+        {
+            // Habilitamos el movimiento de la camara
+            _canFollow = true;
+            // Resetamos la interpolacion
+            _interpolation = 0;
+            // Según la direccion de movimiento la camara se mueve hacia derecha o izquierda
+            if(context.ReadValue<Vector2>() == Vector2.left)
+            {
+                _direction = -1f;
+            }
+            else
+            {
+                _direction = 1f;
+            }
+        }
+        // Si el jugador para
+        else if (context.canceled)
+        {
+            // La camara deja de seguirle
+            _canFollow = false;
+            // Reseteamos la interpolacion
+            _interpolation = 0;
+        }
+    }
 }

@@ -12,7 +12,7 @@ public class MovementComponent : MonoBehaviour
     private Transform _myTransform;
 
     private Vector3 _directionVector;
-    private Vector3 _lastDirection;
+    public Vector3 _lastDirection;
     
     private float _speed = 0f;
     #endregion

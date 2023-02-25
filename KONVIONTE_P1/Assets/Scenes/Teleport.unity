@@ -140,8 +140,6 @@ GameObject:
   - component: {fileID: 77055874}
   - component: {fileID: 77055875}
   - component: {fileID: 77055876}
-  - component: {fileID: 77055877}
-  - component: {fileID: 77055878}
   - component: {fileID: 77055879}
   - component: {fileID: 77055880}
   - component: {fileID: 77055881}
@@ -304,6 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ccca61728d8454696bf7480d46a008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lastDirection: {x: 0, y: 0, z: 0}
   _maxMovementSpeed: 6
   _accelerationTime: 1
   _deccelerationTime: 0.5
@@ -344,34 +343,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &77055877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77055866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65a1c7ba9630ae843bc76bd16c2f105d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _myTransform: {fileID: 0}
-  _myAnimator: {fileID: 0}
-  _playerCombatController: {fileID: 0}
-  _horizontalVector: {x: 0, y: 0}
---- !u!114 &77055878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77055866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01dfa608e08c0e74b9ba26d7ace40f85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &77055879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -779,6 +750,7 @@ GameObject:
   - component: {fileID: 1289814930}
   - component: {fileID: 1289814929}
   - component: {fileID: 1289814928}
+  - component: {fileID: 1289814931}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -852,6 +824,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1289814931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289814927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ca61e270cf79d47b726a57f743f5b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _myTargetTransform: {fileID: 77055870}
+  _interpolationSpeed: 1
+  _zOffset: -20
+  _yOffset: 3
+  _xOffset: 4
 --- !u!1 &1510035185
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,6 +1627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 77055866}
+  _UIManager: {fileID: 0}
 --- !u!4 &2065237817
 Transform:
   m_ObjectHideFlags: 0
@@ -1695,7 +1685,19 @@ MonoBehaviour:
     m_ActionId: b9a2c3d9-4f4e-4306-892f-41e189a3d985
     m_ActionName: Player/Atack[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1289814931}
+        m_TargetAssemblyTypeName: FollowCamera, Assembly-CSharp
+        m_MethodName: CanFollow
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 91da619b-5d94-41ad-89be-3bf97d0caa55
     m_ActionName: Player/Horizontal Move[/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
