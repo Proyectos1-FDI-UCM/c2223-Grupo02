@@ -15,6 +15,7 @@ public class TeleportParry : MonoBehaviour
     private Gamepad _gamepad;
     private Transform _myTransform;
     private ParryComponent _parryComponent;
+    private Animator _animator;
     #endregion
     #region Parameters
     [SerializeField]
@@ -42,6 +43,7 @@ public class TeleportParry : MonoBehaviour
         _currentTime = 0;
         _telepotDone = true;
         _floorMask = LayerMask.GetMask("Floor");
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -83,7 +85,7 @@ public class TeleportParry : MonoBehaviour
         }
     }
     public void TriggerTeleport()
-    {
+    {        
         _predictionTransform.gameObject.SetActive(true);
         _telepotDone = false;
         _currentTime = 0;
@@ -110,6 +112,7 @@ public class TeleportParry : MonoBehaviour
         _telepotDone = true;
         _parryComponent._parried = false;
         GameManager.Instance.SetPhysics(true);
+        _animator.SetBool("IsFreeze", false);
     }
     private void OnDrawGizmos()
     {

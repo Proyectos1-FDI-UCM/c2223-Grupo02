@@ -54,6 +54,8 @@ public class ParryComponent : MonoBehaviour
 
     TeleportParry _playerTeleportComponent;
 
+    Animator _playerAnimator;
+
     private LayerMask _enemyAtackLayer;
     
     private Collider2D[] _colisions;
@@ -79,6 +81,7 @@ public class ParryComponent : MonoBehaviour
         //CUIDADO ESTO SOLO FUNCIONA SEGUN LA JERARQUIA
         _playerAtackComponent = _myTransform.GetChild(0).GetComponent<AtackComponent>();
         _playerTeleportComponent = GetComponent<TeleportParry>();
+        _playerAnimator = GetComponent<Animator>();
 
         _parried = false;
         _canParry = true;
@@ -110,6 +113,7 @@ public class ParryComponent : MonoBehaviour
             {
                 _parryCooldownCurrentTime = 0;
                 _canParry = false;
+                _playerAnimator.SetBool("IsParring", false);
             }
         }
         else if(_parryCooldownCurrentTime < _cooldownParryTime)//si tenemos que actualizar el cooldown del parry
@@ -142,6 +146,7 @@ public class ParryComponent : MonoBehaviour
     {
         if (_canParry)
         {
+            _playerAnimator.SetBool("IsParring", true);
             _parryCurrentTime = 0;
             _canParry = false;
         }
@@ -160,6 +165,10 @@ public class ParryComponent : MonoBehaviour
 
         _playerAtackComponent.SetDamage(_boostDamage);
         _playerTeleportComponent.TriggerTeleport();
+
+        _playerAnimator.SetBool("IsFreeze", true);
+        _playerAnimator.SetBool("IsParring", false);
+
     }
     //Llamar un frame despues del tryAtack para resetear?
     /// <summary>
