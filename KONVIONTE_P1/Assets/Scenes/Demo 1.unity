@@ -358,9 +358,9 @@ MonoBehaviour:
   _baseDamage: 20
   _boostMultiplier: 0
   _radius: 0.5
-  _parryTime: 0.5
+  _parryTime: 1.5
   _cooldownParryTime: 1
-  _boostDamageTime: 0
+  _boostDamageTime: 3
   _myTransform: {fileID: 0}
   _boostDamageCurrentTime: 0
   _parried: 0
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _predictionTransform: {fileID: 1810163667}
   _teleportDistance: 4
-  _limitTime: 1
+  _limitTime: 5
   _predictionAreaRadius: 0.4
 --- !u!114 &77055881
 MonoBehaviour:
