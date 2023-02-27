@@ -114,6 +114,7 @@ public class ParryComponent : MonoBehaviour
                 _parryCooldownCurrentTime = 0;
                 _canParry = false;
                 _playerAnimator.SetBool("IsParring", false);
+                //Debug.Log("ISP, FALSE");
             }
         }
         else if(_parryCooldownCurrentTime < _cooldownParryTime)//si tenemos que actualizar el cooldown del parry
@@ -147,6 +148,7 @@ public class ParryComponent : MonoBehaviour
         if (_canParry)
         {
             _playerAnimator.SetBool("IsParring", true);
+            //Debug.Log("IsParring");
             _parryCurrentTime = 0;
             _canParry = false;
         }
@@ -168,6 +170,8 @@ public class ParryComponent : MonoBehaviour
 
         _playerAnimator.SetBool("IsFreeze", true);
         _playerAnimator.SetBool("IsParring", false);
+        //Debug.Log("is freeze");
+        //Time.timeScale = 0;
 
     }
     //Llamar un frame despues del tryAtack para resetear?
