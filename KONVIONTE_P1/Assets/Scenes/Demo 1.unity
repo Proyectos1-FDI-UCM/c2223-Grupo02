@@ -360,7 +360,7 @@ MonoBehaviour:
   _radius: 0.5
   _parryTime: 0.5
   _cooldownParryTime: 1
-  _boostDamageTime: 0
+  _boostDamageTime: 3
   _myTransform: {fileID: 0}
   _boostDamageCurrentTime: 0
   _parried: 0
