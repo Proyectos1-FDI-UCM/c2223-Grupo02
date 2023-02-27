@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class EnemyMovementComponent : MonoBehaviour
 {
-    /* Parámetros: _speed, _detectionDistance, _timeOfRutine (con bool para cambio de dirección) 
-     *Animaciones
-     *_distanceToPlayer: Raycast de detección a _playerTransform  
+    /*
+     *_distanceToPlayer: Comparar distancia en X, simplemente, pq a lo mejor Raycast no necesario
      * Animator;
-     * booleano _attacking
-     * RigidBody (para que se caiga)
-     * 
      * Para flip direcction, cambiar scale.x entre 1 y -1 Transform.localScale = new Vector3 (-1,1,0) en la derecha del todo y new V3 (1,1,0) en la izqda del todo
+     * Vector 3 right, left, zero
      */
 
     #region References
@@ -19,21 +16,37 @@ public class EnemyMovementComponent : MonoBehaviour
     //Moveremos al enemigo por tranform
     private Transform _myTransform;
 
-    //Properties, tía, cambia esto
-    //Distancia hasta el jugador, para hacer un raycast
+    #endregion
+
+    #region Properties
+
+    //Distancia hasta el jugador
     private Vector3 _distanceToTarget;
+
+    //Controla si está persiguiendo o no al jugador
+    private bool _isAttacking;
 
     #endregion
 
-
     #region Parameters
 
-    [Tooltip("Se refiere al jugador a seguir")]
+    [Tooltip("Jugador al que perseguir")]
     [SerializeField] private GameObject _target;
+
+    [Tooltip("Velocidad de patrulla")]
+    [SerializeField] private float _speed;
+
+    [Tooltip("Velocidad de persecución")]
+    [SerializeField] private float _maxSpeed;
+
+    [Tooltip("Tiempo de cada patrullaje")]
+    [SerializeField] private float _routineTime;
 
     #endregion
 
     #region Methods
+
+
 
     #endregion
 

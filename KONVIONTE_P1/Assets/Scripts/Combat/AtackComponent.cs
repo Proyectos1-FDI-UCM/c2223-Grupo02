@@ -59,6 +59,11 @@ public class AtackComponent : MonoBehaviour
                 {
                     _collisionLifeComponent.ReciveDamage(_damage);
                     //Debug.Log("He hecho daño al jugador");
+
+                    //Knockback
+                    _collisionLifeComponent.GetComponent<KnockbackComponent>().Pushed();
+
+
                 }
                 //Debug.Log("el jugador parreó");
 

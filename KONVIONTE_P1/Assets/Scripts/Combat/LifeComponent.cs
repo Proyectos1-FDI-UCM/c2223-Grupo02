@@ -17,7 +17,7 @@ public class LifeComponent : MonoBehaviour
     * Si false, todo ocurre normal.
     * Si true, la vida no baja
     */
-    private bool _immortal = false;
+    public bool _immortal = false;
 
     #endregion
 
@@ -44,7 +44,11 @@ public class LifeComponent : MonoBehaviour
     /// <param name="damage"></param>
     public void ReciveDamage(int damage)
     {
-        _life -= damage;
+        //Si moñeco no inmortal, recibe daño
+        if (!_immortal)
+        {
+            _life -= damage;
+        }
     }
 
 }
