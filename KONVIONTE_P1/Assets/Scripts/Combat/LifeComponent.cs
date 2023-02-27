@@ -6,8 +6,18 @@ using UnityEngine;
 public class LifeComponent : MonoBehaviour
 {
     #region Parameters
-    [SerializeField]
-    private int _life;
+
+    [SerializeField] private int _life;
+
+    #endregion
+
+    #region Properties
+
+    /* Relacionado a KnockbackComponent.
+    * Si false, todo ocurre normal.
+    * Si true, la vida no baja
+    */
+    private bool _immortal = false;
 
     #endregion
 
