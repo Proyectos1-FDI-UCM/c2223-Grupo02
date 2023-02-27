@@ -44,13 +44,13 @@ public class AtackComponent : MonoBehaviour
         {
             //Debug.Log("1");
            
-            if (transform.parent.GetComponent<ParryComponent>())//si es el jugador, aplica el daño directamente al enemigo
+            if (transform.parent.GetComponent<ParryComponent>())//si es el jugador(el atacante), aplica el daño directamente al enemigo
             {
                 _collisionLifeComponent.ReciveDamage(_damage);
                 //Debug.Log("2");
 
             }
-            else//si es el enemigo
+            else//si es el enemigo(el atacante)
             {
                 //Debug.Log("3");
 
