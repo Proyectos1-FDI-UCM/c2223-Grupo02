@@ -28,7 +28,7 @@ public class TeleportParry : MonoBehaviour
     #region Properties
     Vector3 _moveToVector;
     float _currentTime;
-    bool _telepotDone;
+    public bool _telepotDone { get; private set; }
     LayerMask _floorMask;
     #endregion
     // Start is called before the first frame update
@@ -100,6 +100,7 @@ public class TeleportParry : MonoBehaviour
     private void Teleport()
     {
         _animator.SetBool("IsFreeze", false);
+        //Hacemos que la animacion llame al metodo que mueve al jugador
         _animator.SetTrigger("Teleport");
         _predictionTransform.gameObject.SetActive(false);
         _telepotDone = true;

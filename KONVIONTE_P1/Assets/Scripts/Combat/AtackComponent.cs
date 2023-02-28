@@ -21,7 +21,7 @@ public class AtackComponent : MonoBehaviour
     #endregion
 
     #region Methods
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         //si nuestro collider está activo(está en los frames de la animacion) y entra en contacto con algo que tenga un lifeComponent y que es de distinta layer
         //le inflinge daño a dicha entidad
@@ -62,7 +62,7 @@ public class AtackComponent : MonoBehaviour
                     //Debug.Log("He hecho daño al jugador");
 
                     //Knockback
-                    _collisionLifeComponent.GetComponent<KnockbackComponent>().Pushed();
+                    //_collisionLifeComponent.GetComponent<KnockbackComponent>().Pushed();
 
 
                 }

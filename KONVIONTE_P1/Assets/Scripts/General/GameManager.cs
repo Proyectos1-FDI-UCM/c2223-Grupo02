@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
     private MovementComponent _playerMovementComponent;
     private JumpComponent _playerJumpComponent;
 
+    [HideInInspector]
+    public DirectionComponent _directionComponent;
+
+
     private LifeComponent _playerLifeComponent;
     [SerializeField] private UIManager _UIManager;
 
@@ -48,6 +52,8 @@ public class GameManager : MonoBehaviour
         _playerTeleportParry = _player.GetComponent<TeleportParry>();
 
         _playerLifeComponent = _player.GetComponent<LifeComponent>();
+
+        _directionComponent = GetComponent<DirectionComponent>();
     }
 
     // Start is called before the first frame update
@@ -79,7 +85,7 @@ public class GameManager : MonoBehaviour
     }
     public void PlayerAtack(InputAction.CallbackContext callbackContext)
     {
-        if (callbackContext.performed)
+        if (callbackContext.performed && _playerTeleportParry._telepotDone)
         {
             _playerCombatController.Atack(_playerInputActions.Player.VerticalAtack.ReadValue<Vector2>());
         }
