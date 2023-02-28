@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 2000617728839659003}
   - component: {fileID: 2000617728839658993}
   - component: {fileID: 2000617728839658992}
+  - component: {fileID: 488020260}
+  - component: {fileID: 488020261}
   m_Layer: 6
   m_Name: Becario cabron
   m_TagString: Untagged
@@ -199,6 +201,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
   _timeToAtack: 3
+--- !u!114 &488020260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000617728839659001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba09166f89ece746a72edbfca37e5aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 0}
+  _speed: 0
+  _maxSpeed: 0
+  _routineTime: 5
+  _stopTime: 2
+--- !u!114 &488020261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000617728839659001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08ccca61728d8454696bf7480d46a008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lastDirection: {x: 0, y: 0, z: 0}
+  _maxMovementSpeed: 2
+  _accelerationTime: 0
+  _deccelerationTime: 0
 --- !u!1 &2000617728884929398
 GameObject:
   m_ObjectHideFlags: 0
