@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseDamage: 20
-  _boostMultiplier: 0
+  _boostMultiplier: 10
   _radius: 0.5
   _parryTime: 0.5
   _cooldownParryTime: 1
@@ -417,3 +417,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _life: 100
+  _immortal: 0

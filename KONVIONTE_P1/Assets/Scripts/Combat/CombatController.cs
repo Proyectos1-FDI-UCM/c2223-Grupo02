@@ -41,8 +41,8 @@ public class CombatController : MonoBehaviour
     public void Atack(Vector2 direction)
     {
         if (!_animator.GetBool("IsAttaking"))//si no está ya atacando
-        {
-            ColocarCollider(direction);            
+        {            
+            ColocarCollider(direction);  
             _animator.SetBool("IsAttaking", true);
         }
     }
@@ -53,15 +53,18 @@ public class CombatController : MonoBehaviour
     /// </summary>
     public void ColocarCollider(Vector2 direction)
     {        
-        Vector3 aux;
+        Vector3 aux;      
 
-        if (direction.y != 0)
+        if (Mathf.Abs(direction.y) > 0.001f)
         {
-            if(direction.y > 0) aux = new Vector3(0,  _atackTriggerOffset, 0);
-            else                aux = new Vector3(0, -_atackTriggerOffset, 0); // _verticalAtack.y <0            
+            if (direction.y > 0) aux = new Vector3(0, _atackTriggerOffset, 0);
+            else aux = new Vector3(0, -_atackTriggerOffset, 0); // _verticalAtack.y <0            
         }
-        else aux = new Vector3(_atackTriggerOffset, 0, 0);
-
+        else
+        {           
+            aux = new Vector3(_atackTriggerOffset, 0, 0);
+        }
+        
         _atackTriggerTransform.localPosition = aux;
     }
     /// <summary>

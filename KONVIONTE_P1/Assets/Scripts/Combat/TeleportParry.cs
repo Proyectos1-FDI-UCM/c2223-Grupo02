@@ -28,7 +28,7 @@ public class TeleportParry : MonoBehaviour
     #region Properties
     Vector3 _moveToVector;
     float _currentTime;
-    bool _telepotDone;
+    public bool _telepotDone { get; private set; }
     LayerMask _floorMask;
     #endregion
     // Start is called before the first frame update
