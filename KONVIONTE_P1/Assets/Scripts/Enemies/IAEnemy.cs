@@ -7,11 +7,10 @@ public class IAEnemy : MonoBehaviour
 
     #region References
 
-    CombatController _myCombatController;
-    DirectionComponent _myDirectionComponent;
+    private CombatController _myCombatController;
     [SerializeField]
-    Transform _player;
-    Transform _myTransform;
+    private Transform _player;//cambiar a buscar por singleton
+    private Transform _myTransform;
 
     #endregion
 
@@ -30,7 +29,7 @@ public class IAEnemy : MonoBehaviour
     void Start()
     {
         _myCombatController = GetComponent<CombatController>();
-        _myDirectionComponent = GetComponent<DirectionComponent>();
+        
         _myTransform = transform;
     }
 
@@ -41,8 +40,8 @@ public class IAEnemy : MonoBehaviour
 
         if (_currentTime > _timeToAtack)
         {
-            //Ataque al jugador
-            _myCombatController.Atack(_myDirectionComponent.X_Directions(_player.position - _myTransform.position, 4));
+            //Ataque al jugador            
+            _myCombatController.Atack(GameManager.Instance._directionComponent.X_Directions(_player.localPosition - _myTransform.localPosition, 4));
             _currentTime = 0;
         }
     }

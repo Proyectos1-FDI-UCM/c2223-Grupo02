@@ -10,39 +10,32 @@ public class ParryComponent : MonoBehaviour
     #region Parameters
 
     //Daños con y sin smite
-
+    [Header("Daño y bufo de daño")]
     [SerializeField]
     private int _baseDamage;
     
-    private int _boostDamage;
-
-    /// <summary>
-    /// Ratio entre el daño base y el daño con simte
-    /// </summary>
+    [Tooltip("Multiplicador del daño tras el parry")]
     [SerializeField]
     private int _boostMultiplier;
 
-    /// <summary>
-    /// Radio del área de parry
-    /// </summary>
+    [Tooltip("Duración del smite")]
+    [SerializeField]
+    private float _boostDamageTime;
+
+    [Space(10)]
+    [Header("Estadísticas Parry")]
+    [Tooltip("Radio del área de parry")]
     [SerializeField]
     private float _radius;
 
-    /// <summary>
-    /// Tiempo que dura  la deteccion del parry
-    /// </summary>
+    [Tooltip("Tiempo que dura la detección del parry")]
     [SerializeField]
     private float _parryTime;
-    /// <summary>
-    /// Enfriamiento desde que se usa un parry hasta que puedes volver a usarlo s lo fallaste
-    /// </summary>
+    
+    [Tooltip("Enfriamiento desde que se usa un parry hasta que puedes volver a usarlo s lo fallaste")]
     [SerializeField]
     private float _cooldownParryTime;
-    /// <summary>
-    /// Duracion de el smite
-    /// </summary>
-    [SerializeField]
-    private float _boostDamageTime;
+    
 
     #endregion
 
@@ -71,6 +64,8 @@ public class ParryComponent : MonoBehaviour
     private bool _canParry;
 
     public bool _damageBoosted;
+    
+    private int _boostDamage;
     #endregion
 
     // Start is called before the first frame update
