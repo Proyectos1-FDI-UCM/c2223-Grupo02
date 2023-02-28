@@ -7,11 +7,10 @@ public class IAEnemy : MonoBehaviour
 
     #region References
 
-    CombatController _myCombatController;
-    DirectionComponent _myDirectionComponent;
+    private CombatController _myCombatController;
     [SerializeField]
-    Transform _player;
-    Transform _myTransform;
+    private Transform _player;//cambiar a buscar por singleton
+    private Transform _myTransform;
 
     #endregion
 
