@@ -8,7 +8,7 @@ public class LifeComponent : MonoBehaviour
     #region Parameters
 
     [SerializeField] private int _life;
-
+    Animator _myAnimator;
     #endregion
 
     #region Properties
@@ -30,7 +30,7 @@ public class LifeComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _myAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -59,6 +59,7 @@ public class LifeComponent : MonoBehaviour
     /// </summary>
     private void Death()
     {
-        Destroy(gameObject);
+        _myAnimator.SetTrigger("Death");
+        gameObject.SetActive(false);
     }
 }
