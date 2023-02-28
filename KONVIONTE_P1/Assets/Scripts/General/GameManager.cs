@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
     #region Input methods
     public void ParreameEsta(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && _playerTeleportParry._telepotDone)
         {
             _playerParryComponent.PerformParry();
         }
