@@ -21,7 +21,7 @@ public class AtackComponent : MonoBehaviour
     #endregion
 
     #region Methods
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)//cuidado con si es stay o enter
     {
         //si nuestro collider está activo(está en los frames de la animacion) y entra en contacto con algo que tenga un lifeComponent y que es de distinta layer
         //le inflinge daño a dicha entidad

@@ -18,7 +18,9 @@ public class JumpComponent : MonoBehaviour
 {
     #region References
     private Transform _myTransform;
-    
+    private Collider2D _myCollider;
+    [SerializeField] private LayerMask _layerMask;
+    private RaycastHit2D _hitInfo;
     #endregion
     #region Prarameters
     [SerializeField]
@@ -48,7 +50,8 @@ public class JumpComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _myTransform = transform;        
+        _myTransform = transform;
+        _myCollider = GetComponent<Collider2D>();
         _gravity = - (2 * _heightToPeak) / Mathf.Pow(_ascensionTime, 2);
 
         // La velocidad de bajada depende del tiempo y la altura a la que queramos llegar
@@ -76,10 +79,17 @@ public class JumpComponent : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        DetectFloor();
+    }
+
     public void Jump(bool performed,bool canceled)
-    {        
+    {
+        Debug.Log(_isGrounded);
         if (performed && _isGrounded)
         {
+            Debug.Log("Hola");
             _gravity = - (2 * _heightToPeak) / Mathf.Pow(_ascensionTime, 2);
             _velocity = _upIniSpeed;
             _canceled = false;
@@ -96,17 +106,35 @@ public class JumpComponent : MonoBehaviour
         _myTransform.position -= Vector3.up * _fallSpeed * Time.fixedDeltaTime;
     }
 
-    //cambiar por rayos
-    private void OnCollisionStay2D(Collision2D collision)
+    /// <summary>
+    /// Casteamos una caja que si colisiona con el <paramref name="_layerMask"/> del suelo restea la gravedad (solo si está bajando) y deja saltar al jugador
+    /// </summary>
+    private void DetectFloor()
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        if (Physics2D.BoxCast(_myCollider.bounds.center, _myCollider.bounds.size, 0f, Vector2.down, .1f, _layerMask))
         {
-            // Debug.Log("TuviejaTrigger");
+            Debug.Log("tuvieja");
             _isGrounded = true;
-            _velocity = 0;
-            _gravity = 0;
-            _position = 0;
-
+            if(_velocity < 0f)
+            {
+                _velocity = 0;
+                _gravity = 0;
+                _position = 0;
+            }
         }
-    }               
+    }
+
+    //cambiar por rayos
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
+    //    {
+    //        // Debug.Log("TuviejaTrigger");
+    //        _isGrounded = true;
+    //        _velocity = 0;
+    //        _gravity = 0;
+    //        _position = 0;
+
+    //    }
+    //}
 }

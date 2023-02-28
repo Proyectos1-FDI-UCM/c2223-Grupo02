@@ -48,6 +48,8 @@ public class LifeComponent : MonoBehaviour
         if (!_immortal)
         {
             _life -= damage;
+
+            //Si recibe daño mortal muere, logicamente
             if(_life <= 0)
             {
                 Death();
