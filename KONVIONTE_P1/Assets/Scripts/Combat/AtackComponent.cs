@@ -11,13 +11,13 @@ public class AtackComponent : MonoBehaviour
     #region Parameters
     [SerializeField]
     private int _damage;
-
     #endregion
 
     #region Properties  
        
     private bool _impacted = false;
     LifeComponent _collisionLifeComponent;
+    private int _realDamage;
     #endregion
 
     #region Methods
@@ -47,6 +47,7 @@ public class AtackComponent : MonoBehaviour
             if (transform.parent.GetComponent<ParryComponent>())//si es el jugador(el atacante), aplica el daño directamente al enemigo
             {
                 _collisionLifeComponent.ReciveDamage(_damage);
+                transform.parent.GetComponent<ParryComponent>().ResetDamage();
                 //Debug.Log("2");
 
             }

@@ -49,7 +49,7 @@ public class TeleportParry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _currentTime += Time.deltaTime;
+        _currentTime += Time.unscaledDeltaTime;
         //calculo de la posición futura
 
         if (_gamepad != null)
@@ -62,6 +62,7 @@ public class TeleportParry : MonoBehaviour
             //Debug.Log("no mando"); 
             _moveToVector = _myDirectionComponent.X_Directions(Camera.main.ScreenToWorldPoint(_mouse.position.ReadValue()) - _myTransform.position,8);
         }
+        //Correcióin de el eje x debido a la orientación del jugador
         if(_myTransform.localEulerAngles.y == 0)
         {
             //Debug.Log("TuviejaNormal");
@@ -72,16 +73,10 @@ public class TeleportParry : MonoBehaviour
             //Debug.Log("TuviejaInvertida");
             _predictionTransform.localPosition = new Vector3(-_moveToVector.x, _moveToVector.y) * _teleportDistance;
         }
-        //_predictionTransform.localPosition = _moveToVector * _teleportDistance;
+        //Teletransporte forzado
         if (_currentTime > _limitTime && !_telepotDone)
         {
             Teleport();
-        }
-
-
-        if(Physics2D.OverlapCircle(_predictionTransform.position,_predictionAreaRadius,_floorMask))
-        {
-            //Debug.Log("Tu vieja");
         }
     }
     public void TriggerTeleport()
@@ -104,15 +99,19 @@ public class TeleportParry : MonoBehaviour
     /// </summary>
     private void Teleport()
     {
+        _animator.SetBool("IsFreeze", false);
+        _animator.SetTrigger("Teleport");
+        _predictionTransform.gameObject.SetActive(false);
+        _telepotDone = true;
+        _parryComponent._parried = false;
+    }
+    private void TeleportEvent()
+    {
         if (!Physics2D.OverlapCircle(_predictionTransform.position, _predictionAreaRadius, _floorMask))
         {
             _myTransform.localPosition += _moveToVector * _teleportDistance;
         }
-        _predictionTransform.gameObject.SetActive(false);
-        _telepotDone = true;
-        _parryComponent._parried = false;
         GameManager.Instance.SetPhysics(true);
-        _animator.SetBool("IsFreeze", false);
     }
     private void OnDrawGizmos()
     {

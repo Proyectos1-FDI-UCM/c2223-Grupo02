@@ -356,11 +356,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseDamage: 20
-  _boostMultiplier: 0
+  _boostMultiplier: 3
   _radius: 0.5
   _parryTime: 0.5
   _cooldownParryTime: 1
-  _boostDamageTime: 0
+  _boostDamageTime: 4
   _myTransform: {fileID: 0}
   _boostDamageCurrentTime: 0
   _parried: 0
@@ -394,6 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _life: 100
+  _immortal: 0
 --- !u!1 &162023049
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,6 +741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _life: 100
+  _immortal: 0
 --- !u!50 &1236175067
 Rigidbody2D:
   serializedVersion: 4
@@ -826,6 +828,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _life: 100
+  _immortal: 0
 --- !u!61 &1510035188
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1243,7 +1246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da041330c02804847ada100536585fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 20
+  _damage: 10
 --- !u!58 &1723200261
 CircleCollider2D:
   m_ObjectHideFlags: 0
