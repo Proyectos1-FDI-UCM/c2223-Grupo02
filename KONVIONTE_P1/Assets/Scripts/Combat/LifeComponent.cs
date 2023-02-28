@@ -48,7 +48,17 @@ public class LifeComponent : MonoBehaviour
         if (!_immortal)
         {
             _life -= damage;
+            if(_life <= 0)
+            {
+                Death();
+            }
         }
     }
-
+    /// <summary>
+    /// Destruye el <paramref name="gameObject"/> y activa la animacion
+    /// </summary>
+    private void Death()
+    {
+        Destroy(gameObject);
+    }
 }
