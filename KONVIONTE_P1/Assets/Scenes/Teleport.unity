@@ -318,6 +318,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0cb8262f8d617949a7308f4f4181889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 512
   _heightToPeak: 4
   _speedDivider: 0.83
   _ascensionTime: 0.7
@@ -1818,6 +1821,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5918833086258831788, guid: 1b9f1273cbbf87149b9928f907d7bb9f, type: 3}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5918833086258831790, guid: 1b9f1273cbbf87149b9928f907d7bb9f, type: 3}
       propertyPath: _myTargetTransform
       value: 
