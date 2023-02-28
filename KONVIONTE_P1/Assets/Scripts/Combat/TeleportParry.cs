@@ -80,11 +80,12 @@ public class TeleportParry : MonoBehaviour
         }
     }
     public void TriggerTeleport()
-    {        
+    {
+        Debug.Log("TUvieja");
+        GameManager.Instance.SetPhysics(false);
         _predictionTransform.gameObject.SetActive(true);
         _telepotDone = false;
         _currentTime = 0;
-        GameManager.Instance.SetPhysics(false);
     }
        
     public void PerfomTeleport()
@@ -99,12 +100,11 @@ public class TeleportParry : MonoBehaviour
     /// </summary>
     private void Teleport()
     {
-        _animator.SetBool("IsFreeze", false);
-        //Hacemos que la animacion llame al metodo que mueve al jugador
-        _animator.SetTrigger("Teleport");
-        _predictionTransform.gameObject.SetActive(false);
         _telepotDone = true;
         _parryComponent._parried = false;
+        _predictionTransform.gameObject.SetActive(false);
+        _animator.SetBool("IsFreeze", false);
+        _animator.SetTrigger("Teleport");
     }
     private void TeleportEvent()
     {
@@ -112,6 +112,9 @@ public class TeleportParry : MonoBehaviour
         {
             _myTransform.localPosition += _moveToVector * _teleportDistance;
         }
+    }
+    private void SetPhysics()
+    {
         GameManager.Instance.SetPhysics(true);
     }
     private void OnDrawGizmos()
