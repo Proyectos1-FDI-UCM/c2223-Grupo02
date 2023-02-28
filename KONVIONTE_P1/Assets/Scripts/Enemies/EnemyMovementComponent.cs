@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnemyMovementComponent : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class EnemyMovementComponent : MonoBehaviour
     //Moveremos al enemigo por tranform
     private Transform _myTransform;
 
+    //Referencia al MovementComponent
+    private MovementComponent _movementComponent;
+
     #endregion
 
     #region Properties
@@ -25,6 +29,18 @@ public class EnemyMovementComponent : MonoBehaviour
 
     //Controla si está persiguiendo o no al jugador
     private bool _isAttacking;
+
+    //Dirección del movimiento (True a derecha, false a izquierda)
+    private bool _rightDirection = true;
+
+    //Reloj
+    private float _time;
+
+    //Dirección de movimiento
+    private Vector3 _direction;
+
+    private bool _moving;
+
 
     #endregion
 
@@ -42,26 +58,61 @@ public class EnemyMovementComponent : MonoBehaviour
     [Tooltip("Tiempo de cada patrullaje")]
     [SerializeField] private float _routineTime;
 
+    [Tooltip("Tiempo de parada entre cada patrullaje")]
+    [SerializeField] private float _stopTime;
+
     #endregion
 
     #region Methods
 
+    private void DetectPLayer()
+    {
+        //if (_target.transform.position <= _distanceToTarget)
+        //{
 
+        //}
+
+    }
 
     #endregion
-
-
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Inicializamos el componente del movimiento para acceder a la dirección
+        _movementComponent = GetComponent<MovementComponent>();
+
+        _myTransform = transform;
+
+        _time = _routineTime;
+
+        _direction = Vector3.right;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //Va a derecha
+        _movementComponent.SetDirection(_direction);
+          
+        //Un tiempo determinado
+        _time -= Time.deltaTime;
+
+        //Se podría añadir otra condición para cambiar de dirección
+        if (_time < 0) 
+        {
+            _direction = Vector3.right * Random.Range(-1, 2);
+
+            if(_direction == Vector3.zero)
+            {
+                _time = _stopTime;
+            }
+            else
+            {
+                _time = _routineTime;
+            }
+
+        }  
     }
 }
