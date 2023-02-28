@@ -89,7 +89,6 @@ public class JumpComponent : MonoBehaviour
         Debug.Log(_isGrounded);
         if (performed && _isGrounded)
         {
-            Debug.Log("Hola");
             _gravity = - (2 * _heightToPeak) / Mathf.Pow(_ascensionTime, 2);
             _velocity = _upIniSpeed;
             _canceled = false;
@@ -98,6 +97,7 @@ public class JumpComponent : MonoBehaviour
         if (canceled)
         {
             _canceled = true;
+            _isGrounded = false;
         }
     }    
     public void Gravity()
@@ -113,7 +113,6 @@ public class JumpComponent : MonoBehaviour
     {
         if (Physics2D.BoxCast(_myCollider.bounds.center, _myCollider.bounds.size, 0f, Vector2.down, .1f, _layerMask))
         {
-            Debug.Log("tuvieja");
             _isGrounded = true;
             if(_velocity < 0f)
             {
