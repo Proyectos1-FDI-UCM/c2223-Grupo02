@@ -341,6 +341,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0cb8262f8d617949a7308f4f4181889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _floorMask:
+    serializedVersion: 2
+    m_Bits: 512
   _heightToPeak: 4
   _speedDivider: 0.83
   _ascensionTime: 0.7
@@ -380,10 +383,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baseDamage: 20
   _boostMultiplier: 10
+  _boostDamageTime: 3
   _radius: 0.5
   _parryTime: 0.5
   _cooldownParryTime: 1
-  _boostDamageTime: 3
   _myTransform: {fileID: 0}
   _boostDamageCurrentTime: 0
   _parried: 0
