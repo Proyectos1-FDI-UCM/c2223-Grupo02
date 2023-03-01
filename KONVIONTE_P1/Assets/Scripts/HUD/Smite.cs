@@ -7,13 +7,11 @@ public class Smite : MonoBehaviour
 {
     #region References
     private ParryComponent _parryComponent;
+    private Animator _myAnimator;
 
     #endregion
 
     #region Parameters
-
-    [Tooltip("Duración")]
-    [SerializeField] private float _time = 10;
 
     [Tooltip("Objeto que aparece")]
     [SerializeField] private GameObject _object;
@@ -24,10 +22,10 @@ public class Smite : MonoBehaviour
     void Start()
     {
         _parryComponent = GameManager.Instance._playerParryComponent;
-
+        _myAnimator = GetComponentInChildren<Animator>();
         Debug.Log(_parryComponent);
         //Debería estar en False, pero para testing es True
-        _object.SetActive(true);        
+        _myAnimator.SetBool("IsSmiting", true);        
     }
 
     // Update is called once per frame
@@ -40,7 +38,7 @@ public class Smite : MonoBehaviour
 
         //Esto se puede migrar al ParryComponent para optimizar llamadas
 
-        _object.SetActive(_parryComponent._damageBoosted);
+        _myAnimator.SetBool("IsSmiting", _parryComponent._damageBoosted);
             
     }
 }
