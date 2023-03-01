@@ -19,8 +19,8 @@ public class JumpComponent : MonoBehaviour
     #region References
     private Transform _myTransform;
     private Collider2D _myCollider;
-    [SerializeField] private LayerMask _layerMask;
-    private RaycastHit2D _hitInfo;
+    private Animator _myAnimator;
+    [SerializeField] private LayerMask _floorMask;
     #endregion
     #region Prarameters
     [SerializeField]
@@ -51,6 +51,7 @@ public class JumpComponent : MonoBehaviour
     void Start()
     {
         _myTransform = transform;
+        _myAnimator = GetComponent<Animator>();
         _myCollider = GetComponent<Collider2D>();
         _gravity = - (2 * _heightToPeak) / Mathf.Pow(_ascensionTime, 2);
 
@@ -89,6 +90,7 @@ public class JumpComponent : MonoBehaviour
         Debug.Log(_isGrounded);
         if (performed && _isGrounded)
         {
+            _myAnimator.SetTrigger("Jump");
             _gravity = - (2 * _heightToPeak) / Mathf.Pow(_ascensionTime, 2);
             _velocity = _upIniSpeed;
             _canceled = false;
@@ -111,7 +113,7 @@ public class JumpComponent : MonoBehaviour
     /// </summary>
     private void DetectFloor()
     {
-        if (Physics2D.BoxCast(_myCollider.bounds.center, _myCollider.bounds.size, 0f, Vector2.down, .1f, _layerMask))
+        if (Physics2D.BoxCast(_myCollider.bounds.center, _myCollider.bounds.size, 0f, Vector2.down, .1f, _floorMask))
         {
             _isGrounded = true;
             if(_velocity < 0f)
@@ -122,18 +124,4 @@ public class JumpComponent : MonoBehaviour
             }
         }
     }
-
-    //cambiar por rayos
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.layer == LayerMask.NameToLayer("Floor"))
-    //    {
-    //        // Debug.Log("TuviejaTrigger");
-    //        _isGrounded = true;
-    //        _velocity = 0;
-    //        _gravity = 0;
-    //        _position = 0;
-
-    //    }
-    //}
 }
