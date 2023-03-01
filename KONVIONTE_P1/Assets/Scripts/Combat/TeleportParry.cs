@@ -100,11 +100,11 @@ public class TeleportParry : MonoBehaviour
     /// </summary>
     private void Teleport()
     {
-        _telepotDone = true;
+        //_telepotDone = true;
         _parryComponent._parried = false;
-        _predictionTransform.gameObject.SetActive(false);
         _animator.SetBool("IsFreeze", false);
         _animator.SetTrigger("Teleport");
+        _predictionTransform.gameObject.SetActive(false);
     }
     private void TeleportEvent()
     {
@@ -113,9 +113,10 @@ public class TeleportParry : MonoBehaviour
             _myTransform.localPosition += _moveToVector * _teleportDistance;
         }
     }
-    private void SetPhysics()
+    private void SetPhysicsTrue()
     {
         GameManager.Instance.SetPhysics(true);
+        _telepotDone = true;
     }
     private void OnDrawGizmos()
     {
