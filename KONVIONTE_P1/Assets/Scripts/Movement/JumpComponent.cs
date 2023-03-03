@@ -116,6 +116,7 @@ public class JumpComponent : MonoBehaviour
         if (Physics2D.BoxCast(_myCollider.bounds.center, _myCollider.bounds.size, 0f, Vector2.down, .1f, _floorMask))
         {
             _isGrounded = true;
+            //para evitar que se pare justo nada mas saltar
             if(_velocity < 0f)
             {
                 _velocity = 0;

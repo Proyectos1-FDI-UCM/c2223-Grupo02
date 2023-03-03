@@ -108,7 +108,8 @@ public class TeleportParry : MonoBehaviour
     }
     private void TeleportEvent()
     {
-        if (Physics2D.OverlapCircle(_predictionTransform.position, _predictionAreaRadius, _floorMask) != null)
+        //hacer rayo primero y luego overlap
+        if (Physics2D.OverlapCircle(_predictionTransform.position, _predictionAreaRadius, _floorMask) == null)
         {
             _myTransform.localPosition += _moveToVector * _teleportDistance;
         }
