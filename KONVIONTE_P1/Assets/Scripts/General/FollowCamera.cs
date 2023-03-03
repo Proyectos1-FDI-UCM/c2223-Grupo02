@@ -13,6 +13,7 @@ public class FollowCamera : MonoBehaviour
     #endregion
     #region Parametros
     [SerializeField] private float _interpolationSpeed;
+    [SerializeField] private float _returnSpeed;
     [SerializeField] private float _zOffset;
     [SerializeField] private float _yOffset;
     [SerializeField] private float _xOffset;
@@ -40,7 +41,7 @@ public class FollowCamera : MonoBehaviour
         {
             // Se hace un lerpeo entre la pos del player y la pos objetivo
             // _direction cambia la direccion de movimiento de la camara segun la del jugador
-            _horizontalMovement = Mathf.Lerp(_myTargetTransform.position.x, _myTargetTransform.position.x + (_xOffset * _direction), _interpolation);
+            _horizontalMovement = Mathf.Lerp(_myTransform.position.x, _myTargetTransform.position.x + (_xOffset * _direction), _interpolation);
             // Se modifica la pos de la camara
             _myTransform.position = new Vector3(_horizontalMovement, _myTransform.position.y, _zOffset);
             // Aumenta la interpolacion
@@ -51,7 +52,7 @@ public class FollowCamera : MonoBehaviour
         {
             _horizontalMovement = Mathf.Lerp(_myTransform.position.x, _myTargetTransform.position.x, _interpolation);
             _myTransform.position = new Vector3(_horizontalMovement, _myTransform.position.y, _zOffset);
-            _interpolation += Time.deltaTime;
+            _interpolation += _returnSpeed * Time.deltaTime;
         }
     }
 
