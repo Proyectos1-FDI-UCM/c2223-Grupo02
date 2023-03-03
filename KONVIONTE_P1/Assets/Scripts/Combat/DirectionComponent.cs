@@ -51,6 +51,12 @@ public class DirectionComponent : MonoBehaviour
     {
         Gizmos.DrawRay(transform.position, _directionGizmo * 5.0f);
     }
+    /// <summary>
+    /// Devuelve el vector que se le pasa por valor, como un vector normalizado dependiendo del número de direcciones que queremos
+    /// </summary>
+    /// <param name="dir"></param>
+    /// <param name="n"></param>
+    /// <returns></returns>
     public Vector3 X_Directions(Vector2 dir,int n)
     {
         float offset = 360 / (2 * n);
