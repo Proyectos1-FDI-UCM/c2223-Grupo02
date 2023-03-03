@@ -81,7 +81,7 @@ public class TeleportParry : MonoBehaviour
     }
     public void TriggerTeleport()
     {
-        Debug.Log("TUvieja");
+        //Debug.Log("TUvieja");
         GameManager.Instance.SetPhysics(false);
         _predictionTransform.gameObject.SetActive(true);
         _telepotDone = false;
@@ -109,10 +109,11 @@ public class TeleportParry : MonoBehaviour
     private void TeleportEvent()
     {
         //hacer rayo primero y luego overlap
+
         if (Physics2D.OverlapCircle(_predictionTransform.position, _predictionAreaRadius, _floorMask) == null)
         {
             _myTransform.localPosition += _moveToVector * _teleportDistance;
-        }
+        }      
     }
     private void SetPhysicsTrue()
     {
