@@ -80,6 +80,10 @@ public class GameManager : MonoBehaviour
     #region Methods
 
     #region Input methods
+    /// <summary>
+    /// Llama al metodo PerformParry del ParryComponent del player
+    /// </summary>
+    /// <param name="context"></param>
     public void ParreameEsta(InputAction.CallbackContext context)
     {
         if (context.performed && _playerTeleportParry._telepotDone)
@@ -87,6 +91,10 @@ public class GameManager : MonoBehaviour
             _playerParryComponent.PerformParry();
         }
     }
+    /// <summary>
+    /// Llama al método Atack de CombatController del player, pasandole como vector 2 el inputVertical, para saber si ataca hacia arriba o hacia abajo
+    /// </summary>
+    /// <param name="callbackContext"></param>
     public void PlayerAtack(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.performed && _playerTeleportParry._telepotDone)
@@ -94,6 +102,10 @@ public class GameManager : MonoBehaviour
             _playerCombatController.Atack(_playerInputActions.Player.VerticalAtack.ReadValue<Vector2>());
         }
     }
+    /// <summary>
+    /// Llama al JumpComponent del player diciendole si se ha pulsado o dejado de pulsar el boton de salto
+    /// </summary>
+    /// <param name="context"></param>
     public void Jump(InputAction.CallbackContext context)
     {        
         if (context.performed)
@@ -105,13 +117,20 @@ public class GameManager : MonoBehaviour
             _playerJumpComponent.Jump(false, true);
         }
     }
+    /// <summary>
+    /// Llama al metodo PerformTeleport del TeleportParry del player
+    /// </summary>
+    /// <param name="context"></param>
     public void PerfomTeleport(InputAction.CallbackContext context)
     {
         if (context.performed )
         {
             _playerTeleportParry.PerfomTeleport();
         }
-    }
+    }/// <summary>
+    /// Llama al método CanFollow del FollowCamera del player
+    /// </summary>
+    /// <param name="context"></param>
     public void CanFollow(InputAction.CallbackContext context)
     {
         // Si el jugador se mueve
