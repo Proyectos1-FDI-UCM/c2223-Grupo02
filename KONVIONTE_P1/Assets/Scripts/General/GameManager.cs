@@ -132,6 +132,7 @@ public class GameManager : MonoBehaviour
     {
         _playerJumpComponent.enabled = On;
         _playerMovementComponent.enabled = On;
+        _followCamera.enabled = On;
     }
     #endregion
 
