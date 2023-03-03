@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
+  _followCamera: {fileID: 0}
   _directionComponent: {fileID: 0}
   _UIManager: {fileID: 6346709447776289745}
 --- !u!114 &6346709447776289744
@@ -93,8 +94,8 @@ MonoBehaviour:
     m_ActionName: Player/Atack[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FollowCamera, Assembly-CSharp
+      - m_Target: {fileID: 6346709447776289746}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: CanFollow
         m_Mode: 0
         m_Arguments:

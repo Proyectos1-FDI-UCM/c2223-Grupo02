@@ -60,17 +60,17 @@ public class FollowCamera : MonoBehaviour
     /// Habilita a la camara a seguir al jugador si este se mueve
     /// </summary>
     /// <param name="context"></param>
-    public void CanFollow(InputAction.CallbackContext context)
+    public void CanFollow(bool performed, bool canceled,Vector2 directon)
     {
         // Si el jugador se mueve
-        if (context.performed)
+        if (performed)
         {
             // Habilitamos el movimiento de la camara
             _canFollow = true;
             // Resetamos la interpolacion
             _interpolation = 0;
             // Según la direccion de movimiento la camara se mueve hacia derecha o izquierda
-            if(context.ReadValue<Vector2>() == Vector2.left)
+            if(directon == Vector2.left)
             {
                 _direction = -1f;
             }
@@ -80,7 +80,7 @@ public class FollowCamera : MonoBehaviour
             }
         }
         // Si el jugador para
-        else if (context.canceled)
+        else if (canceled)
         {
             // La camara deja de seguirle
             _canFollow = false;

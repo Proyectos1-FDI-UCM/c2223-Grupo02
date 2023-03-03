@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
     private MovementComponent _playerMovementComponent;
     private JumpComponent _playerJumpComponent;
 
+    //quizas haya que migrarlo a un singleton
+    [SerializeField]
+    private FollowCamera _followCamera;
+
     [HideInInspector]
     public DirectionComponent _directionComponent;
 
@@ -108,6 +112,20 @@ public class GameManager : MonoBehaviour
             _playerTeleportParry.PerfomTeleport();
         }
     }
+    public void CanFollow(InputAction.CallbackContext context)
+    {
+        // Si el jugador se mueve
+        if (context.performed)
+        {
+            _followCamera.CanFollow(true, false, context.ReadValue<Vector2>());
+        }
+        // Si el jugador para
+        else if (context.canceled)
+        {
+            _followCamera.CanFollow(false, true, Vector2.zero);
+        }
+    }
+
     #endregion
 
     public void SetPhysics(bool On)
