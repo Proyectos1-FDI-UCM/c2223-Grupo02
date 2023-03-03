@@ -81,7 +81,7 @@ public class TeleportParry : MonoBehaviour
     }
     public void TriggerTeleport()
     {
-        Debug.Log("TUvieja");
+        //Debug.Log("TUvieja");
         GameManager.Instance.SetPhysics(false);
         _predictionTransform.gameObject.SetActive(true);
         _telepotDone = false;
@@ -107,11 +107,12 @@ public class TeleportParry : MonoBehaviour
         _predictionTransform.gameObject.SetActive(false);
     }
     private void TeleportEvent()
-    {
-        if (Physics2D.OverlapCircle(_predictionTransform.position, _predictionAreaRadius, _floorMask) != null)
+    {   
+        //Debug.Log(c.gameObject.name);
+        if (Physics2D.OverlapCircle(_predictionTransform.position, _predictionAreaRadius, _floorMask) == null)
         {
             _myTransform.localPosition += _moveToVector * _teleportDistance;
-        }
+        }      
     }
     private void SetPhysicsTrue()
     {
