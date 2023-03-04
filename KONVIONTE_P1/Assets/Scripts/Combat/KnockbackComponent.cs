@@ -49,7 +49,8 @@ public class KnockbackComponent : MonoBehaviour
     {
         //_myRigidbody2D.AddForce(_backDirection * _knockbackForce);
         _myAnimator.SetTrigger("KnockBack");
-        _myTransform.position += new Vector3(xDirection, _backHeigth).normalized * _knockbackForce;
+        _myTransform.position -= new Vector3(GameManager.Instance._directionComponent.X_Directions( new Vector2(xDirection,0),2).x, -_backHeigth).normalized * _knockbackForce;
+        Debug.Log(new Vector3(xDirection, _backHeigth).normalized * _knockbackForce);
         GameManager.Instance.InputOff();
         GameManager.Instance.InmortalityPlayer();
     }

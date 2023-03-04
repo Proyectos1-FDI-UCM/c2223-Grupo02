@@ -69,7 +69,15 @@ public class AtackComponent : MonoBehaviour
                     //Debug.Log("He hecho daño al jugador");
 
                     //Knockback
-                    _collisionLifeComponent.GetComponent<KnockbackComponent>().Pushed(_myTransform.position.x - _collisionLifeComponent.transform.position.x);
+                    if(_myTransform.parent.localEulerAngles.y == 0)
+                    {
+                        _collisionLifeComponent.GetComponent<KnockbackComponent>().Pushed((_myTransform.position.x -_myTransform.localPosition.x)- _collisionLifeComponent.transform.position.x);
+                    }
+                    else
+                    {
+                        _collisionLifeComponent.GetComponent<KnockbackComponent>().Pushed((_myTransform.position.x + _myTransform.localPosition.x) - _collisionLifeComponent.transform.position.x);
+
+                    }
 
 
                 }
