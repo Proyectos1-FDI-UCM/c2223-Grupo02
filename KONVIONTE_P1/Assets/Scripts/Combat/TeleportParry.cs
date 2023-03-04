@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -23,13 +24,15 @@ public class TeleportParry : MonoBehaviour
     [SerializeField]
     float _limitTime;
     [SerializeField]
-    float _predictionAreaRadius=0.4f;
+    [Tooltip("Margen al que se teletransporta el jugadror si el telepot se hace hacia una pared")]
+    float _marginTeleport = 0.5f;
     #endregion
     #region Properties
     Vector3 _moveToVector;
     float _currentTime;
     public bool _telepotDone { get; private set; }
     LayerMask _floorMask;
+    float _distance;
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -49,29 +52,26 @@ public class TeleportParry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //calculo de parámetros
         _currentTime += Time.unscaledDeltaTime;
-        //calculo de la posición futura
+        _distance = Physics2D.Raycast(_myTransform.position, _moveToVector, _teleportDistance, _floorMask).distance;
 
         if (_gamepad != null)
         {
             _moveToVector = _myDirectionComponent.X_Directions(_gamepad.rightStick.ReadValue(),8);
-            //Debug.Log(" mando"); 
         }
         else
         {
-            //Debug.Log("no mando"); 
             _moveToVector = _myDirectionComponent.X_Directions(Camera.main.ScreenToWorldPoint(_mouse.position.ReadValue()) - _myTransform.position,8);
         }
-        //Correcióin de el eje x debido a la orientación del jugador
-        if(_myTransform.localEulerAngles.y == 0)
+        //reposicionamiento del trasform de predicción
+        if(_distance == 0)
         {
-            //Debug.Log("TuviejaNormal");
-            _predictionTransform.localPosition = _moveToVector * _teleportDistance;
+            _predictionTransform.position = _myTransform.position + _moveToVector * _teleportDistance;
         }
-        else if(_myTransform.localEulerAngles.y == 180)
+        else
         {
-            //Debug.Log("TuviejaInvertida");
-            _predictionTransform.localPosition = new Vector3(-_moveToVector.x, _moveToVector.y) * _teleportDistance;
+            _predictionTransform.position = _myTransform.position + _moveToVector * (_distance - _marginTeleport);
         }
         //Teletransporte forzado
         if (_currentTime > _limitTime && !_telepotDone)
@@ -79,6 +79,9 @@ public class TeleportParry : MonoBehaviour
             Teleport();
         }
     }
+    /// <summary>
+    /// Desactiva la gravedad y permite ver la posición donde se ubicará el jugador
+    /// </summary>
     public void TriggerTeleport()
     {
         //Debug.Log("TUvieja");
@@ -87,7 +90,9 @@ public class TeleportParry : MonoBehaviour
         _telepotDone = false;
         _currentTime = 0;
     }
-       
+    /// <summary>
+    /// Método para realizar el teleport antes del tiempo establecido
+    /// </summary>    
     public void PerfomTeleport()
     {
         if (!_telepotDone)
@@ -106,23 +111,26 @@ public class TeleportParry : MonoBehaviour
         _animator.SetTrigger("Teleport");
         _predictionTransform.gameObject.SetActive(false);
     }
+    /// <summary>
+    /// Teletrasnporte propiamente dicho
+    /// </summary>
     private void TeleportEvent()
     {
-        //hacer rayo primero y luego overlap
-
-        if (Physics2D.OverlapCircle(_predictionTransform.position, _predictionAreaRadius, _floorMask) == null)
+        if (_distance == 0)
         {
             _myTransform.localPosition += _moveToVector * _teleportDistance;
-        }      
+        }
+        else
+        {
+            _myTransform.localPosition += _moveToVector * (_distance - _marginTeleport);
+        }
     }
+    /// <summary>
+    /// Llamada al método del <see cref="GameManager"/> que anula el salto y el movimiento
+    /// </summary>
     private void SetPhysicsTrue()
     {
         GameManager.Instance.SetPhysics(true);
         _telepotDone = true;
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(_predictionTransform.position, _predictionAreaRadius);
     }
 }

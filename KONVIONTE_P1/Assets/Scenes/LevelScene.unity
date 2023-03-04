@@ -4503,6 +4503,10 @@ PrefabInstance:
       value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 4330029317084274348, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
+      propertyPath: _marginTeleport
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330029317084274348, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: _teleportDistance
       value: 4.2
       objectReference: {fileID: 0}
