@@ -86,6 +86,7 @@ public class TeleportParry : MonoBehaviour
     {
         //Debug.Log("TUvieja");
         GameManager.Instance.SetPhysics(false);
+        GameManager.Instance.InmortalityPlayer();
         _predictionTransform.gameObject.SetActive(true);
         _telepotDone = false;
         _currentTime = 0;
@@ -124,6 +125,7 @@ public class TeleportParry : MonoBehaviour
         {
             _myTransform.localPosition += _moveToVector * (_distance - _marginTeleport);
         }
+        GameManager.Instance.InmortalityPlayer();
     }
     /// <summary>
     /// Llamada al método del <see cref="GameManager"/> que anula el salto y el movimiento

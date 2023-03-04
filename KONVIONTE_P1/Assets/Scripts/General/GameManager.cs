@@ -80,6 +80,14 @@ public class GameManager : MonoBehaviour
     #region Methods
 
     #region Input methods
+    public void InputOn()
+    {
+        _playerInputActions.Enable();
+    }
+    public void InputOff()
+    {
+        _playerInputActions.Disable();
+    }
     /// <summary>
     /// Llama al metodo PerformParry del ParryComponent del player
     /// </summary>
@@ -146,7 +154,10 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
-
+    public void InmortalityPlayer()
+    {
+        _playerLifeComponent.Inmortal();
+    }
     public void SetPhysics(bool On)
     {
         _playerJumpComponent.enabled = On;

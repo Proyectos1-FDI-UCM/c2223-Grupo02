@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,9 @@ using UnityEngine.InputSystem;
 //IMPORTANTE FALTA HACER QUE SIRVA PARA ATACAR A VARIOS ENEMIGOS A LA VEZ
 public class AtackComponent : MonoBehaviour
 {
+    #region References
+    private Transform _myTransform;
+    #endregion
     #region Parameters
     [SerializeField]
     private int _damage;
@@ -19,7 +23,10 @@ public class AtackComponent : MonoBehaviour
     LifeComponent _collisionLifeComponent;
     private int _realDamage;
     #endregion
-
+    private void Start()
+    {
+        _myTransform = transform;
+    }
     #region Methods
     private void OnTriggerStay2D(Collider2D collision)//cuidado con si es stay o enter
     {
@@ -62,7 +69,7 @@ public class AtackComponent : MonoBehaviour
                     //Debug.Log("He hecho daño al jugador");
 
                     //Knockback
-                    //_collisionLifeComponent.GetComponent<KnockbackComponent>().Pushed();
+                    _collisionLifeComponent.GetComponent<KnockbackComponent>().Pushed(_myTransform.position.x - _collisionLifeComponent.transform.position.x);
 
 
                 }

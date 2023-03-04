@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 4330029317084274339}
   - component: {fileID: 4330029317084274348}
   - component: {fileID: 4330029317084274349}
+  - component: {fileID: 7360945658986034746}
   m_Layer: 7
   m_Name: El pana simvionte (EL OFISIAL)
   m_TagString: Untagged
@@ -406,7 +407,7 @@ MonoBehaviour:
   _predictionTransform: {fileID: 4330029315218931447}
   _teleportDistance: 4
   _limitTime: 1
-  _predictionAreaRadius: 0.4
+  _marginTeleport: 0
 --- !u!114 &4330029317084274349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,3 +422,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _life: 100
   _immortal: 0
+--- !u!114 &7360945658986034746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4330029317084274270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7669b7b2f1a5dae41a80a365dc713f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _knockbackForce: 2
+  _backHeigth: 0.25

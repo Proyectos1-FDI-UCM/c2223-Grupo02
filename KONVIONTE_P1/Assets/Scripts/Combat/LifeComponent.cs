@@ -57,6 +57,13 @@ public class LifeComponent : MonoBehaviour
         }
     }
     /// <summary>
+    /// Cambia el valor del booleano de inmortal
+    /// </summary>
+    public void Inmortal()
+    {
+        _immortal = !_immortal;
+    }
+    /// <summary>
     /// Destruye el <paramref name="gameObject"/> y activa la animacion
     /// </summary>
     private void Death()

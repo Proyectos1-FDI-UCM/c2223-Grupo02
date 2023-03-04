@@ -16,10 +16,8 @@ public class KnockbackComponent : MonoBehaviour
 
     #region References
 
-    private Rigidbody2D _myRigidbody2D;
-
     private Transform _myTransform;
-
+    private Animator _myAnimator;
     #endregion
 
     #region Parameters     
@@ -33,25 +31,27 @@ public class KnockbackComponent : MonoBehaviour
 
     //Dirección en la que aplicamos la fuerza (derecha o izquierda)
     //Mirar objeto Collision
-    [SerializeField] private Vector3 _backDirection;
+    [SerializeField] private float _backHeigth;
 
     //Punto donde recibimos el golpe ("ContactPoint2D")
     private Vector3 _hitPoint;
-
-    public bool _push;
-
     #endregion
 
 
     #region Methods
-
-    public void Pushed()
+    /// <summary>
+    /// Mueve al jugador en <paramref name="xDirection"/>
+    /// <para>Desacitiva el input</para>
+    /// <para>Confiere Inmortalidad</para>
+    /// <param name="xDirection"></param>
+    /// </summary>
+    public void Pushed(float xDirection)
     {
         //_myRigidbody2D.AddForce(_backDirection * _knockbackForce);
-
-        _myTransform.position += _backDirection * _knockbackForce;
-        _push = false;
-
+        _myAnimator.SetTrigger("KnockBack");
+        _myTransform.position += new Vector3(xDirection, _backHeigth).normalized * _knockbackForce;
+        GameManager.Instance.InputOff();
+        GameManager.Instance.InmortalityPlayer();
     }
 
 
@@ -62,23 +62,13 @@ public class KnockbackComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //_myRigidbody2D = GetComponent<Rigidbody2D>();
-
-        ////No existe una fuerza en la normal que haga que la fricción con el suelo haga efecto
-        ////Así que, Manolo se va a la puta, porque no para nunca. 
-        ///
-
         _myTransform = transform;
-
+        _myAnimator = GetComponent<Animator>();
 
     }
-
-    // Update is called once per frame
-    void Update()
+    public void EndKnockBack()
     {
-        if (_push)
-        {
-            Pushed();
-        }
+        GameManager.Instance.InputOn();
+        GameManager.Instance.InmortalityPlayer();
     }
 }
