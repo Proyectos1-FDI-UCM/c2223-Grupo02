@@ -6,13 +6,13 @@ using UnityEngine;
 public class LifeComponent : MonoBehaviour
 {
     #region Parameters
-
-    [SerializeField] private int _life;
+    [SerializeField] private int _maxLife;
     Animator _myAnimator;
     #endregion
 
     #region Properties
 
+    private int _life;
     /* Relacionado a KnockbackComponent.
     * Si false, todo ocurre normal.
     * Si true, la vida no baja
@@ -24,6 +24,7 @@ public class LifeComponent : MonoBehaviour
     #region Accesor
 
     public int CurrentLife { get { return _life; }}
+    public int MaxLife { get { return _maxLife; }}
 
     #endregion
 
@@ -31,6 +32,7 @@ public class LifeComponent : MonoBehaviour
     void Start()
     {
         _myAnimator = GetComponent<Animator>();
+        _life = _maxLife;
     }
 
     // Update is called once per frame
@@ -69,6 +71,10 @@ public class LifeComponent : MonoBehaviour
     private void Death()
     {
         _myAnimator.SetTrigger("Death");
+        if(GetComponent<ParryComponent>() != null)
+        {
+            GameManager.Instance.ResetLevel();
+        }
         gameObject.SetActive(false);
     }
 }

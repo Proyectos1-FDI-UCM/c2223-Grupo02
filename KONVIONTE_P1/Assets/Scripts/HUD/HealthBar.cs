@@ -13,19 +13,22 @@ public class HealthBar : MonoBehaviour
 
     #endregion
 
-    #region Properties
-
+    #region References
+    private LifeComponent _playerLifeComponent;
     #endregion
-
+    private void Start()
+    {
+        _playerLifeComponent = GameManager.Instance.Player.GetComponent<LifeComponent>();
+        //Setteo de la vida máxima del jugador
+        _slider.maxValue = _playerLifeComponent.MaxLife;
+    }
     #region Methods
 
-    //Este método ajusta el valor de la vida 
-    public void SetHealthBar(int currentHealth)
-    { 
-        //Asignamos el valor del slider al de la vida del personaje
-        _slider.value = currentHealth; 
+    private void Update()
+    {
+        //Actualizacion de la vida del jugador
+        _slider.value = _playerLifeComponent.CurrentLife;
     }
-
     #endregion
 
 }
