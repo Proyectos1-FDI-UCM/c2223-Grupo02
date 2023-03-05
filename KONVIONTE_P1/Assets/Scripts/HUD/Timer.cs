@@ -52,28 +52,22 @@ public class Timer : MonoBehaviour
     [Tooltip ("Texto de referencia")]
     public TMP_Text _timerText;
 
-    [Tooltip ("Tiempo máximo en centésimas")]
-    [SerializeField] public float _time;
-
     #endregion
 
     #region variables
 
+    private float _time;
     private int _minutes, _seconds, _cents;
 
     #endregion
+    public void SetTime(float time)
+    {
+        _time = time;
+    }
 
     // Update is called once per frame
     private void Update()
     {
-        //Hacemos que el tiempo descienda
-        _time -= Time.deltaTime;
-        if (_time < 0) 
-        {
-            _time = 0; 
-            // MATAR AL JUGADOR :) jiji
-        }
-
         //Asignamos el valor de tiempo a cada unidad
         _minutes = (int) (_time / 60f);
         _seconds = (int) (_time - _minutes * 60f);
@@ -82,10 +76,4 @@ public class Timer : MonoBehaviour
         //Hacemos que el valor se vea en pantalla
         _timerText.text = string.Format("{00:00}:{01:00}.{02:00}", _minutes, _seconds, _cents);
     }
-
-
-    
-      
-    
-
 }

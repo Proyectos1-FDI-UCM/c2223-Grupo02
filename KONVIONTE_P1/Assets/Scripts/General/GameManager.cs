@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     //pasar a un singleton en algun componente?
     private PlayerInputActions _playerInputActions;
-
+    [SerializeField]
+    private Transform _spawnTransform;
     [SerializeField]
     private GameObject _player;
     public ParryComponent _playerParryComponent { get; private set; }
+    private Transform _playerTransform;
     private CombatController _playerCombatController;
     private TeleportParry _playerTeleportParry;
     private MovementComponent _playerMovementComponent;
@@ -42,6 +46,15 @@ public class GameManager : MonoBehaviour
         get { return _player; }
     }
     #endregion
+    #region Parameters
+    [SerializeField]
+    [Tooltip("Tiempo en segundos que dura el nivel")]
+    private float _maxLevelTime = 60;// migrar a un level manager
+    #endregion
+    #region Properties
+
+    private float _currentTime;
+    #endregion
 
 
     #region Properties
@@ -54,7 +67,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         _playerInputActions= new PlayerInputActions();
         _playerInputActions.Enable();
-
+        _playerTransform = _player.transform;
         _playerParryComponent = _player.GetComponent<ParryComponent>();
         _playerMovementComponent = _player.GetComponent<MovementComponent>();
         _playerJumpComponent = _player.GetComponent<JumpComponent>();
@@ -70,12 +83,20 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _input = true;
+        SpawnPlayer();
+        _currentTime = _maxLevelTime;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        _UIManager.SetHealthBar(_playerLifeComponent.CurrentLife);
+        _currentTime -= Time.deltaTime;
+        _UIManager.SetTime(_currentTime);
+        if(_currentTime < 0)
+        {
+            ResetLevel();//LLamar a un cambio de pantalla
+        }
     }
 
     void FixedUpdate()
@@ -169,6 +190,14 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+    public void ResetLevel()
+    {
+        SceneManager.LoadScene(0);
+    }
+    private void SpawnPlayer()
+    {
+        _playerTransform.position = _spawnTransform.position;
+    }
     public void InmortalityPlayer()
     {
         _playerLifeComponent.Inmortal();
