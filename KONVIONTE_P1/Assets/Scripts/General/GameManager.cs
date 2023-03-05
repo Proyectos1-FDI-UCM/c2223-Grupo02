@@ -43,6 +43,12 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+
+    #region Properties
+
+    private bool _input;
+
+    #endregion
     private void Awake()
     {
         Instance = this;
@@ -63,7 +69,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        _input = true;
     }
 
     // Update is called once per frame
@@ -74,7 +80,8 @@ public class GameManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        _playerMovementComponent.SetDirection(_playerInputActions.Player.HorizontalMove.ReadValue<Vector2>());
+        if (_input) _playerMovementComponent.SetDirection(_playerInputActions.Player.HorizontalMove.ReadValue<Vector2>());
+        else _playerMovementComponent.SetDirection(Vector3.zero);
     }
 
     #region Methods
@@ -82,10 +89,12 @@ public class GameManager : MonoBehaviour
     #region Input methods
     public void InputOn()
     {
+        _input = true;
         _playerInputActions.Enable();
     }
     public void InputOff()
     {
+        _input= false;
         _playerInputActions.Disable();
     }
     /// <summary>
@@ -94,7 +103,8 @@ public class GameManager : MonoBehaviour
     /// <param name="context"></param>
     public void ParreameEsta(InputAction.CallbackContext context)
     {
-        if (context.performed && _playerTeleportParry._telepotDone)
+        if (!_input) return;
+        if (context.performed && _playerTeleportParry._telepotDone)//teleportDone para no poder hacer infinitos parrys
         {
             _playerParryComponent.PerformParry();
         }
@@ -105,6 +115,7 @@ public class GameManager : MonoBehaviour
     /// <param name="callbackContext"></param>
     public void PlayerAtack(InputAction.CallbackContext callbackContext)
     {
+        if (!_input) return;
         if (callbackContext.performed && _playerTeleportParry._telepotDone)
         {
             _playerCombatController.Atack(_playerInputActions.Player.VerticalAtack.ReadValue<Vector2>());
@@ -115,7 +126,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     /// <param name="context"></param>
     public void Jump(InputAction.CallbackContext context)
-    {        
+    {
+        if (!_input) return;
+
         if (context.performed)
         {
             _playerJumpComponent.Jump(true,false);
@@ -131,6 +144,8 @@ public class GameManager : MonoBehaviour
     /// <param name="context"></param>
     public void PerfomTeleport(InputAction.CallbackContext context)
     {
+        if (!_input) return;
+
         if (context.performed )
         {
             _playerTeleportParry.PerfomTeleport();
@@ -160,7 +175,7 @@ public class GameManager : MonoBehaviour
     }
     public void SetPhysics(bool On)
     {
-        _playerJumpComponent.enabled = On;
+        _playerJumpComponent.enabled = On;//por la gravedad 
         _playerMovementComponent.enabled = On;
         _followCamera.enabled = On;
     }

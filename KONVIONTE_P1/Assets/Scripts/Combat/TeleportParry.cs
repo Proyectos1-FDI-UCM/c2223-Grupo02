@@ -125,7 +125,7 @@ public class TeleportParry : MonoBehaviour
         {
             _myTransform.localPosition += _moveToVector * (_distance - _marginTeleport);
         }
-        GameManager.Instance.InmortalityPlayer();
+        //GameManager.Instance.InmortalityPlayer();
     }
     /// <summary>
     /// Llamada al método del <see cref="GameManager"/> que anula el salto y el movimiento
@@ -133,6 +133,14 @@ public class TeleportParry : MonoBehaviour
     private void SetPhysicsTrue()
     {
         GameManager.Instance.SetPhysics(true);
+        //_telepotDone = true;//lo muevo a otro método para activar un pelín antes el input y dar mas tiempo de margen
+        GameManager.Instance.InmortalityPlayer();
+    }
+    /// <summary>
+    /// Pone en true _teleportDone, esto permite que el jugador pueda volver a parrear  
+    /// </summary>
+    private void TeleportDone()
+    {
         _telepotDone = true;
     }
 }

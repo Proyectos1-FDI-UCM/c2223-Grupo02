@@ -24,6 +24,9 @@ public class KnockbackComponent : MonoBehaviour
 
     [Tooltip("Fuerza del retroceso")]
     [SerializeField] private float _knockbackForce;
+    [SerializeField]
+    [Tooltip("Margen al que se teletransporta el jugadror si el knockback se hace hacia una pared")]
+    float _marginTpKnockBack = 0.5f;
 
     #endregion
 
@@ -35,6 +38,10 @@ public class KnockbackComponent : MonoBehaviour
 
     //Punto donde recibimos el golpe ("ContactPoint2D")
     private Vector3 _hitPoint;
+
+    private LayerMask _floorLayerMask;
+
+    private float _distance;
     #endregion
 
 
@@ -54,8 +61,23 @@ public class KnockbackComponent : MonoBehaviour
         //la coordenada X debe ser 1 o -1 , asi que la obtenemos del X_directions
         //la coordenada Y debe ser negativa, porque estamos restando a la posicion
         //el knockback force multiplica el vector entero
-        _myTransform.position -= new Vector3(GameManager.Instance._directionComponent.X_Directions( new Vector2(xDirection,0),2).x,
-        -_backHeigth).normalized * _knockbackForce;      
+
+        _distance = Physics2D.Raycast(_myTransform.position,
+                                      new Vector3(-GameManager.Instance._directionComponent.X_Directions(new Vector2(xDirection, 0), 2).x, _backHeigth).normalized,_knockbackForce,_floorLayerMask
+                                      ).distance;
+
+        Debug.Log(_distance);
+        //no choca con nada
+        if (_distance == 0)
+        {
+            _myTransform.position -= new Vector3(GameManager.Instance._directionComponent.X_Directions( new Vector2(xDirection,0),2).x,
+            -_backHeigth).normalized * _knockbackForce;      
+        }
+        else
+        {          
+            _myTransform.position -= new Vector3(GameManager.Instance._directionComponent.X_Directions(new Vector2(xDirection, 0), 2).x,
+            -_backHeigth).normalized * (_distance -_marginTpKnockBack);
+        }
         
         GameManager.Instance.InputOff();
         GameManager.Instance.InmortalityPlayer();
@@ -71,6 +93,7 @@ public class KnockbackComponent : MonoBehaviour
     {
         _myTransform = transform;
         _myAnimator = GetComponent<Animator>();
+        _floorLayerMask = LayerMask.GetMask("Floor");
 
     }
     public void EndKnockBack()

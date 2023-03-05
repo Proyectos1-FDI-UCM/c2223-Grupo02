@@ -63,7 +63,8 @@ public class AtackComponent : MonoBehaviour
                 //Debug.Log("3");
 
                 //primero chequeamos si ha habido parry
-                if (!_collisionLifeComponent.GetComponent<ParryComponent>()._parried)//si no ha parreado se le aplica el daño
+                if (!_collisionLifeComponent.GetComponent<ParryComponent>()._parried && 
+                    !_collisionLifeComponent._immortal)//si no ha parreado se le aplica el daño
                 {
                     _collisionLifeComponent.ReciveDamage(_damage);
                     //Debug.Log("He hecho daño al jugador");
