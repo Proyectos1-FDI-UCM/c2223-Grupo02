@@ -518,6 +518,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Becario cabron
       objectReference: {fileID: 0}
+    - target: {fileID: 2000617728839659001, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -576,6 +580,8 @@ GameObject:
   - component: {fileID: 1554583063}
   - component: {fileID: 1554583062}
   - component: {fileID: 1554583061}
+  - component: {fileID: 1554583064}
+  - component: {fileID: 1554583065}
   m_Layer: 8
   m_Name: Obstacles
   m_TagString: Untagged
@@ -1065,6 +1071,31 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1554583064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554583059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da041330c02804847ada100536585fa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 5
+--- !u!114 &1554583065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554583059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb8dccd7ff0cace43900da162f48d0b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1752190342 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6346709447776289757, guid: 3bafe3acf271b514ebce447a3e3c731c, type: 3}
@@ -4448,11 +4479,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4330029317084274266, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.92
+      value: 46.95
       objectReference: {fileID: 0}
     - target: {fileID: 4330029317084274266, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.75
+      value: -2.76
       objectReference: {fileID: 0}
     - target: {fileID: 4330029317084274266, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4512,11 +4543,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4330029317084274348, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: _teleportDistance
-      value: 4.2
+      value: 4.7
       objectReference: {fileID: 0}
     - target: {fileID: 4330029317084274349, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: _life
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7360945658986034746, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: _backHeigth
@@ -4524,7 +4555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7360945658986034746, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: _knockbackForce
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}

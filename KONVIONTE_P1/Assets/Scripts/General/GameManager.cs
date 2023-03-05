@@ -85,7 +85,6 @@ public class GameManager : MonoBehaviour
         _input = true;
         SpawnPlayer();
         _currentTime = _maxLevelTime;
-
     }
 
     // Update is called once per frame
