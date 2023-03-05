@@ -434,5 +434,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7669b7b2f1a5dae41a80a365dc713f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _knockbackForce: 2
-  _backHeigth: 0.25
+  _knockbackForce: 1
+  _backHeigth: 0.75

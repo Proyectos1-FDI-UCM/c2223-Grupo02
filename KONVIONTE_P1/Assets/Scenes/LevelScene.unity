@@ -502,6 +502,10 @@ PrefabInstance:
       propertyPath: _routineTime
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 488020261, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2000617728839658992, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
       propertyPath: _player
       value: 
@@ -4509,6 +4513,18 @@ PrefabInstance:
     - target: {fileID: 4330029317084274348, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: _teleportDistance
       value: 4.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330029317084274349, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
+      propertyPath: _life
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360945658986034746, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
+      propertyPath: _backHeigth
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360945658986034746, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
+      propertyPath: _knockbackForce
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}

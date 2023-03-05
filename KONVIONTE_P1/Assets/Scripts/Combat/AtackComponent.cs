@@ -68,15 +68,21 @@ public class AtackComponent : MonoBehaviour
                     _collisionLifeComponent.ReciveDamage(_damage);
                     //Debug.Log("He hecho daño al jugador");
 
-                    //Knockback
+                    //KNOCKBACK
+
+                    //dependiendo de la rotacion del padre(en el caso de los enemigos),
+                    //hay que sumar o restar el offset del trigger de ataque(este objeto).
+                    //Se hace una resta entre la posicion del player y la del trigger de ataque
+                    //para obtener la posicion relativa en x, que se pasara por valor al método del knockback
                     if(_myTransform.parent.localEulerAngles.y == 0)
                     {
-                        _collisionLifeComponent.GetComponent<KnockbackComponent>().Pushed((_myTransform.position.x -_myTransform.localPosition.x)- _collisionLifeComponent.transform.position.x);
+                        _collisionLifeComponent.GetComponent<KnockbackComponent>().Pushed(
+                        (_myTransform.position.x -_myTransform.localPosition.x)- _collisionLifeComponent.transform.position.x);
                     }
                     else
                     {
-                        _collisionLifeComponent.GetComponent<KnockbackComponent>().Pushed((_myTransform.position.x + _myTransform.localPosition.x) - _collisionLifeComponent.transform.position.x);
-
+                        _collisionLifeComponent.GetComponent<KnockbackComponent>().Pushed(
+                        (_myTransform.position.x + _myTransform.localPosition.x) - _collisionLifeComponent.transform.position.x);
                     }
 
 
