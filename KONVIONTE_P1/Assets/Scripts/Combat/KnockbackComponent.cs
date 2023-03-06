@@ -4,16 +4,7 @@ using UnityEngine;
 
 //ATTACHADO AL PLAYER 
 public class KnockbackComponent : MonoBehaviour
-{
-    /* Consiste en recibir un impulso en dirección contraria a la del ataque. Acción-Reacción, Newton 3
-     * 
-     * Se desactiva InputComponent (? AYUDA!!
-     * 
-     * Se necesita una referencia al player (probar por Rb o por Transform)
-     * 
-     * Mirar objeto colisión, para buscar el punto de colisión
-     */
-
+{   
     #region References
 
     private Transform _myTransform;
@@ -23,21 +14,18 @@ public class KnockbackComponent : MonoBehaviour
     #region Parameters     
 
     [Tooltip("Fuerza del retroceso")]
-    [SerializeField] private float _knockbackForce;
+    [SerializeField]
+    private float _knockbackForce;
     [SerializeField]
     [Tooltip("Margen al que se teletransporta el jugadror si el knockback se hace hacia una pared")]
-    float _marginTpKnockBack = 0.5f;
+    private float _marginTpKnockBack = 0.5f;
 
     #endregion
 
     #region Properties
-
-    //Dirección en la que aplicamos la fuerza (derecha o izquierda)
-    //Mirar objeto Collision
+     
+    [Tooltip("Altura del desplazamiento")]
     [SerializeField] private float _backHeigth;
-
-    //Punto donde recibimos el golpe ("ContactPoint2D")
-    private Vector3 _hitPoint;
 
     private LayerMask _floorLayerMask;
 
@@ -63,10 +51,11 @@ public class KnockbackComponent : MonoBehaviour
         //el knockback force multiplica el vector entero
 
         _distance = Physics2D.Raycast(_myTransform.position,
-                                      new Vector3(-GameManager.Instance._directionComponent.X_Directions(new Vector2(xDirection, 0), 2).x, _backHeigth).normalized,_knockbackForce,_floorLayerMask
+                                      new Vector3(-GameManager.Instance._directionComponent.X_Directions(new Vector2(xDirection, 0), 2).x, _backHeigth).normalized
+                                      ,_knockbackForce,_floorLayerMask
                                       ).distance;
 
-        Debug.Log(_distance);
+        //Debug.Log(_distance);
         //no choca con nada
         if (_distance == 0)
         {
@@ -87,14 +76,12 @@ public class KnockbackComponent : MonoBehaviour
     #endregion
 
 
-
     // Start is called before the first frame update
     void Start()
     {
         _myTransform = transform;
         _myAnimator = GetComponent<Animator>();
         _floorLayerMask = LayerMask.GetMask("Floor");
-
     }
     public void EndKnockBack()
     {

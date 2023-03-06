@@ -9,6 +9,7 @@ using UnityEngine.InputSystem.Interactions;
 public class TeleportParry : MonoBehaviour
 {
     #region References
+    [Header("References")]
     [SerializeField]
     private Transform _predictionTransform;
     private DirectionComponent _myDirectionComponent;
@@ -18,15 +19,25 @@ public class TeleportParry : MonoBehaviour
     private ParryComponent _parryComponent;
     private Animator _animator;
     #endregion
+
     #region Parameters
+
+    [Header("Distancias")]
+
     [SerializeField]
     float _teleportDistance;
-    [SerializeField]
-    float _limitTime;
+
+
     [SerializeField]
     [Tooltip("Margen al que se teletransporta el jugadror si el telepot se hace hacia una pared")]
     float _marginTeleport = 0.5f;
+
+    [Header("Tiempos")]
+
+    [SerializeField]
+    float _limitTime;
     #endregion
+
     #region Properties
     Vector3 _moveToVector;
     float _currentTime;

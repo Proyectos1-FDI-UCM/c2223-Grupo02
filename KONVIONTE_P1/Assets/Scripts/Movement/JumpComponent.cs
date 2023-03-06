@@ -67,8 +67,9 @@ public class JumpComponent : MonoBehaviour
         // IMPORTANTE Para testear en ejecucion
         // _upIniSpeed = (2 * _heightToPeak) / _ascensionTime;
         // Gravedad Magia de la física de la ESO
-        if (_velocity < 0 ||
-            (_canceled && _velocity < (_upIniSpeed * _speedDivider)))
+        if (_velocity <= 0 ||
+            (_canceled && _velocity < (_upIniSpeed * _speedDivider)) || 
+             (DetectRoof() && _canceled))
         {
             Gravity();
         }
@@ -85,6 +86,11 @@ public class JumpComponent : MonoBehaviour
         DetectFloor();
     }
 
+    /// <summary>
+    /// Si el jugador da el input realiza el salto
+    /// </summary>
+    /// <param name="performed"></param>
+    /// <param name="canceled"></param>
     public void Jump(bool performed,bool canceled)
     {
         Debug.Log(_isGrounded);
@@ -113,7 +119,8 @@ public class JumpComponent : MonoBehaviour
     /// </summary>
     private void DetectFloor()
     {
-        if (Physics2D.BoxCast(_myCollider.bounds.center, _myCollider.bounds.size, 0f, Vector2.down, .1f, _floorMask))
+        if (Physics2D.BoxCast(_myCollider.bounds.center, _myCollider.bounds.size - (Vector3)new Vector2(.1f, .1f),
+            0f, Vector2.down, .2f, _floorMask))
         {
             _isGrounded = true;
             //para evitar que se pare justo nada mas saltar
@@ -124,5 +131,23 @@ public class JumpComponent : MonoBehaviour
                 _position = 0;
             }
         }
+    }
+
+    private bool DetectRoof()
+    {
+        bool detected = false;
+        if(Physics2D.BoxCast(_myCollider.bounds.center, _myCollider.bounds.size - (Vector3)new Vector2(.1f, .1f), 
+            0f, Vector2.up, .2f, _floorMask))
+        {
+            _canceled = true;
+            detected = true;
+        }
+
+        return detected;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawCube(_myCollider.bounds.center, _myCollider.bounds.size - (Vector3)new Vector2(0, .1f));
     }
 }

@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 2000617728839659003}
   - component: {fileID: 2000617728839658993}
   - component: {fileID: 2000617728839658992}
-  - component: {fileID: 488020260}
   - component: {fileID: 488020261}
   m_Layer: 6
   m_Name: Becario cabron
@@ -172,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40a090e3d357c1419b98d4b0a5d1227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _life: 100
+  _maxLife: 0
   _immortal: 0
 --- !u!114 &2000617728839658993
 MonoBehaviour:
@@ -199,25 +198,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fe699aa57ce23e4cbc660fb3ece9bfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
-  _timeToAtack: 3
---- !u!114 &488020260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2000617728839659001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bba09166f89ece746a72edbfca37e5aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _target: {fileID: 0}
-  _speed: 0
-  _maxSpeed: 0
-  _routineTime: 5
+  _detectionBoxSize: {x: 7, y: 2.5, z: 0}
+  _detectionBoxOffset: {x: 0, y: 2, z: 0}
+  _attackBoxSize: {x: 1.75, y: 1.5, z: 0}
+  _attackBoxOffset: {x: 0, y: 1, z: 0}
+  _routineTime: 4
   _stopTime: 2
+  _followTime: 0.3
+  _attackTime: 1
+  _raycastDistance: 1
+  _estadoActual: 0
 --- !u!114 &488020261
 MonoBehaviour:
   m_ObjectHideFlags: 0
