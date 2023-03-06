@@ -54,6 +54,15 @@ public class FollowCamera : MonoBehaviour
             _myTransform.position = new Vector3(_horizontalMovement, _myTransform.position.y, _zOffset);
             _interpolation += _returnSpeed * Time.deltaTime;
         }
+
+        if (_myTargetTransform.position.y >= _myTransform.position.y)
+        {
+            _myTransform.position = new Vector3(_myTransform.position.x, _myTargetTransform.position.y, _zOffset);
+        }
+        else if(_myTargetTransform.position.y < _myTransform.position.y - _yOffset)
+        {
+            _myTransform.position = new Vector3(_myTransform.position.x, _myTargetTransform.position.y + _yOffset, _zOffset);
+        }
     }
 
     /// <summary>
