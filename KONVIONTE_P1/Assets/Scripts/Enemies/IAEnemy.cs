@@ -112,16 +112,8 @@ public class IAEnemy : MonoBehaviour
                 //calculamos aleatoriamente la siguiente direccion
                 _movementDirection = Vector3.right * Random.Range(-1, 2);//devuelve un aleatorio -1,0,1 
 
-                //si es una parada, asignamos el tiempo de parada
-                if (_movementDirection == Vector3.zero)
-                {
-                    _currentPatrollTime = _stopTime;
-                }
-                else //si es un  movimiento asignamos el tiempo de movimiento
-                {
-                    _currentPatrollTime = _routineTime;
-                }
-                //_currentPatrollTime = _movementDirection == Vector3.zero ? _stopTime : _routineTime;
+                //si es una parada, asignamos el tiempo de parada,sino, asignamos el tiempo de movimiento                                             
+                _currentPatrollTime = _movementDirection == Vector3.zero ? _stopTime : _routineTime;
 
                 //actualizamos la direccion en el movement
                 _myMovementComponent.SetDirection(_movementDirection);                              
@@ -132,8 +124,7 @@ public class IAEnemy : MonoBehaviour
 
             //si he chocado con una pared
             if (_raycastInfo.transform != null)
-            {
-                Debug.Log("tu vieja ha chocado con una pared"); 
+            {                
                 //cambiamos la direccion
                 _movementDirection *= -1;
 
