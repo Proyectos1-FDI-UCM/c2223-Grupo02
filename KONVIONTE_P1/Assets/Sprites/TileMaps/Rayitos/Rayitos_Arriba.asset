@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: Rayitos_Arriba
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 460767017, guid: de054707320e543478db9e1e249aa043, type: 3}
+  - {fileID: -143842992, guid: 01949fb3aca8c9348bf36bd0f0f971ac, type: 3}
+  - {fileID: -401047701, guid: 2f3df6f9b9a96d84da7fa2c3325aaa7b, type: 3}
+  - {fileID: -1957631964, guid: 90cd64ba3b2f7f5488577ca089e29598, type: 3}
+  - {fileID: -1798390980, guid: f2ef1a6d1427c97438a6e8d950caee51, type: 3}
+  m_MinSpeed: 8
+  m_MaxSpeed: 8
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 2
