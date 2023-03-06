@@ -205,7 +205,7 @@ public class GameManager : MonoBehaviour
     {
         _playerJumpComponent.enabled = On;//por la gravedad 
         _playerMovementComponent.enabled = On;
-        _followCamera.enabled = On;
+        //_followCamera.enabled = On;
     }
     #endregion
 

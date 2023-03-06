@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40a090e3d357c1419b98d4b0a5d1227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxLife: 0
+  _maxLife: 50
   _immortal: 0
 --- !u!114 &2000617728839658993
 MonoBehaviour:
@@ -202,7 +202,7 @@ MonoBehaviour:
   _detectionBoxOffset: {x: 0, y: 2, z: 0}
   _attackBoxSize: {x: 1.75, y: 1.5, z: 0}
   _attackBoxOffset: {x: 0, y: 1, z: 0}
-  _routineTime: 4
+  _routineTime: 0.3
   _stopTime: 2
   _followTime: 0.3
   _attackTime: 1
