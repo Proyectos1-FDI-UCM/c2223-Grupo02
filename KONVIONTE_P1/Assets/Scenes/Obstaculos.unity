@@ -4534,7 +4534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7360945658986034746, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: _knockbackForce
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}

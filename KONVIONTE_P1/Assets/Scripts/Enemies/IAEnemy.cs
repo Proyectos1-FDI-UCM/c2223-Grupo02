@@ -97,12 +97,12 @@ public class IAEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //para ver la caja
-        OurNamespace.Box.ShowBox(_attackBoxSize, _attackBoxOffset, _myTransform);
+        //para ver las cajas
+        //OurNamespace.Box.ShowBox(_attackBoxSize, _attackBoxOffset, _myTransform);   
+        //OurNamespace.Box.ShowBox(_detectionBoxSize, _detectionBoxOffset, _myTransform);
+
         if (_estadoActual == 0)//patrulla aleatoria
-        {
-            //Debug.Log("1");
-            
+        {                        
             //Restamos el tiempo
             _currentPatrollTime -= Time.deltaTime;
 
@@ -121,15 +121,11 @@ public class IAEnemy : MonoBehaviour
                 {
                     _currentPatrollTime = _routineTime;
                 }
+                //_currentPatrollTime = _movementDirection == Vector3.zero ? _stopTime : _routineTime;
 
                 //actualizamos la direccion en el movement
-                _myMovementComponent.SetDirection(_movementDirection);
-                
-                //Debug.Log("2");
+                _myMovementComponent.SetDirection(_movementDirection);                              
             }
-
-            //prueba de rayo
-
            
             //casteo del rayo
             _raycastInfo = Physics2D.Raycast(_myTransform.position, _myTransform.right, _raycastDistance, _floorLayerMask);
@@ -147,10 +143,7 @@ public class IAEnemy : MonoBehaviour
                 //actualizamos la direccion en el movement
                 _myMovementComponent.SetDirection(_movementDirection);
             }
-
-            //para ver la caja
-            OurNamespace.Box.ShowBox(_detectionBoxSize, _detectionBoxOffset, _myTransform);
-            
+                      
             //si el enemigo detecta al jugador
             if(OurNamespace.Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask))
             {
@@ -184,10 +177,6 @@ public class IAEnemy : MonoBehaviour
                 //seteo de la direccion de movimiento
                 _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_player.position - _myTransform.position,2));
             }
-
-            //para ver la caja
-            OurNamespace.Box.ShowBox(_attackBoxSize, _attackBoxOffset, _myTransform);
-
 
             //si el enemigo deja de detectar al jugador, volvemos al estado 1
             if (!OurNamespace.Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask))
@@ -226,8 +215,7 @@ public class IAEnemy : MonoBehaviour
 
 
 namespace OurNamespace
-{
-    /*Comentar bien los metodos*/
+{    
     public class Box
     {
         /// <summary>
@@ -235,8 +223,8 @@ namespace OurNamespace
         /// </summary>
         public static void ShowBox(Vector3 _boxSize, Vector3 _boxOffSet, Transform _spawnTransform)
         {
-            //la caja cambia segun la rotacion del objeto(para mas info buscar el operador ?)
-            int _direction = _spawnTransform.rotation.y == 0 ? 1:-1;
+            //la caja cambia segun la rotacion del objeto(para mas info buscar el operador ?:)
+            int _direction = _spawnTransform.rotation.y == 0 ? 1 : -1;
                       
             //pintado de la caja
             Debug.DrawRay(_spawnTransform.position - _boxSize + new Vector3(_boxOffSet.x * _direction, _boxOffSet.y), Vector2.right);
@@ -250,7 +238,7 @@ namespace OurNamespace
         /// </summary>     
         public static bool DetectSomethingBox(Vector3 _boxSize, Vector3 _boxOffSet, Transform _spawnTransform, LayerMask _layerToFliter)
         {
-            //la caja cambia segun la rotacion del objeto(para mas info buscar el operador ?)
+            //la caja cambia segun la rotacion del objeto(para mas info buscar el operador ?:)
             int _direction = _spawnTransform.rotation.y == 0 ? 1 : -1;
 
             Collider2D _colliderResult = Physics2D.OverlapArea(_spawnTransform.position - _boxSize + new Vector3(_boxOffSet.x * _direction, _boxOffSet.y) //punto 1 de la caja
@@ -259,8 +247,4 @@ namespace OurNamespace
             return _colliderResult != null;            
         }
     }
-
-
-
-
 }
