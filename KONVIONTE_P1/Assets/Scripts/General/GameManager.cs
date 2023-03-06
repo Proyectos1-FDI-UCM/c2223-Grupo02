@@ -191,7 +191,7 @@ public class GameManager : MonoBehaviour
     #endregion
     public void ResetLevel()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("DeathScene");
     }
     private void SpawnPlayer()
     {
