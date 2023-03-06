@@ -385,7 +385,7 @@ MonoBehaviour:
   _baseDamage: 20
   _boostMultiplier: 10
   _boostDamageTime: 3
-  _radius: 0.5
+  _radius: 0.65
   _parryTime: 0.5
   _cooldownParryTime: 1
   _myTransform: {fileID: 0}
@@ -405,9 +405,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _predictionTransform: {fileID: 4330029315218931447}
-  _teleportDistance: 4
+  _teleportDistance: 7.2
   _limitTime: 1
-  _marginTeleport: 0
+  _marginTeleport: 0.5
 --- !u!114 &4330029317084274349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40a090e3d357c1419b98d4b0a5d1227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _life: 100
+  _maxLife: 100
   _immortal: 0
 --- !u!114 &7360945658986034746
 MonoBehaviour:
@@ -435,4 +435,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _knockbackForce: 1
+  _marginTpKnockBack: 0.5
   _backHeigth: 0.75

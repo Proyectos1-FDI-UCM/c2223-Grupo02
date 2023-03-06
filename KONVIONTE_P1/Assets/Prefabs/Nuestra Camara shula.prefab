@@ -61,7 +61,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -98,7 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myTargetTransform: {fileID: 0}
-  _interpolationSpeed: 0.75
+  _interpolationSpeed: 0.0005
+  _returnSpeed: 0.05
   _zOffset: -20
-  _yOffset: 3
-  _xOffset: 3
+  _yOffset: 1
+  _xOffset: 7
