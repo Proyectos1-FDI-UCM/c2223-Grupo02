@@ -119,7 +119,7 @@ public class JumpComponent : MonoBehaviour
     /// </summary>
     private void DetectFloor()
     {
-        if (Physics2D.BoxCast(_myCollider.bounds.center, _myCollider.bounds.size - (Vector3)new Vector2(0, .1f),
+        if (Physics2D.BoxCast(_myCollider.bounds.center, _myCollider.bounds.size - (Vector3)new Vector2(.1f, .1f),
             0f, Vector2.down, .2f, _floorMask))
         {
             _isGrounded = true;
@@ -136,7 +136,7 @@ public class JumpComponent : MonoBehaviour
     private bool DetectRoof()
     {
         bool detected = false;
-        if(Physics2D.BoxCast(_myCollider.bounds.center, _myCollider.bounds.size - (Vector3)new Vector2(0, .1f), 
+        if(Physics2D.BoxCast(_myCollider.bounds.center, _myCollider.bounds.size - (Vector3)new Vector2(.1f, .1f), 
             0f, Vector2.up, .2f, _floorMask))
         {
             _canceled = true;
