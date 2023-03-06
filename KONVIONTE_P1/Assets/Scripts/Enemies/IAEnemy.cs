@@ -206,15 +206,9 @@ public class IAEnemy : MonoBehaviour
         }
         else if(_estadoActual == 2)//atacar
         {
-
+            //vacio porque no hace nada, solo espera a volver a otro estado segun la animacion
         }
-
-        /*
-        //para ver la caja
-        OurNamespace.Box.ShowBox(_boxSize, _boxOffset, _myTransform);
-        //caja de deteccion
-        Debug.Log( OurNamespace.Box.DetectSomethingBox(_boxSize, _boxOffset, _myTransform, _playerLayerMask));
-        */
+        
     }
 
 
@@ -239,97 +233,31 @@ namespace OurNamespace
         /// <summary>
         /// Muestra la caja con los parametros que se le dan
         /// </summary>
-        /// <param name="_boxSize"></param>
-        /// <param name="_boxOffSet"></param>
-        /// <param name="_spawnTransform"></param>
         public static void ShowBox(Vector3 _boxSize, Vector3 _boxOffSet, Transform _spawnTransform)
         {
-            int _direction;
-
-            if (_spawnTransform.rotation.y == 0)
-            {
-                _direction = 1;
-            }
-            else
-            {
-                _direction = -1;
-            }
-
+            //la caja cambia segun la rotacion del objeto(para mas info buscar el operador ?)
+            int _direction = _spawnTransform.rotation.y == 0 ? 1:-1;
+                      
+            //pintado de la caja
             Debug.DrawRay(_spawnTransform.position - _boxSize + new Vector3(_boxOffSet.x * _direction, _boxOffSet.y), Vector2.right);
             Debug.DrawRay(_spawnTransform.position + _boxSize + new Vector3(_boxOffSet.x * _direction, _boxOffSet.y), Vector2.left);
             Debug.DrawRay(_spawnTransform.position - _boxSize + new Vector3(_boxOffSet.x * _direction, _boxOffSet.y), Vector2.up);
-            Debug.DrawRay(_spawnTransform.position + _boxSize + new Vector3(_boxOffSet.x * _direction, _boxOffSet.y), Vector2.down);
-
-            #region CodigoAntiguo
-            /*
-            if (_spawnTransform.rotation.y == 0)
-            {
-                Debug.DrawRay(_spawnTransform.position - _boxSize + _boxOffSet, Vector2.right);
-                Debug.DrawRay(_spawnTransform.position + _boxSize + _boxOffSet, Vector2.left);
-                Debug.DrawRay(_spawnTransform.position - _boxSize + _boxOffSet, Vector2.up);
-                Debug.DrawRay(_spawnTransform.position + _boxSize + _boxOffSet, Vector2.down);
-            }
-            else
-            {
-                Debug.DrawRay(_spawnTransform.position - _boxSize + new Vector3(-_boxOffSet.x, _boxOffSet.y), Vector2.right);
-                Debug.DrawRay(_spawnTransform.position + _boxSize + new Vector3(-_boxOffSet.x, _boxOffSet.y), Vector2.left);
-                Debug.DrawRay(_spawnTransform.position - _boxSize + new Vector3(-_boxOffSet.x, _boxOffSet.y), Vector2.up);
-                Debug.DrawRay(_spawnTransform.position + _boxSize + new Vector3(-_boxOffSet.x, _boxOffSet.y), Vector2.down);
-            }*/
-            #endregion
+            Debug.DrawRay(_spawnTransform.position + _boxSize + new Vector3(_boxOffSet.x * _direction, _boxOffSet.y), Vector2.down);           
         }
 
         /// <summary>
         /// Devuelve si detecta lo que se le ha pedido o no
-        /// </summary>
-        /// <param name="_boxSize"></param>
-        /// <param name="_boxOffSet"></param>
-        /// <param name="_spawnTransform"></param>
-        /// <param name="_layerToFliter"></param>
-        /// <param name="_colliderResult"></param>
-        /// <returns></returns>
+        /// </summary>     
         public static bool DetectSomethingBox(Vector3 _boxSize, Vector3 _boxOffSet, Transform _spawnTransform, LayerMask _layerToFliter)
         {
-            int _direction;
-
-            if (_spawnTransform.rotation.y == 0)
-            {
-                _direction = 1;
-            }
-            else
-            {
-                _direction = -1;
-            }
+            //la caja cambia segun la rotacion del objeto(para mas info buscar el operador ?)
+            int _direction = _spawnTransform.rotation.y == 0 ? 1 : -1;
 
             Collider2D _colliderResult = Physics2D.OverlapArea(_spawnTransform.position - _boxSize + new Vector3(_boxOffSet.x * _direction, _boxOffSet.y) //punto 1 de la caja
                                           , _spawnTransform.position + _boxSize + new Vector3(_boxOffSet.x * _direction, _boxOffSet.y), //punto 2 de la caja
                                            _layerToFliter);//capa que filtra la deteccion
-            return _colliderResult != null;
-
-
-            #region CodigoAntiguo
-            /*
-            if (_spawnTransform.rotation.y == 0)
-            {
-                _colliderResult = Physics2D.OverlapArea(_spawnTransform.position - _boxSize + _boxOffSet //punto 1 de la caja
-                                           , _spawnTransform.position + _boxSize + _boxOffSet,//punto 2 de la caja 
-                                            _layerToFliter);//capa que filta la deteccion
-                return _colliderResult;
-            }
-            else
-            {
-                _colliderResult = Physics2D.OverlapArea(_spawnTransform.position - _boxSize + new Vector3(-_boxOffSet.x, _boxOffSet.y) //punto 1 de la caja
-                                           , _spawnTransform.position + _boxSize + new Vector3(-_boxOffSet.x, _boxOffSet.y), //punto 2 de la caja
-                                            _layerToFliter);//capa que filtra la deteccion
-                return _colliderResult;
-            }
-            */
-            #endregion
-
-
-
+            return _colliderResult != null;            
         }
-
     }
 
 
