@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
         _UIManager.SetTime(_currentTime);
         if(_currentTime < 0)
         {
-            ResetLevel();//LLamar a un cambio de pantalla
+            SceneManager.LoadScene("HUDtimeIsUp");
         }
     }
 

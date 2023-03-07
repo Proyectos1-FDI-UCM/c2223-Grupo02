@@ -2297,6 +2297,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: La Pantallita shula OnFire (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8358887280712658461, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
 --- !u!4 &110076319 stripped
