@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.UI.Image;
@@ -148,6 +147,10 @@ public class JumpComponent : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+    }
+    private void OnDrawGizmosSelected()
+    {
         Gizmos.DrawCube(_myCollider.bounds.center, _myCollider.bounds.size - (Vector3)new Vector2(0, .1f));
+        
     }
 }
