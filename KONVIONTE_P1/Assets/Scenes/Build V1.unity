@@ -74459,7 +74459,7 @@ PrefabInstance:
       objectReference: {fileID: 1008342492}
     - target: {fileID: 5918833086258831790, guid: 1b9f1273cbbf87149b9928f907d7bb9f, type: 3}
       propertyPath: _interpolationSpeed
-      value: 0.005
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5918833086258831791, guid: 1b9f1273cbbf87149b9928f907d7bb9f, type: 3}
       propertyPath: m_RootOrder
