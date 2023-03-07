@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -3206,8 +3206,8 @@ TextureImporter:
       animated-door-Sheet_81: 164746418
       animated-door-Sheet_127: -520449741
       animated-door-Sheet_131: -296824948
-      animated-door-Sheet_76: 1468273620
       animated-door-Sheet_8: 1947711208
+      animated-door-Sheet_76: 1468273620
       animated-door-Sheet_66: -272220213
       animated-door-Sheet_142: 50244490
       animated-door-Sheet_3: -1387037899
