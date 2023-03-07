@@ -433,7 +433,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4121241104757255155, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: LevelScene
+      value: Build V1
       objectReference: {fileID: 0}
     - target: {fileID: 4121241104757255155, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
