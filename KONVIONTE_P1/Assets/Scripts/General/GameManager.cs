@@ -207,6 +207,10 @@ public class GameManager : MonoBehaviour
         _playerMovementComponent.enabled = On;
         //_followCamera.enabled = On;
     }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
     #endregion
 
 
