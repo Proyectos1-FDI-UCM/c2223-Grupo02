@@ -59,6 +59,22 @@ public class LifeComponent : MonoBehaviour
         }
     }
     /// <summary>
+    /// Se encarga de curar la vida al jugador cuando coge una jeringa
+    /// </summary>
+    /// <param name="healing"></param>
+    public void HealLife(int healing)
+    {
+        // Si la cura le suma por encima del limite
+        if (_life + healing > _maxLife)
+        {
+            _life = _maxLife; // La vida al maximo
+        }
+        else
+        {
+            _life += healing; // Si no le curamos lo estipulado
+        }
+    }
+    /// <summary>
     /// Cambia el valor del booleano de inmortal
     /// </summary>
     public void Inmortal()
