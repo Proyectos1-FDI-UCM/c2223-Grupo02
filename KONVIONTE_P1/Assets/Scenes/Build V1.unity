@@ -2193,6 +2193,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8358887279614973334, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358887279614973334, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 25a941364787f484da8dfa073a90ac9d, type: 2}
+    - target: {fileID: 8358887279614973334, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358887279614973334, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -784544419781145554, guid: 25a941364787f484da8dfa073a90ac9d, type: 2}
+    - target: {fileID: 8358887279614973334, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358887279614973335, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -42.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358887279614973335, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8358887279768211996, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
