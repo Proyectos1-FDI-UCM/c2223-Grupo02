@@ -15,8 +15,8 @@ public class IAEnemy : MonoBehaviour
     #endregion
 
     #region Parameters
-    
 
+    [Header("Tamaño de las cajas de deteccion y ataque")]
     [SerializeField]
     Vector3 _detectionBoxSize;
     [SerializeField]
@@ -27,19 +27,21 @@ public class IAEnemy : MonoBehaviour
     [SerializeField]
     Vector3 _attackBoxOffset;
 
-
+    [Header("Estado de patrulla")]
     [Tooltip("Tiempo de cada patrullaje")]
     [SerializeField] private float _routineTime;
 
     [Tooltip("Tiempo de parada entre cada patrullaje")]
     [SerializeField] private float _stopTime;
 
+    [Header("Estado follow")]
     [Tooltip("Tiempo en el que se actualiza la posicion del jugador para el follow")]
     [SerializeField] private float _followTime;
 
     [Tooltip("Tiempo entre ataques")]
     [SerializeField] private float _attackTime;
 
+    [Header("Otros")]
     [Tooltip("Distancia del rayo que detecta la colision con las paredes")]
     [SerializeField]
     private float _raycastDistance;

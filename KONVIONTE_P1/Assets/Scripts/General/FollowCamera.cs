@@ -40,7 +40,7 @@ public class FollowCamera : MonoBehaviour
         {
             // Se hace un lerpeo entre la pos del player y la pos objetivo
             // _direction cambia la direccion de movimiento de la camara segun la del jugador
-            _horizontalMovement = Mathf.Lerp(_myTransform.position.x, _myTargetTransform.position.x + (_xOffset * _direction), _interpolation);
+            _horizontalMovement = Mathf.Lerp(_myTransform.position.x, _myTargetTransform.position.x + (_xOffset * _direction), _interpolationSpeed * Time.deltaTime);
             // Se modifica la pos de la camara
             _myTransform.position = new Vector3(_horizontalMovement, _myTransform.position.y, _zOffset);
             // Aumenta la interpolacion
@@ -49,7 +49,7 @@ public class FollowCamera : MonoBehaviour
         // Si no le puede seguir, centra al jugador con el mismo método que antes
         else
         {
-            _horizontalMovement = Mathf.Lerp(_myTransform.position.x, _myTargetTransform.position.x, _interpolation);
+            _horizontalMovement = Mathf.Lerp(_myTransform.position.x, _myTargetTransform.position.x, Time.deltaTime);
             _myTransform.position = new Vector3(_horizontalMovement, _myTransform.position.y, _zOffset);
             _interpolation += _returnSpeed * Time.deltaTime;
         }
