@@ -74459,7 +74459,7 @@ PrefabInstance:
       objectReference: {fileID: 1008342492}
     - target: {fileID: 5918833086258831790, guid: 1b9f1273cbbf87149b9928f907d7bb9f, type: 3}
       propertyPath: _interpolationSpeed
-      value: 0.01
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5918833086258831791, guid: 1b9f1273cbbf87149b9928f907d7bb9f, type: 3}
       propertyPath: m_RootOrder
@@ -133882,6 +133882,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4330029317084274267, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: cdaa3c249170e414ebebdbe7762d7dc9, type: 2}
     - target: {fileID: 4330029317084274270, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: m_Name
       value: El pana simvionte (EL OFISIAL)
