@@ -353,11 +353,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4121241104555951485, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
       propertyPath: m_text
-      value: "Tempus Fugit, desgraciao\xB4"
+      value: "Tempus Fugit, desgrAciao\xB4"
       objectReference: {fileID: 0}
     - target: {fileID: 4121241104555951485, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
       propertyPath: m_fontSize
-      value: 36
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4121241104555951485, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
       propertyPath: m_margin.w
@@ -368,6 +368,10 @@ PrefabInstance:
       value: -0.00010670049
       objectReference: {fileID: 0}
     - target: {fileID: 4121241104555951485, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 25a941364787f484da8dfa073a90ac9d, type: 2}
+    - target: {fileID: 4121241104555951485, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
       propertyPath: m_fontColor.b
       value: 0.47058824
       objectReference: {fileID: 0}
@@ -379,6 +383,14 @@ PrefabInstance:
       propertyPath: m_fontColor.r
       value: 0.94509804
       objectReference: {fileID: 0}
+    - target: {fileID: 4121241104555951485, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121241104555951485, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -784544419781145554, guid: 25a941364787f484da8dfa073a90ac9d, type: 2}
     - target: {fileID: 4121241104555951485, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
       propertyPath: m_enableAutoSizing
       value: 0
@@ -387,6 +399,18 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4286106609
       objectReference: {fileID: 0}
+    - target: {fileID: 4121241104555951485, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121241104757255154, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121241104757255154, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 25a941364787f484da8dfa073a90ac9d, type: 2}
     - target: {fileID: 4121241104757255154, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
       propertyPath: m_fontColor.b
       value: 0.47058824
@@ -400,12 +424,24 @@ PrefabInstance:
       value: 0.94509804
       objectReference: {fileID: 0}
     - target: {fileID: 4121241104757255154, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121241104757255154, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
       propertyPath: m_RaycastTarget
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4121241104757255154, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -784544419781145554, guid: 25a941364787f484da8dfa073a90ac9d, type: 2}
+    - target: {fileID: 4121241104757255154, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4286106609
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121241104757255154, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4121241104757255155, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
@@ -520,6 +556,18 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4121241105025171595, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
+      propertyPath: m_text
+      value: exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121241105025171595, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121241105025171595, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 25a941364787f484da8dfa073a90ac9d, type: 2}
+    - target: {fileID: 4121241105025171595, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
       propertyPath: m_fontColor.b
       value: 0.47058824
       objectReference: {fileID: 0}
@@ -532,8 +580,20 @@ PrefabInstance:
       value: 0.94509804
       objectReference: {fileID: 0}
     - target: {fileID: 4121241105025171595, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121241105025171595, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -784544419781145554, guid: 25a941364787f484da8dfa073a90ac9d, type: 2}
+    - target: {fileID: 4121241105025171595, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4286106609
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121241105025171595, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4121241105200126352, guid: a206c2c19ce7b9e42b492b8e5d44d1a4, type: 3}
       propertyPath: m_Name
