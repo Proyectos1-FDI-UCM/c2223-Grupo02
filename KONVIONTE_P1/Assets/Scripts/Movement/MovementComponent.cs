@@ -23,13 +23,16 @@ public class MovementComponent : MonoBehaviour
     [SerializeField] private float _accelerationTime;
     [SerializeField] private float _deccelerationTime;
     #endregion
+    #region properties
+    private float _epsilon = 0.0001f;
+    #endregion
 
-    
     // Start is called before the first frame update
     void Start()
     {
         _myTransform = transform;  
         _myAnimator = GetComponent<Animator>();
+        _epsilon = 0.0001f;
     }
  
     // Update is called once per frame
@@ -44,7 +47,7 @@ public class MovementComponent : MonoBehaviour
     private void Move()
     {
         //si nos estamos moviemdo
-        if (_directionVector.magnitude != 0)
+        if (_directionVector.magnitude > _epsilon)
         {
             //Cambiar el bool de la animacion
             _myAnimator.SetBool("IsMoving", true);

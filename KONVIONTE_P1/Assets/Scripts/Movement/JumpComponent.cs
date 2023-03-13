@@ -77,11 +77,13 @@ public class JumpComponent : MonoBehaviour
             _velocity -= Time.fixedDeltaTime * _upIniSpeed / _ascensionTime;
             _position = _velocity * Time.fixedDeltaTime + 0.5f * _gravity * Mathf.Pow(Time.fixedDeltaTime, 2);
             _myTransform.position += _position * (Vector3)Vector2.up;
+            _myAnimator.SetFloat("Jump",_velocity);
         }
     }
 
     private void Update()
     {
+        _myAnimator.SetBool("IsJumping", _velocity > -1);
         DetectFloor();
     }
 
@@ -95,11 +97,12 @@ public class JumpComponent : MonoBehaviour
         Debug.Log(_isGrounded);
         if (performed && _isGrounded)
         {
-            _myAnimator.SetTrigger("Jump");
             _gravity = - (2 * _heightToPeak) / Mathf.Pow(_ascensionTime, 2);
             _velocity = _upIniSpeed;
             _canceled = false;
             _isGrounded = false;
+            _myAnimator.SetBool("IsJumping",!_isGrounded && _velocity > 0);
+            Debug.Log(_isGrounded + "salto vieja");
         }
         if (canceled)
         {
@@ -110,6 +113,7 @@ public class JumpComponent : MonoBehaviour
     public void Gravity()
     {
         //Debug.Log("tuviejaGravity");
+        _myAnimator.SetFloat("Jump", 0);
         _myTransform.position -= Vector3.up * _fallSpeed * Time.fixedDeltaTime;
     }
 
@@ -122,8 +126,10 @@ public class JumpComponent : MonoBehaviour
             0f, Vector2.down, .2f, _floorMask))
         {
             _isGrounded = true;
+            _myAnimator.SetFloat("Jump", -1);
+            _myAnimator.SetBool("IsJumping", false);
             //para evitar que se pare justo nada mas saltar
-            if(_velocity < 0f)
+            if (_velocity < 0f)
             {
                 _velocity = 0;
                 _gravity = 0;
@@ -145,12 +151,12 @@ public class JumpComponent : MonoBehaviour
         return detected;
     }
 
-    private void OnDrawGizmos()
-    {
-    }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawCube(_myCollider.bounds.center, _myCollider.bounds.size - (Vector3)new Vector2(0, .1f));
+    //private void OnDrawGizmos()
+    //{
+    //}
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Gizmos.DrawCube(_myCollider.bounds.center, _myCollider.bounds.size - (Vector3)new Vector2(0, .1f));
         
-    }
+    //}
 }
