@@ -41,7 +41,8 @@ public class TeleportParry : MonoBehaviour
     #region Properties
     Vector3 _moveToVector;
     float _currentTime;
-    public bool _telepotDone { get; private set; }
+    [SerializeField]
+    public bool _telepotDone;
     LayerMask _floorMask;
     float _distance;
     #endregion

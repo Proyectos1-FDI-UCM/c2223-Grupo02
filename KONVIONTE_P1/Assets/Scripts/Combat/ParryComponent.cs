@@ -67,6 +67,12 @@ public class ParryComponent : MonoBehaviour
     
     private int _boostDamage;
     #endregion
+    #region Accesors
+    public bool CanParry
+    {
+        get { return _canParry; }
+    }
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -162,7 +168,6 @@ public class ParryComponent : MonoBehaviour
 
         _playerAtackComponent.SetDamage(_boostDamage);
         _playerTeleportComponent.TriggerTeleport();
-
         _playerAnimator.SetBool("IsFreeze", true);
         _playerAnimator.SetBool("IsParring", false);
         //Debug.Log("is freeze");

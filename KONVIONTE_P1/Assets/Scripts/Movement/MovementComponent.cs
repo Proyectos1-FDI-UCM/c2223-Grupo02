@@ -47,11 +47,8 @@ public class MovementComponent : MonoBehaviour
     private void Move()
     {
         //si nos estamos moviemdo
-        if (_directionVector.magnitude > _epsilon)
+        if (_directionVector.magnitude != 0)
         {
-            //Cambiar el bool de la animacion
-            _myAnimator.SetBool("IsMoving", true);
-
             //ACELERACION
 
             //Si no hemos alcanzado la velocidad maxima, le aplicamos la aceleracion correspondiente
@@ -66,10 +63,6 @@ public class MovementComponent : MonoBehaviour
         }
         else//si hemos dejado de movernos
         {
-            //Cambiar el bool de la animacion
-            _myAnimator.SetBool("IsMoving", false);
-
-
             //DECELERACION
 
             //Si no hemos parado del todo, le aplicamos la deceleracion correspondiente
@@ -80,7 +73,6 @@ public class MovementComponent : MonoBehaviour
                 else _speed = 0;
             }
         }
-
         //forzamos que la velocidad esté en el intervalo [0,_maxMovementSpeed] y despues nos movemos
         _speed = Mathf.Clamp(_speed, 0f, _maxMovementSpeed);
         _myTransform.position += _speed * _lastDirection * Time.fixedDeltaTime;
@@ -94,6 +86,8 @@ public class MovementComponent : MonoBehaviour
         {
             _myTransform.localEulerAngles = new Vector3(_myTransform.localRotation.x, 180, _myTransform.localRotation.z);
         }
+        //acutualizamos el parámetro de la animación con una expresión booleana
+        
     }
 
     /// <summary>
@@ -103,5 +97,6 @@ public class MovementComponent : MonoBehaviour
     public void SetDirection(Vector3 direction)
     {
         _directionVector = direction;
+        _myAnimator.SetBool("IsMoving", _directionVector.magnitude != 0);
     }
 }

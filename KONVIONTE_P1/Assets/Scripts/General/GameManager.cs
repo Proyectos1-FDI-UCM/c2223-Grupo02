@@ -124,7 +124,8 @@ public class GameManager : MonoBehaviour
     public void ParreameEsta(InputAction.CallbackContext context)
     {
         if (!_input) return;
-        if (context.performed && _playerTeleportParry._telepotDone)//teleportDone para no poder hacer infinitos parrys
+        //se debe replantear la filosofía del parry
+        if (context.performed && _playerParryComponent.CanParry)//teleportDone para no poder hacer infinitos parrys
         {
             _playerParryComponent.PerformParry();
         }
@@ -205,6 +206,7 @@ public class GameManager : MonoBehaviour
     {
         _playerJumpComponent.enabled = On;//por la gravedad 
         _playerMovementComponent.enabled = On;
+        _player.GetComponent<Animator>().SetBool("IsJumping", On);
         //_followCamera.enabled = On;
     }
     public void QuitGame()
