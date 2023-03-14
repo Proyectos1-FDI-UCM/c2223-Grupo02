@@ -58,19 +58,22 @@ public class ParryComponent : MonoBehaviour
     private float _parryCooldownCurrentTime;
     [HideInInspector]
     public float _boostDamageCurrentTime;
-
-    public bool _parried;
-
+    //boolenao que indica si nos encontramos en la ventana de parry
+    private bool _parried;
+    //Booleano que te permite hacer el parry
     private bool _canParry;
 
     public bool _damageBoosted;
-    
     private int _boostDamage;
     #endregion
     #region Accesors
     public bool CanParry
     {
         get { return _canParry; }
+    }
+    public bool Parried
+    {
+        get { return _parried; }
     }
     #endregion
 
@@ -110,11 +113,13 @@ public class ParryComponent : MonoBehaviour
             {
                 ParryEfects();                
             }
-            else if(_parryCurrentTime >= _parryTime)//si no hemos parreado y este era nuestro ultimo update de parry, desactivamos _canParry y empezamos el timer del cooldown
+            //si no hemos parreado y este era nuestro ultimo update de parry,
+            //desactivamos _canParry y empezamos el timer del cooldown
+            else if (_parryCurrentTime >= _parryTime)
             {
                 _parryCooldownCurrentTime = 0;
                 _canParry = false;
-                _playerAnimator.SetBool("IsParring", false);
+                _playerAnimator.SetBool("IsParring", false); //revisar de cara a las nueva animaciones
                 //Debug.Log("ISP, FALSE");
             }
         }
@@ -185,6 +190,10 @@ public class ParryComponent : MonoBehaviour
             _playerAtackComponent.SetDamage(_baseDamage);
             _damageBoosted = false;
         }
+    }
+    public void SetParryOff()
+    {
+        _parried = false;
     }
     //para verlo to guapo en la escena manin
     private void OnDrawGizmos()

@@ -198,9 +198,9 @@ public class GameManager : MonoBehaviour
     {
         _playerTransform.position = _spawnTransform.position;
     }
-    public void InmortalityPlayer()
+    public void InmortalityPlayer(bool On)
     {
-        _playerLifeComponent.Inmortal();
+        _playerLifeComponent.SetInmortal(On);
     }
     public void SetPhysics(bool On)
     {

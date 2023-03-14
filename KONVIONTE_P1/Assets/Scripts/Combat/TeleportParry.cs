@@ -97,14 +97,14 @@ public class TeleportParry : MonoBehaviour
     public void TriggerTeleport()
     {
         //Debug.Log("TUvieja");
-        GameManager.Instance.SetPhysics(false);
-        GameManager.Instance.InmortalityPlayer();
+        //llamar a la maquina de animacion
         _predictionTransform.gameObject.SetActive(true);
         _telepotDone = false;
         _currentTime = 0;
     }
     /// <summary>
     /// Método para realizar el teleport antes del tiempo establecido
+    /// Llamada desde el input
     /// </summary>    
     public void PerfomTeleport()
     {
@@ -119,13 +119,14 @@ public class TeleportParry : MonoBehaviour
     private void Teleport()
     {
         //_telepotDone = true;
-        _parryComponent._parried = false;
+        //_parryComponent._parried = false;
         _animator.SetBool("IsFreeze", false);
         _animator.SetTrigger("Teleport");
         _predictionTransform.gameObject.SetActive(false);
     }
     /// <summary>
     /// Teletrasnporte propiamente dicho
+    /// Se le llama desde el evento del teleport
     /// </summary>
     private void TeleportEvent()
     {
@@ -137,16 +138,9 @@ public class TeleportParry : MonoBehaviour
         {
             _myTransform.localPosition += _moveToVector * (_distance - _marginTeleport);
         }
+        _telepotDone = true;
+        _animator.ResetTrigger("Teleport");
         //GameManager.Instance.InmortalityPlayer();
-    }
-    /// <summary>
-    /// Llamada al método del <see cref="GameManager"/> que anula el salto y el movimiento
-    /// </summary>
-    private void SetPhysicsTrue()
-    {
-        GameManager.Instance.SetPhysics(true);
-        //_telepotDone = true;//lo muevo a otro método para activar un pelín antes el input y dar mas tiempo de margen
-        GameManager.Instance.InmortalityPlayer();
     }
     /// <summary>
     /// Pone en true _teleportDone, esto permite que el jugador pueda volver a parrear  
@@ -154,5 +148,6 @@ public class TeleportParry : MonoBehaviour
     private void TeleportDone()
     {
         _telepotDone = true;
+        _parryComponent.SetParryOff();
     }
 }
