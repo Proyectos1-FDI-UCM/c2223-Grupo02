@@ -133914,6 +133914,10 @@ PrefabInstance:
       propertyPath: _myTransform
       value: 
       objectReference: {fileID: 1008342492}
+    - target: {fileID: 4330029317084274339, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
+      propertyPath: _cooldownParryTime
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4330029317084274342, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: _accelerationTime
       value: 0.75

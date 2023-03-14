@@ -97,7 +97,7 @@ public class TeleportParry : MonoBehaviour
     public void TriggerTeleport()
     {
         //Debug.Log("TUvieja");
-        //llamar a la maquina de animacion
+        _animator.SetBool("IsFreeze",true);
         _predictionTransform.gameObject.SetActive(true);
         _telepotDone = false;
         _currentTime = 0;
@@ -118,8 +118,6 @@ public class TeleportParry : MonoBehaviour
     /// </summary>
     private void Teleport()
     {
-        //_telepotDone = true;
-        //_parryComponent._parried = false;
         _animator.SetBool("IsFreeze", false);
         _animator.SetTrigger("Teleport");
         _predictionTransform.gameObject.SetActive(false);

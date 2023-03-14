@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
     {
         if (!_input) return;
         //se debe replantear la filosofía del parry
-        if (context.performed && _playerParryComponent.CanParry)//teleportDone para no poder hacer infinitos parrys
+        if (context.performed && _playerParryComponent.CanParry)
         {
             _playerParryComponent.PerformParry();
         }
@@ -190,14 +190,8 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
-    public void ResetLevel()
-    {
-        SceneManager.LoadScene("Build V1");
-    }
-    private void SpawnPlayer()
-    {
-        _playerTransform.position = _spawnTransform.position;
-    }
+    #region Rules methods
+
     public void InmortalityPlayer(bool On)
     {
         _playerLifeComponent.SetInmortal(On);
@@ -209,6 +203,16 @@ public class GameManager : MonoBehaviour
         _player.GetComponent<Animator>().SetBool("IsJumping", On);
         //_followCamera.enabled = On;
     }
+    #endregion
+    public void ResetLevel()
+    {
+        SceneManager.LoadScene("Build V1");
+    }
+    private void SpawnPlayer()
+    {
+        _playerTransform.position = _spawnTransform.position;
+    }
+
     public void QuitGame()
     {
         Application.Quit();

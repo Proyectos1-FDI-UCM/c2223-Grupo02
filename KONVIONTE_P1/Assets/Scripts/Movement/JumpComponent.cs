@@ -94,7 +94,7 @@ public class JumpComponent : MonoBehaviour
     /// <param name="canceled"></param>
     public void Jump(bool performed,bool canceled)
     {
-        Debug.Log(_isGrounded);
+        //Debug.Log(_isGrounded);
         if (performed && _isGrounded)
         {
             _gravity = - (2 * _heightToPeak) / Mathf.Pow(_ascensionTime, 2);
@@ -102,7 +102,6 @@ public class JumpComponent : MonoBehaviour
             _canceled = false;
             _isGrounded = false;
             _myAnimator.SetBool("IsJumping",!_isGrounded && _velocity > 0);
-            Debug.Log(_isGrounded + "salto vieja");
         }
         if (canceled)
         {

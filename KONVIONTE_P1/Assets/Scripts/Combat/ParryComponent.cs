@@ -117,9 +117,9 @@ public class ParryComponent : MonoBehaviour
             //desactivamos _canParry y empezamos el timer del cooldown
             else if (_parryCurrentTime >= _parryTime)
             {
+                _playerAnimator.SetBool("IsParring", false); //revisar de cara a las nueva animaciones
                 _parryCooldownCurrentTime = 0;
                 _canParry = false;
-                _playerAnimator.SetBool("IsParring", false); //revisar de cara a las nueva animaciones
                 //Debug.Log("ISP, FALSE");
             }
         }
@@ -130,6 +130,7 @@ public class ParryComponent : MonoBehaviour
             //si el contador supera el tiempo de cooldown, ya se puede parrear otra vez
             if(_parryCooldownCurrentTime >= _cooldownParryTime)
             {
+                _playerAnimator.SetBool("IsParring", false);
                 _canParry = true;
             }
         }
@@ -173,7 +174,6 @@ public class ParryComponent : MonoBehaviour
 
         _playerAtackComponent.SetDamage(_boostDamage);
         _playerTeleportComponent.TriggerTeleport();
-        _playerAnimator.SetBool("IsFreeze", true);
         _playerAnimator.SetBool("IsParring", false);
         //Debug.Log("is freeze");
         //Time.timeScale = 0;

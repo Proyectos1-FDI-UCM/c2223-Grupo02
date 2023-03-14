@@ -22,6 +22,7 @@ public class CosaDePrueba : StateMachineBehaviour
     {
         GameManager.Instance.SetPhysics(true);
         GameManager.Instance.InmortalityPlayer(false);
+        animator.ResetTrigger("Teleport");
         Debug.Log("Prueba de física");
     }
 
