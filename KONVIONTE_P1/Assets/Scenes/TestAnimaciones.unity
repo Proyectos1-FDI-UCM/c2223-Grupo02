@@ -133907,6 +133907,10 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4330029317084274339, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
+      propertyPath: _parryTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330029317084274339, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: _baseDamage
       value: 5
       objectReference: {fileID: 0}

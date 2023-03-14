@@ -174,6 +174,8 @@ public class ParryComponent : MonoBehaviour
 
         _playerAtackComponent.SetDamage(_boostDamage);
         _playerTeleportComponent.TriggerTeleport();
+        _playerAnimator.SetBool("IsFreeze", true);
+
         _playerAnimator.SetBool("IsParring", false);
         //Debug.Log("is freeze");
         //Time.timeScale = 0;

@@ -119,7 +119,7 @@ public class TeleportParry : MonoBehaviour
     private void Teleport()
     {
         _animator.SetBool("IsFreeze", false);
-        _animator.SetTrigger("Teleport");
+        _animator.SetBool("Teleport",true);
         _predictionTransform.gameObject.SetActive(false);
     }
     /// <summary>
@@ -137,7 +137,8 @@ public class TeleportParry : MonoBehaviour
             _myTransform.localPosition += _moveToVector * (_distance - _marginTeleport);
         }
         _telepotDone = true;
-        _animator.ResetTrigger("Teleport");
+        _animator.SetBool("Teleport", true);
+
         //GameManager.Instance.InmortalityPlayer();
     }
     /// <summary>
