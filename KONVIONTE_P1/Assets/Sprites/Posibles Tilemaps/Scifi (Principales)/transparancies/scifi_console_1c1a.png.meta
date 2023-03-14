@@ -167,10 +167,10 @@ TextureImporter:
       name: scifi_console_1c1a_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 48
-        width: 16
-        height: 16
+        x: 2
+        y: 38
+        width: 58
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,153 +180,6 @@ TextureImporter:
       bones: []
       spriteID: d88cb18b6b47e274383210af61e9ba6d
       internalID: -1881106874
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scifi_console_1c1a_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5713e26fb6bb887418827d001a57fc12
-      internalID: 608243094
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scifi_console_1c1a_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5f46062fbce680942b9c2e838673a6a7
-      internalID: -1764814552
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scifi_console_1c1a_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8b60fb60ecfc1574baf62fff4c87c862
-      internalID: 1081766389
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scifi_console_1c1a_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eca8bd63c50172142bf31259795e8563
-      internalID: 1250175431
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scifi_console_1c1a_5
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 91eacd964622bb547972a2a7d9e0dc22
-      internalID: -2140692625
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scifi_console_1c1a_6
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fff63fdf99a1e3e49964c19c82b1b31e
-      internalID: 1022360983
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scifi_console_1c1a_7
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a4c85d64865f5604795bb7d8c396ab85
-      internalID: -1699889139
       vertices: []
       indices: 
       edges: []
@@ -342,14 +195,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      scifi_console_1c1a_1: 608243094
-      scifi_console_1c1a_7: -1699889139
-      scifi_console_1c1a_4: 1250175431
-      scifi_console_1c1a_6: 1022360983
-      scifi_console_1c1a_5: -2140692625
       scifi_console_1c1a_0: -1881106874
-      scifi_console_1c1a_3: 1081766389
-      scifi_console_1c1a_2: -1764814552
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
