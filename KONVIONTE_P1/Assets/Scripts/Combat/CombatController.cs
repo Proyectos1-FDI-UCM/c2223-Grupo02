@@ -44,6 +44,11 @@ public class CombatController : MonoBehaviour
         {            
             ColocarCollider(direction);  
             _animator.SetBool("IsAttaking", true);
+            _animator.SetFloat("AttackCombo", _animator.GetFloat("AttackCombo") + 1);
+        }
+        if (_animator.GetFloat("AttackCombo") > 2)
+        {
+            _animator.SetFloat("AttackCombo", 0);
         }
     }
     /// <summary>

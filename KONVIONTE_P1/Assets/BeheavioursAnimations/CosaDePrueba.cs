@@ -5,10 +5,11 @@ using UnityEngine;
 public class CosaDePrueba : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        GameManager.Instance.SetPhysics(false);
+        GameManager.Instance.InmortalityPlayer(true);
+    }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -20,6 +21,7 @@ public class CosaDePrueba : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         GameManager.Instance.SetPhysics(true);
+        GameManager.Instance.InmortalityPlayer(false);
         Debug.Log("Prueba de física");
     }
 

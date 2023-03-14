@@ -69,7 +69,7 @@ public class KnockbackComponent : MonoBehaviour
         }
         
         GameManager.Instance.InputOff();
-        GameManager.Instance.InmortalityPlayer();
+        GameManager.Instance.InmortalityPlayer(true);
     }
 
 
@@ -83,9 +83,5 @@ public class KnockbackComponent : MonoBehaviour
         _myAnimator = GetComponent<Animator>();
         _floorLayerMask = LayerMask.GetMask("Floor");
     }
-    public void EndKnockBack()
-    {
-        GameManager.Instance.InputOn();
-        GameManager.Instance.InmortalityPlayer();
-    }
+    //El método end knockback se llama desde un script especial de las animaciones
 }

@@ -20,7 +20,7 @@ public class KnockBack : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         GameManager.Instance.InputOn();
-        GameManager.Instance.InmortalityPlayer();
+        GameManager.Instance.InmortalityPlayer(false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
