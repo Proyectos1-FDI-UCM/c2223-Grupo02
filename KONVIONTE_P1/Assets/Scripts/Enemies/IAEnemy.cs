@@ -12,6 +12,7 @@ public class IAEnemy : MonoBehaviour
     private Transform _myTransform;
     private CombatController _myCombatController;
     private MovementComponent _myMovementComponent;
+
     #endregion
 
     #region Parameters
@@ -53,6 +54,9 @@ public class IAEnemy : MonoBehaviour
 
     [Tooltip("Distancia máxima que puede haber bajo el enemigo, para que baje")]
     [SerializeField] private float _maxDistance;
+
+    [Tooltip("Objeto detector de suelo")]
+    [SerializeField] private GameObject _floorDetector;
 
     #endregion
 
@@ -137,8 +141,9 @@ public class IAEnemy : MonoBehaviour
            
             //Casteo del rayo de choque contra paredes
             _wallRaycastInfo = Physics2D.Raycast(_myTransform.position, _myTransform.right, _raycastWallDistance, _floorLayerMask);
+
             //Casteo del rayo de choque contra suelo
-            _floorRaycastInfo = Physics2D.Raycast(_myTransform.position, -_myTransform.up, _raycastFloorDistance, _floorLayerMask);
+            _floorRaycastInfo = Physics2D.Raycast(_floorDetector.transform.position, -_floorDetector.transform.up, _raycastFloorDistance, _floorLayerMask);
 
             //Si he chocado con una pared o la distancia debajo de mí
             if (_wallRaycastInfo.transform != null || _floorRaycastInfo.distance > _maxDistance)
