@@ -133897,18 +133897,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4330029315442338336, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
-      propertyPath: _damage
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4330029317084274265, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1ca664947804af747b8a4f10a94b654e, type: 3}
-    - target: {fileID: 4330029317084274265, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4330029317084274266, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -133956,42 +133944,6 @@ PrefabInstance:
     - target: {fileID: 4330029317084274270, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: m_Name
       value: El pana simvionte (EL OFISIAL)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4330029317084274271, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
-      propertyPath: m_Size.y
-      value: 1.27109
-      objectReference: {fileID: 0}
-    - target: {fileID: 4330029317084274271, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.13554513
-      objectReference: {fileID: 0}
-    - target: {fileID: 4330029317084274271, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 4330029317084274271, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4330029317084274339, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
-      propertyPath: _baseDamage
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4330029317084274339, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
-      propertyPath: _myTransform
-      value: 
-      objectReference: {fileID: 1008342492}
-    - target: {fileID: 4330029317084274342, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
-      propertyPath: _accelerationTime
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 4330029317084274348, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
-      propertyPath: _teleportDistance
-      value: 3.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4330029317084274349, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
-      propertyPath: _maxLife
-      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}

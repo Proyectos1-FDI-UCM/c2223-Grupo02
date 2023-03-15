@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da041330c02804847ada100536585fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 20
+  _damage: 5
 --- !u!1 &4330029317084274270
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,8 +231,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -1045962970, guid: 1d1330c69e316724696569efae6a65a2, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 1ca664947804af747b8a4f10a94b654e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -256,18 +256,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0257968}
+  m_Offset: {x: 0, y: -0.13554513}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.09375, y: 0.90625}
+    oldSize: {x: 1.75, y: 1.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.9484064}
+  m_Size: {x: 1, y: 1.27109}
   m_EdgeRadius: 0
 --- !u!95 &4330029317084274267
 Animator:
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lastDirection: {x: 0, y: 0, z: 0}
   _maxMovementSpeed: 6
-  _accelerationTime: 1
+  _accelerationTime: 0.75
   _deccelerationTime: 0.5
 --- !u!114 &4330029317084274343
 MonoBehaviour:
@@ -382,15 +382,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa3201647dbb6c94889ebdb32bc47b85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseDamage: 20
+  _baseDamage: 5
   _boostMultiplier: 10
   _boostDamageTime: 3
   _radius: 0.65
   _parryTime: 0.5
   _cooldownParryTime: 1
-  _myTransform: {fileID: 0}
+  _myTransform: {fileID: 4330029317084274266}
   _boostDamageCurrentTime: 0
-  _parried: 0
   _damageBoosted: 0
 --- !u!114 &4330029317084274348
 MonoBehaviour:
@@ -405,9 +404,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _predictionTransform: {fileID: 4330029315218931447}
-  _teleportDistance: 7.2
-  _limitTime: 1
+  _teleportDistance: 3.8
   _marginTeleport: 0.5
+  _limitTime: 1
+  _telepotDone: 0
 --- !u!114 &4330029317084274349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40a090e3d357c1419b98d4b0a5d1227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxLife: 100
+  _maxLife: 200
   _immortal: 0
 --- !u!114 &7360945658986034746
 MonoBehaviour:
