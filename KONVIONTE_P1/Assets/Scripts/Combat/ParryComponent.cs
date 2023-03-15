@@ -59,6 +59,7 @@ public class ParryComponent : MonoBehaviour
     [HideInInspector]
     public float _boostDamageCurrentTime;
     //boolenao que indica si nos encontramos en la ventana de parry
+    [SerializeField]
     private bool _parried;
     //Booleano que te permite hacer el parry
     private bool _canParry;
@@ -155,7 +156,6 @@ public class ParryComponent : MonoBehaviour
         if (_canParry)
         {
             _playerAnimator.SetBool("IsParring", true);
-            //Debug.Log("IsParring");
             _parryCurrentTime = 0;
             _canParry = false;
         }

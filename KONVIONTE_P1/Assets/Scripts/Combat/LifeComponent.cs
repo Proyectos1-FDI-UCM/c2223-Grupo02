@@ -17,7 +17,7 @@ public class LifeComponent : MonoBehaviour
     * Si false, todo ocurre normal.
     * Si true, la vida no baja
     */
-    public bool _immortal = false;
+    private bool _immortal = false;
 
     #endregion
 
@@ -25,6 +25,7 @@ public class LifeComponent : MonoBehaviour
 
     public int CurrentLife { get { return _life; }}
     public int MaxLife { get { return _maxLife; }}
+    public bool Immortal { get { return _immortal; }}
 
     #endregion
 

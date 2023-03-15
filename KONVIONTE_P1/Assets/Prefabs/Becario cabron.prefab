@@ -204,7 +204,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxLife: 50
-  _immortal: 0
 --- !u!114 &2000617728839658993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +240,6 @@ MonoBehaviour:
   _raycastWallDistance: 0
   _raycastFloorDistance: 0
   _maxDistance: 0
-  _FloorDetector: {fileID: 0}
   _estadoActual: 0
 --- !u!114 &488020261
 MonoBehaviour:
@@ -285,7 +283,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000617728884929398}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.29, y: 0, z: 0}
+  m_LocalPosition: {x: 0.72, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -299,7 +297,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000617728884929398}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1

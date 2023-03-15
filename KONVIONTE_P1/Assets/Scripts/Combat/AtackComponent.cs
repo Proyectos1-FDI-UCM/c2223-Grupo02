@@ -36,7 +36,8 @@ public class AtackComponent : MonoBehaviour
         if(_collisionLifeComponent == null)_collisionLifeComponent = collision.GetComponent<LifeComponent>();
 
         if (_collisionLifeComponent != null && collision.gameObject.layer != gameObject.layer)
-        {           
+        {
+            Debug.Log("Golpeado por tu vieja");
             _impacted = true;
         }
     }
@@ -60,11 +61,11 @@ public class AtackComponent : MonoBehaviour
             }
             else if(_collisionLifeComponent.GetComponent<ParryComponent>() != null)//si es el enemigo(el atacante)
             {
-                //Debug.Log("3");
+                Debug.Log("3");
 
                 //primero chequeamos si ha habido parry
                 if (!(_collisionLifeComponent.GetComponent<ParryComponent>().Parried || 
-                    _collisionLifeComponent._immortal))//si no ha parreado se le aplica el daño
+                    _collisionLifeComponent.Immortal))//si no ha parreado se le aplica el daño
                 {
                     _collisionLifeComponent.ReciveDamage(_damage);
                     //Debug.Log("He hecho daño al jugador");
