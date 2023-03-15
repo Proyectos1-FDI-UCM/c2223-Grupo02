@@ -2193,6 +2193,58 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 65529469, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 65529469, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_WholeNumbers
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 65529469, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565306907, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_WholeNumbers
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720947251404330447, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720947251404330447, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720947251404330447, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.0199966
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351873609062160996, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351873609062160996, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351873609062160996, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351873609062160996, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -23.452103
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351873609062160996, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -13.1814995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4351873609062160996, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.3050995
+      objectReference: {fileID: 0}
     - target: {fileID: 4392208716837531425, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -133655,7 +133707,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 0.38039216, g: 0.68235296, b: 0.74509805, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -29, y: -15, z: 0}
   m_Size: {x: 152, y: 50, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}

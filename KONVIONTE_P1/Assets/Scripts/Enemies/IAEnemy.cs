@@ -16,7 +16,7 @@ public class IAEnemy : MonoBehaviour
 
     #region Parameters
 
-    [Header("Tamaño de las cajas de deteccion y ataque")]
+    [Header("Tamaño de las cajas de detección, ataque y plataformas")]
     [SerializeField]
     Vector3 _detectionBoxSize;
     [SerializeField]
@@ -30,21 +30,29 @@ public class IAEnemy : MonoBehaviour
     [Header("Estado de patrulla")]
     [Tooltip("Tiempo de cada patrullaje")]
     [SerializeField] private float _routineTime;
+    //En el caso del bacario, va por distancia, no por tiempo
+    //[Tooltip("Distancia de cada patrullaje")]
+    //[SerializeField] private float _routineDistance;
 
     [Tooltip("Tiempo de parada entre cada patrullaje")]
     [SerializeField] private float _stopTime;
 
     [Header("Estado follow")]
-    [Tooltip("Tiempo en el que se actualiza la posicion del jugador para el follow")]
+    [Tooltip("Tiempo en el que se actualiza la posición del jugador para el follow")]
     [SerializeField] private float _followTime;
 
     [Tooltip("Tiempo entre ataques")]
     [SerializeField] private float _attackTime;
 
     [Header("Otros")]
-    [Tooltip("Distancia del rayo que detecta la colision con las paredes")]
-    [SerializeField]
-    private float _raycastDistance;
+    [Tooltip("Distancia del rayo que detecta la colisión con las paredes")]
+    [SerializeField] private float _raycastWallDistance;
+
+    [Tooltip("Distancia del rayo que detecta la colisión con el suelo")]
+    [SerializeField] private float _raycastFloorDistance;
+
+    [Tooltip("Distancia máxima que puede haber bajo el enemigo, para que baje")]
+    [SerializeField] private float _maxDistance;
 
     #endregion
 
@@ -54,7 +62,7 @@ public class IAEnemy : MonoBehaviour
     0 = patrulla aleatoria
     1 = perseguir al jugador
     2 = atacar     
-     */
+    */
 
     [SerializeField]
     private int _estadoActual;
@@ -72,7 +80,9 @@ public class IAEnemy : MonoBehaviour
 
     private Vector3 _movementDirection;
     
-    private RaycastHit2D _raycastInfo;
+    private RaycastHit2D _wallRaycastInfo;
+
+    private RaycastHit2D _floorRaycastInfo;
     
     #endregion
 
@@ -81,6 +91,7 @@ public class IAEnemy : MonoBehaviour
     {
         _myTransform = transform;
         
+        //Se recoge el transform del Player
         _player = GameManager.Instance.Player.transform;
         
         _myCombatController = GetComponent<CombatController>();
@@ -100,8 +111,11 @@ public class IAEnemy : MonoBehaviour
     void Update()
     {
         //para ver las cajas
-        //OurNamespace.Box.ShowBox(_attackBoxSize, _attackBoxOffset, _myTransform);   
-        //OurNamespace.Box.ShowBox(_detectionBoxSize, _detectionBoxOffset, _myTransform);
+        
+        //Caja de ataque
+        OurNamespace.Box.ShowBox(_attackBoxSize, _attackBoxOffset, _myTransform); 
+        //Caja de detección
+        OurNamespace.Box.ShowBox(_detectionBoxSize, _detectionBoxOffset, _myTransform);
 
         if (_estadoActual == 0)//patrulla aleatoria
         {                        
@@ -111,21 +125,23 @@ public class IAEnemy : MonoBehaviour
             //Si el tiempo llega a 0 (o es menor)
             if (_currentPatrollTime < 0)
             {
-                //calculamos aleatoriamente la siguiente direccion
+                //calculamos aleatoriamente la siguiente dirección
                 _movementDirection = Vector3.right * Random.Range(-1, 2);//devuelve un aleatorio -1,0,1 
 
-                //si es una parada, asignamos el tiempo de parada,sino, asignamos el tiempo de movimiento                                             
+                //si es una parada, asignamos el tiempo de parada, sino, asignamos el tiempo de movimiento                                             
                 _currentPatrollTime = _movementDirection == Vector3.zero ? _stopTime : _routineTime;
 
-                //actualizamos la direccion en el movement
+                //actualizamos la dirección en el movement
                 _myMovementComponent.SetDirection(_movementDirection);                              
             }
            
-            //casteo del rayo
-            _raycastInfo = Physics2D.Raycast(_myTransform.position, _myTransform.right, _raycastDistance, _floorLayerMask);
+            //Casteo del rayo de choque contra paredes
+            _wallRaycastInfo = Physics2D.Raycast(_myTransform.position, _myTransform.right, _raycastWallDistance, _floorLayerMask);
+            //Casteo del rayo de choque contra suelo
+            _floorRaycastInfo = Physics2D.Raycast(_myTransform.position, -_myTransform.up, _raycastFloorDistance, _floorLayerMask);
 
-            //si he chocado con una pared
-            if (_raycastInfo.transform != null)
+            //Si he chocado con una pared o la distancia debajo de mí
+            if (_wallRaycastInfo.transform != null || _floorRaycastInfo.distance > _maxDistance)
             {                
                 //cambiamos la direccion
                 _movementDirection *= -1;
@@ -136,6 +152,8 @@ public class IAEnemy : MonoBehaviour
                 //actualizamos la direccion en el movement
                 _myMovementComponent.SetDirection(_movementDirection);
             }
+
+
                       
             //si el enemigo detecta al jugador
             if(OurNamespace.Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask))
@@ -171,7 +189,7 @@ public class IAEnemy : MonoBehaviour
                 _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_player.position - _myTransform.position,2));
             }
 
-            //si el enemigo deja de detectar al jugador, volvemos al estado 1
+            //si el enemigo deja de detectar al jugador, volvemos al estado 0 (patrulla)
             if (!OurNamespace.Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask))
             {
                 _estadoActual = 0;
@@ -188,7 +206,7 @@ public class IAEnemy : MonoBehaviour
         }
         else if(_estadoActual == 2)//atacar
         {
-            //vacio porque no hace nada, solo espera a volver a otro estado segun la animacion
+            //vacio porque no hace nada, solo espera a volver a otro estado segun la animación
         }
         
     }
@@ -216,7 +234,7 @@ namespace OurNamespace
         /// </summary>
         public static void ShowBox(Vector3 _boxSize, Vector3 _boxOffSet, Transform _spawnTransform)
         {
-            //la caja cambia segun la rotacion del objeto(para mas info buscar el operador ?:)
+            //la caja cambia según la rotación del objeto(para más info buscar el operador ?:)
             int _direction = _spawnTransform.rotation.y == 0 ? 1 : -1;
                       
             //pintado de la caja
@@ -231,12 +249,12 @@ namespace OurNamespace
         /// </summary>     
         public static bool DetectSomethingBox(Vector3 _boxSize, Vector3 _boxOffSet, Transform _spawnTransform, LayerMask _layerToFliter)
         {
-            //la caja cambia segun la rotacion del objeto(para mas info buscar el operador ?:)
+            //la caja cambia según la rotación del objeto(para más info buscar el operador ?:)
             int _direction = _spawnTransform.rotation.y == 0 ? 1 : -1;
 
             Collider2D _colliderResult = Physics2D.OverlapArea(_spawnTransform.position - _boxSize + new Vector3(_boxOffSet.x * _direction, _boxOffSet.y) //punto 1 de la caja
                                           , _spawnTransform.position + _boxSize + new Vector3(_boxOffSet.x * _direction, _boxOffSet.y), //punto 2 de la caja
-                                           _layerToFliter);//capa que filtra la deteccion
+                                           _layerToFliter);//capa que filtra la detección
             return _colliderResult != null;            
         }
     }
