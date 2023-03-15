@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -26,6 +27,8 @@ public class MovementComponent : MonoBehaviour
     #region properties
     private float _epsilon = 0.0001f;
     #endregion
+
+    public float Speed { get { return _speed; } }
 
     // Start is called before the first frame update
     void Start()

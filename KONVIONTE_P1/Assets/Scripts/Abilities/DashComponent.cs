@@ -6,16 +6,25 @@ using UnityEngine.Rendering;
 
 public class DashComponent : MonoBehaviour
 {
-    private float _dashDistance;
-
+    #region References
+    private MovementComponent _movement;
+    #endregion
+    #region Parameters
+    [SerializeField] private float _dashDistance;
+    [SerializeField] private float _dashTime;
+    #endregion
+    #region Properties
+    private float _dashSpeed;
     private Transform _myTransform;
     private bool _putoDasheo;
-    [SerializeField] private float _maxDashDistance;
+    private float _time;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
     {
         _myTransform = transform;
+        _movement = GetComponent<MovementComponent>();
     }
 
     // Update is called once per frame
@@ -27,12 +36,13 @@ public class DashComponent : MonoBehaviour
             //Dash
             PerformDash();
 
-            // Cundo recorras la distancia para
-            if(_dashDistance >= _maxDashDistance)
+            // Cuando pase el tiempo del dash paras
+            if(_time >= _dashTime)
             {
                 _putoDasheo = false;
-                _dashDistance = 0;
+                _time = 0;
             }
+            _time += Time.fixedDeltaTime;
 
             Debug.Log(_putoDasheo);
         }
@@ -55,9 +65,9 @@ public class DashComponent : MonoBehaviour
     /// </summary>
     private void PerformDash()
     {
-        _dashDistance += _maxDashDistance * Time.fixedDeltaTime;
+        _dashSpeed = (_movement.Speed + (_dashDistance / _dashTime));
 
-        _myTransform.position += _dashDistance * Time.fixedDeltaTime * (Vector3)Vector2.right;
+        _myTransform.position += _dashSpeed * Time.fixedDeltaTime * _movement._lastDirection;
 
         Debug.Log("tuvieja");
     }
