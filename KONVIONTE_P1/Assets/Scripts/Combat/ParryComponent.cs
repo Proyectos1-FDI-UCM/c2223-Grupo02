@@ -173,9 +173,9 @@ public class ParryComponent : MonoBehaviour
         _boostDamageCurrentTime = 0;
 
         _playerAtackComponent.SetDamage(_boostDamage);
+        _playerAnimator.SetFloat("Smite",1);
         _playerTeleportComponent.TriggerTeleport();
         _playerAnimator.SetBool("IsFreeze", true);
-
         _playerAnimator.SetBool("IsParring", false);
         //Debug.Log("is freeze");
         //Time.timeScale = 0;
@@ -191,6 +191,7 @@ public class ParryComponent : MonoBehaviour
         {
             _playerAtackComponent.SetDamage(_baseDamage);
             _damageBoosted = false;
+            _playerAnimator.SetFloat("Smite", 0);
         }
     }
     public void SetParryOff()
