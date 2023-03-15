@@ -29,23 +29,27 @@ Fazil zencillo y pa toa la familia
  */
 public class StateMachine : MonoBehaviour
 {
+    protected Dictionary<State, List<Transition>> _stateTransitions;
 
-    private Dictionary<State, List<Transition>> _stateTransitions;
+    protected List<Transition> _currentTransitions;
+    protected List<Transition> _anyStateTransitions;
 
-
-    private List<Transition> _currentTransitions;
-    private List<Transition> _anyStateTransitions;
-
-    private List<State> _states;
-    private State _anyState;
-    private State _currentState;
+    protected State _anyState;
+    protected State _currentState;
 
     // Start is called before the first frame update
     void Start()
     {
         //inicializacion del diccionario
         _stateTransitions = new Dictionary<State, List<Transition>>();
-        for (int i = 0; i < _states.Count; i++) _stateTransitions.Add(_states[i], new List<Transition>());
+
+
+        //inicializacion de los estados, con sus constructores
+
+
+        //inicailizacion de las transiciones
+
+
         
         //los estados son scripts de que heredan de la clase estado
     }
@@ -53,17 +57,42 @@ public class StateMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Tick();
     }
     
     #region Methods
     
-    private void InicializaTransicion(State from,State to,Func<bool> condition)
+    protected void Tick()
     {
-        
+        TryTransitions();
+        _currentState.Tick();
     }
 
+    protected void InicializaTransicion(State from,State to,Func<bool> condition)
+    {
+        Transition newTransition = new Transition(from, to, condition);
+        _stateTransitions[from].Add(newTransition);
+    }
+    
+    private void TryTransitions()
+    {
+        if (!AnalizaTransiciones(_anyStateTransitions)) AnalizaTransiciones(_currentTransitions);
+    }
+    private bool AnalizaTransiciones(List<Transition> transiciones)
+    {
+        int i = 0;
+        while (i < transiciones.Count && !transiciones[i].Condicion()) i++;
+        if (i != transiciones.Count) { MakeTransition(transiciones[i]); return true; } 
+        else return false;
+    }
 
+    private void MakeTransition(Transition transition)
+    {
+        _currentState.OnExit();
+        transition.to.OnEnter();
+        _currentState = transition.to;
+        _currentTransitions = _stateTransitions[_currentState];
+    }
     #endregion
 
 }

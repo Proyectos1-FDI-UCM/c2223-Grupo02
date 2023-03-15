@@ -9,7 +9,7 @@ public class Transition
     private Func<bool> condition;
 
     //constructor de la transicion
-    private Transition(State from, State to, Func<bool> condition)
+    public Transition(State from, State to, Func<bool> condition)
     {
         this.from = from;
         this.to = to;
@@ -19,6 +19,5 @@ public class Transition
     public bool Condicion()
     {
         return condition();
-    }
-    
+    }    
 }
