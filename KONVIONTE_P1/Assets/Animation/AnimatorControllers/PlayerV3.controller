@@ -254,7 +254,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: bbf6424a7bc6d144d859237d59f6988d, type: 2}
+  m_Motion: {fileID: 3400072771831247154}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -398,7 +398,7 @@ BlendTree:
   m_Name: Smite
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 1f58a6bea35ecfa4f9531a1d37f17fc1, type: 2}
+    m_Motion: {fileID: 7400000, guid: 23cf4661313dfb54d95e0f541a479dfb, type: 2}
     m_Threshold: -1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 2
@@ -406,7 +406,7 @@ BlendTree:
     m_DirectBlendParameter: Jump
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 3eead98dc7aa85b4da044f5b1f42d88e, type: 2}
+    m_Motion: {fileID: 7400000, guid: 295c58e4fb7bf16408e3d190b03aabf7, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -414,7 +414,7 @@ BlendTree:
     m_DirectBlendParameter: Jump
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 6e1ca4ec17d679e479c766d222cbfc33, type: 2}
+    m_Motion: {fileID: 7400000, guid: 4e3dfac67d22d6f4096ff071e742b0d2, type: 2}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -1093,11 +1093,42 @@ AnimatorStateTransition:
   m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
-  m_InterruptionSource: 0
+  m_InterruptionSource: 2
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!206 &3400072771831247154
+BlendTree:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Blend Tree
+  m_Childs:
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: bbf6424a7bc6d144d859237d59f6988d, type: 2}
+    m_Threshold: 0
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: Jump
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: a52dd83e00790ad4e8363e669500e39c, type: 2}
+    m_Threshold: 1
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: Jump
+    m_Mirror: 0
+  m_BlendParameter: Smite
+  m_BlendParameterY: Jump
+  m_MinThreshold: 0
+  m_MaxThreshold: 1
+  m_UseAutomaticThresholds: 1
+  m_NormalizedBlendValues: 0
+  m_BlendType: 0
 --- !u!114 &3552975712286427856
 MonoBehaviour:
   m_ObjectHideFlags: 1
