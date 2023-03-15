@@ -5,6 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+    #region Properties
+    //Escena actual
+    private Scene _currentScene;
+
+    //Último CheckPoint
+    private Transform _checkPointTransform;
+
+
+
+    #endregion
+
     #region Methods
     //Se llama al número de escena asignado en Build Settings
     public void ChangeScene(string sceneName)
@@ -17,5 +28,8 @@ public class SceneController : MonoBehaviour
     {
         Application.Quit();
     }
+
+    //SetLastCheckpoint()
+    //Le pasamos la escena, para que nos lleve al último checkpoint guardado. 
     #endregion
 }
