@@ -144,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 1407044302}
     - target: {fileID: 5918833086258831790, guid: 1b9f1273cbbf87149b9928f907d7bb9f, type: 3}
       propertyPath: _interpolationSpeed
-      value: 0.005
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5918833086258831791, guid: 1b9f1273cbbf87149b9928f907d7bb9f, type: 3}
       propertyPath: m_RootOrder
@@ -337,6 +337,10 @@ PrefabInstance:
       propertyPath: _followCamera
       value: 
       objectReference: {fileID: 674134164}
+    - target: {fileID: 6346709447776289746, guid: 3bafe3acf271b514ebce447a3e3c731c, type: 3}
+      propertyPath: _maxLevelTime
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 6346709447776289747, guid: 3bafe3acf271b514ebce447a3e3c731c, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -4500,11 +4504,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4330029317084274266, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.22
+      value: -11.63
       objectReference: {fileID: 0}
     - target: {fileID: 4330029317084274266, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.75
+      value: -2.93
       objectReference: {fileID: 0}
     - target: {fileID: 4330029317084274266, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4572,11 +4576,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5275203722494537664, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: _dashTime
-      value: 2
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5275203722494537664, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
+      propertyPath: _dashSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5275203722494537664, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
+      propertyPath: _maxDashTime
+      value: 0.16
       objectReference: {fileID: 0}
     - target: {fileID: 5275203722494537664, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: _dashDistance
-      value: 100
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5275203722494537664, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: _maxDashDistance
