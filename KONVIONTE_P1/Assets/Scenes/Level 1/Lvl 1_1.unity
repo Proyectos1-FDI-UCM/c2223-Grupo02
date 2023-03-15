@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5918833086258831790, guid: 1b9f1273cbbf87149b9928f907d7bb9f, type: 3}
       propertyPath: _returnSpeed
-      value: 0.01
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5918833086258831790, guid: 1b9f1273cbbf87149b9928f907d7bb9f, type: 3}
       propertyPath: _myTargetTransform
@@ -156,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 1709027024}
     - target: {fileID: 5918833086258831790, guid: 1b9f1273cbbf87149b9928f907d7bb9f, type: 3}
       propertyPath: _interpolationSpeed
-      value: 0.005
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5918833086258831791, guid: 1b9f1273cbbf87149b9928f907d7bb9f, type: 3}
       propertyPath: m_RootOrder
@@ -68190,7 +68190,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 14
-      m_TileSpriteIndex: 19
+      m_TileSpriteIndex: 15
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -68210,7 +68210,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 29
-      m_TileSpriteIndex: 15
+      m_TileSpriteIndex: 16
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -68220,7 +68220,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 30
-      m_TileSpriteIndex: 16
+      m_TileSpriteIndex: 17
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -68230,7 +68230,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 15
-      m_TileSpriteIndex: 17
+      m_TileSpriteIndex: 18
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -68260,7 +68260,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 23
-      m_TileSpriteIndex: 18
+      m_TileSpriteIndex: 19
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -68329,7 +68329,7 @@ Tilemap:
       - {fileID: -1839222053, guid: b0b2f2c9d243bd044922c90ed2fe4515, type: 3}
       - {fileID: 1709760999, guid: b0b2f2c9d243bd044922c90ed2fe4515, type: 3}
       m_AnimationSpeed: 8
-      m_AnimationTimeOffset: 0
+      m_AnimationTimeOffset: 8
       m_IsLooping: 1
   m_TileAssetArray:
   - m_RefCount: 0
@@ -68436,6 +68436,8 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 4c9329a6e973a7541974aaee3f700f6a, type: 3}
   - m_RefCount: 1
+    m_Data: {fileID: 501001302, guid: e95b232ebc25ad34ea92bc2a4748baac, type: 3}
+  - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: bb11e58968146694a9095a3a5eb1c147, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 9bc493b5f71b76d4da88211f76bd8005, type: 3}
@@ -68443,8 +68445,6 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: 8533e8f38012d4a45b0e3048cac6eb0e, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1709760999, guid: b0b2f2c9d243bd044922c90ed2fe4515, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 501001302, guid: e95b232ebc25ad34ea92bc2a4748baac, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: ffe3830a0a59ecf46911266a351e917d, type: 3}
   m_TileMatrixArray:
@@ -69981,6 +69981,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4330029317084274267, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: cdaa3c249170e414ebebdbe7762d7dc9, type: 2}
     - target: {fileID: 4330029317084274270, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: m_Name
       value: El pana simvionte (EL OFISIAL)
@@ -70001,13 +70005,17 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4330029317084274339, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
+      propertyPath: _myTransform
+      value: 
+      objectReference: {fileID: 1709027024}
     - target: {fileID: 4330029317084274348, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: _marginTeleport
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4330029317084274348, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: _teleportDistance
-      value: 7
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 4330029317084274349, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
       propertyPath: _maxLife
