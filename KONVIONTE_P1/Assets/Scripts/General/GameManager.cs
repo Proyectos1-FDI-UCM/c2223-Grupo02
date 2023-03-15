@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     private TeleportParry _playerTeleportParry;
     private MovementComponent _playerMovementComponent;
     private JumpComponent _playerJumpComponent;
+    private DashComponent _playerDashComponent;
 
     //quizas haya que migrarlo a un singleton
     [SerializeField]
@@ -71,6 +72,7 @@ public class GameManager : MonoBehaviour
         _playerParryComponent = _player.GetComponent<ParryComponent>();
         _playerMovementComponent = _player.GetComponent<MovementComponent>();
         _playerJumpComponent = _player.GetComponent<JumpComponent>();
+        _playerDashComponent = _player.GetComponent<DashComponent>();
         _playerCombatController = _player.GetComponent<CombatController>();
         _playerTeleportParry = _player.GetComponent<TeleportParry>();
 
@@ -189,6 +191,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void Dash(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            _playerDashComponent.CanDash(true);
+        }
+    }
     #endregion
     #region Rules methods
 
