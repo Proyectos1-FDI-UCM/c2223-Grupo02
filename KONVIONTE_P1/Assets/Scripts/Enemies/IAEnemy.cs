@@ -67,7 +67,6 @@ public class IAEnemy : MonoBehaviour
     1 = perseguir al jugador
     2 = atacar     
     */
-
     [SerializeField]
     private int _estadoActual;
 
@@ -115,7 +114,6 @@ public class IAEnemy : MonoBehaviour
     void Update()
     {
         //para ver las cajas
-        
         //Caja de ataque
         OurNamespace.Box.ShowBox(_attackBoxSize, _attackBoxOffset, _myTransform); 
         //Caja de detección
