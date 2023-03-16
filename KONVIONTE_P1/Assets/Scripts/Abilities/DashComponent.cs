@@ -33,16 +33,8 @@ public class DashComponent : MonoBehaviour
         // Si puedes dashear
         if (_putoDasheo)
         {
-            //Dash
+            // Dash
             PerformDash();
-
-            // Cuando pase el tiempo del dash paras
-            if(_time >= _dashTime)
-            {
-                _putoDasheo = false;
-                _time = 0;
-            }
-            _time += Time.fixedDeltaTime;
 
             Debug.Log(_putoDasheo);
         }
@@ -53,11 +45,9 @@ public class DashComponent : MonoBehaviour
     /// </summary>
     /// <param name="canDash"></param>
     /// <returns></returns>
-    public bool CanDash(bool canDash)
+    public void CanDash(bool canDash)
     {
         _putoDasheo = canDash; 
-        
-        return _putoDasheo;
     }
 
     /// <summary>
@@ -65,10 +55,34 @@ public class DashComponent : MonoBehaviour
     /// </summary>
     private void PerformDash()
     {
+        // Immortalidad
+        GameManager.Instance.InmortalityPlayer(_putoDasheo);
+
+        // Aumento puntual de velocidad
         _dashSpeed = (_movement.Speed + (_dashDistance / _dashTime));
 
+        // Modificaciónd de la posición
         _myTransform.position += _dashSpeed * Time.fixedDeltaTime * _movement._lastDirection;
 
+        // Timer
+        DashTimer(); 
+
         Debug.Log("tuvieja");
+    }
+
+    private void DashTimer()
+    {
+        // Cuando pase el tiempo del dash paras
+        if (_time >= _dashTime)
+        {
+            // Reset de propiedades e immortalidad
+            _putoDasheo = false;
+            _time = 0;
+            GameManager.Instance.InmortalityPlayer(_putoDasheo);
+        }
+        else
+        {
+            _time += Time.fixedDeltaTime; // Contador
+        }
     }
 }

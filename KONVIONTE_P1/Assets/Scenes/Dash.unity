@@ -539,87 +539,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4330029317084274266, guid: dc7f16096fdefa3499dd0c6088649e7c, type: 3}
   m_PrefabInstance: {fileID: 2063892306}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1419973075
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 488020260, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: _target
-      value: 
-      objectReference: {fileID: 1757378014}
-    - target: {fileID: 488020260, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: _routineTime
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 488020261, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839658992, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: _player
-      value: 
-      objectReference: {fileID: 1407044302}
-    - target: {fileID: 2000617728839658992, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: _timeToAtack
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839659001, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: m_Name
-      value: Becario cabron
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839659001, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 23.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.49
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
 --- !u!1 &1554583059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,6 +1040,63 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &1558378710
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2000617728839659001, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
+      propertyPath: m_Name
+      value: Becario cabron
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
 --- !u!1 &1752190342 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6346709447776289757, guid: 3bafe3acf271b514ebce447a3e3c731c, type: 3}
@@ -1137,11 +1113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d131ad3c8ec9f45a340c9cd749dcc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1757378014 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2000617728839659001, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-  m_PrefabInstance: {fileID: 1419973075}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1764406161
 GameObject:
   m_ObjectHideFlags: 0
