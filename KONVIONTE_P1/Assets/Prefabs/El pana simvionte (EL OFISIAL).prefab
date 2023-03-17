@@ -156,7 +156,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4330029317084274266}
   - component: {fileID: 4330029317084274265}
-  - component: {fileID: 4330029317084274271}
   - component: {fileID: 4330029317084274267}
   - component: {fileID: 4330029317084274340}
   - component: {fileID: 4330029317084274341}
@@ -167,7 +166,9 @@ GameObject:
   - component: {fileID: 4330029317084274348}
   - component: {fileID: 4330029317084274349}
   - component: {fileID: 7360945658986034746}
-  - component: {fileID: 5275203722494537664}
+  - component: {fileID: -590582956993071797}
+  - component: {fileID: -7727388860901181041}
+  - component: {fileID: 1865319783085854810}
   m_Layer: 7
   m_Name: El pana simvionte (EL OFISIAL)
   m_TagString: Untagged
@@ -233,7 +234,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1045962970, guid: 1d1330c69e316724696569efae6a65a2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1ca664947804af747b8a4f10a94b654e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -244,32 +245,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4330029317084274271
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4330029317084274270}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0257968}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.09375, y: 0.90625}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.9484064}
-  m_EdgeRadius: 0
 --- !u!95 &4330029317084274267
 Animator:
   serializedVersion: 4
@@ -391,6 +366,7 @@ MonoBehaviour:
   _cooldownParryTime: 1
   _myTransform: {fileID: 0}
   _boostDamageCurrentTime: 0
+  _parried: 0
   _damageBoosted: 0
 --- !u!114 &4330029317084274348
 MonoBehaviour:
@@ -422,7 +398,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxLife: 100
-  _immortal: 0
 --- !u!114 &7360945658986034746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,7 +413,7 @@ MonoBehaviour:
   _knockbackForce: 1
   _marginTpKnockBack: 0.5
   _backHeigth: 0.75
---- !u!114 &5275203722494537664
+--- !u!114 &-590582956993071797
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -450,4 +425,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691c4d39f5b40a94b99eb0634c554834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dashDistance: 4
+  _dashDistance: 2
+  _dashTime: 0.1
+--- !u!114 &-7727388860901181041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4330029317084274270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 164adf2e155b12e40b6cec3ed4c98199, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &1865319783085854810
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4330029317084274270}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.016559064, y: -0.2956988}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.75, y: 1.5}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5340866, y: 0.9086024}
+  m_EdgeRadius: 0
