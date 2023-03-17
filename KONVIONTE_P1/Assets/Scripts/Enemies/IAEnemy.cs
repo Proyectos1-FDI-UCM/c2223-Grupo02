@@ -144,7 +144,7 @@ public class IAEnemy : MonoBehaviour
             _floorRaycastInfo = Physics2D.Raycast(_floorDetector.transform.position, -_floorDetector.transform.up, _raycastFloorDistance, _floorLayerMask);
 
             //Si he chocado con una pared o la distancia debajo de mí
-            if (_wallRaycastInfo.transform != null || _floorRaycastInfo.distance > _maxDistance)
+            if (_wallRaycastInfo.transform != null || _floorRaycastInfo.distance == 0)
             {                
                 //cambiamos la direccion
                 _movementDirection *= -1;
