@@ -6,7 +6,6 @@ public class ByBPatrolState : State
 {
     #region References
 
-    private Transform _playerTransform;
     private Transform _myTransform;
     private MovementComponent _myMovementComponent;
 
@@ -93,11 +92,10 @@ public class ByBPatrolState : State
     }
 
     //Constructor de la clase
-    public ByBPatrolState (Transform myTransform, MovementComponent myMovementComponent, Transform playerTransform)
+    public ByBPatrolState (Transform myTransform, MovementComponent myMovementComponent)
     {
         _myTransform = myTransform;
         _myMovementComponent = myMovementComponent;
-        _playerTransform = playerTransform;
     }
 
 

@@ -17,7 +17,7 @@ public class IAEnemy : MonoBehaviour
 
     #region Parameters
 
-    [Header("Tamaño de las cajas de detección, ataque y plataformas")]
+    [Header("Tamaño de las cajas de detección, ataque")]
     [SerializeField]
     Vector3 _detectionBoxSize;
     [SerializeField]
@@ -31,7 +31,6 @@ public class IAEnemy : MonoBehaviour
     [Header("Estado de patrulla")]
     [Tooltip("Tiempo de cada patrullaje")]
     [SerializeField] private float _routineTime;
-
 
     [Tooltip("Tiempo de parada entre cada patrullaje")]
     [SerializeField] private float _stopTime;
@@ -187,7 +186,7 @@ public class IAEnemy : MonoBehaviour
                 //seteo del time
                 _currentFollowTime = _followTime;
                 //seteo de la direccion de movimiento
-                _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_player.position - _myTransform.position,2));
+                _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_myTransform.position - _player.position, 2));
             }
 
             //si el enemigo deja de detectar al jugador, volvemos al estado 0 (patrulla)

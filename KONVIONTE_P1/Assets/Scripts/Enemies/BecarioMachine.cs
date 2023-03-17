@@ -8,7 +8,7 @@ public class BecarioMachine : StateMachine
     #region GeneralReferences
 
     Transform _myTransform;
-    MovementComponent _myMovement;
+    MovementComponent _myMovementComponent;
     Transform _playerTransform;
 
     #endregion
@@ -16,6 +16,7 @@ public class BecarioMachine : StateMachine
     #region States
 
     ByBPatrolState ByBPatrolState;
+    BecarioEscapeState BecarioEscapeState;
 
     #endregion
 
@@ -33,9 +34,9 @@ public class BecarioMachine : StateMachine
 
     #region PatrolState
 
-    #region Parameters
+        #region Parameters
 
-    [Tooltip("Tiempo de cada patrullaje")]
+        [Tooltip("Tiempo de cada patrullaje")]
         [SerializeField] private float _routineTime;
 
         [Tooltip("Tiempo de parada entre cada patrullaje")]
@@ -65,12 +66,29 @@ public class BecarioMachine : StateMachine
         private RaycastHit2D _wallRaycastInfo;
         private RaycastHit2D _floorRaycastInfo;
 
-    #endregion
+        #endregion
 
 
     #endregion
 
-    #region BecarioReactionToPlayerState
+    #region BecarioEscapeState
+
+        #region Parameters
+
+        //Caja de detección del jugador
+        [SerializeField] Vector3 _detectionBoxSize;
+        [SerializeField] Vector3 _detectionBoxOffset;
+
+        [Tooltip("Tiempo en el que se actualiza la posición del jugador para el escape")]
+        [SerializeField] private float _escapeTime;
+
+        #endregion
+
+        #region Properties
+
+        private float _currentEscapeTime;
+
+        #endregion
 
     #endregion
 
@@ -79,13 +97,18 @@ public class BecarioMachine : StateMachine
     // Start is called before the first frame update
     void Start()
     {
+        //Inicialización de los estados
+        ByBPatrolState = new ByBPatrolState(_myTransform, _myMovementComponent);
+        BecarioEscapeState = new BecarioEscapeState(_myTransform, _myMovementComponent, _playerTransform);
+
+        //Inicialización de las transiciones
+        //InicializaTransicion(patrollState,,);
+
+
+        //Inicialización de las lambdas de las transiciones
         _detectaEnemigo = () => DetectaEnemigo(_myTransform);
 
-        patrollState = new PatrollState(_myTransform, _myMovement, _playerTransform);
 
-
-
-        //InicializaTransicion(patrollState,,);
     }
 
     // Update is called once per frame
