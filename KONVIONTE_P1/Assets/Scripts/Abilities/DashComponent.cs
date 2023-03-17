@@ -23,6 +23,9 @@ public class DashComponent : MonoBehaviour
     private bool _putoDasheo;
     private float _time;
     private Vector3 _dashDirection;
+    private float _rayDistance;
+    private LayerMask _floorMask;
+    private float _maxDashDistance;
     #endregion
 
     // Start is called before the first frame update
@@ -33,6 +36,8 @@ public class DashComponent : MonoBehaviour
         _myTransform = transform;
         _movement = GetComponent<MovementComponent>();
         _direction = GetComponent<DirectionComponent>();
+        _floorMask = LayerMask.GetMask("Floor");
+        _maxDashDistance = _dashDistance;
     }
 
     // Update is called once per frame
@@ -42,7 +47,7 @@ public class DashComponent : MonoBehaviour
         if (_putoDasheo)
         {
             // Dash
-            PerformDash();
+            TryDash();
 
             Debug.Log(_putoDasheo);
         }
@@ -62,16 +67,13 @@ public class DashComponent : MonoBehaviour
     /// <summary>
     /// Realiza el cambio del transform para el dash
     /// </summary>
-    private void PerformDash()
+    private void PerformDash(float distance)
     {
-        // Cogemos la dirección
-        DashDirection();
-
         // Immortalidad
         // GameManager.Instance.InmortalityPlayer(_putoDasheo);
 
         // Aumento puntual de velocidad
-        _dashSpeed = (_movement.Speed + (_dashDistance / _dashTime));
+        _dashSpeed = (_movement.Speed + (distance / _dashTime));
 
         // Modificaciónd de la posición
         _myTransform.position += _dashSpeed * Time.fixedDeltaTime * _dashDirection;
@@ -90,6 +92,7 @@ public class DashComponent : MonoBehaviour
             // Reset de propiedades e immortalidad
             _putoDasheo = false;
             _time = 0;
+            _dashDistance = _maxDashDistance;
             // GameManager.Instance.InmortalityPlayer(_putoDasheo);
         }
         else
@@ -111,6 +114,23 @@ public class DashComponent : MonoBehaviour
         else // Si hay ratón cogemos su posición
         {
             _dashDirection = _direction.X_Directions(Camera.main.ScreenToWorldPoint(_mouse.position.ReadValue()) - _myTransform.position, 8);
+        }
+    }
+
+    private void TryDash()
+    {
+        DashDirection();
+
+        _rayDistance = Physics2D.Raycast(_myTransform.position, (Vector2)_dashDirection, _dashDistance, _floorMask).distance;
+
+        if(_rayDistance == 0)
+        {
+            PerformDash(_dashDistance);
+        }
+        else
+        {
+            _dashDistance -= _rayDistance;
+            PerformDash(_dashDistance);
         }
     }
     #endregion
