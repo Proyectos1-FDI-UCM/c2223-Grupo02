@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -8,6 +9,9 @@ public class DashComponent : MonoBehaviour
 {
     #region References
     private MovementComponent _movement;
+    private DirectionComponent _direction;
+    private Mouse _mouse;
+    private Gamepad _gamepad;
     #endregion
     #region Parameters
     [SerializeField] private float _dashDistance;
@@ -18,13 +22,17 @@ public class DashComponent : MonoBehaviour
     private Transform _myTransform;
     private bool _putoDasheo;
     private float _time;
+    private Vector3 _dashDirection;
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
+        _mouse = Mouse.current;
+        _gamepad = Gamepad.current;
         _myTransform = transform;
         _movement = GetComponent<MovementComponent>();
+        _direction = GetComponent<DirectionComponent>();
     }
 
     // Update is called once per frame
@@ -40,6 +48,7 @@ public class DashComponent : MonoBehaviour
         }
     }
 
+    #region Methods
     /// <summary>
     /// Habilita poder dashear desde el Game Manager
     /// </summary>
@@ -55,14 +64,17 @@ public class DashComponent : MonoBehaviour
     /// </summary>
     private void PerformDash()
     {
+        // Cogemos la dirección
+        DashDirection();
+
         // Immortalidad
-        GameManager.Instance.InmortalityPlayer(_putoDasheo);
+        // GameManager.Instance.InmortalityPlayer(_putoDasheo);
 
         // Aumento puntual de velocidad
         _dashSpeed = (_movement.Speed + (_dashDistance / _dashTime));
 
         // Modificaciónd de la posición
-        _myTransform.position += _dashSpeed * Time.fixedDeltaTime * _movement._lastDirection;
+        _myTransform.position += _dashSpeed * Time.fixedDeltaTime * _dashDirection;
 
         // Timer
         DashTimer(); 
@@ -78,11 +90,28 @@ public class DashComponent : MonoBehaviour
             // Reset de propiedades e immortalidad
             _putoDasheo = false;
             _time = 0;
-            GameManager.Instance.InmortalityPlayer(_putoDasheo);
+            // GameManager.Instance.InmortalityPlayer(_putoDasheo);
         }
         else
         {
             _time += Time.fixedDeltaTime; // Contador
         }
     }
+
+    /// <summary>
+    /// Setea la dirección del dash en funcion de la posición del ratón o el joystick
+    /// </summary>
+    private void DashDirection()
+    {
+        // Si hay gamepad leemos el joystick
+        if (_gamepad != null)
+        {
+            _dashDirection = _direction.X_Directions(_gamepad.rightStick.ReadValue(), 8);
+        }
+        else // Si hay ratón cogemos su posición
+        {
+            _dashDirection = _direction.X_Directions(Camera.main.ScreenToWorldPoint(_mouse.position.ReadValue()) - _myTransform.position, 8);
+        }
+    }
+    #endregion
 }
