@@ -3,27 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 /*
-este script irá atachado a cada enemigo
-todas las referencias a componentes y objetos deberan ir en este script
-habra una lista de de estados, con todos los estados del tipo de enemigo
-las referencias de cada estado, se inicializaran con el constructor de dicho estado
-habra un estado anyState, para gestionar las transiciones de cualquier estado
+Este script irá atachado a cada enemigo.
+Todas las referencias a componentes y objetos deberán ir en este script.
+Habrá una lista de estados, con todos los estados del tipo de enemigo
+Las referencias de cada estado, se inicializaran con el constructor de dicho estado
+Habrá un estado anyState, para gestionar las transiciones de cualquier estado
 
-en este script estarán las funciones que gestionan las transiciones
-se hara un Func<> para cada funcion, para poder pasar dicha funcion a cada transicion
-las transiciones se inicializaran con el constructor,
-indicando el estado en el que están, al que van y el Func de la condicion que se tiene que cumplir
+En este script estarán las funciones que gestionan las transiciones
+Se hará un Func<> para cada función, para poder pasar dicha función a cada transición
+Las transiciones se inicializarán con el constructor,
+indicando el estado en el que están, al que van y el Func de la condición que se tiene que cumplir
 
-una vez inicializadas las transiciones, se añadiran a la lista correspondiente del diccionario
+Una vez inicializadas las transiciones, se añadirán a la lista correspondiente del diccionario
 
-establecemos el estado inicial y la lista de transiciones inicial
+Establecemos el estado inicial y la lista de transiciones inicial
 
-Despues de todas las inicializaciones, se ejecutara la gestion de una maquina de estados promedio
+Despues de todas las inicializaciones, se ejecutara la gestión de una máquina de estados promedio
 Con la siguiente estructura:
--Analizar si hay alguna transicion disponible,primero desde las anyState y despues desde las transiciones actuales
-    -Si la hay, se hace onExit del from, y el onEnter del to, y el currentState pasa a ser el que era el estado to de la transicion
-    -Tambien se actualiza la lista de transiciones actuales
--Despues se hace hace el Tick() del estado actual
+-Analizar si hay alguna transición disponible, primero desde las anyState y después desde las transiciones actuales
+    -Si la hay, se hace onExit del from, y el onEnter del to, y el currentState pasa a ser el que era el estado to de la transición
+    -También se actualiza la lista de transiciones actuales
+-Después se hace hace el Tick() del estado actual
+
 Fazil zencillo y pa toa la familia
 
  */

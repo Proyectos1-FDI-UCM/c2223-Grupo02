@@ -5,6 +5,18 @@ using System;
 
 public class BecarioMachine : StateMachine
 {
+    //#region Máquina de estados
+
+    //protected Dictionary<State, List<Transition>> _stateTransitions;
+
+    //protected List<Transition> _currentTransitions;
+    //protected List<Transition> _anyStateTransitions;
+
+    //protected State _anyState;
+    //protected State _currentState;
+
+    //#endregion
+
     #region GeneralReferences
 
     Transform _myTransform;
@@ -16,19 +28,34 @@ public class BecarioMachine : StateMachine
     #region States
 
     ByBPatrolState ByBPatrolState;
-    BecarioEscapeState BecarioEscapeState;
+    BecarioEscapeState becarioEscapeState;
+    //BecarioAttackState becarioAttackState;
 
     #endregion
 
     #region Transitions
 
-    Transition detectaEnemigo;
+    Transition FromPatrolToEscape;
+    Transition FromEscapeToPatrol;
+
+    Transition FromPatrolToAttack;
+    Transition FromAttackToPatrol;
+
+    Transition FromEscapeToAttack;
+    Transition FromAttackToEscape;
 
     #endregion
 
     #region Lambda de las transiciones
 
-    Func<bool> _detectaEnemigo;
+    Func<bool> _patrolToEscape;
+    Func<bool> _escapeToPatrol;
+
+    Func<bool> _patrolToAttack;
+    Func<bool> _attackToPatrol;
+
+    Func<bool> _escapeToAttack;
+    Func<bool> _attackToEscape;    
 
     #endregion
 
@@ -71,7 +98,7 @@ public class BecarioMachine : StateMachine
 
     #endregion
 
-    #region BecarioEscapeState
+    #region EscapeState
 
         #region Parameters
 
@@ -92,6 +119,10 @@ public class BecarioMachine : StateMachine
 
     #endregion
 
+    //#region AttackState
+
+    //#endregion
+
 
 
     // Start is called before the first frame update
@@ -99,14 +130,16 @@ public class BecarioMachine : StateMachine
     {
         //Inicialización de los estados
         ByBPatrolState = new ByBPatrolState(_myTransform, _myMovementComponent);
-        BecarioEscapeState = new BecarioEscapeState(_myTransform, _myMovementComponent, _playerTransform);
+        becarioEscapeState = new BecarioEscapeState(_myTransform, _myMovementComponent, _playerTransform);
+        //AttackState = new AttackState(_myTransform, _playerTransform);
+
 
         //Inicialización de las transiciones
-        //InicializaTransicion(patrollState,,);
+        FromPatrolToEscape = new Transition(ByBPatrolState, becarioEscapeState, _patrolToEscape);
 
 
         //Inicialización de las lambdas de las transiciones
-        _detectaEnemigo = () => DetectaEnemigo(_myTransform);
+        _patrolToEscape = () => PatrolToEscape();
 
 
     }
@@ -118,7 +151,8 @@ public class BecarioMachine : StateMachine
     }
 
 
-    public bool DetectaEnemigo(Transform a)
+    //No me acuerdo de qué había que hacer aquí
+    public bool PatrolToEscape()
     {
         return true;
     }

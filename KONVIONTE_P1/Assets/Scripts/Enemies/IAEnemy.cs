@@ -181,6 +181,7 @@ public class IAEnemy : MonoBehaviour
             //disminuir el tiempo de ataque 
             _currentAttackTime -= Time.deltaTime;
 
+            //Tick del Escape
             if(_currentFollowTime < 0)
             {
                 //seteo del time
@@ -189,6 +190,7 @@ public class IAEnemy : MonoBehaviour
                 _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_myTransform.position - _player.position, 2));
             }
 
+            //Transición Escape - Patrulla
             //si el enemigo deja de detectar al jugador, volvemos al estado 0 (patrulla)
             if (!OurNamespace.Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask))
             {
@@ -196,6 +198,7 @@ public class IAEnemy : MonoBehaviour
                 _currentPatrollTime = 0;
             }
 
+            //Transición Escape - Ataque + Tick del ataque
             //si el jugador está en la caja de ataque y ha pasado el tiempo entre ataques, atacar
             if (OurNamespace.Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) &&
                 _currentAttackTime <0)

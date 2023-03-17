@@ -32,7 +32,7 @@ public class BecarioEscapeState : State
 
     public void OnEnter()
     {
-
+        _currentEscapeTime = 0;
     }
     public void Tick()
     {
