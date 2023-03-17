@@ -31,9 +31,7 @@ public class IAEnemy : MonoBehaviour
     [Header("Estado de patrulla")]
     [Tooltip("Tiempo de cada patrullaje")]
     [SerializeField] private float _routineTime;
-    //En el caso del bacario, va por distancia, no por tiempo
-    //[Tooltip("Distancia de cada patrullaje")]
-    //[SerializeField] private float _routineDistance;
+
 
     [Tooltip("Tiempo de parada entre cada patrullaje")]
     [SerializeField] private float _stopTime;
