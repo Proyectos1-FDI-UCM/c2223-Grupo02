@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class PatrollState : State
 {
-    Transform myTransform;
+    Transform _myTransform;
+    MovementComponent _myMovement;
+    Transform _playerTransform;
+
+
     public void OnEnter()
     {
 
@@ -18,11 +22,14 @@ public class PatrollState : State
 
     }
 
-    //Constructor de la clase
-    public PatrollState(Transform myTransform)
+    public PatrollState(Transform myTransform, MovementComponent myMovement, Transform playerTransform)
     {
-        this.myTransform = myTransform;
+        _myTransform = myTransform;
+        _myMovement = myMovement;
+        _playerTransform = playerTransform;
     }
+
+    //Constructor de la clase
 
 
 }
