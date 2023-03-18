@@ -115,7 +115,7 @@ public class BecarioMachine : StateMachine
 
         private float _currentEscapeTime;
 
-        #endregion
+    #endregion
 
     #endregion
 
@@ -123,6 +123,45 @@ public class BecarioMachine : StateMachine
 
     //#endregion
 
+    #region Methods
+
+        #region Condiciones de transición
+        //No me acuerdo de qué había que hacer aquí
+        //Algo así como inicializar las condiciones de transición, pero ¿cómo?
+
+        public bool PatrolToEscape()
+        {
+            return true;
+        }
+
+        public bool EscapeToPatrol()
+        {   
+            return true;
+        }
+
+        public bool PatrolToAttack()
+        {
+            return true;
+        }
+
+        public bool AttackToPatrol() 
+        {
+            return true;
+        }
+
+        public bool EscapeToAttack()
+        {
+            return true;
+        }
+
+        public bool AttackToEscape() 
+        {
+            return true;
+        }
+
+        #endregion
+
+    #endregion
 
 
     // Start is called before the first frame update
@@ -136,10 +175,24 @@ public class BecarioMachine : StateMachine
 
         //Inicialización de las transiciones
         FromPatrolToEscape = new Transition(ByBPatrolState, becarioEscapeState, _patrolToEscape);
+        FromEscapeToPatrol = new Transition(becarioEscapeState, ByBPatrolState, _escapeToPatrol);
+
+        //FromPatrolToAttack = new Transition(ByBPatrolState, becarioAttackState, _patrolToAttack);
+        //FromAttackToPatrol = new Transition(becarioAttackState, ByBPatrolState, _attackToPatrol);
+
+        //FromEscapeToAttack = new Transition(becarioEscapeState, becarioAttackState, _escapeToAttack);
+        //FromAttackToEscape = new Transition(becarioAttackState, becarioEscapeState, _attackToEscape);
 
 
-        //Inicialización de las lambdas de las transiciones
+        //Inicialización de las condiciones de las transiciones
         _patrolToEscape = () => PatrolToEscape();
+        _escapeToPatrol = () => EscapeToPatrol();
+
+        _patrolToAttack = () => PatrolToAttack();
+        _attackToPatrol = () => AttackToPatrol();
+
+        _escapeToAttack = () => EscapeToAttack();
+        _attackToEscape = () => AttackToEscape();
 
 
     }
@@ -151,9 +204,7 @@ public class BecarioMachine : StateMachine
     }
 
 
-    //No me acuerdo de qué había que hacer aquí
-    public bool PatrolToEscape()
-    {
-        return true;
-    }
+
+
+    
 }
