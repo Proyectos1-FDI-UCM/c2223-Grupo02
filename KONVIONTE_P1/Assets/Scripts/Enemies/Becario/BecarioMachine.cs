@@ -22,6 +22,8 @@ public class BecarioMachine : StateMachine
     Transform _myTransform;
     MovementComponent _myMovementComponent;
     Transform _playerTransform;
+    //Esta es sobre todo del ataque, pero...
+    CombatController _myCombatController;
 
     #endregion
 
@@ -29,7 +31,7 @@ public class BecarioMachine : StateMachine
 
     ByBPatrolState ByBPatrolState;
     BecarioEscapeState becarioEscapeState;
-    //BecarioAttackState becarioAttackState;
+    BecarioAttackState becarioAttackState;
 
     #endregion
 
@@ -119,17 +121,34 @@ public class BecarioMachine : StateMachine
 
     #endregion
 
-    //#region AttackState
+    #region AttackState
 
-    //#endregion
+        #region Parameters
+
+        //Caja de ataque del enemigo
+        [SerializeField] Vector3 _attackBoxSize;
+        [SerializeField] Vector3 _attackBoxOffset;
+
+        [Tooltip("Tiempo entre ataques")]
+        [SerializeField] private float _attackTime;
+
+        #endregion
+
+        #region Properties
+
+        private float _currentAttackTime;
+
+        #endregion
+
+    #endregion
 
     #region Methods
 
-        #region Condiciones de transición
-        //No me acuerdo de qué había que hacer aquí
-        //Algo así como inicializar las condiciones de transición, pero ¿cómo?
+    #region Condiciones de transición
+    //No me acuerdo de qué había que hacer aquí
+    //Algo así como inicializar las condiciones de transición, pero ¿cómo?
 
-        public bool PatrolToEscape()
+    public bool PatrolToEscape()
         {
             return true;
         }
@@ -170,18 +189,18 @@ public class BecarioMachine : StateMachine
         //Inicialización de los estados
         ByBPatrolState = new ByBPatrolState(_myTransform, _myMovementComponent);
         becarioEscapeState = new BecarioEscapeState(_myTransform, _myMovementComponent, _playerTransform);
-        //AttackState = new AttackState(_myTransform, _playerTransform);
+        becarioAttackState = new BecarioAttackState(_myTransform, _playerTransform, _myCombatController);
 
 
         //Inicialización de las transiciones
         FromPatrolToEscape = new Transition(ByBPatrolState, becarioEscapeState, _patrolToEscape);
         FromEscapeToPatrol = new Transition(becarioEscapeState, ByBPatrolState, _escapeToPatrol);
 
-        //FromPatrolToAttack = new Transition(ByBPatrolState, becarioAttackState, _patrolToAttack);
-        //FromAttackToPatrol = new Transition(becarioAttackState, ByBPatrolState, _attackToPatrol);
+        FromPatrolToAttack = new Transition(ByBPatrolState, becarioAttackState, _patrolToAttack);
+        FromAttackToPatrol = new Transition(becarioAttackState, ByBPatrolState, _attackToPatrol);
 
-        //FromEscapeToAttack = new Transition(becarioEscapeState, becarioAttackState, _escapeToAttack);
-        //FromAttackToEscape = new Transition(becarioAttackState, becarioEscapeState, _attackToEscape);
+        FromEscapeToAttack = new Transition(becarioEscapeState, becarioAttackState, _escapeToAttack);
+        FromAttackToEscape = new Transition(becarioAttackState, becarioEscapeState, _attackToEscape);
 
 
         //Inicialización de las condiciones de las transiciones
@@ -193,8 +212,6 @@ public class BecarioMachine : StateMachine
 
         _escapeToAttack = () => EscapeToAttack();
         _attackToEscape = () => AttackToEscape();
-
-
     }
 
     // Update is called once per frame
@@ -202,9 +219,4 @@ public class BecarioMachine : StateMachine
     {
         Tick();
     }
-
-
-
-
-    
 }
