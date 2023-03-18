@@ -47,7 +47,7 @@ public class ByBPatrolState : State
 
     public void OnEnter()
     {
-
+        _currentPatrollTime = 0;
     }
     public void Tick()
     {
