@@ -27,7 +27,7 @@ public class BecarioAttackState : State
 
     #region Properties
 
-    private float _currentAttackTime;
+    public float _currentAttackTime { get; private set; }
 
     #endregion
     public void OnEnter()
