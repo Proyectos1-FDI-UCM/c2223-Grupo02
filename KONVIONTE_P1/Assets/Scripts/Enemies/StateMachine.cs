@@ -30,10 +30,10 @@ Fazil zencillo y pa toa la familia
  */
 public class StateMachine : MonoBehaviour
 {
-    protected Dictionary<State, List<Transition>> _stateTransitions;
+    protected Dictionary<State, List<Transition>> _stateTransitions = new Dictionary<State, List<Transition>>();
 
-    protected List<Transition> _currentTransitions;
-    protected List<Transition> _anyStateTransitions;
+    protected List<Transition> _currentTransitions = new List<Transition>();
+    protected List<Transition> _anyStateTransitions = new List<Transition>();
 
     protected State _anyState;
     protected State _currentState;
@@ -42,7 +42,7 @@ public class StateMachine : MonoBehaviour
     void Start()
     {
         //inicializacion del diccionario
-        _stateTransitions = new Dictionary<State, List<Transition>>();
+        //_stateTransitions = new Dictionary<State, List<Transition>>();
 
 
         //inicializacion de los estados, con sus constructores
@@ -58,7 +58,7 @@ public class StateMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Tick();
+        //Tick();
     }
     
     #region Methods

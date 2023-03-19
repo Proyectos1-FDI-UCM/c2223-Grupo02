@@ -189,7 +189,7 @@ public class BullyMachine : StateMachine
     void Start()
     {
         //Inicialización de los estados
-        ByBPatrolState = new ByBPatrolState(_myTransform, _myMovementComponent);
+        //ByBPatrolState = new ByBPatrolState(_myTransform, _myMovementComponent,floorDetector.transform);
         //becarioEscapeState = new BecarioEscapeState(_myTransform, _myMovementComponent, _playerTransform);
         //becarioAttackState = new BecarioAttackState(_myTransform, _playerTransform, _myCombatController);
 

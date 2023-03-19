@@ -19,45 +19,50 @@ public class BecarioMachine : StateMachine
 
     #region GeneralReferences
 
-    Transform _myTransform;
-    MovementComponent _myMovementComponent;
-    Transform _playerTransform;
+    private Transform _myTransform;
+    public Transform MyTransform { get { return _myTransform; } }
+
+    private MovementComponent _myMovementComponent;
+    public MovementComponent MyMovementComponent { get { return _myMovementComponent; } }
+    private Transform _playerTransform;
+    public Transform PlayerTransform { get { return _playerTransform; } }
     //Esta es sobre todo del ataque, pero...
-    CombatController _myCombatController;
+    private CombatController _myCombatController;
+    public CombatController MyCombatController { get { return _myCombatController; } }
 
     #endregion
 
     #region States
 
-    ByBPatrolState ByBPatrolState;
-    BecarioEscapeState becarioEscapeState;
-    BecarioAttackState becarioAttackState;
+    private ByBPatrolState ByBPatrolState;
+    private BecarioEscapeState becarioEscapeState;
+    private BecarioAttackState becarioAttackState;
 
     #endregion
 
     #region Transitions
 
-    Transition FromPatrolToEscape;
-    Transition FromEscapeToPatrol;
+    private Transition FromPatrolToEscape;
+    private Transition FromEscapeToPatrol;
 
-    Transition FromPatrolToAttack;
-    Transition FromAttackToPatrol;
+    private Transition FromPatrolToAttack;
+    private Transition FromAttackToPatrol;
 
-    Transition FromEscapeToAttack;
-    Transition FromAttackToEscape;
+    private Transition FromEscapeToAttack;
+    private Transition FromAttackToEscape;
 
     #endregion
 
     #region Condiciones de las transiciones
 
-    Func<bool> _patrolToEscape;
-    Func<bool> _escapeToPatrol;
+    private Func<bool> _patrolToEscape;
+    private Func<bool> _escapeToPatrol;
 
-    Func<bool> _patrolToAttack;
-    Func<bool> _attackToPatrol;
+    private Func<bool> _patrolToAttack;
+    private Func<bool> _attackToPatrol;
 
-    Func<bool> _escapeToAttack;
-    Func<bool> _attackToEscape;    
+    private Func<bool> _escapeToAttack;
+    private Func<bool> _attackToEscape;    
 
     #endregion
 
@@ -68,32 +73,38 @@ public class BecarioMachine : StateMachine
         [Header ("Estado de Patrulla")]
         [Tooltip("Tiempo de cada patrullaje")]
         [SerializeField] private float _routineTime;
+        public float RoutineTime { get { return _routineTime; } }
 
         [Tooltip("Tiempo de parada entre cada patrullaje")]
         [SerializeField] private float _stopTime;
+        public float StopTime { get { return _stopTime; } }
     
         [Tooltip("Distancia del rayo que detecta la colisión con las paredes")]
         [SerializeField] private float _raycastWallDistance;
+        public float RraycastWallDistance { get { return _raycastWallDistance; } }
 
         [Tooltip("Distancia del rayo que detecta la colisión con el suelo")]
         [SerializeField] private float _raycastFloorDistance;
+        public float RraycastFloorDistance { get { return _raycastFloorDistance; } }
 
         [Tooltip("Distancia máxima que puede haber bajo el enemigo, para que baje")]
         [SerializeField] private float _maxDistance;
+        public float MaxDistance { get { return _maxDistance; } }
 
         [Tooltip("Objeto detector de suelo")]
-        [SerializeField] private GameObject _floorDetector;
+        [SerializeField] private Transform _floorDetector;
+        public Transform FloorDetector { get { return _floorDetector; } }
 
         #endregion
 
         #region Properties
 
-        private float _currentPatrollTime;
+        
         private LayerMask _playerLayerMask;
+        public LayerMask PlayerLayerMask { get { return _playerLayerMask; } }
         private LayerMask _floorLayerMask;
-        private Vector3 _movementDirection;
-        private RaycastHit2D _wallRaycastInfo;
-        private RaycastHit2D _floorRaycastInfo;
+        public LayerMask FloorLayerMask { get { return _floorLayerMask; } }
+        
 
     #endregion
 
@@ -226,18 +237,40 @@ public class BecarioMachine : StateMachine
             return false;
         }
     }
-        #endregion
+    #endregion
 
     #endregion
 
+    private void Awake()
+    {
+        //_stateTransitions = new Dictionary<State, List<Transition>>();
+        //_currentTransitions = new List<Transition>();
+        //_anyStateTransitions = new List<Transition>();
+
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        //Inicialización de los estados
-        ByBPatrolState = new ByBPatrolState(_myTransform, _myMovementComponent);
+        _playerLayerMask = LayerMask.NameToLayer("Player");
+        _floorLayerMask = LayerMask.NameToLayer("Floor");
+
+        //inicializacion de las referencias de la maquina de estados
+        _myTransform = transform;
+        _myMovementComponent = GetComponent<MovementComponent>();
+        _playerTransform = GameManager.Instance.Player.transform;
+        _myCombatController = GetComponent<CombatController>();
+
+        //Inicialización de los estados (constructora)
+        ByBPatrolState = new ByBPatrolState(this);
         becarioEscapeState = new BecarioEscapeState(_myTransform, _myMovementComponent, _playerTransform);
         becarioAttackState = new BecarioAttackState(_myTransform, _playerTransform, _myCombatController);
+
+
+        //añadir los estados al diccionario
+        _stateTransitions.Add(ByBPatrolState, new List<Transition>());
+        _stateTransitions.Add(becarioAttackState, new List<Transition>());
+        _stateTransitions.Add(becarioEscapeState, new List<Transition>());
 
         //Inicialización de las condiciones de las transiciones
         _patrolToEscape = () => PatrolToEscape();
@@ -258,6 +291,9 @@ public class BecarioMachine : StateMachine
 
         InicializaTransicion(becarioEscapeState, becarioAttackState, _escapeToAttack);
         InicializaTransicion(becarioAttackState, becarioEscapeState, _attackToEscape);
+
+        //establecer el estado inicial
+        _currentState = ByBPatrolState;
     }
 
     // Update is called once per frame

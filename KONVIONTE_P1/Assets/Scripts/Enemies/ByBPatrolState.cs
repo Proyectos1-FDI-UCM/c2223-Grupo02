@@ -9,6 +9,8 @@ public class ByBPatrolState : State
     private Transform _myTransform;
     private MovementComponent _myMovementComponent;
 
+    [Tooltip("Objeto detector de suelo")]
+    [SerializeField] private Transform _floorDetector;
     #endregion
 
     #region Parameters
@@ -29,8 +31,7 @@ public class ByBPatrolState : State
     [Tooltip("Distancia máxima que puede haber bajo el enemigo, para que baje")]
     [SerializeField] private float _maxDistance;
 
-    [Tooltip("Objeto detector de suelo")]
-    [SerializeField] private GameObject _floorDetector;
+    
 
     #endregion
 
@@ -51,12 +52,15 @@ public class ByBPatrolState : State
     }
     public void Tick()
     {
+        Debug.Log("tu vieja");
         //Restamos el tiempo
         _currentPatrollTime -= Time.deltaTime;
-
+        Debug.Log(Time.deltaTime);
         //Si el tiempo llega a 0 (o es menor)
         if (_currentPatrollTime < 0)
         {
+            Debug.Log("tu vieja cambia");
+
             //calculamos aleatoriamente la siguiente dirección
             _movementDirection = Vector3.right * Random.Range(-1, 2);//devuelve un aleatorio -1,0,1 
 
@@ -71,7 +75,7 @@ public class ByBPatrolState : State
         _wallRaycastInfo = Physics2D.Raycast(_myTransform.position, _myTransform.right, _raycastWallDistance, _floorLayerMask);
 
         //Casteo del rayo de choque contra suelo
-        _floorRaycastInfo = Physics2D.Raycast(_floorDetector.transform.position, -_floorDetector.transform.up, _raycastFloorDistance, _floorLayerMask);
+        _floorRaycastInfo = Physics2D.Raycast(_floorDetector.position, -_floorDetector.up, _raycastFloorDistance, _floorLayerMask);
 
         //Si he chocado con una pared o la distancia debajo de mí
         if (_wallRaycastInfo.transform != null || _floorRaycastInfo.distance == 0)
@@ -92,10 +96,22 @@ public class ByBPatrolState : State
     }
 
     //Constructor de la clase
-    public ByBPatrolState (Transform myTransform, MovementComponent myMovementComponent)
+    public ByBPatrolState (BecarioMachine myMachine)
     {
-        _myTransform = myTransform;
-        _myMovementComponent = myMovementComponent;
+        _myTransform = myMachine.MyTransform;
+        _myMovementComponent = myMachine.MyMovementComponent;
+        _floorDetector = myMachine.FloorDetector;
+
+        _routineTime = myMachine.RoutineTime;
+        _stopTime = myMachine.StopTime;
+        _raycastWallDistance = myMachine.RraycastWallDistance;
+        _raycastFloorDistance = myMachine.RraycastFloorDistance;
+        _maxDistance = myMachine.MaxDistance;
+
+        _currentPatrollTime = 0;
+
+        _playerLayerMask = myMachine.PlayerLayerMask;
+        _floorLayerMask = myMachine.FloorLayerMask;
     }
 
 
