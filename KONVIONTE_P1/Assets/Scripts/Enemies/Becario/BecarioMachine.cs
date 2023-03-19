@@ -48,7 +48,7 @@ public class BecarioMachine : StateMachine
 
     #endregion
 
-    #region Lambda de las transiciones
+    #region Condiciones de las transiciones
 
     Func<bool> _patrolToEscape;
     Func<bool> _escapeToPatrol;
@@ -138,24 +138,38 @@ public class BecarioMachine : StateMachine
 
         private float _currentAttackTime;
 
-        #endregion
+    #endregion
 
     #endregion
 
     #region Methods
 
     #region Condiciones de transición
-    //No me acuerdo de qué había que hacer aquí
-    //Algo así como inicializar las condiciones de transición, pero ¿cómo?
 
     public bool PatrolToEscape()
     {
-        return true;
+        //si el enemigo detecta al jugador
+        if (OurNamespace.Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public bool EscapeToPatrol()
-    {   
-        return true;
+    {
+        //si el enemigo deja de detectar al jugador
+        if (!OurNamespace.Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public bool PatrolToAttack()
@@ -171,21 +185,45 @@ public class BecarioMachine : StateMachine
         }
     }
 
-    public bool AttackToPatrol() 
+    public bool AttackToPatrol()
     {
-        return true;
+        //si el enemigo deja de detectar al jugador en el área de ataque
+        if (!OurNamespace.Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && _currentAttackTime < 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public bool EscapeToAttack()
     {
-        return true;
+        //si el enemigo detectar al jugador en el área de ataque
+        if (OurNamespace.Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && _currentAttackTime < 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
-    public bool AttackToEscape() 
+    public bool AttackToEscape()
     {
-        return true;
+        //si el enemigo detectar al jugador en el área de ataque, pero sigue en el área de detección
+        if (!OurNamespace.Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && _currentAttackTime < 0 && 
+            OurNamespace.Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-
         #endregion
 
     #endregion
@@ -213,16 +251,15 @@ public class BecarioMachine : StateMachine
 
 
         //Inicialización de las transiciones
-        //FromPatrolToEscape = new Transition(ByBPatrolState, becarioEscapeState, _patrolToEscape);
-        //FromEscapeToPatrol = new Transition(becarioEscapeState, ByBPatrolState, _escapeToPatrol);
-        //
-        //FromPatrolToAttack = new Transition(ByBPatrolState, becarioAttackState, _patrolToAttack);
-        //FromAttackToPatrol = new Transition(becarioAttackState, ByBPatrolState, _attackToPatrol);
-        //
-        //FromEscapeToAttack = new Transition(becarioEscapeState, becarioAttackState, _escapeToAttack);
-        //FromAttackToEscape = new Transition(becarioAttackState, becarioEscapeState, _attackToEscape);
+
+        InicializaTransicion(ByBPatrolState, becarioEscapeState, _patrolToEscape);
+        InicializaTransicion(becarioEscapeState, ByBPatrolState, _escapeToPatrol);
 
         InicializaTransicion(ByBPatrolState, becarioAttackState, _patrolToAttack);
+        InicializaTransicion(becarioAttackState, ByBPatrolState, _attackToPatrol);
+
+        InicializaTransicion(becarioEscapeState, becarioAttackState, _escapeToAttack);
+        InicializaTransicion(becarioAttackState, becarioEscapeState, _attackToEscape);
     }
 
     // Update is called once per frame
