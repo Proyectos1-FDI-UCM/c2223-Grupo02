@@ -8,37 +8,28 @@ public class ByBPatrolState : State
 
     private Transform _myTransform;
     private MovementComponent _myMovementComponent;
-
-    [Tooltip("Objeto detector de suelo")]
-    [SerializeField] private Transform _floorDetector;
+    
+    private Transform _floorDetector;
     #endregion
 
     #region Parameters
 
-    [Tooltip("Tiempo de cada patrullaje")]
-    [SerializeField] private float _routineTime;
+    private float _routineTime;
 
-    [Tooltip("Tiempo de parada entre cada patrullaje")]
-    [SerializeField] private float _stopTime;
+    private float _stopTime;
 
-    [Header("Otros")]
-    [Tooltip("Distancia del rayo que detecta la colisión con las paredes")]
-    [SerializeField] private float _raycastWallDistance;
+    private float _raycastWallDistance;
 
-    [Tooltip("Distancia del rayo que detecta la colisión con el suelo")]
-    [SerializeField] private float _raycastFloorDistance;
+    private float _raycastFloorDistance;
 
-    [Tooltip("Distancia máxima que puede haber bajo el enemigo, para que baje")]
-    [SerializeField] private float _maxDistance;
-
+    private float _maxDistance;//???
     
-
     #endregion
 
     #region Properties
 
     private float _currentPatrollTime;
-    private LayerMask _playerLayerMask;
+    private LayerMask _playerLayerMask;//???
     private LayerMask _floorLayerMask;
     private Vector3 _movementDirection;
     private RaycastHit2D _wallRaycastInfo;
@@ -52,15 +43,11 @@ public class ByBPatrolState : State
     }
     public void Tick()
     {
-        Debug.Log("tu vieja");
         //Restamos el tiempo
         _currentPatrollTime -= Time.deltaTime;
-        Debug.Log(Time.deltaTime);
         //Si el tiempo llega a 0 (o es menor)
         if (_currentPatrollTime < 0)
         {
-            Debug.Log("tu vieja cambia");
-
             //calculamos aleatoriamente la siguiente dirección
             _movementDirection = Vector3.right * Random.Range(-1, 2);//devuelve un aleatorio -1,0,1 
 

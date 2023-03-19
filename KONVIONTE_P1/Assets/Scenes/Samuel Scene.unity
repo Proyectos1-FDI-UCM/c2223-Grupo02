@@ -140,11 +140,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.549719
+      value: 17.88
       objectReference: {fileID: 0}
     - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.3567
+      value: -5.53
       objectReference: {fileID: 0}
     - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -182,6 +182,14 @@ PrefabInstance:
       propertyPath: _floorDetector
       value: 
       objectReference: {fileID: 820187822}
+    - target: {fileID: 3598931985341586190, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
+      propertyPath: _raycastWallDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598931985341586190, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
+      propertyPath: _raycastFloorDistance
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
 --- !u!1001 &154496701
@@ -287,6 +295,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1720947251404330447, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8358887279768211996, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -62091,6 +62103,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4330029315348000303}
     - target: {fileID: 6346709447776289746, guid: 3bafe3acf271b514ebce447a3e3c731c, type: 3}
+      propertyPath: _UIManager
+      value: 
+      objectReference: {fileID: 1827716359}
+    - target: {fileID: 6346709447776289746, guid: 3bafe3acf271b514ebce447a3e3c731c, type: 3}
       propertyPath: _followCamera
       value: 
       objectReference: {fileID: 1025034238}
@@ -63476,6 +63492,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e36927704d7f68a43989ed7889877bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1827716359 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1022847685, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+  m_PrefabInstance: {fileID: 262990781}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83b6f70244623c46a59e771b0875bdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2029123409
@@ -116170,11 +116197,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3229762132671292759, guid: dead257545a754340a2deee90e150bcc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.63
+      value: -13.83
       objectReference: {fileID: 0}
     - target: {fileID: 3229762132671292759, guid: dead257545a754340a2deee90e150bcc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.62
+      value: -4.65
       objectReference: {fileID: 0}
     - target: {fileID: 3229762132671292759, guid: dead257545a754340a2deee90e150bcc, type: 3}
       propertyPath: m_LocalPosition.z

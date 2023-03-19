@@ -14,13 +14,8 @@ public class BecarioEscapeState : State
     #endregion
 
     #region Parameters
-
-    //Caja de detección del jugador
-    [SerializeField] Vector3 _detectionBoxSize;
-    [SerializeField] Vector3 _detectionBoxOffset;
-
-    [Tooltip("Tiempo en el que se actualiza la posición del jugador para el escape")]
-    [SerializeField] private float _escapeTime;
+  
+    private float _escapeTime;
 
     #endregion
 
@@ -36,8 +31,7 @@ public class BecarioEscapeState : State
     }
     public void Tick()
     {
-        //Caja de detección
-        OurNamespace.Box.ShowBox(_detectionBoxSize, _detectionBoxOffset, _myTransform);
+        
 
         //Disminuir el tiempo de escape
         _currentEscapeTime -= Time.deltaTime;
@@ -62,11 +56,15 @@ public class BecarioEscapeState : State
     }
 
     //Constructor de la clase
-    public BecarioEscapeState(Transform myTransform, MovementComponent myMovementComponent, Transform playerTransform)
+    public BecarioEscapeState(BecarioMachine myMachine)
     {
-        _myTransform = myTransform;
-        _myMovementComponent = myMovementComponent;
-        _playerTransform = playerTransform;
+        _myTransform = myMachine.MyTransform;
+        _myMovementComponent = myMachine.MyMovementComponent;
+        _playerTransform = myMachine.PlayerTransform;
+
+        _escapeTime = myMachine.EscapeTime;
+
+        _currentEscapeTime = 0;
     }
 
 }

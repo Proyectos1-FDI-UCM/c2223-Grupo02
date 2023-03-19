@@ -15,13 +15,8 @@ public class BecarioAttackState : State
     #endregion
 
     #region Parameters
-
-    //Caja de ataque del enemigo
-    [SerializeField] Vector3 _attackBoxSize;
-    [SerializeField] Vector3 _attackBoxOffset;
-
-    [Tooltip("Tiempo entre ataques")]
-    [SerializeField] private float _attackTime;
+       
+    private float _attackTime;
 
     #endregion
 
@@ -39,7 +34,12 @@ public class BecarioAttackState : State
     {
         //disminuir el tiempo de ataque 
         _currentAttackTime -= Time.deltaTime;
-        _myCombatController.Atack(_playerTransform.position - _myTransform.position);
+        if(_currentAttackTime < 0)
+        {
+            _currentAttackTime = _attackTime;
+            _myCombatController.Atack(_playerTransform.position - _myTransform.position);
+            Debug.Log("tuvieja atack");
+        }
     }
     public void OnExit()
     {
@@ -47,10 +47,13 @@ public class BecarioAttackState : State
     }
 
     //Constructor de la clase
-    public BecarioAttackState(Transform myTransform, Transform playerTransform, CombatController myCombatController)
+    public BecarioAttackState(BecarioMachine myMachine)
     {
-        _myTransform = myTransform;
-        _playerTransform = playerTransform;
-        _myCombatController = myCombatController;
+        _myTransform = myMachine.MyTransform;
+        _playerTransform = myMachine.PlayerTransform;
+        _myCombatController = myMachine.MyCombatController;
+        
+        _attackTime = myMachine.AttackTime;
+        
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+using OurNamespace;
 public class BecarioMachine : StateMachine
 {
     //#region Máquina de estados
@@ -98,7 +98,6 @@ public class BecarioMachine : StateMachine
         #endregion
 
         #region Properties
-
         
         private LayerMask _playerLayerMask;
         public LayerMask PlayerLayerMask { get { return _playerLayerMask; } }
@@ -117,11 +116,15 @@ public class BecarioMachine : StateMachine
 
         [Header("Estado de Escape")]
         //Caja de detección del jugador
-        [SerializeField] Vector3 _detectionBoxSize;
-        [SerializeField] Vector3 _detectionBoxOffset;
+        [SerializeField] private Vector3 _detectionBoxSize;
+        public Vector3 DetectionBoxSize { get { return _detectionBoxSize; } }
+
+        [SerializeField] private Vector3 _detectionBoxOffset;
+        public Vector3 DetectionBoxOffset { get { return _detectionBoxOffset; } }
 
         [Tooltip("Tiempo en el que se actualiza la posición del jugador para el escape")]
         [SerializeField] private float _escapeTime;
+        public float EscapeTime { get { return _escapeTime; } }
 
         #endregion
 
@@ -140,10 +143,13 @@ public class BecarioMachine : StateMachine
         [Header("Estado de Ataque")]
         //Caja de ataque del enemigo
         [SerializeField] Vector3 _attackBoxSize;
+        public Vector3 AttackBoxSize { get { return _attackBoxSize; } }
         [SerializeField] Vector3 _attackBoxOffset;
+        public Vector3 AttackBoxOffset { get { return _attackBoxOffset; } }
 
         [Tooltip("Tiempo entre ataques")]
         [SerializeField] private float _attackTime;
+        public float AttackTime { get { return _attackTime; } }
 
         #endregion
 
@@ -162,80 +168,40 @@ public class BecarioMachine : StateMachine
     public bool PatrolToEscape()
     {
         //si el enemigo detecta al jugador
-        if (OurNamespace.Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask);     
     }
 
     public bool EscapeToPatrol()
     {
         //si el enemigo deja de detectar al jugador
-        if (!OurNamespace.Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return !Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask);     
     }
 
     public bool PatrolToAttack()
     {
         //si el enemigo detecta al jugador en el área de ataque
-        if (OurNamespace.Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && becarioAttackState._currentAttackTime < 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && becarioAttackState._currentAttackTime < 0;        
     }
 
     public bool AttackToPatrol()
     {
         //si el enemigo deja de detectar al jugador en el área de ataque
-        if (!OurNamespace.Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && _currentAttackTime < 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return !Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && _currentAttackTime < 0;
+       
     }
 
     public bool EscapeToAttack()
     {
         //si el enemigo detectar al jugador en el área de ataque
-        if (OurNamespace.Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && _currentAttackTime < 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && _currentAttackTime < 0;        
     }
 
     public bool AttackToEscape()
     {
         //si el enemigo detectar al jugador en el área de ataque, pero sigue en el área de detección
-        if (!OurNamespace.Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && _currentAttackTime < 0 && 
-            OurNamespace.Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return !Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && _currentAttackTime < 0 &&
+                Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask);
+        
     }
     #endregion
 
@@ -252,8 +218,8 @@ public class BecarioMachine : StateMachine
     // Start is called before the first frame update
     void Start()
     {
-        _playerLayerMask = LayerMask.NameToLayer("Player");
-        _floorLayerMask = LayerMask.NameToLayer("Floor");
+        _playerLayerMask = LayerMask.GetMask("Player");
+        _floorLayerMask = LayerMask.GetMask("Floor");
 
         //inicializacion de las referencias de la maquina de estados
         _myTransform = transform;
@@ -263,8 +229,8 @@ public class BecarioMachine : StateMachine
 
         //Inicialización de los estados (constructora)
         ByBPatrolState = new ByBPatrolState(this);
-        becarioEscapeState = new BecarioEscapeState(_myTransform, _myMovementComponent, _playerTransform);
-        becarioAttackState = new BecarioAttackState(_myTransform, _playerTransform, _myCombatController);
+        becarioEscapeState = new BecarioEscapeState(this);
+        becarioAttackState = new BecarioAttackState(this);
 
 
         //añadir los estados al diccionario
@@ -294,11 +260,17 @@ public class BecarioMachine : StateMachine
 
         //establecer el estado inicial
         _currentState = ByBPatrolState;
+
+        //establecer transiciones iniciales
+        _currentTransitions = _stateTransitions[_currentState];
     }
 
     // Update is called once per frame
     void Update()
     {
         Tick();
+        //Caja de detección
+        Box.ShowBox(_detectionBoxSize, _detectionBoxOffset, _myTransform);
+        Box.ShowBox(_attackBoxSize, _attackBoxOffset, _myTransform);
     }
 }
