@@ -1031,13 +1031,14 @@ GameObject:
   - component: {fileID: 7021893748840033409}
   - component: {fileID: 3275731723827399765}
   - component: {fileID: 65529469}
+  - component: {fileID: 4312507206213788221}
   m_Layer: 5
   m_Name: DashAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4351873609062160996
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1144,11 +1145,25 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 60
-  m_WholeNumbers: 1
+  m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4312507206213788221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4392208716837531425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b844b5ed38d9d01458bb01fe92921d31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slider: {fileID: 65529469}
+  _maxTime: 60
 --- !u!1 &8023802540476248640
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,7 +1739,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.1, y: 9.6}
+  m_AnchoredPosition: {x: -16.1, y: 6.1}
   m_SizeDelta: {x: 100, y: 96.6336}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8358887280597304270
@@ -2228,7 +2243,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 250127073, guid: b9aa9052636f62b48b12c709fcacfa8c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 24dc114c95b351b4b908f789c5773aaf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

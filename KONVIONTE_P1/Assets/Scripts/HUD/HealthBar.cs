@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//ATTACHADO A LA BARRA DE VIDA DEL HUD
+//ATACHADO A LA BARRA DE VIDA DEL HUD
 public class HealthBar : MonoBehaviour
 {
     #region Parameters
