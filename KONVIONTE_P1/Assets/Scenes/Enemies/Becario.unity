@@ -345,11 +345,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &404598470 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1478886640082722724, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-  m_PrefabInstance: {fileID: 1156371797}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &523548434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -796,49 +791,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2000617728839658992, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: _stopTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839658992, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: _maxDistance
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839658992, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: _routineTime
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839658992, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: _floorDetector
-      value: 
-      objectReference: {fileID: 404598470}
-    - target: {fileID: 2000617728839658992, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: _detectionBoxSize.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839658992, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: _raycastWallDistance
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839658992, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: _raycastFloorDistance
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2000617728839659001, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
       propertyPath: m_Name
       value: Becario cabron
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839659002, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839659002, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: m_GravityScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000617728839659005, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: m_FlipY
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
       propertyPath: m_RootOrder
@@ -883,10 +838,6 @@ PrefabInstance:
     - target: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5924966916092090563, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.625
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64e4413dcd273004083709a18d30bff5, type: 3}

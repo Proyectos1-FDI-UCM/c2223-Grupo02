@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478886640082722724}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0.625, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46,8 +46,8 @@ GameObject:
   - component: {fileID: 2000617728839659007}
   - component: {fileID: 2000617728839659003}
   - component: {fileID: 2000617728839658993}
-  - component: {fileID: 2000617728839658992}
   - component: {fileID: 488020261}
+  - component: {fileID: 3598931985341586190}
   m_Layer: 6
   m_Name: Becario cabron
   m_TagString: Untagged
@@ -165,12 +165,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &2000617728839659007
 Animator:
   serializedVersion: 4
@@ -217,30 +217,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _atackTriggerOffset: 0.8
---- !u!114 &2000617728839658992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2000617728839659001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fe699aa57ce23e4cbc660fb3ece9bfa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _detectionBoxSize: {x: 7, y: 2.5, z: 0}
-  _detectionBoxOffset: {x: 0, y: 2, z: 0}
-  _attackBoxSize: {x: 1.75, y: 1.5, z: 0}
-  _attackBoxOffset: {x: 0, y: 1, z: 0}
-  _routineTime: 0.3
-  _stopTime: 2
-  _followTime: 0.3
-  _attackTime: 1
-  _raycastWallDistance: 0
-  _raycastFloorDistance: 0
-  _maxDistance: 0
-  _estadoActual: 0
 --- !u!114 &488020261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,6 +233,30 @@ MonoBehaviour:
   _maxMovementSpeed: 2
   _accelerationTime: 0
   _deccelerationTime: 0
+--- !u!114 &3598931985341586190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000617728839659001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2600250c1273f414eb8c2e216f38b3cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _routineTime: 3
+  _stopTime: 1
+  _raycastWallDistance: 2
+  _raycastFloorDistance: 2
+  _maxDistance: 0.5
+  _floorDetector: {fileID: 1478886640082722724}
+  _detectionBoxSize: {x: 5, y: 2.5, z: 0}
+  _detectionBoxOffset: {x: 0, y: 2, z: 0}
+  _escapeTime: 0.3
+  _attackBoxSize: {x: 1.5, y: 1.5, z: 0}
+  _attackBoxOffset: {x: 0, y: 1, z: 0}
+  _attackTime: 1
 --- !u!1 &2000617728884929398
 GameObject:
   m_ObjectHideFlags: 0

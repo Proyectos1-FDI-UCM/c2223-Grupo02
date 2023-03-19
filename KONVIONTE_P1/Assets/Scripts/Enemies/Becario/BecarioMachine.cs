@@ -65,13 +65,13 @@ public class BecarioMachine : StateMachine
 
         #region Parameters
 
+        [Header ("Estado de Patrulla")]
         [Tooltip("Tiempo de cada patrullaje")]
         [SerializeField] private float _routineTime;
 
         [Tooltip("Tiempo de parada entre cada patrullaje")]
         [SerializeField] private float _stopTime;
     
-        [Header("Otros")]
         [Tooltip("Distancia del rayo que detecta la colisión con las paredes")]
         [SerializeField] private float _raycastWallDistance;
 
@@ -95,7 +95,7 @@ public class BecarioMachine : StateMachine
         private RaycastHit2D _wallRaycastInfo;
         private RaycastHit2D _floorRaycastInfo;
 
-        #endregion
+    #endregion
 
 
     #endregion
@@ -104,6 +104,7 @@ public class BecarioMachine : StateMachine
 
         #region Parameters
 
+        [Header("Estado de Escape")]
         //Caja de detección del jugador
         [SerializeField] Vector3 _detectionBoxSize;
         [SerializeField] Vector3 _detectionBoxOffset;
@@ -117,7 +118,7 @@ public class BecarioMachine : StateMachine
 
         private float _currentEscapeTime;
 
-    #endregion
+        #endregion
 
     #endregion
 
@@ -125,6 +126,7 @@ public class BecarioMachine : StateMachine
 
         #region Parameters
 
+        [Header("Estado de Ataque")]
         //Caja de ataque del enemigo
         [SerializeField] Vector3 _attackBoxSize;
         [SerializeField] Vector3 _attackBoxOffset;
@@ -237,7 +239,6 @@ public class BecarioMachine : StateMachine
         becarioEscapeState = new BecarioEscapeState(_myTransform, _myMovementComponent, _playerTransform);
         becarioAttackState = new BecarioAttackState(_myTransform, _playerTransform, _myCombatController);
 
-
         //Inicialización de las condiciones de las transiciones
         _patrolToEscape = () => PatrolToEscape();
         _escapeToPatrol = () => EscapeToPatrol();
@@ -248,10 +249,7 @@ public class BecarioMachine : StateMachine
         _escapeToAttack = () => EscapeToAttack();
         _attackToEscape = () => AttackToEscape();
 
-
-
         //Inicialización de las transiciones
-
         InicializaTransicion(ByBPatrolState, becarioEscapeState, _patrolToEscape);
         InicializaTransicion(becarioEscapeState, ByBPatrolState, _escapeToPatrol);
 
