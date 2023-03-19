@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Timer _UITimer;
     [Tooltip("La barra de vida")]
     [SerializeField] private HealthBar _UIHealthBar;
+    [SerializeField]
+    private GameObject _pauseMenu;
 
     public Timer UITimer { get { return _UITimer; } }
 
@@ -35,6 +37,14 @@ public class UIManager : MonoBehaviour
     public void SetTime(float time)
     {
         _UITimer.SetTime(time);
+    }
+    /// <summary>
+    /// Activa o desactiva el menú de pausa en función de <paramref name="pause"/>
+    /// </summary>
+    /// <param name="pause"></param>
+    public void PauseMenu(bool pause)
+    {
+        _pauseMenu.SetActive(pause);
     }
     #endregion
 

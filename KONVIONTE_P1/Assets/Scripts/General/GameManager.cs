@@ -197,6 +197,19 @@ public class GameManager : MonoBehaviour
         {
             _playerDashComponent.CanDash(true);
         }
+        
+    }
+    public void PauseMenu(InputAction.CallbackContext context)
+    {
+        if (Time.timeScale > 0)
+        {
+            PauseGame();
+        }
+        else
+        {
+            ResumeGame();
+        }
+        _UIManager.PauseMenu(Time.timeScale == 0);
     }
     #endregion
     #region Rules methods
@@ -220,6 +233,22 @@ public class GameManager : MonoBehaviour
     private void SpawnPlayer()
     {
         _playerTransform.position = _spawnTransform.position;
+    }
+    public void PauseGame()
+    {
+        if (Time.timeScale > 0)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            ResumeGame();
+        }
+        
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
     }
 
     public void QuitGame()
