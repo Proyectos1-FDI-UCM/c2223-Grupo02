@@ -13,6 +13,8 @@ public class IAEnemy : MonoBehaviour
     private CombatController _myCombatController;
     private MovementComponent _myMovementComponent;
 
+    // Dash
+    private DashComponent _myDashComponent;
     #endregion
 
     #region Parameters

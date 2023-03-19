@@ -106,15 +106,22 @@ public class DashComponent : MonoBehaviour
     /// </summary>
     private void DashDirection()
     {
-        // Si hay gamepad leemos el joystick
-        if (_gamepad != null)
+        if (gameObject.GetComponent<ParryComponent>() != null)
         {
-            _dashDirection = _direction.X_Directions(_gamepad.rightStick.ReadValue(), 8);
+            // Si hay gamepad leemos el joystick
+            if (_gamepad != null)
+            {
+                _dashDirection = _direction.X_Directions(_gamepad.rightStick.ReadValue(), 8);
+            }
+            else // Si hay ratón cogemos su posición
+            {
+                _dashDirection = _direction.X_Directions(Camera.main.ScreenToWorldPoint(_mouse.position.ReadValue()) - _myTransform.position, 8);
+            }
         }
-        else // Si hay ratón cogemos su posición
+        else
         {
-            _dashDirection = _direction.X_Directions(Camera.main.ScreenToWorldPoint(_mouse.position.ReadValue()) - _myTransform.position, 8);
-        }
+            _dashDirection = GameManager.Instance.Player.transform.position - _myTransform.position;
+        }  
     }
 
     private void TryDash()
