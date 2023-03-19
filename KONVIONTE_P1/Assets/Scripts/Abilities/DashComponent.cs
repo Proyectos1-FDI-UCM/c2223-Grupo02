@@ -120,7 +120,7 @@ public class DashComponent : MonoBehaviour
         }
         else
         {
-            _dashDirection = new Vector2(1, 0);
+            _dashDirection = GameManager.Instance.Player.transform.position - _myTransform.position;
         }  
     }
 
