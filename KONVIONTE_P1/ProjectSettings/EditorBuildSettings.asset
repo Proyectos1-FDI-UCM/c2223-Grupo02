@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HUD/HUDlevelSelector.unity
     guid: 7bf618dafa14971408daa5acd3205c42
+  - enabled: 1
+    path: Assets/Scenes/Level 1/Lvl 1_1.unity
+    guid: 86e8552d476fb5d4e91571afbfe831e4
   m_configObjects: {}

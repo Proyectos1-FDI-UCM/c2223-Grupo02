@@ -201,15 +201,7 @@ public class GameManager : MonoBehaviour
     }
     public void PauseMenu(InputAction.CallbackContext context)
     {
-        if (Time.timeScale > 0)
-        {
-            PauseGame();
-        }
-        else
-        {
-            ResumeGame();
-        }
-        _UIManager.PauseMenu(Time.timeScale == 0);
+        PauseGame();
     }
     #endregion
     #region Rules methods
@@ -238,16 +230,19 @@ public class GameManager : MonoBehaviour
     {
         if (Time.timeScale > 0)
         {
+            InputOff();
             Time.timeScale = 0;
         }
         else
         {
             ResumeGame();
         }
-        
+        _UIManager.PauseMenu(Time.timeScale == 0);
+
     }
     public void ResumeGame()
     {
+        InputOn();
         Time.timeScale = 1;
     }
 
