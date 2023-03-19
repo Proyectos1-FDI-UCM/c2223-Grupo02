@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
     #endregion
     private void Awake()
     {
+        Time.timeScale = 1;
         Instance = this;
         _playerInputActions= new PlayerInputActions();
         _playerInputActions.Enable();

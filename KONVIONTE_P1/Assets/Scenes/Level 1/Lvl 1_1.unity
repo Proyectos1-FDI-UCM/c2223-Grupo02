@@ -123,6 +123,28 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &14628178 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1224969341, guid: 3bafe3acf271b514ebce447a3e3c731c, type: 3}
+  m_PrefabInstance: {fileID: 1516185421}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ccaa8b0f17349e42939492fd28a78e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &14628181 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6346709447776289746, guid: 3bafe3acf271b514ebce447a3e3c731c, type: 3}
+  m_PrefabInstance: {fileID: 1516185421}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d131ad3c8ec9f45a340c9cd749dcc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &154496701
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -226,6 +248,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 744644492, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 14628178}
+    - target: {fileID: 744644492, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 758790572, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 14628181}
+    - target: {fileID: 758790572, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PauseGame
+      objectReference: {fileID: 0}
     - target: {fileID: 8358887279768211996, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -344,6 +382,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+--- !u!114 &262990782 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1022847685, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+  m_PrefabInstance: {fileID: 262990781}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83b6f70244623c46a59e771b0875bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &467914127
 GameObject:
   m_ObjectHideFlags: 0
@@ -62024,6 +62073,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 4330029315348000303}
+    - target: {fileID: 6346709447776289746, guid: 3bafe3acf271b514ebce447a3e3c731c, type: 3}
+      propertyPath: _UIManager
+      value: 
+      objectReference: {fileID: 262990782}
     - target: {fileID: 6346709447776289746, guid: 3bafe3acf271b514ebce447a3e3c731c, type: 3}
       propertyPath: _followCamera
       value: 
