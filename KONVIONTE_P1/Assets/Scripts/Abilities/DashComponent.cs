@@ -8,10 +8,12 @@ using UnityEngine.Rendering;
 public class DashComponent : MonoBehaviour
 {
     #region References
+    private Transform _myTransform;
     private MovementComponent _movement;
     private DirectionComponent _direction;
     private Mouse _mouse;
     private Gamepad _gamepad;
+    private AtackComponent _attack;
     #endregion
     #region Parameters
     [SerializeField] private float _dashDistance;
@@ -19,7 +21,6 @@ public class DashComponent : MonoBehaviour
     #endregion
     #region Properties
     private float _dashSpeed;
-    private Transform _myTransform;
     private bool _putoDasheo;
     private float _time;
     private Vector3 _dashDirection;
@@ -138,6 +139,14 @@ public class DashComponent : MonoBehaviour
         {
             _dashDistance -= _rayDistance;
             PerformDash(_dashDistance);
+        }
+    }
+
+    private void DashDamage()
+    {
+        if (_impacted)
+        {
+
         }
     }
     #endregion
