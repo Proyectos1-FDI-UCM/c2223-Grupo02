@@ -37,13 +37,15 @@ public class BecarioAttackState : State
         if(_currentAttackTime < 0)
         {
             _currentAttackTime = _attackTime;
-            _myCombatController.Atack(_playerTransform.position - _myTransform.position);
-            Debug.Log("tuvieja atack");
+            //flipear para atacar
+            _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
+
+            _myCombatController.Atack(GameManager.Instance._directionComponent.X_Directions( _playerTransform.position - _myTransform.position,4));
         }
     }
     public void OnExit()
     {
-
+        _myCombatController.OnEndAttackAnimation();
     }
 
     //Constructor de la clase
@@ -52,8 +54,8 @@ public class BecarioAttackState : State
         _myTransform = myMachine.MyTransform;
         _playerTransform = myMachine.PlayerTransform;
         _myCombatController = myMachine.MyCombatController;
-        
-        _attackTime = myMachine.AttackTime;
-        
+        _myMovementComponent = myMachine.MyMovementComponent;
+
+        _attackTime = myMachine.AttackTime;        
     }
 }

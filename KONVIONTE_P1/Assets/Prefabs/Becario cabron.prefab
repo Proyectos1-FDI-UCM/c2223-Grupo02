@@ -247,10 +247,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _routineTime: 3
   _stopTime: 1
-  _raycastWallDistance: 2
+  _raycastWallDistance: 1
   _raycastFloorDistance: 2
   _maxDistance: 0.5
-  _floorDetector: {fileID: 1478886640082722724}
+  _floorDetector: {fileID: 5924966916092090563}
   _detectionBoxSize: {x: 5, y: 2.5, z: 0}
   _detectionBoxOffset: {x: 0, y: 2, z: 0}
   _escapeTime: 0.3

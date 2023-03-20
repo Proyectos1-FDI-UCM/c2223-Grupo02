@@ -180,44 +180,35 @@ public class BecarioMachine : StateMachine
     public bool PatrolToAttack()
     {
         //si el enemigo detecta al jugador en el área de ataque
-        return Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && becarioAttackState._currentAttackTime < 0;        
+        return Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);        
     }
 
     public bool AttackToPatrol()
     {
         //si el enemigo deja de detectar al jugador en el área de ataque
-        return !Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && _currentAttackTime < 0;
-       
+        return !Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);      
     }
 
     public bool EscapeToAttack()
     {
         //si el enemigo detectar al jugador en el área de ataque
-        return Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && _currentAttackTime < 0;        
+        return Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);        
     }
 
     public bool AttackToEscape()
     {
         //si el enemigo detectar al jugador en el área de ataque, pero sigue en el área de detección
-        return !Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && _currentAttackTime < 0 &&
-                Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask);
-        
+        return !Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) &&
+                Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask);       
     }
     #endregion
 
-    #endregion
-
-    private void Awake()
-    {
-        //_stateTransitions = new Dictionary<State, List<Transition>>();
-        //_currentTransitions = new List<Transition>();
-        //_anyStateTransitions = new List<Transition>();
-
-    }
+    #endregion   
 
     // Start is called before the first frame update
     void Start()
     {
+        //inicializacion de variables de la maquina de estados
         _playerLayerMask = LayerMask.GetMask("Player");
         _floorLayerMask = LayerMask.GetMask("Floor");
 
@@ -269,7 +260,7 @@ public class BecarioMachine : StateMachine
     void Update()
     {
         Tick();
-        //Caja de detección
+        //Caja de detección (PARA DEBUGS)
         Box.ShowBox(_detectionBoxSize, _detectionBoxOffset, _myTransform);
         Box.ShowBox(_attackBoxSize, _attackBoxOffset, _myTransform);
     }

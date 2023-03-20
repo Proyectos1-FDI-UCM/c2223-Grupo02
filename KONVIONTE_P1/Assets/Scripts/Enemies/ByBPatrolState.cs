@@ -100,8 +100,4 @@ public class ByBPatrolState : State
         _playerLayerMask = myMachine.PlayerLayerMask;
         _floorLayerMask = myMachine.FloorLayerMask;
     }
-
-
-
-
 }

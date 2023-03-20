@@ -30,9 +30,7 @@ public class BecarioEscapeState : State
         _currentEscapeTime = 0;
     }
     public void Tick()
-    {
-        
-
+    {        
         //Disminuir el tiempo de escape
         _currentEscapeTime -= Time.deltaTime;
 
