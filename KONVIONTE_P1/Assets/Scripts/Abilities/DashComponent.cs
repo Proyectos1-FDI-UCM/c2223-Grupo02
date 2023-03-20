@@ -140,14 +140,16 @@ public class DashComponent : MonoBehaviour
             _dashDistance -= _rayDistance;
             PerformDash(_dashDistance);
         }
+
+        if (gameObject.GetComponent<ParryComponent>() == null)
+        {
+            DashDamage();
+        }
     }
 
     private void DashDamage()
     {
-        if (_impacted)
-        {
-
-        }
+        _attack.TryAplyDamage();
     }
     #endregion
 }
