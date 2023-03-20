@@ -66,7 +66,7 @@ public class DashComponent : MonoBehaviour
     }
 
     /// <summary>
-    /// Realiza el cambio del transform para el dash
+    /// Ejecuta el cambio del transform para el dash y el timer
     /// </summary>
     private void PerformDash(float distance)
     {
@@ -84,7 +84,10 @@ public class DashComponent : MonoBehaviour
 
         Debug.Log("tuvieja");
     }
-
+   
+    /// <summary>
+    /// Cuenta el tiempo del dash y resetea todo
+    /// </summary>
     private void DashTimer()
     {
         // Cuando pase el tiempo del dash paras
@@ -125,12 +128,18 @@ public class DashComponent : MonoBehaviour
         }  
     }
 
+    /// <summary>
+    /// Ejecuta toda la logica del dash
+    /// </summary>
     private void TryDash()
     {
+        // Coge la direccion
         DashDirection();
 
+        // Comprueba que no se choca
         _rayDistance = Physics2D.Raycast(_myTransform.position, (Vector2)_dashDirection, _dashDistance, _floorMask).distance;
 
+        // Realiza el dash
         if(_rayDistance == 0)
         {
             PerformDash(_dashDistance);
@@ -141,12 +150,16 @@ public class DashComponent : MonoBehaviour
             PerformDash(_dashDistance);
         }
 
+        // Si eres el enmigo hace el daño de la estela
         if (gameObject.GetComponent<ParryComponent>() == null)
         {
             DashDamage();
         }
     }
 
+    /// <summary>
+    /// Llama al daño 
+    /// </summary>
     private void DashDamage()
     {
         _attack.TryAplyDamage();
