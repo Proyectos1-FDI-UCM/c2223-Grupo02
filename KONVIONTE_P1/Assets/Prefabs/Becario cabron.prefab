@@ -254,10 +254,8 @@ MonoBehaviour:
   _detectionBoxSize: {x: 5, y: 2.5, z: 0}
   _detectionBoxOffset: {x: 0, y: 2, z: 0}
   _escapeTime: 0.3
-  _stopEscapeTime: 1
-  _stopBoxSize: {x: 2, y: 1.5, z: 0}
-  _stopBoxOffset: {x: 0, y: 1, z: 0}
-  _attackBoxSize: {x: 1.25, y: 1.5, z: 0}
+  _stopEscapeTime: 0
+  _attackBoxSize: {x: 1.5, y: 1.5, z: 0}
   _attackBoxOffset: {x: 0, y: 1, z: 0}
   _attackTime: 1
 --- !u!1 &2000617728884929398
