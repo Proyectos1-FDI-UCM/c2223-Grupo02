@@ -19,7 +19,6 @@ public class MovementComponent : MonoBehaviour
 
     #region Parameters  
     [SerializeField] private float _maxMovementSpeed;   
-    
     [Header("Tiempos")]
     [SerializeField] private float _accelerationTime;
     [SerializeField] private float _deccelerationTime;
@@ -29,13 +28,14 @@ public class MovementComponent : MonoBehaviour
     #endregion
 
     public float Speed { get { return _speed; } }
-
+    public float MaxMovementSpeed { get { return _maxMovementSpeed; } }
     // Start is called before the first frame update
     void Start()
     {
         _myTransform = transform;  
         _myAnimator = GetComponent<Animator>();
         _epsilon = 0.0001f;
+
     }
  
     // Update is called once per frame
@@ -101,5 +101,9 @@ public class MovementComponent : MonoBehaviour
     {
         _directionVector = direction;
         _myAnimator.SetBool("IsMoving", _directionVector.magnitude != 0);
+    }
+    public void SetMaxSpeed(float speed)
+    {
+        _maxMovementSpeed = speed;
     }
 }

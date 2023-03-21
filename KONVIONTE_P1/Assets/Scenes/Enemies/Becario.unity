@@ -839,6 +839,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2000617728884929416, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3598931985341586190, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
       propertyPath: _stopEscapeTime
       value: 1

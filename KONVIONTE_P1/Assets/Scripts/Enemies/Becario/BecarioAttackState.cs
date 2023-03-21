@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,12 +24,15 @@ public class BecarioAttackState : State
     #region Properties
 
     public float _currentAttackTime { get; private set; }
+    private float _originalMaxSpeeed;
 
     #endregion
     public void OnEnter()
     {
         //settear el tiempo entre ataques
         _currentAttackTime = 0;
+        _originalMaxSpeeed = _myMovementComponent.MaxMovementSpeed;
+        _myMovementComponent.SetMaxSpeed(0);
     }
     public void Tick()
     {
@@ -45,6 +49,7 @@ public class BecarioAttackState : State
     }
     public void OnExit()
     {
+        _myMovementComponent.SetMaxSpeed(_originalMaxSpeeed);
         _myCombatController.OnEndAttackAnimation();
     }
 
