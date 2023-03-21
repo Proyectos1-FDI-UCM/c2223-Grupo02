@@ -248,6 +248,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 481824824, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 744644490, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_Name
+      value: ExitButton
+      objectReference: {fileID: 0}
     - target: {fileID: 744644492, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -256,6 +264,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ChangeScene
       objectReference: {fileID: 0}
+    - target: {fileID: 744644493, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 25a941364787f484da8dfa073a90ac9d, type: 2}
+    - target: {fileID: 744644493, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -784544419781145554, guid: 25a941364787f484da8dfa073a90ac9d, type: 2}
+    - target: {fileID: 744644493, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 758790570, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_Name
+      value: ResumeButton
+      objectReference: {fileID: 0}
     - target: {fileID: 758790572, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -263,6 +287,50 @@ PrefabInstance:
     - target: {fileID: 758790572, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PauseGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 758790573, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 25a941364787f484da8dfa073a90ac9d, type: 2}
+    - target: {fileID: 758790573, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -784544419781145554, guid: 25a941364787f484da8dfa073a90ac9d, type: 2}
+    - target: {fileID: 758790573, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 758790573, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 967495218, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 450.2129
+      objectReference: {fileID: 0}
+    - target: {fileID: 967495218, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.1064
+      objectReference: {fileID: 0}
+    - target: {fileID: 967495218, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -124
+      objectReference: {fileID: 0}
+    - target: {fileID: 967495219, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_margin.z
+      value: 0.00018306001
+      objectReference: {fileID: 0}
+    - target: {fileID: 967495219, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: c492c5d09a1a921419765357db2a26cc, type: 2}
+    - target: {fileID: 967495219, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -928076153807063838, guid: c492c5d09a1a921419765357db2a26cc, type: 2}
+    - target: {fileID: 967495219, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 1565306907, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
       propertyPath: m_MaxValue
