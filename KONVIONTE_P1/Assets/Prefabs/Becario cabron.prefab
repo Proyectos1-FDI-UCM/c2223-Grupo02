@@ -251,10 +251,12 @@ MonoBehaviour:
   _raycastFloorDistance: 2
   _maxDistance: 0.5
   _floorDetector: {fileID: 5924966916092090563}
-  _detectionBoxSize: {x: 5, y: 2.5, z: 0}
+  _detectionBoxSize: {x: 4, y: 2.5, z: 0}
   _detectionBoxOffset: {x: 0, y: 2, z: 0}
   _escapeTime: 0.3
   _stopEscapeTime: 0
+  _stopBoxSize: {x: 2, y: 0, z: 0}
+  _stopBoxOffset: {x: 0, y: 0, z: 0}
   _attackBoxSize: {x: 1.5, y: 1.5, z: 0}
   _attackBoxOffset: {x: 0, y: 1, z: 0}
   _attackTime: 1

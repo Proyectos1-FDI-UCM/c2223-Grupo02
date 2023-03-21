@@ -221,7 +221,7 @@ public class GameManager : MonoBehaviour
     #endregion
     public void ResetLevel()
     {
-        SceneManager.LoadScene("Build V1");
+        SceneManager.LoadScene("Lvl 1_1");
     }
     private void SpawnPlayer()
     {
