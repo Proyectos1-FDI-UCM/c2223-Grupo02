@@ -12,6 +12,7 @@ public class AtackComponent : MonoBehaviour
     #region References
     private Transform _myTransform;
     #endregion
+
     #region Parameters
     [SerializeField]
     private int _damage;
