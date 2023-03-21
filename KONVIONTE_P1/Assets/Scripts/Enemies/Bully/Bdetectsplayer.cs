@@ -26,6 +26,7 @@ public class Bdetectsplayer : State
 
     private bool _alert;
     private float _currentEscapeTime;
+    private float _distancePlayerEnemy;
     #endregion
 
     public void OnEnter()
@@ -34,48 +35,54 @@ public class Bdetectsplayer : State
     }
     public void Tick()
     {
-        //Rango del enemigo y detección del jugador
+        //Rango del enemigo y detección del jugador (cambiar la forma de detectar al jugador) (si es esta habría que usar physics 2d) (Hacer por la diferencia entre transforms)
         _alert = Physics.CheckSphere(_myTransform.position, _range, _playerMask);
 
-        //Más de media vida y _alert = true -> perseguir jugador
-        if ((_myLifeComponent.CurrentLife > (_myLifeComponent.MaxLife / 2)) && _alert)
-        {
-            //Si se gira raro poner (new Vector3(_playerTransform.position.x, _myTransform.position.y, _playerTransform.position.z))
-            _myTransform.LookAt(_playerTransform);
-            //Movimiento de persecución
-            _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
+        //Deteccta la distancia entre jugador y enemigo
+        //_distancePlayerEnemy = (_myTransform.position - _playerTransform.position).magnitude;
 
-            /* Tambien podría hacerse con:
-             * _myTransform.position = Vector3.MoveTowards(_myTransform.position, _playerTransform, _speed * Time.deltaTime);
-             */
-        }
-        
-
-        //Mitad/Cuarto de vida -> Espera mirando al jugador
-        if ((_myLifeComponent.MaxLife / 4) < _myLifeComponent.CurrentLife && _myLifeComponent.CurrentLife < (_myLifeComponent.MaxLife / 2) && _alert)
+        if (_alert)
         {
-            _myTransform.LookAt(_playerTransform);
-        }
-  
-        //Menos de cuarto de vida huir
-        if ((_myLifeComponent.CurrentLife < _myLifeComponent.MaxLife / 4) && _alert)
-        {
-            //Disminuir el tiempo de escape
-            _currentEscapeTime -= Time.deltaTime;
-
-            if (_currentEscapeTime < 0)
+            //Más de media vida -> perseguir jugador
+            if (_myLifeComponent.CurrentLife > (_myLifeComponent.MaxLife / 2))
             {
-                //Seteo del time
-                _currentEscapeTime = _speed;
+                //Si se gira raro poner (new Vector3(_playerTransform.position.x, _myTransform.position.y, _playerTransform.position.z))
+                //_myTransform.LookAt(_playerTransform);
+                //Movimiento de persecución
+                _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
 
-                //¿Aumenta la velocidad en la huída?
+                /* Tambien podría hacerse con:
+                 * _myTransform.position = Vector3.MoveTowards(_myTransform.position, _playerTransform, _speed * Time.deltaTime);
+                 */
+            }
+
+            //Mitad/Cuarto de vida -> Espera mirando al jugador
+            else if ((_myLifeComponent.MaxLife / 4) < _myLifeComponent.CurrentLife && _myLifeComponent.CurrentLife < (_myLifeComponent.MaxLife / 2))
+            {
+                _myTransform.LookAt(_playerTransform);
+            }
+
+            //Menos de cuarto de vida huir
+            else
+            {
+                //Disminuir el tiempo de escape
+                _currentEscapeTime -= Time.deltaTime;
+
+                if (_currentEscapeTime < 0)
+                {
+                    //Seteo del time
+                    _currentEscapeTime = _speed;
+
+                    //¿Aumenta la velocidad en la huída?
 
 
-                //Seteo de la dirección de movimiento
-                //DUDA. ¿QUÉ SIGNIFICA EL 2 DEL FINAL?
-                _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_myTransform.position - _playerTransform.position, 2));
+                    //Seteo de la dirección de movimiento
+                    //DUDA. ¿QUÉ SIGNIFICA EL 2 DEL FINAL?
+                    _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_myTransform.position - _playerTransform.position, 2));
+                }
             }
         }
+        
 
     }
     public void OnExit()
