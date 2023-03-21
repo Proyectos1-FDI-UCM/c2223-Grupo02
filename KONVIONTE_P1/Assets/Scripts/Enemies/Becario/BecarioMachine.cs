@@ -39,6 +39,7 @@ public class BecarioMachine : StateMachine
 
     private ByBPatrolState ByBPatrolState;
     private BecarioEscapeState becarioEscapeState;
+    private BecarioStopState becarioStopState;
     private BecarioAttackState becarioAttackState;
 
     #endregion
@@ -64,8 +65,11 @@ public class BecarioMachine : StateMachine
     private Func<bool> _patrolToAttack;
     private Func<bool> _attackToPatrol;
 
-    private Func<bool> _escapeToAttack;
-    private Func<bool> _attackToEscape;    
+    private Func<bool> _escapeToStop;
+    private Func<bool> _stopToEscape;
+
+    private Func<bool> _stopToAttack;
+    private Func<bool> _attackToStop;    
 
     #endregion
 
@@ -139,15 +143,26 @@ public class BecarioMachine : StateMachine
 
     private float _currentEscapeTime;
     private float _currentStopEscapeTime;
-        #endregion
+    #endregion
 
+    #endregion
+
+    #region StopState
+    #region Parameters
+    [Header("Estado parado")]
+    //Caja de ataque del enemigo
+    [SerializeField] Vector3 _stopBoxSize;
+    public Vector3 StopBoxSize { get { return _stopBoxSize; } }
+    [SerializeField] Vector3 _stopBoxOffset;
+    public Vector3 StopBoxOffset { get { return _stopBoxOffset; } }
+    #endregion
     #endregion
 
     #region AttackState
 
-        #region Parameters
+    #region Parameters
 
-        [Header("Estado de Ataque")]
+    [Header("Estado de Ataque")]
         //Caja de ataque del enemigo
         [SerializeField] Vector3 _attackBoxSize;
         public Vector3 AttackBoxSize { get { return _attackBoxSize; } }
@@ -195,18 +210,24 @@ public class BecarioMachine : StateMachine
         //si el enemigo deja de detectar al jugador en el área de ataque
         return !Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);      
     }
-
-    public bool EscapeToAttack()
+    public bool EscapeToStop()
+    {
+        return Box.DetectSomethingBox(_stopBoxSize, _stopBoxOffset, _myTransform, _playerLayerMask);
+    }
+    public bool StopToEscape()
+    {
+        return !Box.DetectSomethingBox(_stopBoxSize, _stopBoxOffset, _myTransform, _playerLayerMask);
+    }
+    public bool StopToAttack()
     {
         //si el enemigo detectar al jugador en el área de ataque
         return Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);        
     }
 
-    public bool AttackToEscape()
+    public bool AttackToStop()
     {
         //si el enemigo detectar al jugador en el área de ataque, pero sigue en el área de detección
-        return !Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) &&
-                Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask);       
+        return !Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);     
     }
     #endregion
 
@@ -229,12 +250,15 @@ public class BecarioMachine : StateMachine
         //Inicialización de los estados (constructora)
         ByBPatrolState = new ByBPatrolState(this);
         becarioEscapeState = new BecarioEscapeState(this);
+        becarioStopState = new BecarioStopState(this);
         becarioAttackState = new BecarioAttackState(this);
+        
 
 
         //añadir los estados al diccionario
         _stateTransitions.Add(ByBPatrolState, new List<Transition>());
         _stateTransitions.Add(becarioAttackState, new List<Transition>());
+        _stateTransitions.Add(becarioStopState, new List<Transition>());
         _stateTransitions.Add(becarioEscapeState, new List<Transition>());
 
         //Inicialización de las condiciones de las transiciones
@@ -244,8 +268,11 @@ public class BecarioMachine : StateMachine
         _patrolToAttack = () => PatrolToAttack();
         _attackToPatrol = () => AttackToPatrol();
 
-        _escapeToAttack = () => EscapeToAttack();
-        _attackToEscape = () => AttackToEscape();
+        _escapeToStop = () => EscapeToStop();
+        _stopToEscape = () => StopToEscape();
+
+        _stopToAttack = () => StopToAttack();
+        _attackToStop = () => AttackToStop();
 
         //Inicialización de las transiciones
         InicializaTransicion(ByBPatrolState, becarioEscapeState, _patrolToEscape);
@@ -254,8 +281,11 @@ public class BecarioMachine : StateMachine
         InicializaTransicion(ByBPatrolState, becarioAttackState, _patrolToAttack);
         InicializaTransicion(becarioAttackState, ByBPatrolState, _attackToPatrol);
 
-        InicializaTransicion(becarioEscapeState, becarioAttackState, _escapeToAttack);
-        InicializaTransicion(becarioAttackState, becarioEscapeState, _attackToEscape);
+        InicializaTransicion(becarioEscapeState, becarioStopState, _escapeToStop);
+        InicializaTransicion(becarioStopState, becarioEscapeState, _stopToEscape);
+
+        InicializaTransicion(becarioStopState, becarioAttackState, _stopToAttack);
+        InicializaTransicion(becarioAttackState, becarioStopState, _attackToStop);
 
         //establecer el estado inicial
         _currentState = ByBPatrolState;

@@ -43,7 +43,7 @@ public class BecarioAttackState : State
         {
             _currentAttackTime = _attackTime;
             //flipear para atacar
-            _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
+            //_myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
             
             _myCombatController.Atack(GameManager.Instance._directionComponent.X_Directions( _playerTransform.position - _myTransform.position,4));
         }
