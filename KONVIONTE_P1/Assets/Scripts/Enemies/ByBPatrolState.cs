@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class ByBPatrolState : State
@@ -8,7 +9,7 @@ public class ByBPatrolState : State
 
     private Transform _myTransform;
     private MovementComponent _myMovementComponent;
-    
+    private Animator _myAnimator;
     private Transform _floorDetector;
     #endregion
 
@@ -48,7 +49,7 @@ public class ByBPatrolState : State
         {
             //calculamos aleatoriamente la siguiente dirección
             _movementDirection = Vector3.right * Random.Range(-1, 2);//devuelve un aleatorio -1,0,1 
-
+            _myAnimator.SetBool("IsStoped", _movementDirection.magnitude == 0);
             //si es una parada, asignamos el tiempo de parada, sino, asignamos el tiempo de movimiento                                             
             _currentPatrollTime = _movementDirection == Vector3.zero ? _stopTime : _routineTime;
 
@@ -91,7 +92,7 @@ public class ByBPatrolState : State
         _stopTime = myMachine.StopTime;
         _raycastWallDistance = myMachine.RraycastWallDistance;
         _raycastFloorDistance = myMachine.RraycastFloorDistance;
-
+        _myAnimator = myMachine.MyAnimator;
         _currentPatrollTime = 0;
 
         _floorLayerMask = myMachine.FloorLayerMask;

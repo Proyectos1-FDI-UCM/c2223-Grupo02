@@ -30,6 +30,8 @@ public class BecarioMachine : StateMachine
     //Esta es sobre todo del ataque, pero...
     private CombatController _myCombatController;
     public CombatController MyCombatController { get { return _myCombatController; } }
+    private Animator _myAnimator;
+    public Animator MyAnimator { get { return _myAnimator; } }
 
     #endregion
 
@@ -222,6 +224,7 @@ public class BecarioMachine : StateMachine
         _myMovementComponent = GetComponent<MovementComponent>();
         _playerTransform = GameManager.Instance.Player.transform;
         _myCombatController = GetComponent<CombatController>();
+        _myAnimator = GetComponent<Animator>();
 
         //Inicialización de los estados (constructora)
         ByBPatrolState = new ByBPatrolState(this);

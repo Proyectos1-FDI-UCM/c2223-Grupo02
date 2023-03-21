@@ -12,7 +12,7 @@ public class BecarioAttackState : State
     private Transform _myTransform;
     private MovementComponent _myMovementComponent;
     private CombatController _myCombatController;
-
+    private Animator _myAnimator;
     #endregion
 
     #region Parameters
@@ -32,6 +32,7 @@ public class BecarioAttackState : State
         //settear el tiempo entre ataques
         _currentAttackTime = 0;
         _originalMaxSpeeed = _myMovementComponent.MaxMovementSpeed;
+        _myAnimator.SetBool("AttackState",true);
         _myMovementComponent.SetMaxSpeed(0);
     }
     public void Tick()
@@ -43,13 +44,14 @@ public class BecarioAttackState : State
             _currentAttackTime = _attackTime;
             //flipear para atacar
             _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
-
+            
             _myCombatController.Atack(GameManager.Instance._directionComponent.X_Directions( _playerTransform.position - _myTransform.position,4));
         }
     }
     public void OnExit()
     {
         _myMovementComponent.SetMaxSpeed(_originalMaxSpeeed);
+        _myAnimator.SetBool("AttackState", false);
         _myCombatController.OnEndAttackAnimation();
     }
 
@@ -60,7 +62,7 @@ public class BecarioAttackState : State
         _playerTransform = myMachine.PlayerTransform;
         _myCombatController = myMachine.MyCombatController;
         _myMovementComponent = myMachine.MyMovementComponent;
-
+        _myAnimator = myMachine.MyAnimator;
         _attackTime = myMachine.AttackTime;        
     }
 }

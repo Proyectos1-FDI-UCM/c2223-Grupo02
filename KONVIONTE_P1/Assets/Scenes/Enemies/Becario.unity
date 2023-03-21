@@ -847,6 +847,10 @@ PrefabInstance:
       propertyPath: _stopEscapeTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3598931985341586190, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
+      propertyPath: _attackBoxSize.x
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
 --- !u!1001 &1232607861
