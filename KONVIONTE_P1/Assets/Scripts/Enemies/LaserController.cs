@@ -18,10 +18,10 @@ public class LaserController : MonoBehaviour
     void Start()
     {
         _myAtackComponent = GetComponent<AtackComponent>();
-    }    
-    private void FixedUpdate()
+    }      
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        _myAtackComponent.TryAplyDamage();
+        if (collision.GetComponent<ParryComponent>() != null) _myAtackComponent.LaserDamage();     
     }
     #endregion
 }
