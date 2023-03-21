@@ -22,14 +22,12 @@ public class ByBPatrolState : State
 
     private float _raycastFloorDistance;
 
-    private float _maxDistance;//???
     
     #endregion
 
     #region Properties
 
     private float _currentPatrollTime;
-    private LayerMask _playerLayerMask;//???
     private LayerMask _floorLayerMask;
     private Vector3 _movementDirection;
     private RaycastHit2D _wallRaycastInfo;
@@ -93,11 +91,9 @@ public class ByBPatrolState : State
         _stopTime = myMachine.StopTime;
         _raycastWallDistance = myMachine.RraycastWallDistance;
         _raycastFloorDistance = myMachine.RraycastFloorDistance;
-        _maxDistance = myMachine.MaxDistance;
 
         _currentPatrollTime = 0;
 
-        _playerLayerMask = myMachine.PlayerLayerMask;
         _floorLayerMask = myMachine.FloorLayerMask;
     }
 }

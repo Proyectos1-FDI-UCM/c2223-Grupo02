@@ -16,18 +16,21 @@ public class BecarioEscapeState : State
     #region Parameters
   
     private float _escapeTime;
+    private float _stopEscapeTime;
 
     #endregion
 
     #region Properties
 
     private float _currentEscapeTime;
+    private float _currentStopTime;
 
     #endregion
 
     public void OnEnter()
     {
         _currentEscapeTime = 0;
+        _currentStopTime = _stopEscapeTime;
     }
     public void Tick()
     {        
@@ -39,12 +42,18 @@ public class BecarioEscapeState : State
             //Seteo del time
             _currentEscapeTime = _escapeTime;
 
-            //¿Aumenta la velocidad en la huída?
+            //Seteo de la dirección de movimiento y un aumento de la velocidad (2*direction)
+            _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(2*(_myTransform.position - _playerTransform.position), 2));
+            
+            //Disminuimos el tiempo hasta la próxima parada
+            _currentEscapeTime -= Time.deltaTime;
 
-
-            //Seteo de la dirección de movimiento
-            //DUDA. ¿QUÉ SIGNIFICA EL 2 DEL FINAL?
-            _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_myTransform.position - _playerTransform.position, 2));
+            if (_currentStopTime < 0)
+            {
+                _currentStopTime = _stopEscapeTime;
+                //No se moverá durante ese tiempo
+                _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(0 * (_myTransform.position - _playerTransform.position), 2));
+            }
         }
 
     }
@@ -63,6 +72,7 @@ public class BecarioEscapeState : State
         _escapeTime = myMachine.EscapeTime;
 
         _currentEscapeTime = 0;
+        _currentStopTime = _stopEscapeTime;
     }
 
 }

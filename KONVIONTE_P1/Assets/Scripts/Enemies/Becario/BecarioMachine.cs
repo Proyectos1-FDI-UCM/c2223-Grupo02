@@ -24,6 +24,7 @@ public class BecarioMachine : StateMachine
 
     private MovementComponent _myMovementComponent;
     public MovementComponent MyMovementComponent { get { return _myMovementComponent; } }
+
     private Transform _playerTransform;
     public Transform PlayerTransform { get { return _playerTransform; } }
     //Esta es sobre todo del ataque, pero...
@@ -126,12 +127,16 @@ public class BecarioMachine : StateMachine
         [SerializeField] private float _escapeTime;
         public float EscapeTime { get { return _escapeTime; } }
 
+        [Tooltip("Tiempo de parada entre cada patrullaje")]
+        [SerializeField] private float _stopEscapeTime;
+        public float StopEscapeTime { get { return _stopEscapeTime; } }
+
         #endregion
 
-        #region Properties
+    #region Properties
 
-        private float _currentEscapeTime;
-
+    private float _currentEscapeTime;
+    private float _currentStopEscapeTime;
         #endregion
 
     #endregion
