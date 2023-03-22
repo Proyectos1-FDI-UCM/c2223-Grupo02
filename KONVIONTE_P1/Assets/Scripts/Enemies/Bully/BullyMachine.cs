@@ -103,7 +103,7 @@ public class BullyMachine : StateMachine
     private Func<bool> _waitToAttack; //9
     private Func<bool> _attackToWait; //10
 
-    private Func<bool> _EscapeToAttack; //11
+    private Func<bool> _escapeToAttack; //11
     private Func<bool> _attackToEscape; //12
 
     //Transiciones por vida
@@ -380,7 +380,7 @@ public class BullyMachine : StateMachine
         //Inicialización de las referencias de las máquinas de estado
         _myTransform = transform;
         _myMovementComponent = GetComponent<MovementComponent>();
-        _playerTransform = GameManager.Instance.Player.transform;
+        _playerTransform = GameManager.Player.transform;
         _myLifeComponent = GetComponent<LifeComponent>();
         _myCombatController = GetComponent<CombatController>();
         _myAnimator = GetComponent<Animator>();
@@ -402,27 +402,56 @@ public class BullyMachine : StateMachine
 
         ////Inicialización de las condiciones de las transiciones
 
-        //_patrolToEscape = () => PatrolToEscape();
-        //_escapeToPatrol = () => EscapeToPatrol();
+        _patrolToPersecution = () => PatrolToPersecution();
+        _persecutionToPatrol = () => PersecutionToPatrol();
 
-        //_patrolToAttack = () => PatrolToAttack();
-        //_attackToPatrol = () => AttackToPatrol();
+        _patrolToWait = () => PatrolToWait();
+        _waitToPatrol = () => WaitToPatrol();
 
-        //_escapeToAttack = () => EscapeToAttack();
-        //_attackToEscape = () => AttackToEscape();
+        _patrolToEscape = () => PatrolToEscape();
+        _escapeToPatrol = () => EscapeToPatrol();
 
+        _persecutionToAttack = () => PersecutionToAttack();
+        _attackToPersecution = () => AttackToPersecution();
 
+        _waitToAttack = () => WaitToAttack();
+        _attackToWait = () => AttackToWait();
+
+        _escapeToAttack = () => EscapeToAttack();
+        _attackToEscape = () => AttackToEscape();
+
+        _persecutionToWait = () => PersecutionToWait();
+        _waitToEscape = () => WaitToEscape();
 
         //Inicialización de las transiciones
 
-        //InicializaTransicion(ByBPatrolState, becarioEscapeState, _patrolToEscape);
-        //InicializaTransicion(becarioEscapeState, ByBPatrolState, _escapeToPatrol);
+        InicializaTransicion(ByBPatrolState, bullyPersecutionState, _patrolToPersecution);
+        InicializaTransicion(bullyPersecutionState, ByBPatrolState, _persecutionToPatrol);
 
-        //InicializaTransicion(ByBPatrolState, becarioAttackState, _patrolToAttack);
-        //InicializaTransicion(becarioAttackState, ByBPatrolState, _attackToPatrol);
+        InicializaTransicion(ByBPatrolState, bullyWaitState, _patrolToWait);
+        InicializaTransicion(bullyWaitState, ByBPatrolState, _waitToPatrol);
 
-        //InicializaTransicion(becarioEscapeState, becarioAttackState, _escapeToAttack);
-        //InicializaTransicion(becarioAttackState, becarioEscapeState, _attackToEscape);
+        InicializaTransicion(ByBPatrolState, bullyEscapeState, _patrolToEscape);
+        InicializaTransicion(bullyEscapeState, ByBPatrolState, _escapeToPatrol);
+
+        InicializaTransicion(bullyPersecutionState, bullyAttack, _persecutionToAttack);
+        InicializaTransicion(bullyAttack, bullyPersecutionState, _attackToPersecution);
+
+        InicializaTransicion(bullyWaitState, bullyAttack, _waitToAttack);
+        InicializaTransicion(bullyAttack, bullyWaitState, _attackToWait);
+
+        InicializaTransicion(bullyEscapeState, bullyAttack, _escapeToAttack);
+        InicializaTransicion(bullyAttack, bullyEscapeState, _attackToEscape);
+
+        InicializaTransicion(bullyPersecutionState, bullyWaitState, _persecutionToWait);
+        InicializaTransicion(bullyWaitState, bullyEscapeState, _waitToEscape);
+
+        //Establecemos estado incial
+        _currentState = ByBPatrolState;
+
+        //Establecemos transiciones iniciales
+        _currentTransitions = _stateTransitions[_currentState];
+
     }
 
     // Update is called once per frame
