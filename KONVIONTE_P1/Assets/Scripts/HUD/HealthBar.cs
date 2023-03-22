@@ -18,7 +18,7 @@ public class HealthBar : MonoBehaviour
     #endregion
     private void Start()
     {
-        _playerLifeComponent = GameManager.Instance.Player.GetComponent<LifeComponent>();
+        _playerLifeComponent = GameManager.Player.GetComponent<LifeComponent>();
         //Setteo de la vida máxima del jugador
         _slider.maxValue = _playerLifeComponent.MaxLife;
     }

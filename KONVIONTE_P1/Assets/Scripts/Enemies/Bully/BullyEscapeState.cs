@@ -44,7 +44,7 @@ public class BullyEscapeState : State
 
                //Seteo de la dirección de movimiento
                //DUDA. ¿QUÉ SIGNIFICA EL 2 DEL FINAL?
-               _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_myTransform.position - _playerTransform.position, 2));
+               _myMovementComponent.SetDirection(GameManager.DirectionComponent.X_Directions(_myTransform.position - _playerTransform.position, 2));
             }
             
     }

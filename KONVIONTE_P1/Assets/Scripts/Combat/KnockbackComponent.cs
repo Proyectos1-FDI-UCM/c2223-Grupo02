@@ -9,6 +9,7 @@ public class KnockbackComponent : MonoBehaviour
 
     private Transform _myTransform;
     private Animator _myAnimator;
+    private DirectionComponent _direction;
     #endregion
 
     #region Parameters     
@@ -51,7 +52,7 @@ public class KnockbackComponent : MonoBehaviour
         //el knockback force multiplica el vector entero
 
         _distance = Physics2D.Raycast(_myTransform.position,
-                                      new Vector3(-GameManager.Instance._directionComponent.X_Directions(new Vector2(xDirection, 0), 2).x, _backHeigth).normalized
+                                      new Vector3(-_direction.X_Directions(new Vector2(xDirection, 0), 2).x, _backHeigth).normalized
                                       ,_knockbackForce,_floorLayerMask
                                       ).distance;
 
@@ -59,12 +60,12 @@ public class KnockbackComponent : MonoBehaviour
         //no choca con nada
         if (_distance == 0)
         {
-            _myTransform.position -= new Vector3(GameManager.Instance._directionComponent.X_Directions( new Vector2(xDirection,0),2).x,
+            _myTransform.position -= new Vector3(_direction.X_Directions( new Vector2(xDirection,0),2).x,
             -_backHeigth).normalized * _knockbackForce;      
         }
         else
         {          
-            _myTransform.position -= new Vector3(GameManager.Instance._directionComponent.X_Directions(new Vector2(xDirection, 0), 2).x,
+            _myTransform.position -= new Vector3(_direction.X_Directions(new Vector2(xDirection, 0), 2).x,
             -_backHeigth).normalized * (_distance -_marginTpKnockBack);
         }
         
@@ -82,6 +83,7 @@ public class KnockbackComponent : MonoBehaviour
         _myTransform = transform;
         _myAnimator = GetComponent<Animator>();
         _floorLayerMask = LayerMask.GetMask("Floor");
+        _direction = GameManager.DirectionComponent;
     }
     //El método end knockback se llama desde un script especial de las animaciones
 }

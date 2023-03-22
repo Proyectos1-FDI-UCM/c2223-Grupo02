@@ -7,6 +7,7 @@ using UnityEngine;
 //NOTA: Collision es con 2 L
 public class ParryComponent : MonoBehaviour
 {
+
     #region Parameters
 
     //Daños con y sin smite
@@ -77,6 +78,7 @@ public class ParryComponent : MonoBehaviour
         get { return _parried; }
     }
     #endregion
+  
 
     // Start is called before the first frame update
     void Start()

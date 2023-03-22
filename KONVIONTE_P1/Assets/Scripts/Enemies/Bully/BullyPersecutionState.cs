@@ -47,7 +47,7 @@ public class BullyPersecutionState : State
                 //Si se gira raro poner (new Vector3(_playerTransform.position.x, _myTransform.position.y, _playerTransform.position.z))
                 //_myTransform.LookAt(_playerTransform);
                 //Movimiento de persecución
-                _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
+                _myMovementComponent.SetDirection(GameManager.DirectionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
 
                 /* Tambien podría hacerse con:
                  * _myTransform.position = Vector3.MoveTowards(_myTransform.position, _playerTransform, _speed * Time.deltaTime);

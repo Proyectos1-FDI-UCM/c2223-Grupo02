@@ -22,7 +22,7 @@ public class TutorialManager : MonoBehaviour
     {
         _gameManager = GameManager.Instance;
 
-        _player = GameManager.Instance.Player;
+        _player = GameManager.Player;
 
         _player.GetComponent<CombatController>().enabled = false;
         _player.GetComponent<JumpComponent>().enabled = false;

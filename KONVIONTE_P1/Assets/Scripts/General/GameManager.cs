@@ -9,9 +9,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     #region References
-
     [SerializeField]
-    private GameObject _player;
+    private GameObject player;
+
+    static private GameObject _player;
 
     #region Componentes del player
     public ParryComponent _playerParryComponent { get; private set; }
@@ -53,19 +54,15 @@ public class GameManager : MonoBehaviour
     #endregion
 
     [HideInInspector]
-    public DirectionComponent _directionComponent;
+    static private DirectionComponent _directionComponent;
     #region Accesors
     /// <summary>
     /// Referencia a la instancia del GameManager
     /// </summary>
-    static public GameManager Instance
-    {
-        get;private set;
-    }
-    public GameObject Player
-    {
-        get { return _player; }
-    }
+    static public GameManager Instance { get; private set; }
+    static public GameObject Player { get { return _player; } }
+    static public DirectionComponent DirectionComponent { get { return _directionComponent; } }
+
     #endregion
     #region Parameters
     [SerializeField]
@@ -85,7 +82,9 @@ public class GameManager : MonoBehaviour
         
         //Inicializacion de la instancia
         Instance = this;
-        
+
+        _player = player;
+
         //Inicializacion del input
         _playerInputActions= new PlayerInputActions();
         _playerInputActions.Enable();

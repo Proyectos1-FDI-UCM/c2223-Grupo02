@@ -92,7 +92,7 @@ public class AtackComponent : MonoBehaviour
             //daño y knockback
             _collisionLifeComponent.ReciveDamage(_damage);
 
-            float aux = GameManager.Instance.Player.GetComponent<MovementComponent>()._lastDirection.x;
+            float aux = GameManager.Player.GetComponent<MovementComponent>()._lastDirection.x;
             _collisionLifeComponent.GetComponent<KnockbackComponent>().Pushed(aux);
 
 

@@ -35,7 +35,7 @@ public class DashComponent : MonoBehaviour
         _gamepad = Gamepad.current;
         _myTransform = transform;
         _movement = GetComponent<MovementComponent>();
-        _direction = GameManager.Instance._directionComponent;
+        _direction = GameManager.DirectionComponent;
         _floorMask = LayerMask.GetMask("Floor");
         _maxDashDistance = _dashDistance;
     }
@@ -130,7 +130,7 @@ public class DashComponent : MonoBehaviour
         }
         else
         {
-            _dashDirection = GameManager.Instance.Player.transform.position - _myTransform.position;
+            _dashDirection = GameManager.Player.transform.position - _myTransform.position;
         }  
     }
 

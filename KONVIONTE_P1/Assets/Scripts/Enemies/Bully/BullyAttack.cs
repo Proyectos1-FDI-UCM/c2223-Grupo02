@@ -63,10 +63,10 @@ public class BullyAttack : State
                 _myAttackComponent.SetDamage(_strongAttack);
 
                 //Que mire al jugador para atacar (¿Al final esto sobra?)
-                _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
+                _myMovementComponent.SetDirection(GameManager.DirectionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
 
                 //Ataca
-                _myCombatController.Atack(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 4));
+                _myCombatController.Atack(GameManager.DirectionComponent.X_Directions(_playerTransform.position - _myTransform.position, 4));
             }
             //Ataque área
             else
@@ -75,16 +75,16 @@ public class BullyAttack : State
                 _myAttackComponent.SetDamage(_softAttack);
 
                 //Que mire al jugador para atacar (¿Al final esto sobra?)
-                _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
+                _myMovementComponent.SetDirection(GameManager.DirectionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
 
                 //Ataca
-                _myCombatController.Atack(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 4));
+                _myCombatController.Atack(GameManager.DirectionComponent.X_Directions(_playerTransform.position - _myTransform.position, 4));
 
                 //Hacemos que mire al lado contrario
-                _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
+                _myMovementComponent.SetDirection(GameManager.DirectionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
 
                 //Volvemos a atacar
-                _myCombatController.Atack(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 4));
+                _myCombatController.Atack(GameManager.DirectionComponent.X_Directions(_playerTransform.position - _myTransform.position, 4));
             }
         }
         
