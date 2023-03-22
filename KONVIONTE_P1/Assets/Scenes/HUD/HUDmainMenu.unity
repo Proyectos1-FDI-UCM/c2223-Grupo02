@@ -339,6 +339,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Exit Button
       objectReference: {fileID: 0}
+    - target: {fileID: 265566381, guid: 39ea826680f64a74fa4d3be09a5e505c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 916847462}
+    - target: {fileID: 265566381, guid: 39ea826680f64a74fa4d3be09a5e505c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Quit
+      objectReference: {fileID: 0}
     - target: {fileID: 6064504542581038552, guid: 39ea826680f64a74fa4d3be09a5e505c, type: 3}
       propertyPath: m_fontColor.b
       value: 0.58431375
