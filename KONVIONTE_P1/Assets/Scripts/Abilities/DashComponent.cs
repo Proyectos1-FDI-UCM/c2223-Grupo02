@@ -22,7 +22,7 @@ public class DashComponent : MonoBehaviour
     private float _dashSpeed;
     private bool _putoDasheo;
     private float _time;
-    [SerializeField] private Vector3 _dashDirection;
+    private Vector3 _dashDirection;
     private float _rayDistance;
     private LayerMask _floorMask;
     private float _maxDashDistance;
