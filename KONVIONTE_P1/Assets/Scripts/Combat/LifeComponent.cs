@@ -47,6 +47,10 @@ public class LifeComponent : MonoBehaviour
     /// <param name="damage"></param>
     public void ReciveDamage(int damage)
     {
+        if (GetComponent<ParryComponent>() != null)
+        {
+            GameManager.Instance.AudioManager.Play("PlayerHit");
+        }
         //Si moñeco no inmortal, recibe daño
         if (!_immortal)
         {

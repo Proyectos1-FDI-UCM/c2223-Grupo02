@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     private LifeComponent _playerLifeComponent;
     [SerializeField] private UIManager _UIManager;
+    [SerializeField] private AudioManager _audioManager;
 
 
     #region Accesors
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
     {
         get { return _player; }
     }
+    public AudioManager AudioManager { get { return _audioManager; } }
     #endregion
     #region Parameters
     [SerializeField]
@@ -143,6 +145,7 @@ public class GameManager : MonoBehaviour
         if (callbackContext.performed && _playerTeleportParry._telepotDone)
         {
             _playerCombatController.Atack(_playerInputActions.Player.VerticalAtack.ReadValue<Vector2>());
+            _audioManager.Play("Attack");
         }
     }
     /// <summary>
