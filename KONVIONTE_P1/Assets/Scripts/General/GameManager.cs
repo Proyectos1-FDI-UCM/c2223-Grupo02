@@ -196,7 +196,7 @@ public class GameManager : MonoBehaviour
     {
         if (context.performed)
         {
-            _playerDashComponent.CanDash(true);
+            _playerDashComponent.Dashing(true);
         }
         
     }

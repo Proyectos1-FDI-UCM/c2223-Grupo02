@@ -22,7 +22,7 @@ public class DashComponent : MonoBehaviour
     private float _dashSpeed;
     private bool _putoDasheo;
     private float _time;
-    private Vector3 _dashDirection;
+    [SerializeField] private Vector3 _dashDirection;
     private float _rayDistance;
     private LayerMask _floorMask;
     private float _maxDashDistance;
@@ -47,7 +47,13 @@ public class DashComponent : MonoBehaviour
         if (_putoDasheo)
         {
             // Dash
-            TryDash();
+            PerformDash(_dashDistance);
+
+            // Si eres el enemigo y has terminado el dash haces el daño de la estela
+            if (_time <= 0 && gameObject.GetComponent<ParryComponent>() == null)
+            {
+                DashDamage();
+            }
 
             Debug.Log(_putoDasheo);
         }
@@ -59,9 +65,10 @@ public class DashComponent : MonoBehaviour
     /// </summary>
     /// <param name="canDash"></param>
     /// <returns></returns>
-    public void CanDash(bool canDash)
+    public void Dashing(bool canDash)
     {
-        _putoDasheo = canDash; 
+        _putoDasheo = canDash;
+        TryDash();
     }
 
     /// <summary>
@@ -73,7 +80,7 @@ public class DashComponent : MonoBehaviour
         // GameManager.Instance.InmortalityPlayer(_putoDasheo);
 
         // Aumento puntual de velocidad
-        _dashSpeed = (_movement.Speed + (distance / _dashTime));
+        _dashSpeed = _movement.Speed + (distance / _dashTime);
 
         // Modificaciónd de la posición
         _myTransform.position += _dashSpeed * Time.fixedDeltaTime * _dashDirection;
@@ -139,20 +146,9 @@ public class DashComponent : MonoBehaviour
         _rayDistance = Physics2D.Raycast(_myTransform.position, (Vector2)_dashDirection, _dashDistance, _floorMask).distance;
 
         // Realiza el dash
-        if(_rayDistance == 0)
-        {
-            PerformDash(_dashDistance);
-        }
-        else
+        if(_rayDistance != 0)
         {
             _dashDistance -= _rayDistance;
-            PerformDash(_dashDistance);
-        }
-
-        // Si eres el enmigo hace el daño de la estela
-        if (gameObject.GetComponent<ParryComponent>() == null)
-        {
-            DashDamage();
         }
     }
 
