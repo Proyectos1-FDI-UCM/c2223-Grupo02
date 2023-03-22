@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using OurNamespace;
 
 public class BullyMachine : StateMachine
 {
@@ -27,6 +28,10 @@ public class BullyMachine : StateMachine
 
     private Transform _playerTransform;
     public Transform PlayerTransform { get { return _playerTransform; } }
+
+    private LifeComponent _myLifeComponent;
+    public LifeComponent MyLifeComponent { get { return _myLifeComponent; } }
+
     ////Esta es sobre todo del ataque, pero...
     
     private CombatController _myCombatController;
@@ -40,7 +45,7 @@ public class BullyMachine : StateMachine
     #region States
 
     ByBPatrolState ByBPatrolState;
-    BecarioAttackState becarioAttackState;
+    BullyAttack bullyAttack;
     BullyPersecutionState bullyPersecutionState;
     BullyWaitState bullyWaitState;
     BullyEscapeState bullyEscapeState;
@@ -109,7 +114,7 @@ public class BullyMachine : StateMachine
 
     #endregion
 
-    #region PatrolState
+    #region PatrolState //TODO
 
     #region Parameters
 
@@ -147,19 +152,77 @@ public class BullyMachine : StateMachine
 
     #endregion
 
-    #region AttackState
+    #region AttackState //TODO
+
+    #region Parameters
+    [Header("Estado de Ataque")]
+    //Caja de ataque del enemigo
+    [SerializeField] Vector3 _attackBoxSize;
+    public Vector3 AttackBoxSize { get { return _attackBoxSize; } }
+    [SerializeField] Vector3 _attackBoxOffset;
+    public Vector3 AttackBoxOffset { get { return _attackBoxOffset; } }
+
+    [Tooltip("Tiempo entre ataques")]
+    [SerializeField] private float _attackTime;
+    public float AttackTime { get { return _attackTime; } }
+    #endregion
+
+    #region Properties
 
     #endregion
 
-    #region PersecutionState
+    #endregion
+
+    #region PersecutionState //TODO
+
+    #region Parameters
 
     #endregion
 
-    #region WaitState
+    #region Properties
 
     #endregion
 
-    #region EscapeState
+    #endregion
+
+    #region WaitState //TODO
+
+    #region Parameters
+
+    #endregion
+
+    #region Properties
+
+    #endregion
+
+    #endregion
+
+    #region EscapeState //TODO
+
+    #region Parameters
+
+    [Header("Estado de Escape")]
+
+    //Caja de detección del jugador
+    [SerializeField] private Vector3 _detectionBoxSize;
+    public Vector3 DetectionBoxSize { get { return _detectionBoxSize; } }
+
+    [SerializeField] private Vector3 _detectionBoxOffset;
+    public Vector3 DetectionBoxOffset { get { return _detectionBoxOffset; } }
+
+    [Tooltip("Tiempo en el que se actualiza la posición del jugador para el escape")]
+    [SerializeField] private float _escapeTime;
+    public float EscapeTime { get { return _escapeTime; } }
+
+    [Tooltip("Tiempo de parada entre cada patrullaje")]
+    [SerializeField] private float _stopEscapeTime;
+    public float StopEscapeTime { get { return _stopEscapeTime; } }
+
+    #endregion
+
+    #region Properties
+
+    #endregion
 
     #endregion
 
@@ -167,84 +230,142 @@ public class BullyMachine : StateMachine
 
     #region Condiciones de transición
 
-    //public bool PatrolToEscape()
-    //{
-    //    //si el enemigo detecta al jugador
-    //    if (OurNamespace.Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask))
-    //    {
-    //        return true;
-    //    }
-    //    else
-    //    {
-    //        return false;
-    //    }
-    //}
+    public bool PatrolToPersecution() //1
+    {
+        //Si detecta al jugador y tiene más de media vida
+        if (Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask) && (_myLifeComponent.CurrentLife > _myLifeComponent.MaxLife / 2))
+        {
+            return true;
+        }
+        else return false;
+    }
 
-    //public bool EscapeToPatrol()
-    //{
-    //    //si el enemigo deja de detectar al jugador
-    //    if (!OurNamespace.Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask))
-    //    {
-    //        return true;
-    //    }
-    //    else
-    //    {
-    //        return false;
-    //    }
-    //}
+    public bool PersecutionToPatrol() //2
+    {
+        //Si deja de detectar al jugador y tiene más de media vida
+        if (!Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask) && (_myLifeComponent.CurrentLife > _myLifeComponent.MaxLife / 2))
+        {
+            return true;
+        }
+        else return false;
+    }
 
-    //public bool PatrolToAttack()
-    //{
-    //    //si el enemigo detecta al jugador en el área de ataque
-    //    if (OurNamespace.Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && becarioAttackState._currentAttackTime < 0)
-    //    {
-    //        return true;
-    //    }
-    //    else
-    //    {
-    //        return false;
-    //    }
-    //}
+    public bool PatrolToWait() //3
+    {
+        //Cuando detecta al jugador y tiene menos de media vida (Ver si hay que poner tambien que tenga más de un cuarto)
+        if (Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask) && (_myLifeComponent.CurrentLife < _myLifeComponent.MaxLife / 2))
+        {
+            return true;
+        }
+        else return false;
+    }
 
-    //public bool AttackToPatrol()
-    //{
-    //    //si el enemigo deja de detectar al jugador en el área de ataque
-    //    if (!OurNamespace.Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && _currentAttackTime < 0)
-    //    {
-    //        return true;
-    //    }
-    //    else
-    //    {
-    //        return false;
-    //    }
-    //}
+    public bool WaitToPatrol() //4
+    {
+        //Cuando deja de detectar al jugador y tiene menos de la mitad de vida (Ver si hay que poner también que tenga más de un cuarto)
+        if (!Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask) && (_myLifeComponent.CurrentLife < _myLifeComponent.MaxLife / 2))
+        {
+            return true;
+        }
+        else return false;
+    }
 
-    //public bool EscapeToAttack()
-    //{
-    //    //si el enemigo detectar al jugador en el área de ataque
-    //    if (OurNamespace.Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && _currentAttackTime < 0)
-    //    {
-    //        return true;
-    //    }
-    //    else
-    //    {
-    //        return false;
-    //    }
-    //}
+    public bool PatrolToEscape() //5 
+    {
+        //si el enemigo detecta al jugador y tiene menos de un cuarto de vida
+        if (Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask) && (_myLifeComponent.CurrentLife < _myLifeComponent.MaxLife / 4))
+        {
+            return true;
+        } else return false;
+    }
 
-    //public bool AttackToEscape()
-    //{
-    //    //si el enemigo detectar al jugador en el área de ataque, pero sigue en el área de detección
-    //    if (!OurNamespace.Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && _currentAttackTime < 0 &&
-    //        OurNamespace.Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask))
-    //    {
-    //        return true;
-    //    }
-    //    else
-    //    {
-    //        return false;
-    //    }
-    //}
+    public bool EscapeToPatrol() //6 
+    {
+        //si el enemigo deja de detectar al jugador y tiene menos de un cuarto de vida
+        if (!Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask) && (_myLifeComponent.CurrentLife < _myLifeComponent.MaxLife / 4))
+        {
+            return true;
+        }
+        else return false;
+    }
+
+    public bool PersecutionToAttack() //7
+    {
+        //si el enemigo detecta al jugador en el área de ataque y tiene más de media vida
+        if (Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && (_myLifeComponent.CurrentLife > _myLifeComponent.MaxLife / 2))
+        {
+            return true;
+        }
+        else return false;
+    }
+
+    public bool AttackToPersecution() //8
+    {
+        //Cuando deja de detectar en la zona de ataque y tiene máS de media vida
+        if (!Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && (_myLifeComponent.CurrentLife > _myLifeComponent.MaxLife / 2))
+        {
+            return true;
+        }
+        else return false;
+    }
+
+    public bool WaitToAttack() //9
+    {
+        //Si detecta en la zona de ataque y tiene menos de media vida
+        if (Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && (_myLifeComponent.CurrentLife < _myLifeComponent.MaxLife / 2))
+        {
+            return true;
+        }
+        else return false;
+    }
+
+    public bool AttackToWait() //10
+    {
+        if (!Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && (_myLifeComponent.CurrentLife < _myLifeComponent.MaxLife / 2))
+        {
+            return true;
+        }
+        else return false;
+    }
+
+
+    public bool EscapeToAttack() //11
+    {
+        //Cuando se detecta en la zona de ataque y tiene menos de un cuarto de vida
+        if (Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && (_myLifeComponent.CurrentLife < _myLifeComponent.MaxLife / 4))
+        {
+            return true;
+        }
+        else return false;
+    }
+
+    public bool AttackToEscape() //12
+    {
+        //Cuando deja de detectarse en la zona de ataque y tiene menos de un cuarto de vida
+        if (!Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask) && (_myLifeComponent.CurrentLife < _myLifeComponent.MaxLife / 4))
+        {
+            return true;
+        }
+        else return false;
+    }
+
+    public bool PersecutionToWait() //13 - A lo mejor hay que cambiarlo
+    {
+        if (Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask) && (_myLifeComponent.CurrentLife < _myLifeComponent.MaxLife / 2))
+        {
+            return true;
+        }
+        else return false;
+    }
+
+    public bool WaitToEscape() //14 - A lo mejor hay que cambiarlo
+    {
+        if (Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask) && (_myLifeComponent.CurrentLife < _myLifeComponent.MaxLife / 4))
+        {
+            return true;
+        }
+        else return false;
+    }
     #endregion
 
     #endregion
@@ -252,14 +373,35 @@ public class BullyMachine : StateMachine
     // Start is called before the first frame update
     void Start()
     {
-        //Inicialización de los estados
-        //ByBPatrolState = new ByBPatrolState(_myTransform, _myMovementComponent,floorDetector.transform);
-        //becarioEscapeState = new BecarioEscapeState(_myTransform, _myMovementComponent, _playerTransform);
-        //becarioAttackState = new BecarioAttackState(_myTransform, _playerTransform, _myCombatController);
+        //Inicialización de variables de la máquina de estados
+        _playerLayerMask = LayerMask.GetMask("Player");
+        _floorLayerMask = LayerMask.GetMask("Floor");
+
+        //Inicialización de las referencias de las máquinas de estado
+        _myTransform = transform;
+        _myMovementComponent = GetComponent<MovementComponent>();
+        _playerTransform = GameManager.Instance.Player.transform;
+        _myLifeComponent = GetComponent<LifeComponent>();
+        _myCombatController = GetComponent<CombatController>();
+        _myAnimator = GetComponent<Animator>();
+
+        //Inicialización de los estados (Constructora) TODO
+        //ByBPatrolState = new ByBPatrolState(this); Tiene que acceder también al BecarioMachine
+        //bullyAttack = new BullyAttack(this);
+        //bullyPersecutionState = new BullyPersecutionState(this);
+        //bullyWaitState = new BullyWaitState(this);
+        //bullyEscapeState = new BullyEscapeState(this);
+
+        //añadir los estados al diccionario
+        _stateTransitions.Add(ByBPatrolState, new List<Transition>());
+        _stateTransitions.Add(bullyAttack, new List<Transition>());
+        _stateTransitions.Add(bullyPersecutionState, new List<Transition>());
+        _stateTransitions.Add(bullyWaitState, new List<Transition>());
+        _stateTransitions.Add(bullyEscapeState, new List<Transition>());
 
 
         ////Inicialización de las condiciones de las transiciones
-        
+
         //_patrolToEscape = () => PatrolToEscape();
         //_escapeToPatrol = () => EscapeToPatrol();
 

@@ -56,36 +56,28 @@ public class BullyAttack : State
             //El tipo de ataque se elige de manera aleatoria con un random
 
             _attackTime = Random.Range(0, 1);
-            //Ataque fuerte
+            //Ataque en área
             if (_attackType == 1)  
-            {
-                //Daño del ataque más potente
-                _myAttackComponent.SetDamage(_strongAttack);
-
-                //Que mire al jugador para atacar (¿Al final esto sobra?)
-                _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
-
-                //Ataca
-                _myCombatController.Atack(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 4));
-            }
-            //Ataque área
-            else
             {
                 //Daño del ataque en área
                 _myAttackComponent.SetDamage(_softAttack);
 
-                //Que mire al jugador para atacar (¿Al final esto sobra?)
+                //Hacemos que mire al lado contrario al jugador
                 _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
 
-                //Ataca
+                //Atacamos
                 _myCombatController.Atack(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 4));
 
-                //Hacemos que mire al lado contrario
-                _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
-
-                //Volvemos a atacar
-                _myCombatController.Atack(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 4));
             }
+            //Ataque fuerte
+            else { _myAttackComponent.SetDamage(_strongAttack); }
+
+            //Que mire al jugador para atacar (¿Al final esto sobra?)
+            _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
+
+            //Ataca
+            _myCombatController.Atack(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 4));
+
         }
         
     }
