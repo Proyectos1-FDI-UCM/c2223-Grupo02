@@ -42,7 +42,7 @@ public class BecarioEscapeState : State
             _currentEscapeTime = _escapeTime;
 
             //Seteo de la dirección de movimiento y un aumento de la velocidad (2*direction)
-            _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(2*(_myTransform.position - _playerTransform.position), 2));
+            _myMovementComponent.SetDirection(GameManager.DirectionComponent.X_Directions(2*(_myTransform.position - _playerTransform.position), 2));
             
             //Disminuimos el tiempo hasta la próxima parada
             _currentEscapeTime -= Time.deltaTime;
@@ -51,7 +51,7 @@ public class BecarioEscapeState : State
             {
                 _currentStopTime = _stopEscapeTime;
                 //No se moverá durante ese tiempo
-                _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(0 * (_myTransform.position - _playerTransform.position), 2));
+                _myMovementComponent.SetDirection(GameManager.DirectionComponent.X_Directions(0 * (_myTransform.position - _playerTransform.position), 2));
             }
         }
 

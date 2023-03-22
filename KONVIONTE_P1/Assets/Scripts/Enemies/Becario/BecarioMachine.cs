@@ -243,7 +243,7 @@ public class BecarioMachine : StateMachine
         //inicializacion de las referencias de la maquina de estados
         _myTransform = transform;
         _myMovementComponent = GetComponent<MovementComponent>();
-        _playerTransform = GameManager.Instance.Player.transform;
+        _playerTransform = GameManager.Player.transform;
         _myCombatController = GetComponent<CombatController>();
         _myAnimator = GetComponent<Animator>();
 

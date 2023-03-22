@@ -21,7 +21,7 @@ public class BecarioStopState : State
     }
     public void Tick()
     {
-        _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
+        _myMovementComponent.SetDirection(GameManager.DirectionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
     }
     public void OnExit()
     {

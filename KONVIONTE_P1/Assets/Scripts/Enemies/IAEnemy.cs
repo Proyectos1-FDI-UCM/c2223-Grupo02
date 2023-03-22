@@ -94,7 +94,7 @@ public class IAEnemy : MonoBehaviour
         _myTransform = transform;
         
         //Se recoge el transform del Player
-        _player = GameManager.Instance.Player.transform;
+        _player = GameManager.Player.transform;
         
         _myCombatController = GetComponent<CombatController>();
         
@@ -189,7 +189,7 @@ public class IAEnemy : MonoBehaviour
                 //seteo del time
                 _currentFollowTime = _followTime;
                 //seteo de la direccion de movimiento
-                _myMovementComponent.SetDirection(GameManager.Instance._directionComponent.X_Directions(_myTransform.position - _player.position, 2));
+                _myMovementComponent.SetDirection(GameManager.DirectionComponent.X_Directions(_myTransform.position - _player.position, 2));
             }
 
             //Transición Escape - Patrulla
