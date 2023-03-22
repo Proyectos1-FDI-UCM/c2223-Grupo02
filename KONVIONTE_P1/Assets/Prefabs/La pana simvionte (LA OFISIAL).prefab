@@ -11,18 +11,16 @@ GameObject:
   - component: {fileID: 3229762132671292759}
   - component: {fileID: 3229762132671292756}
   - component: {fileID: 3229762132671292754}
+  - component: {fileID: 3229762132671292845}
   - component: {fileID: 3229762132671292758}
-  - component: {fileID: 3229762132671292841}
   - component: {fileID: 3229762132671292840}
   - component: {fileID: 3229762132671292843}
   - component: {fileID: 3229762132671292842}
-  - component: {fileID: 3229762132671292845}
   - component: {fileID: 3229762132671292846}
   - component: {fileID: 3229762132671292833}
   - component: {fileID: 3229762132671292832}
   - component: {fileID: 8566519561822948663}
   - component: {fileID: 7424433407946624582}
-  - component: {fileID: 290479913014133378}
   m_Layer: 7
   m_Name: La pana simvionte (LA OFISIAL)
   m_TagString: Untagged
@@ -125,6 +123,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.9484062}
   m_EdgeRadius: 0
+--- !u!50 &3229762132671292845
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3229762132671292755}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!95 &3229762132671292758
 Animator:
   serializedVersion: 4
@@ -145,18 +164,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3229762132671292841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3229762132671292755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 164adf2e155b12e40b6cec3ed4c98199, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3229762132671292840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,27 +212,6 @@ MonoBehaviour:
   _speedDivider: 0.83
   _ascensionTime: 0.7
   _descensionTime: 0.5
---- !u!50 &3229762132671292845
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3229762132671292755}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
 --- !u!114 &3229762132671292846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,18 +293,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dashDistance: 2
   _dashTime: 0.1
---- !u!114 &290479913014133378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3229762132671292755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 164adf2e155b12e40b6cec3ed4c98199, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3229762133172637994
 GameObject:
   m_ObjectHideFlags: 0

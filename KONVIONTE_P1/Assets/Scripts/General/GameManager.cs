@@ -8,12 +8,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    //pasar a un singleton en algun componente?
-    private PlayerInputActions _playerInputActions;
-    [SerializeField]
-    private Transform _spawnTransform;
+    #region References
+
     [SerializeField]
     private GameObject _player;
+
+    #region Componentes del player
     public ParryComponent _playerParryComponent { get; private set; }
     private Transform _playerTransform;
     private CombatController _playerCombatController;
@@ -21,19 +21,39 @@ public class GameManager : MonoBehaviour
     private MovementComponent _playerMovementComponent;
     private JumpComponent _playerJumpComponent;
     private DashComponent _playerDashComponent;
+    private LifeComponent _playerLifeComponent;
+
+    #endregion
+
+    #region Input
+    //pasar a un singleton en algun componente?
+    private PlayerInputActions _playerInputActions;
+
+    #endregion
+
+    #region Camera y UI
 
     //quizas haya que migrarlo a un singleton
     [SerializeField]
     private FollowCamera _followCamera;
 
+
+    [SerializeField] 
+    private UIManager _UIManager;
+    #endregion
+
+    #region Spawn position del nivel
+
+    [SerializeField]
+    [Tooltip("La posicion en la que se spawnea al jugador en el nivel")]
+    private Transform _spawnTransform;
+    #endregion
+
+
+    #endregion
+
     [HideInInspector]
     public DirectionComponent _directionComponent;
-
-
-    private LifeComponent _playerLifeComponent;
-    [SerializeField] private UIManager _UIManager;
-
-
     #region Accesors
     /// <summary>
     /// Referencia a la instancia del GameManager
@@ -55,20 +75,22 @@ public class GameManager : MonoBehaviour
     #region Properties
 
     private float _currentTime;
-    #endregion
-
-
-    #region Properties
-
     private bool _input;
-
     #endregion
+    
     private void Awake()
     {
+        //seteo de la escala de tiempo
         Time.timeScale = 1;
+        
+        //Inicializacion de la instancia
         Instance = this;
+        
+        //Inicializacion del input
         _playerInputActions= new PlayerInputActions();
         _playerInputActions.Enable();
+        
+        //Inicializacion de los componentes del player
         _playerTransform = _player.transform;
         _playerParryComponent = _player.GetComponent<ParryComponent>();
         _playerMovementComponent = _player.GetComponent<MovementComponent>();
@@ -76,15 +98,16 @@ public class GameManager : MonoBehaviour
         _playerDashComponent = _player.GetComponent<DashComponent>();
         _playerCombatController = _player.GetComponent<CombatController>();
         _playerTeleportParry = _player.GetComponent<TeleportParry>();
-
         _playerLifeComponent = _player.GetComponent<LifeComponent>();
 
+        //Inicializacion del DirectionComponent
         _directionComponent = GetComponent<DirectionComponent>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        //Activamos input,colocamos al jugador y ponemos el tiempo
         _input = true;
         SpawnPlayer();
         _currentTime = _maxLevelTime;
@@ -93,8 +116,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Actualizacion del tiempo
         _currentTime -= Time.deltaTime;
         _UIManager.SetTime(_currentTime);
+
+        //Si el tiempo es menor que 0, cambiamos de escena
         if(_currentTime < 0)
         {
             SceneManager.LoadScene("HUDtimeIsUp");
@@ -197,8 +223,7 @@ public class GameManager : MonoBehaviour
         if (context.performed)
         {
             _playerDashComponent.Dashing(true);
-        }
-        
+        }        
     }
     public void PauseMenu(InputAction.CallbackContext context)
     {

@@ -35,7 +35,7 @@ public class DashComponent : MonoBehaviour
         _gamepad = Gamepad.current;
         _myTransform = transform;
         _movement = GetComponent<MovementComponent>();
-        _direction = GetComponent<DirectionComponent>();
+        _direction = GameManager.Instance._directionComponent;
         _floorMask = LayerMask.GetMask("Floor");
         _maxDashDistance = _dashDistance;
     }
