@@ -9,39 +9,53 @@ public class BullyAttack : State
 
     private Transform _playerTransform;
     private Transform _myTransform;
-    private CombatController _myCombatController;
     private MovementComponent _myMovementComponent;
+    private CombatController _myCombatController;
     private AtackComponent _myAttackComponent;
+    private Animator _myAnimator;
 
     #endregion
 
     #region Parameters
-    private int _attackType;
-
     [SerializeField]
     private int _strongAttack;
 
     [SerializeField]
     private int _softAttack;
 
-    private bool _attack;
+    [SerializeField]
+    private float _attackTime; //Tiempo de espera entre ataques
     #endregion
 
     #region Properties
+
+    private float _currentAttackTime;
+
+    private int _attackType;
 
     #endregion
 
     public void OnEnter()
     {
-        
+        //Hacemos que se reinicie el tiempo de ataque al principio
+        _currentAttackTime = _attackTime;
+
+        //Fijarse en que ese sea el nombre del bool en la animación
+        _myAnimator.SetBool("AttackState", true);
+
+        //Hacemos que se quede quieto mientras pega
+        _myMovementComponent.SetMaxSpeed(0);
     }
 
     public void Tick()
     {
-        //Definir cuando va a atacar
-        if (_attack)
+        //Disminuimos el tiempo que queda para atacar
+        _currentAttackTime -= Time.deltaTime;
+        if (_currentAttackTime < 0)
         {
             //El tipo de ataque se elige de manera aleatoria con un random
+
+            _attackTime = Random.Range(0, 1);
             //Ataque fuerte
             if (_attackType == 1)  
             {
