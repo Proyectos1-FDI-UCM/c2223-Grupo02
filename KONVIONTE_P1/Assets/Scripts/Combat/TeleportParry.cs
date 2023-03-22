@@ -51,7 +51,7 @@ public class TeleportParry : MonoBehaviour
     {
         _mouse = Mouse.current;
         _gamepad = Gamepad.current;
-        _myDirectionComponent = GetComponent<DirectionComponent>();
+        _myDirectionComponent = GameManager.Instance._directionComponent;
         _parryComponent= GetComponent<ParryComponent>();
         _myTransform = transform;
         //set parameters
