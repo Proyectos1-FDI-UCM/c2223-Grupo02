@@ -137,6 +137,7 @@ public class TeleportParry : MonoBehaviour
             _myTransform.localPosition += _moveToVector * (_distance - _marginTeleport);
         }
         _telepotDone = true;
+        AudioManager.Instance.Play("Teleport");
         _animator.SetBool("Teleport", true);
 
         //GameManager.Instance.InmortalityPlayer();

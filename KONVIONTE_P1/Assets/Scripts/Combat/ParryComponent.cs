@@ -155,6 +155,7 @@ public class ParryComponent : MonoBehaviour
     /// </summary>
     public void PerformParry()
     {
+        AudioManager.Instance.Play("ParrySound");
         if (_canParry)
         {
             _playerAnimator.SetBool("IsParring", true);
@@ -174,6 +175,7 @@ public class ParryComponent : MonoBehaviour
         _parryCurrentTime += _parryTime;
         _boostDamageCurrentTime = 0;
 
+        AudioManager.Instance.Play("CorrectParry");
         _playerAtackComponent.SetDamage(_boostDamage);
         _playerAnimator.SetFloat("Smite",1);
         _playerTeleportComponent.TriggerTeleport();

@@ -41,7 +41,8 @@ public class CombatController : MonoBehaviour
     public void Atack(Vector2 direction)
     {
         if (!_animator.GetBool("IsAttaking"))//si no está ya atacando
-        {            
+        {
+            
             ColocarCollider(direction);  
             _animator.SetBool("IsAttaking", true);
             _animator.SetFloat("AttackCombo", _animator.GetFloat("AttackCombo") + 1);

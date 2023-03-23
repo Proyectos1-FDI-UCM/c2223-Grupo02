@@ -116,6 +116,7 @@ public class GameManager : MonoBehaviour
         _input = true;
         SpawnPlayer();
         _currentTime = _maxLevelTime;
+        _audioManager.Play("BackgroundNoise");
     }
 
     // Update is called once per frame
@@ -174,7 +175,7 @@ public class GameManager : MonoBehaviour
         if (callbackContext.performed && _playerTeleportParry._telepotDone)
         {
             _playerCombatController.Atack(_playerInputActions.Player.VerticalAtack.ReadValue<Vector2>());
-            _audioManager.Play("Attack");
+            
         }
     }
     /// <summary>

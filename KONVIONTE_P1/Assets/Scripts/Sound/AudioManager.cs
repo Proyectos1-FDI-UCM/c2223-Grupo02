@@ -6,10 +6,16 @@ using System;
 
 public class AudioManager : MonoBehaviour
 {
+    static AudioManager _instance;
+    static public AudioManager Instance
+    {
+        get { return _instance; }
+    }
     public Sound[] sounds; 
     // Start is called before the first frame update
     void Awake()
     {
+        _instance = this;
         foreach(Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
