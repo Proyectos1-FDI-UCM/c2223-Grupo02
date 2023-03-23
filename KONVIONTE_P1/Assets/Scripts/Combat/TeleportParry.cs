@@ -97,6 +97,7 @@ public class TeleportParry : MonoBehaviour
     public void TriggerTeleport()
     {
         //Debug.Log("TUvieja");
+        AudioManager.Instance.Play("Freeze");
         _animator.SetBool("IsFreeze",true);
         _predictionTransform.gameObject.SetActive(true);
         _telepotDone = false;
