@@ -28,11 +28,38 @@ public class AudioManager : MonoBehaviour
             s.source.outputAudioMixerGroup = s.group;
         }
     }
-
+    /// <summary>
+    /// Método para reproducir sonidos suscritos al AudioManager (Sonidos que no importe la tridimensionalidad)
+    /// </summary>
+    /// <param name="name"></param>
     public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s != null)
             s.source.Play();
+    }
+    public void PauseSounds()
+    {
+        foreach (Sound s in sounds)
+        {
+            if(s.pause) s.source.Pause();
+        }
+        //AudioSource[] Sounds = GetComponentsInChildren<AudioSource>();
+        //foreach(AudioSource s in Sounds)
+        //{
+        //    s.Pause();
+        //}
+    }
+    public void ResumeSounds()
+    {
+        foreach (Sound s in sounds)
+        {
+            s.source.UnPause();
+        }
+        //AudioSource[] Sounds = GetComponentsInChildren<AudioSource>();
+        //foreach (AudioSource s in Sounds)
+        //{
+        //    s.UnPause();
+        //}
     }
 }

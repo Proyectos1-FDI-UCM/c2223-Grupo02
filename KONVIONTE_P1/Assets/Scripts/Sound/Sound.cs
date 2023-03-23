@@ -20,4 +20,6 @@ public class Sound
     public bool loop;
 
     public AudioMixerGroup group;
+
+    public bool pause;
 }

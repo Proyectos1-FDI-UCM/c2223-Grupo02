@@ -5,6 +5,7 @@ using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -51,13 +52,13 @@ public class GameManager : MonoBehaviour
     #endregion
 
 
-    #endregion
 
     [HideInInspector]
 
     [SerializeField] private AudioManager _audioManager;
-
     static private DirectionComponent _directionComponent;
+    #endregion
+
     #region Accesors
     /// <summary>
     /// Referencia a la instancia del GameManager
@@ -74,6 +75,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     [Tooltip("Tiempo en segundos que dura el nivel")]
     private float _maxLevelTime = 60;// migrar a un level manager
+    public UnityEvent _pauseSound;
+    public UnityEvent _resumeSound;
     #endregion
     #region Properties
 
@@ -264,6 +267,7 @@ public class GameManager : MonoBehaviour
         if (Time.timeScale > 0)
         {
             InputOff();
+            _pauseSound.Invoke();
             Time.timeScale = 0;
         }
         else
@@ -276,6 +280,7 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         InputOn();
+        _resumeSound.Invoke();
         Time.timeScale = 1;
     }
 
