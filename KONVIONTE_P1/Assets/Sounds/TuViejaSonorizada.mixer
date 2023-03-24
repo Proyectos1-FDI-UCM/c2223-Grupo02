@@ -252,7 +252,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -6335037517878023456}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 3
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -286,6 +286,7 @@ AudioMixerController:
     - c552c01f7d40a7643b955a4de103994b
     - ecf32225d4a118443bc68d2ad5466c18
     - 9ee864dce7af46e469806b7f85ef6abd
+    - afd22e5dc57a9c4468d471f541b03cd7
     name: TodosConSuPutaMadre
   - guids:
     - 603c9341173aed54b8a98e69dc9823b6
@@ -298,7 +299,7 @@ AudioMixerController:
     - 9ee864dce7af46e469806b7f85ef6abd
     - afd22e5dc57a9c4468d471f541b03cd7
     name: Combat
-  m_CurrentViewIndex: 1
+  m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
 --- !u!243 &24300002
 AudioMixerGroupController:
@@ -356,8 +357,8 @@ AudioMixerSnapshotController:
     9229ded461e9f7e44b055add9374f5ee: 1
     94b7ab855d0e57f478118e9a599fab35: 0
     f6216b66f68ff724aaf0a27adabc5d33: 1.6
-    798499d6d6f9e5748bd168f6c1cf91af: -25.647947
-    c9220768733c77a45906a5254b27073f: -3.1841109
+    798499d6d6f9e5748bd168f6c1cf91af: 0
+    c9220768733c77a45906a5254b27073f: -13.0627575
     7e5422d8318969046a5da7f5242f0fd1: 5804
     a1559fe972a1cc443a8ca92b612b070d: 1807
     33ebf0f9135f43247879d7f3a806e257: 2.3
@@ -371,9 +372,9 @@ AudioMixerSnapshotController:
     f76298fbf88397547b3d5d4519ffba2b: 255
     3bff2afbe9c2f3848981b17378435b40: -17.938717
     a12594fc0d2bb314eb44fb5e881088da: 0
-    4d005cddd0ab63243a07983d784e5c2e: -0.036595598
+    4d005cddd0ab63243a07983d784e5c2e: -12.070416
     82c87b1ec218a8048908d271bb4f8674: -3024
-    84c9ee6e2bec5444986411507faf1034: -22.71404
+    84c9ee6e2bec5444986411507faf1034: -0.025776558
     b78b8fbef40ec1f4498143f215be5dcd: 92.3
   m_TransitionOverrides: {}
 --- !u!244 &520399011272496750
