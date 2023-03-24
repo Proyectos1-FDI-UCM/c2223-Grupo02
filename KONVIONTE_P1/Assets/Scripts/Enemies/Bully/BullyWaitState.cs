@@ -35,4 +35,11 @@ public class BullyWaitState : State
     {
 
     }
+
+    public BullyWaitState(BullyMachine myMachine)
+    {
+        _playerTransform = myMachine.PlayerTransform;
+        _myTransform = myMachine.MyTransform;
+        _myMovementComponent = myMachine.MyMovementComponent;
+    }
 }
