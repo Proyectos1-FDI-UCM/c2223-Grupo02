@@ -412,6 +412,7 @@ GameObject:
   - component: {fileID: 2021738118}
   - component: {fileID: 2021738117}
   - component: {fileID: 2021738120}
+  - component: {fileID: 2021738121}
   m_Layer: 6
   m_Name: Bully
   m_TagString: Untagged
@@ -532,3 +533,34 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2021738121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021738116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a5344f44859cb429010de438a67550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _routineTime: 0
+  _stopTime: 0
+  _raycastWallDistance: 0
+  _raycastFloorDistance: 0
+  _maxDistance: 0
+  _floorDetector: {fileID: 0}
+  _attackBoxSize: {x: 0, y: 0, z: 0}
+  _attackBoxOffset: {x: 0, y: 0, z: 0}
+  _strongAttack: 0
+  _softAttack: 0
+  _attackTime: 0
+  _persecutionBoxSize: {x: 0, y: 0, z: 0}
+  _persecutionBoxOffSet: {x: 0, y: 0, z: 0}
+  _waitBoxSize: {x: 0, y: 0, z: 0}
+  _waitBoxOffset: {x: 0, y: 0, z: 0}
+  _detectionBoxSize: {x: 0, y: 0, z: 0}
+  _detectionBoxOffset: {x: 0, y: 0, z: 0}
+  _escapeTime: 0
+  _stopEscapeTime: 0
