@@ -13,7 +13,15 @@ public class DialogueTrigger : MonoBehaviour
 
     public void TriggerDialogue()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(_dialogue);
+        DialogueManager.Instance.StartDialogue(_dialogue);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject == GameManager.Player)
+        {
+            TriggerDialogue();
+        }
     }
 
 }

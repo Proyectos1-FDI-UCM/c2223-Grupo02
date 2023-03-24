@@ -4,18 +4,30 @@ using System.Globalization;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 
 // SCRIPT PERTENECIENTE AL DIALOGUE MANAGER EN ESCENA
 
 public class DialogueManager : MonoBehaviour
 {
     #region References
-    [SerializeField] private Text _dialogueName;
-    [SerializeField] private Text _dialogueText;
+    [SerializeField] private TMP_Text _dialogueName;
+    [SerializeField] private TMP_Text _dialogueText;
+
+    [SerializeField] private GameObject _dialogueUI;
+    [SerializeField] private GameObject _InGameUI;
     #endregion
     #region Properties
     private Queue<string> _sentences;
+
+    public static DialogueManager Instance { get; private set; }
     #endregion
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +41,9 @@ public class DialogueManager : MonoBehaviour
     /// <param name="dialogue"></param>
     public void StartDialogue(Dialogue dialogue)
     {
+        //activa la UI
+        SetDialogueUI(true);
+
         // Cambia el nombre de quien habla
         _dialogueName.text = dialogue.name;
 
@@ -68,6 +83,13 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
+        //desactiva la ui
+        SetDialogueUI(false);
+    }
 
+    private void SetDialogueUI(bool On)
+    {
+        _dialogueUI.SetActive(On);
+        _InGameUI.SetActive(!On);
     }
 }
