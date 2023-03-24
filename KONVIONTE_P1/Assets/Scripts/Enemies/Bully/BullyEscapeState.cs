@@ -50,9 +50,9 @@ public class BullyEscapeState : State
 
             if (_currentStopTime < 0)
             {
-                _currentStopTime = _stopEscapeTime; 
+                _currentStopTime = _stopEscapeTime;
                 //No se moverá durante ese tiempo
-                _myMovementComponent.SetDirection(GameManager.DirectionComponent.X_Directions(0 * (_myTransform.position - _playerTransform.position), 2))
+                _myMovementComponent.SetDirection(GameManager.DirectionComponent.X_Directions(0 * (_myTransform.position - _playerTransform.position), 2));
             }
 
        }
