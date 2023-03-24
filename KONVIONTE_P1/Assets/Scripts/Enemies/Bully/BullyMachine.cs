@@ -39,7 +39,10 @@ public class BullyMachine : StateMachine
 
     private Animator _myAnimator;
     public Animator MyAnimator { get { return _myAnimator; } }
-    
+
+    private AtackComponent _myAttackComponent;
+    public AtackComponent MyAttackComponent { get { return _myAttackComponent; } }
+
     #endregion
 
     #region States
@@ -114,40 +117,43 @@ public class BullyMachine : StateMachine
 
     #endregion
 
-    #region PatrolState //TODO
+    #region PatrolState 
 
     #region Parameters
 
+    [Header("Estado de Patrulla")]
     [Tooltip("Tiempo de cada patrullaje")]
     [SerializeField] private float _routineTime;
+    public float RoutineTime { get { return _routineTime; } }
 
     [Tooltip("Tiempo de parada entre cada patrullaje")]
     [SerializeField] private float _stopTime;
+    public float StopTime { get { return _stopTime; } }
 
-    [Header("Otros")]
     [Tooltip("Distancia del rayo que detecta la colisión con las paredes")]
     [SerializeField] private float _raycastWallDistance;
+    public float RraycastWallDistance { get { return _raycastWallDistance; } }
 
     [Tooltip("Distancia del rayo que detecta la colisión con el suelo")]
     [SerializeField] private float _raycastFloorDistance;
+    public float RraycastFloorDistance { get { return _raycastFloorDistance; } }
 
     [Tooltip("Distancia máxima que puede haber bajo el enemigo, para que baje")]
     [SerializeField] private float _maxDistance;
+    public float MaxDistance { get { return _maxDistance; } }
 
     [Tooltip("Objeto detector de suelo")]
-    [SerializeField] private GameObject _floorDetector;
+    [SerializeField] private Transform _floorDetector;
+    public Transform FloorDetector { get { return _floorDetector; } }
 
     #endregion
 
     #region Properties
 
-    private float _currentPatrollTime;
     private LayerMask _playerLayerMask;
+    public LayerMask PlayerLayerMask { get { return _playerLayerMask; } }
     private LayerMask _floorLayerMask;
-    private Vector3 _movementDirection;
-    private RaycastHit2D _wallRaycastInfo;
-    private RaycastHit2D _floorRaycastInfo;
-
+    public LayerMask FloorLayerMask { get { return _floorLayerMask; } }
     #endregion
 
     #endregion
@@ -162,12 +168,26 @@ public class BullyMachine : StateMachine
     [SerializeField] Vector3 _attackBoxOffset;
     public Vector3 AttackBoxOffset { get { return _attackBoxOffset; } }
 
+    [Space(5)]
+    [Tooltip("Daño del Ataque fuerte del jugador")]
+    [SerializeField] private int _strongAttack;
+    public int StrongAttack { get { return _strongAttack; } }
+
+    [Tooltip("Daño del Ataque en área")]
+    [SerializeField] private int _softAttack;
+    public int SoftAttack { get { return _softAttack; } }
+
+
     [Tooltip("Tiempo entre ataques")]
     [SerializeField] private float _attackTime;
     public float AttackTime { get { return _attackTime; } }
+
+
     #endregion
 
     #region Properties
+
+
 
     #endregion
 
@@ -177,6 +197,13 @@ public class BullyMachine : StateMachine
 
     #region Parameters
 
+    [Header ("Estado de persecución")]
+    //Caja de detección del jugador
+    [SerializeField] private Vector3 _persecutionBoxSize;
+    public Vector3 PersecutionBoxSize { get { return _persecutionBoxSize; } }
+
+    [SerializeField] private Vector3 _persecutionBoxOffSet;
+    public Vector3 PersecutionBoxOffSet { get { return _persecutionBoxOffSet; } }
     #endregion
 
     #region Properties

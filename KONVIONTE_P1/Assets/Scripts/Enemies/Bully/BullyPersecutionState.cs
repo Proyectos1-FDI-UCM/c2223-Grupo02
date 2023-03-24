@@ -9,7 +9,6 @@ public class BullyPersecutionState : State
     private Transform _playerTransform;
     private Transform _myTransform;
     private MovementComponent _myMovementComponent;
-    private LifeComponent _myLifeComponent;
 
     #endregion
 
@@ -18,10 +17,6 @@ public class BullyPersecutionState : State
     #endregion
 
     #region Properties
-
-    //Son parte de la transición
-    private bool _alert;
-    private float _distancePlayerEnemy;
 
     #endregion
 
@@ -60,5 +55,13 @@ public class BullyPersecutionState : State
     public void OnExit()
     {
         //¿Llamar al estado de ataque?
+    }
+
+    //Constructor de la clase
+    public BullyPersecutionState(BullyMachine myMachine)
+    {
+        _playerTransform = myMachine.PlayerTransform;
+        _myTransform = myMachine.MyTransform;
+        _myMovementComponent = myMachine.MyMovementComponent;
     }
 }
