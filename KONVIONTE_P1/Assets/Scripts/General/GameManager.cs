@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
     #region Parameters
     [SerializeField]
     [Tooltip("Tiempo en segundos que dura el nivel")]
-    private float _maxLevelTime = 60;// migrar a un level manager
+    private float _maxLevelTime;// migrar a un level manager
     public UnityEvent _pauseSound;
     public UnityEvent _resumeSound;
     #endregion
@@ -288,6 +288,13 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void SetTime(float time)
+    {
+        _currentTime = time;
+    }
+
+
     #endregion
 
 
