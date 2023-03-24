@@ -75,8 +75,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     [Tooltip("Tiempo en segundos que dura el nivel")]
     private float _maxLevelTime;// migrar a un level manager
-    public UnityEvent _pauseSound;
-    public UnityEvent _resumeSound;
+
+   
     #endregion
     #region Properties
 
@@ -267,7 +267,7 @@ public class GameManager : MonoBehaviour
         if (Time.timeScale > 0)
         {
             InputOff();
-            _pauseSound.Invoke();
+            AudioManager.Instance.PauseSound.Invoke();
             Time.timeScale = 0;
         }
         else
@@ -280,7 +280,7 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         InputOn();
-        _resumeSound.Invoke();
+        AudioManager.Instance.ResumeSound.Invoke();
         Time.timeScale = 1;
     }
 

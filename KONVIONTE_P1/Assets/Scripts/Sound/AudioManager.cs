@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using System;
+using UnityEngine.Events;
 
 public class AudioManager : MonoBehaviour
 {
+    public UnityEvent PauseSound;
+    public UnityEvent ResumeSound;
+
     static AudioManager _instance;
     static public AudioManager Instance
     {
@@ -16,6 +20,8 @@ public class AudioManager : MonoBehaviour
     void Awake()
     {
         _instance = this;
+        PauseSound.AddListener(PauseSounds);
+        ResumeSound.AddListener(ResumeSounds);
         foreach(Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
