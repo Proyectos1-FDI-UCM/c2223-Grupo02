@@ -30,6 +30,8 @@ public class BullyAttack : State
 
     private int _attackType;
 
+    private float _originalMaxSpeed;
+
     #endregion
 
     public void OnEnter()
@@ -40,6 +42,7 @@ public class BullyAttack : State
         //Fijarse en que ese sea el nombre del bool en la animación
         _myAnimator.SetBool("AttackState", true);
 
+        _originalMaxSpeed = _myMovementComponent.MaxMovementSpeed;
         //Hacemos que se quede quieto mientras pega
         _myMovementComponent.SetMaxSpeed(0);
     }
@@ -78,13 +81,14 @@ public class BullyAttack : State
             //Ataca
             _myCombatController.Atack(GameManager.DirectionComponent.X_Directions(_playerTransform.position - _myTransform.position, 4));
 
+            _currentAttackTime = _attackTime;
         }
         
     }
 
     public void OnExit()
     {
-
+        _myMovementComponent.SetMaxSpeed(_originalMaxSpeed);
     }
 
     //Constructora de la clase

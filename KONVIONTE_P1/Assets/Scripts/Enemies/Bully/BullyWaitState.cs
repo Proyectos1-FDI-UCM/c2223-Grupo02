@@ -21,6 +21,7 @@ public class BullyWaitState : State
 
     public void OnEnter()
     {
+        _myAnimator.SetBool("Tempt",true);
         _originalMaxSpeed = _myMovementComponent.MaxMovementSpeed;
         _myMovementComponent.SetMaxSpeed(0);
     }
@@ -33,6 +34,7 @@ public class BullyWaitState : State
     public void OnExit()
     {
         _myMovementComponent.SetMaxSpeed(_originalMaxSpeed);
+        _myAnimator.SetBool("Tempt", false);
     }
 
     public BullyWaitState(BullyMachine myMachine)

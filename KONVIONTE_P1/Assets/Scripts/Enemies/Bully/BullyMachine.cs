@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using OurNamespace;
+using System.Net.NetworkInformation;
 
 public class BullyMachine : StateMachine
 {
@@ -109,9 +110,9 @@ public class BullyMachine : StateMachine
 
     //Transiciones por vida
     private Func<bool> _persecutionToWait; 
-    private Func<bool> _waitToEscape; 
+    private Func<bool> _waitToEscape;
 
-
+    private Func<bool> _toAttack;
 
     #endregion
 
@@ -346,6 +347,10 @@ public class BullyMachine : StateMachine
         return Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask) 
             && (_myLifeComponent.CurrentLife < _myLifeComponent.MaxLife / 4) ;
     }
+    public bool ToAttack()
+    {
+        return Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);
+    }
     #endregion
 
     #endregion
@@ -363,6 +368,7 @@ public class BullyMachine : StateMachine
         _playerTransform = GameManager.Player.transform;
         _myLifeComponent = GetComponent<LifeComponent>();
         _myCombatController = GetComponent<CombatController>();
+        _myAttackComponent = _myTransform.GetChild(0).GetComponent<AtackComponent>();
         _myAnimator = GetComponent<Animator>();
 
         //Inicialización de los estados (Constructora) 
@@ -403,6 +409,7 @@ public class BullyMachine : StateMachine
         _persecutionToWait = () => PersecutionToWait();
         _waitToEscape = () => WaitToEscape();
 
+        _toAttack = () => ToAttack();
         //Inicialización de las transiciones
 
         InicializaTransicion(ByBPatrolState, bullyPersecutionState, _patrolToPersecution);
@@ -438,5 +445,6 @@ public class BullyMachine : StateMachine
     void Update()
     {
         Tick();
+        Debug.Log(_currentState);
     }
 }

@@ -110,6 +110,7 @@ public class GameManager : MonoBehaviour
 
         //Inicializacion del DirectionComponent
         _directionComponent = GetComponent<DirectionComponent>();
+        _audioManager = AudioManager.Instance;
     }
 
     // Start is called before the first frame update
