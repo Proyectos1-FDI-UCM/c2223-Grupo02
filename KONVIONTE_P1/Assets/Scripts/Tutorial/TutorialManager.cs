@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 
 //cambiar desactivar componentes por desactivar input,
@@ -36,14 +37,11 @@ public class TutorialManager : MonoBehaviour
 
         _player = GameManager.Player;
 
-        //desactivar las componentes adecuadas
-        _player.GetComponent<CombatController>().enabled = false;
-        _player.GetComponent<JumpComponent>().enabled = false;
-        _player.GetComponent<ParryComponent>().enabled = false;
-        _player.GetComponent<TeleportParry>().enabled = false;
-        _player.GetComponent<LifeComponent>().enabled = false;
-        _player.GetComponent<KnockbackComponent>().enabled = false;
-        _player.GetComponent<DashComponent>().enabled = false;
+        //desactivar todas las componentes adecuadas
+        SetComponents(false);
+
+        //desactivar el input del GM
+        _gameManager.InputOff();
 
         //desactivar la UI
         _lifeUI.SetActive(false);
@@ -69,6 +67,20 @@ public class TutorialManager : MonoBehaviour
         _lifeUI.SetActive(true);
     }
 
+    private void SetComponents(bool On)
+    {
+        _player.GetComponent<CombatController>().enabled = On;
+        _player.GetComponent<JumpComponent>().enabled = On;
+        _player.GetComponent<ParryComponent>().enabled = On;
+        _player.GetComponent<TeleportParry>().enabled = On;
+        _player.GetComponent<LifeComponent>().enabled = On;
+        _player.GetComponent<KnockbackComponent>().enabled = On;
+        _player.GetComponent<DashComponent>().enabled = On;
+
+        _player.GetComponent<MovementComponent>().enabled = On;
+        _player.GetComponent<Animator>().enabled = On;
+        _player.GetComponent<BoxCollider2D>().enabled = On;
+    }
 
 
     #endregion

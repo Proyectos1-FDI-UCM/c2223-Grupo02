@@ -134544,7 +134544,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 1.4131072}
@@ -135371,6 +135371,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
+--- !u!1 &1848115891 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 481824824, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+  m_PrefabInstance: {fileID: 65529466}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1852957976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -135637,6 +135642,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64e4413dcd273004083709a18d30bff5, type: 3}
+--- !u!1 &1965445641 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4263252323790611130, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+  m_PrefabInstance: {fileID: 65529466}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1992547065
 GameObject:
   m_ObjectHideFlags: 0
@@ -135683,6 +135693,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialogueName: {fileID: 1904137877}
   _dialogueText: {fileID: 915369043}
+  _dialogueUI: {fileID: 1848115891}
+  _InGameUI: {fileID: 1965445641}
 --- !u!4 &2026413812 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2000617728839659006, guid: 64e4413dcd273004083709a18d30bff5, type: 3}

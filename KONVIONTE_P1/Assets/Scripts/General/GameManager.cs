@@ -216,6 +216,8 @@ public class GameManager : MonoBehaviour
     /// <param name="context"></param>
     public void CanFollow(InputAction.CallbackContext context)
     {
+        if (!_input) return;
+
         // Si el jugador se mueve
         if (context.performed)
         {
@@ -230,6 +232,8 @@ public class GameManager : MonoBehaviour
 
     public void Dash(InputAction.CallbackContext context)
     {
+        if (!_input) return;
+
         if (context.performed)
         {
             _playerDashComponent.Dashing(true);
