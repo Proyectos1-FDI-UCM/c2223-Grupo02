@@ -46,9 +46,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.2}
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 0.62
 --- !u!114 &1886094970723933664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +86,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1886094971479172552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.141, y: -0.179, z: 0}
+  m_LocalPosition: {x: 0.574, y: -0.576, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -174,7 +174,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 1422618724, guid: 40405e89a95c56540aa2bf58c100f891, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -247,19 +247,19 @@ MonoBehaviour:
   _routineTime: 2
   _stopTime: 0.8
   _raycastWallDistance: 1
-  _raycastFloorDistance: 1
-  _maxDistance: 0.5
+  _raycastFloorDistance: 0.2
+  _maxDistance: 0.2
   _floorDetector: {fileID: 1886094971479172555}
   _attackBoxSize: {x: 1, y: 2, z: 0}
   _attackBoxOffset: {x: 0, y: 1, z: 0}
-  _strongAttack: 5
+  _strongAttack: 30
   _softAttack: 10
-  _attackTime: 2
-  _persecutionBoxSize: {x: 5, y: 1, z: 0}
+  _attackTime: 4
+  _persecutionBoxSize: {x: 6, y: 1, z: 0}
   _persecutionBoxOffSet: {x: 0, y: 1, z: 0}
-  _waitBoxSize: {x: 5, y: 1, z: 0}
+  _waitBoxSize: {x: 3, y: 1, z: 0}
   _waitBoxOffset: {x: 0, y: 1, z: 0}
-  _detectionBoxSize: {x: 4, y: 2, z: 0}
+  _detectionBoxSize: {x: 6, y: 2, z: 0}
   _detectionBoxOffset: {x: 0, y: 1, z: 0}
   _escapeTime: 1
   _stopEscapeTime: 2
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lastDirection: {x: 0, y: 0, z: 0}
-  _maxMovementSpeed: 3
+  _maxMovementSpeed: 2
   _accelerationTime: 0
   _deccelerationTime: 0
 --- !u!114 &1886094971767836447
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a534a251f067c904eadc9596fe22111c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _atackTriggerOffset: 0.2
+  _atackTriggerOffset: 0.1
 --- !u!114 &1886094971767836440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40a090e3d357c1419b98d4b0a5d1227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxLife: 300
+  _maxLife: 200
 --- !u!50 &1886094971767836443
 Rigidbody2D:
   serializedVersion: 4

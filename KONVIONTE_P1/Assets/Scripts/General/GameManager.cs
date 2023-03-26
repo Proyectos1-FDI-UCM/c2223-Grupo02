@@ -51,10 +51,6 @@ public class GameManager : MonoBehaviour
     private Transform _spawnTransform;
     #endregion
 
-
-
-    [HideInInspector]
-
     [SerializeField] private AudioManager _audioManager;
     static private DirectionComponent _directionComponent;
     #endregion
@@ -110,12 +106,12 @@ public class GameManager : MonoBehaviour
 
         //Inicializacion del DirectionComponent
         _directionComponent = GetComponent<DirectionComponent>();
-        _audioManager = AudioManager.Instance;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        _audioManager = AudioManager.Instance;
         //Activamos input,colocamos al jugador y ponemos el tiempo
         _input = true;
         SpawnPlayer();
@@ -261,7 +257,7 @@ public class GameManager : MonoBehaviour
     #endregion
     public void ResetLevel()
     {
-        SceneManager.LoadScene("Lvl 1_1");
+        SceneManager.LoadScene(3);
     }
     private void SpawnPlayer()
     {

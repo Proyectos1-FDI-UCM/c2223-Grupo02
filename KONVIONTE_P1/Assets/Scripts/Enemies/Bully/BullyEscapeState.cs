@@ -16,6 +16,7 @@ public class BullyEscapeState : State
 
     private float _escapeTime;
     private float _stopEscapeTime;
+    private float _originalMaxSpeed;
 
     #endregion
 
@@ -30,6 +31,8 @@ public class BullyEscapeState : State
     {
         _currentEscapeTime = 0;
         _currentStopTime = _stopEscapeTime;
+        _originalMaxSpeed = _myMovementComponent.MaxMovementSpeed;
+        _myMovementComponent.SetMaxSpeed(4);//cambiar a un parametro mas adelante
     }
     public void Tick()
     {
@@ -60,7 +63,7 @@ public class BullyEscapeState : State
     }
     public void OnExit()
     {
-
+        _myMovementComponent.SetMaxSpeed(_originalMaxSpeed);
     }
 
     public BullyEscapeState(BullyMachine myMachine)

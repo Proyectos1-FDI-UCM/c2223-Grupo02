@@ -55,7 +55,7 @@ public class BullyAttack : State
         {
             //El tipo de ataque se elige de manera aleatoria con un random
 
-            _attackTime = Random.Range(0, 1);
+            _attackType = Random.Range(0, 1);
 
             //Ataque en área
             if (_attackType == 1)             
@@ -80,8 +80,8 @@ public class BullyAttack : State
 
             //Ataca
             _myCombatController.Atack(GameManager.DirectionComponent.X_Directions(_playerTransform.position - _myTransform.position, 4));
-
             _currentAttackTime = _attackTime;
+            Debug.Log("AtaqueBully");
         }
         
     }
