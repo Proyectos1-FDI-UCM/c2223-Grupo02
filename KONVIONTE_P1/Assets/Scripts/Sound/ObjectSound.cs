@@ -9,8 +9,8 @@ public class ObjectSound : MonoBehaviour
     void Start()
     {
         _myAudioSource = GetComponent<AudioSource>();
-        GameManager.Instance._pauseSound.AddListener(PauseSource);
-        GameManager.Instance._resumeSound.AddListener(ResumeSource);
+        AudioManager.Instance.PauseSound.AddListener(PauseSource);
+        AudioManager.Instance.ResumeSound.AddListener(ResumeSource);
     }
     private void PauseSource()
     {

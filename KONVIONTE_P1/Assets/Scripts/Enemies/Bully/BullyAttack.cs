@@ -17,13 +17,10 @@ public class BullyAttack : State
     #endregion
 
     #region Parameters
-    [SerializeField]
     private int _strongAttack;
 
-    [SerializeField]
     private int _softAttack;
 
-    [SerializeField]
     private float _attackTime; //Tiempo de espera entre ataques
     #endregion
 
@@ -93,6 +90,16 @@ public class BullyAttack : State
     //Constructora de la clase
     public BullyAttack (BullyMachine mymachine)
     {
-       
+        _playerTransform = mymachine.PlayerTransform;
+        _myTransform = mymachine.MyTransform;
+        _myMovementComponent = mymachine.MyMovementComponent;
+        _myCombatController= mymachine.MyCombatController;
+        _myAttackComponent = mymachine.MyAttackComponent;
+        _myAnimator = mymachine.MyAnimator;
+
+        _strongAttack = mymachine.StrongAttack;
+        _softAttack= mymachine.SoftAttack;
+
+        _attackTime= mymachine.AttackTime;
     }
 }

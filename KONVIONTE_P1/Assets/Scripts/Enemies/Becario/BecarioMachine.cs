@@ -148,6 +148,7 @@ public class BecarioMachine : StateMachine
     #endregion
 
     #region StopState
+
     #region Parameters
     [Header("Estado parado")]
     //Caja de ataque del enemigo
@@ -156,6 +157,7 @@ public class BecarioMachine : StateMachine
     [SerializeField] Vector3 _stopBoxOffset;
     public Vector3 StopBoxOffset { get { return _stopBoxOffset; } }
     #endregion
+
     #endregion
 
     #region AttackState
