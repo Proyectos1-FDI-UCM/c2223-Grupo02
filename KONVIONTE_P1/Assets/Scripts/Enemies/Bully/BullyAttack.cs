@@ -90,6 +90,7 @@ public class BullyAttack : State
     {
         _myMovementComponent.SetMaxSpeed(_originalMaxSpeed);
         _myAnimator.SetBool("AttackState", false);
+        _myAnimator.SetBool("IsAttacking",false);
     }
 
     //Constructora de la clase

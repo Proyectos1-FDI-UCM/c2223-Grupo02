@@ -554,7 +554,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989369458}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -992,7 +992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a534a251f067c904eadc9596fe22111c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _atackTriggerOffset: 0.6
+  _atackTriggerOffset: 0.2
 --- !u!114 &2021738124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1006,7 +1006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lastDirection: {x: 0, y: 0, z: 0}
-  _maxMovementSpeed: 5
+  _maxMovementSpeed: 3
   _accelerationTime: 0
   _deccelerationTime: 0
 --- !u!114 &2021738125

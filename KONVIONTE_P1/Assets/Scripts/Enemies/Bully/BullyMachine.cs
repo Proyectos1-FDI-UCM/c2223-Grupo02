@@ -264,7 +264,7 @@ public class BullyMachine : StateMachine
     public bool PatrolToWait() 
     {
         //Cuando detecta al jugador y tiene menos de media vida 
-        return Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask)
+        return Box.DetectSomethingBox(_waitBoxSize, _waitBoxOffset, _myTransform, _playerLayerMask)
             && (_myLifeComponent.CurrentLife < _myLifeComponent.MaxLife / 2)
             && (_myLifeComponent.CurrentLife > _myLifeComponent.MaxLife / 4); 
     }
@@ -338,7 +338,7 @@ public class BullyMachine : StateMachine
 
     public bool PersecutionToWait() //13 - A lo mejor hay que cambiarlo
     {
-        return Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask)
+        return Box.DetectSomethingBox(_waitBoxSize, _waitBoxOffset, _myTransform, _playerLayerMask)
             && (_myLifeComponent.CurrentLife < _myLifeComponent.MaxLife / 2);
     }
 
@@ -448,5 +448,6 @@ public class BullyMachine : StateMachine
         Debug.Log(_currentState);
         Box.ShowBox(_detectionBoxSize, _detectionBoxOffset, _myTransform);
         Box.ShowBox(_attackBoxSize, _attackBoxOffset, _myTransform);
+        Box.ShowBox(_waitBoxSize, _waitBoxOffset, _myTransform);
     }
 }
