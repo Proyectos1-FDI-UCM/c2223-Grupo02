@@ -17,6 +17,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject _dialogueUI;
     [SerializeField] private GameObject _InGameUI;
     #endregion
+
     #region Properties
     private Queue<string> _sentences;
 
