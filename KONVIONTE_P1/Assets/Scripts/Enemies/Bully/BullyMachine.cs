@@ -421,13 +421,13 @@ public class BullyMachine : StateMachine
         InicializaTransicion(ByBPatrolState, bullyEscapeState, _patrolToEscape);
         InicializaTransicion(bullyEscapeState, ByBPatrolState, _escapeToPatrol);
 
-        InicializaTransicion(bullyPersecutionState, bullyAttack, _persecutionToAttack);
+        InicializaTransicion(bullyPersecutionState, bullyAttack, _toAttack);
         InicializaTransicion(bullyAttack, bullyPersecutionState, _attackToPersecution);
 
-        InicializaTransicion(bullyWaitState, bullyAttack, _waitToAttack);
+        InicializaTransicion(bullyWaitState, bullyAttack, _toAttack);
         InicializaTransicion(bullyAttack, bullyWaitState, _attackToWait);
 
-        InicializaTransicion(bullyEscapeState, bullyAttack, _escapeToAttack);
+        InicializaTransicion(bullyEscapeState, bullyAttack, _toAttack);
         InicializaTransicion(bullyAttack, bullyEscapeState, _attackToEscape);
 
         InicializaTransicion(bullyPersecutionState, bullyWaitState, _persecutionToWait);
@@ -446,5 +446,7 @@ public class BullyMachine : StateMachine
     {
         Tick();
         Debug.Log(_currentState);
+        Box.ShowBox(_detectionBoxSize, _detectionBoxOffset, _myTransform);
+        Box.ShowBox(_attackBoxSize, _attackBoxOffset, _myTransform);
     }
 }

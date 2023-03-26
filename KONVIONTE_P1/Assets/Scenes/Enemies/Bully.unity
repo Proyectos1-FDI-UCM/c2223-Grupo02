@@ -289,6 +289,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3229762132671292846, guid: dead257545a754340a2deee90e150bcc, type: 3}
+      propertyPath: _baseDamage
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dead257545a754340a2deee90e150bcc, type: 3}
 --- !u!114 &223942587 stripped
@@ -558,7 +562,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.6
 --- !u!114 &989369461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,7 +575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da041330c02804847ada100536585fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 3
+  _damage: 20
 --- !u!1001 &1062245397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -963,18 +967,18 @@ MonoBehaviour:
   _raycastFloorDistance: 1
   _maxDistance: 0.5
   _floorDetector: {fileID: 267693150}
-  _attackBoxSize: {x: 1, y: 1, z: 0}
+  _attackBoxSize: {x: 1, y: 2, z: 0}
   _attackBoxOffset: {x: 0, y: 1, z: 0}
   _strongAttack: 5
   _softAttack: 10
-  _attackTime: 1
+  _attackTime: 2
   _persecutionBoxSize: {x: 5, y: 1, z: 0}
   _persecutionBoxOffSet: {x: 0, y: 1, z: 0}
   _waitBoxSize: {x: 5, y: 1, z: 0}
   _waitBoxOffset: {x: 0, y: 1, z: 0}
-  _detectionBoxSize: {x: 5, y: 1, z: 0}
+  _detectionBoxSize: {x: 4, y: 2, z: 0}
   _detectionBoxOffset: {x: 0, y: 1, z: 0}
-  _escapeTime: 3
+  _escapeTime: 1
   _stopEscapeTime: 2
 --- !u!114 &2021738122
 MonoBehaviour:
@@ -988,7 +992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a534a251f067c904eadc9596fe22111c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _atackTriggerOffset: 0.5
+  _atackTriggerOffset: 0.6
 --- !u!114 &2021738124
 MonoBehaviour:
   m_ObjectHideFlags: 0

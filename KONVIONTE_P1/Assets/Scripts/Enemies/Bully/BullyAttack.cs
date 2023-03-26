@@ -37,7 +37,7 @@ public class BullyAttack : State
     public void OnEnter()
     {
         //Hacemos que se reinicie el tiempo de ataque al principio
-        _currentAttackTime = _attackTime;
+        _currentAttackTime = 0;
 
         //Fijarse en que ese sea el nombre del bool en la animación
         _myAnimator.SetBool("AttackState", true);
@@ -89,6 +89,7 @@ public class BullyAttack : State
     public void OnExit()
     {
         _myMovementComponent.SetMaxSpeed(_originalMaxSpeed);
+        _myAnimator.SetBool("AttackState", false);
     }
 
     //Constructora de la clase

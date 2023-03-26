@@ -22,7 +22,7 @@ public class Teleport : StateMachineBehaviour
         GameManager.Instance.SetPhysics(true);
         GameManager.Instance.InmortalityPlayer(false);
         //animator.ResetTrigger("Teleport");
-        Debug.Log("Tu vieja teleport");
+        
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
