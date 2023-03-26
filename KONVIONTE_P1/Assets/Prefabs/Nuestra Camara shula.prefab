@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _myTargetTransform: {fileID: 0}
-  _interpolationSpeed: 0.0005
-  _returnSpeed: 0.05
+  _interpolationSpeed: 1
+  _returnSpeed: 0.5
   _zOffset: -20
   _yOffset: 1
-  _xOffset: 7
+  _xOffset: 10

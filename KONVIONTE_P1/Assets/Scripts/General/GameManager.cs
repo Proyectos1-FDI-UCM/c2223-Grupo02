@@ -74,9 +74,9 @@ public class GameManager : MonoBehaviour
     #region Parameters
     [SerializeField]
     [Tooltip("Tiempo en segundos que dura el nivel")]
-    private float _maxLevelTime = 60;// migrar a un level manager
-    public UnityEvent _pauseSound;
-    public UnityEvent _resumeSound;
+    private float _maxLevelTime;// migrar a un level manager
+
+   
     #endregion
     #region Properties
 
@@ -216,6 +216,8 @@ public class GameManager : MonoBehaviour
     /// <param name="context"></param>
     public void CanFollow(InputAction.CallbackContext context)
     {
+        if (!_input) return;
+
         // Si el jugador se mueve
         if (context.performed)
         {
@@ -230,6 +232,8 @@ public class GameManager : MonoBehaviour
 
     public void Dash(InputAction.CallbackContext context)
     {
+        if (!_input) return;
+
         if (context.performed)
         {
             _playerDashComponent.Dashing(true);
@@ -267,7 +271,7 @@ public class GameManager : MonoBehaviour
         if (Time.timeScale > 0)
         {
             InputOff();
-            _pauseSound.Invoke();
+            AudioManager.Instance.PauseSound.Invoke();
             Time.timeScale = 0;
         }
         else
@@ -280,7 +284,7 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         InputOn();
-        _resumeSound.Invoke();
+        AudioManager.Instance.ResumeSound.Invoke();
         Time.timeScale = 1;
     }
 
@@ -288,6 +292,13 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void SetTime(float time)
+    {
+        _currentTime = time;
+    }
+
+
     #endregion
 
 

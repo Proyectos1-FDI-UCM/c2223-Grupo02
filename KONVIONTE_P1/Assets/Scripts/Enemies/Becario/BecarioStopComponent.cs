@@ -9,6 +9,7 @@ public class BecarioStopState : State
     private Transform _myTransform;
     private MovementComponent _myMovementComponent;
     private Animator _myAnimator;
+
     #region Properties
     private float _originalMaxSpeeed;
 

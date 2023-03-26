@@ -444,54 +444,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 65529469, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
-      propertyPath: m_Value
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 1720947251404330447, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1720947251404330447, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1720947251404330447, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -8.1715
-      objectReference: {fileID: 0}
-    - target: {fileID: 1720947251404330447, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.94288373
-      objectReference: {fileID: 0}
-    - target: {fileID: 1720947251404330447, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -5.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1720947251404330447, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983381833427266742, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
-      propertyPath: m_Type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2983381833427266742, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
-      propertyPath: m_FillMethod
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4587807807810759759, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
-      propertyPath: m_Type
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4587807807810759759, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
-      propertyPath: m_FillMethod
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8023802540476248640, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8358887279768211996, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -587,18 +539,6 @@ PrefabInstance:
     - target: {fileID: 8358887279887475759, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
       propertyPath: m_Name
       value: InGame UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 8358887281105601902, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -27.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8358887281105601902, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 26.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8557134710108636547, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
