@@ -211,7 +211,7 @@ MonoBehaviour:
   _heightToPeak: 4
   _speedDivider: 0.83
   _ascensionTime: 0.7
-  _descensionTime: 0.5
+  _descensionTime: 0.7
 --- !u!114 &3229762132671292846
 MonoBehaviour:
   m_ObjectHideFlags: 0
