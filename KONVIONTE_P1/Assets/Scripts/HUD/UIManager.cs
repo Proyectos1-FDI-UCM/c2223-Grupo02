@@ -2,10 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
     #region References
+    [SerializeField] GameObject pauseFirstButton;
+    [SerializeField] GameObject optionsFirstButton;
 
     [Tooltip("El cronómetro")]
     [SerializeField] private Timer _UITimer;
@@ -45,6 +48,11 @@ public class UIManager : MonoBehaviour
     public void PauseMenu(bool pause)
     {
         _pauseMenu.SetActive(pause);
+        if (pause)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(pauseFirstButton);
+        }
     }
     #endregion
 
