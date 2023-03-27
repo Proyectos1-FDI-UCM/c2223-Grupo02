@@ -33,13 +33,7 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    #region Camera y UI
-
-    //quizas haya que migrarlo a un singleton
-    [SerializeField]
-    private FollowCamera _followCamera;
-
-
+    #region UI
     [SerializeField] 
     private UIManager _UIManager;
     #endregion
@@ -91,7 +85,7 @@ public class GameManager : MonoBehaviour
         _player = player;
 
         //Inicializacion del input
-        _playerInputActions= new PlayerInputActions();
+        _playerInputActions = new PlayerInputActions();
         _playerInputActions.Enable();
         
         //Inicializacion de los componentes del player
@@ -206,24 +200,6 @@ public class GameManager : MonoBehaviour
         if (context.performed )
         {
             _playerTeleportParry.PerfomTeleport();
-        }
-    }/// <summary>
-    /// Llama al método CanFollow del FollowCamera del player
-    /// </summary>
-    /// <param name="context"></param>
-    public void CanFollow(InputAction.CallbackContext context)
-    {
-        if (!_input) return;
-
-        // Si el jugador se mueve
-        if (context.performed)
-        {
-            _followCamera.CanFollow(true, false, context.ReadValue<Vector2>());
-        }
-        // Si el jugador para
-        else if (context.canceled)
-        {
-            _followCamera.CanFollow(false, true, Vector2.zero);
         }
     }
 

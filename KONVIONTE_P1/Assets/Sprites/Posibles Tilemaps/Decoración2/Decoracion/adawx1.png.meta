@@ -510,7 +510,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      adawx1_0: -412232543
+      adawx1_14: -1137507054
       adawx1_4: 1741111387
       adawx1_9: -1702320327
       adawx1_3: 1704966378
@@ -523,9 +523,9 @@ TextureImporter:
       adawx1_15: 1541164294
       adawx1_6: -739634415
       adawx1_13: 1457053073
-      adawx1_8: -1047992476
-      adawx1_14: -1137507054
+      adawx1_0: -412232543
       adawx1_2: -1134938593
+      adawx1_8: -1047992476
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

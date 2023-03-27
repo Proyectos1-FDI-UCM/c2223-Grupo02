@@ -35,8 +35,16 @@ public class FollowCamera : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        FollowLogic();
+    }
+
+    /// <summary>
+    /// Realiza toda la logica y movimiento de la camara
+    /// </summary>
+    private void FollowLogic()
+    {
         // Si la camara puede seguir al jugador
-        if (_canFollow)
+        if (CanFollow())
         {
             // Se hace un lerpeo entre la pos del player y la pos objetivo
             // _direction cambia la direccion de movimiento de la camara segun la del jugador
@@ -54,11 +62,12 @@ public class FollowCamera : MonoBehaviour
             _interpolation += _returnSpeed * Time.deltaTime;
         }
 
+        // Segumiento vertical
         if (_myTargetTransform.position.y >= _myTransform.position.y)
         {
             _myTransform.position = new Vector3(_myTransform.position.x, _myTargetTransform.position.y, _zOffset);
         }
-        else if(_myTargetTransform.position.y < _myTransform.position.y - _yOffset)
+        else if (_myTargetTransform.position.y < _myTransform.position.y - _yOffset)
         {
             _myTransform.position = new Vector3(_myTransform.position.x, _myTargetTransform.position.y + _yOffset, _zOffset);
         }
@@ -68,32 +77,32 @@ public class FollowCamera : MonoBehaviour
     /// Habilita a la camara a seguir al jugador si este se mueve
     /// </summary>
     /// <param name="context"></param>
-    public void CanFollow(bool performed, bool canceled,Vector2 directon)
+    private bool CanFollow()
     {
-        // Si el jugador se mueve
-        if (performed)
+        // La camara se descentra si el jugador alcanza su velocidad maxima
+        if(GameManager.Player.GetComponent<MovementComponent>().Speed 
+            == GameManager.Player.GetComponent<MovementComponent>().MaxMovementSpeed)
         {
-            // Habilitamos el movimiento de la camara
-            _canFollow = true;
-            // Resetamos la interpolacion
+            // Reset de la interpolacion
             _interpolation = 0;
-            // Según la direccion de movimiento la camara se mueve hacia derecha o izquierda
-            if(directon == Vector2.left)
+
+            // Direccion
+            if((Vector2)GameManager.Player.GetComponent<MovementComponent>().Direction == Vector2.right)
             {
-                _direction = -1f;
+                _direction = 1;
             }
-            else
+            else if ((Vector2)GameManager.Player.GetComponent<MovementComponent>().Direction == Vector2.left)
             {
-                _direction = 1f;
+                _direction = -1;
             }
+
+            return true;
         }
-        // Si el jugador para
-        else if (canceled)
+        else
         {
-            // La camara deja de seguirle
-            _canFollow = false;
-            // Reseteamos la interpolacion
             _interpolation = 0;
+
+            return false;
         }
     }
 }

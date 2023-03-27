@@ -17,6 +17,9 @@ public class MovementComponent : MonoBehaviour
     private float _speed = 0f;
     #endregion
 
+    #region Accessors
+    public Vector3 Direction { get { return _directionVector; } }
+    #endregion
     #region Parameters  
     [SerializeField] private float _maxMovementSpeed;   
     [Header("Tiempos")]
