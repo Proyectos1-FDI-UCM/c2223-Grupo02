@@ -111,4 +111,19 @@ public class ByBPatrolState : State
 
         _floorLayerMask = myMachine.FloorLayerMask;
     }
+    public ByBPatrolState(SprinterMachine myMachine)
+    {
+        _myTransform = myMachine.MyTransform;
+        _myMovementComponent = myMachine.MyMovementComponent;
+        _floorDetector = myMachine.FloorDetector;
+
+        _routineTime = myMachine.RoutineTime;
+        _stopTime = myMachine.StopTime;
+        _raycastWallDistance = myMachine.RraycastWallDistance;
+        _raycastFloorDistance = myMachine.RraycastFloorDistance;
+        _myAnimator = myMachine.MyAnimator;
+        _currentPatrollTime = 0;
+
+        _floorLayerMask = myMachine.FloorLayerMask;
+    }
 }

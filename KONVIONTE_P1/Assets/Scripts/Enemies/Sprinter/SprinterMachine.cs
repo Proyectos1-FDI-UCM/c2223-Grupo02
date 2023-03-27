@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using OurNamespace;
 public class SprinterMachine : StateMachine
 {
     //#region Máquina de estados
@@ -247,44 +247,46 @@ public class SprinterMachine : StateMachine
         _playerTransform = GameManager.Player.transform;
         _myCombatController = GetComponent<CombatController>();
         _myAnimator = GetComponent<Animator>();
+        //Comentado para evitar error de compilacion
+        //por favor no os dediqueis a copiar y pegar codigo sin aseguraros que compila en unity
 
         //Inicialización de los estados (constructora)
-        ByBPatrolState = new ByBPatrolState(this);
-        becarioEscapeState = new BecarioEscapeState(this);
-        becarioStopState = new BecarioStopState(this);
-        becarioAttackState = new BecarioAttackState(this);
+        //ByBPatrolState = new ByBPatrolState(this);
+        //becarioEscapeState = new BecarioEscapeState(this);
+        //becarioStopState = new BecarioStopState(this);
+        //becarioAttackState = new BecarioAttackState(this);
 
-        //Añadir los estados al diccionario
-        _stateTransitions.Add(ByBPatrolState, new List<Transition>());
-        _stateTransitions.Add(becarioAttackState, new List<Transition>());
-        _stateTransitions.Add(becarioStopState, new List<Transition>());
-        _stateTransitions.Add(becarioEscapeState, new List<Transition>());
+        ////Añadir los estados al diccionario
+        //_stateTransitions.Add(ByBPatrolState, new List<Transition>());
+        //_stateTransitions.Add(becarioAttackState, new List<Transition>());
+        //_stateTransitions.Add(becarioStopState, new List<Transition>());
+        //_stateTransitions.Add(becarioEscapeState, new List<Transition>());
 
-        //Inicialización de las condiciones de las transiciones
-        _patrolToEscape = () => PatrolToEscape();
-        _escapeToPatrol = () => EscapeToPatrol();
+        ////Inicialización de las condiciones de las transiciones
+        //_patrolToEscape = () => PatrolToEscape();
+        //_escapeToPatrol = () => EscapeToPatrol();
 
-        _patrolToAttack = () => PatrolToAttack();
-        _attackToPatrol = () => AttackToPatrol();
+        //_patrolToAttack = () => PatrolToAttack();
+        //_attackToPatrol = () => AttackToPatrol();
 
-        _escapeToStop = () => EscapeToStop();
-        _stopToEscape = () => StopToEscape();
+        //_escapeToStop = () => EscapeToStop();
+        //_stopToEscape = () => StopToEscape();
 
-        _stopToAttack = () => StopToAttack();
-        _attackToStop = () => AttackToStop();
+        //_stopToAttack = () => StopToAttack();
+        //_attackToStop = () => AttackToStop();
 
-        //Inicialización de las transiciones
-        InicializaTransicion(ByBPatrolState, becarioEscapeState, _patrolToEscape);
-        InicializaTransicion(becarioEscapeState, ByBPatrolState, _escapeToPatrol);
+        ////Inicialización de las transiciones
+        //InicializaTransicion(ByBPatrolState, becarioEscapeState, _patrolToEscape);
+        //InicializaTransicion(becarioEscapeState, ByBPatrolState, _escapeToPatrol);
 
-        InicializaTransicion(ByBPatrolState, becarioAttackState, _patrolToAttack);
-        InicializaTransicion(becarioAttackState, ByBPatrolState, _attackToPatrol);
+        //InicializaTransicion(ByBPatrolState, becarioAttackState, _patrolToAttack);
+        //InicializaTransicion(becarioAttackState, ByBPatrolState, _attackToPatrol);
 
-        InicializaTransicion(becarioEscapeState, becarioStopState, _escapeToStop);
-        InicializaTransicion(becarioStopState, becarioEscapeState, _stopToEscape);
+        //InicializaTransicion(becarioEscapeState, becarioStopState, _escapeToStop);
+        //InicializaTransicion(becarioStopState, becarioEscapeState, _stopToEscape);
 
-        InicializaTransicion(becarioStopState, becarioAttackState, _stopToAttack);
-        InicializaTransicion(becarioAttackState, becarioStopState, _attackToStop);
+        //InicializaTransicion(becarioStopState, becarioAttackState, _stopToAttack);
+        //InicializaTransicion(becarioAttackState, becarioStopState, _attackToStop);
 
         //establecer el estado inicial
         _currentState = ByBPatrolState;
