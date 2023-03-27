@@ -1,9 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-using OurNamespace;
-public class BecarioMachine : StateMachine
+
+public class SprinterMachine : StateMachine
 {
     //#region Máquina de estados
 
@@ -27,9 +27,11 @@ public class BecarioMachine : StateMachine
 
     private Transform _playerTransform;
     public Transform PlayerTransform { get { return _playerTransform; } }
+
     //Esta es sobre todo del ataque, pero...
     private CombatController _myCombatController;
     public CombatController MyCombatController { get { return _myCombatController; } }
+
     private Animator _myAnimator;
     public Animator MyAnimator { get { return _myAnimator; } }
 
@@ -38,9 +40,10 @@ public class BecarioMachine : StateMachine
     #region States
 
     private ByBPatrolState ByBPatrolState;
-    private BecarioEscapeState becarioEscapeState;
-    private BecarioStopState becarioStopState;
-    private BecarioAttackState becarioAttackState;
+    private BullyWaitState bullyWaitState;
+    //private SprinterAttackState sprinterAttackState;
+    //private BecarioStopState becarioStopState;
+    //private SprinterDashState sprinterDashState;
 
     #endregion
 
@@ -69,48 +72,48 @@ public class BecarioMachine : StateMachine
     private Func<bool> _stopToEscape;
 
     private Func<bool> _stopToAttack;
-    private Func<bool> _attackToStop;    
+    private Func<bool> _attackToStop;
 
     #endregion
 
     #region PatrolState
 
-        #region Parameters
+    #region Parameters
 
-        [Header ("Estado de Patrulla")]
-        [Tooltip("Tiempo de cada patrullaje")]
-        [SerializeField] private float _routineTime;
-        public float RoutineTime { get { return _routineTime; } }
+    [Header("Estado de Patrulla")]
+    [Tooltip("Tiempo de cada patrullaje")]
+    [SerializeField] private float _routineTime;
+    public float RoutineTime { get { return _routineTime; } }
 
-        [Tooltip("Tiempo de parada entre cada patrullaje")]
-        [SerializeField] private float _stopTime;
-        public float StopTime { get { return _stopTime; } }
-    
-        [Tooltip("Distancia del rayo que detecta la colisión con las paredes")]
-        [SerializeField] private float _raycastWallDistance;
-        public float RraycastWallDistance { get { return _raycastWallDistance; } }
+    [Tooltip("Tiempo de parada entre cada patrullaje")]
+    [SerializeField] private float _stopTime;
+    public float StopTime { get { return _stopTime; } }
 
-        [Tooltip("Distancia del rayo que detecta la colisión con el suelo")]
-        [SerializeField] private float _raycastFloorDistance;
-        public float RraycastFloorDistance { get { return _raycastFloorDistance; } }
+    [Tooltip("Distancia del rayo que detecta la colisión con las paredes")]
+    [SerializeField] private float _raycastWallDistance;
+    public float RraycastWallDistance { get { return _raycastWallDistance; } }
 
-        [Tooltip("Distancia máxima que puede haber bajo el enemigo, para que baje")]
-        [SerializeField] private float _maxDistance;
-        public float MaxDistance { get { return _maxDistance; } }
+    [Tooltip("Distancia del rayo que detecta la colisión con el suelo")]
+    [SerializeField] private float _raycastFloorDistance;
+    public float RraycastFloorDistance { get { return _raycastFloorDistance; } }
 
-        [Tooltip("Objeto detector de suelo")]
-        [SerializeField] private Transform _floorDetector;
-        public Transform FloorDetector { get { return _floorDetector; } }
+    [Tooltip("Distancia máxima que puede haber bajo el enemigo, para que baje")]
+    [SerializeField] private float _maxDistance;
+    public float MaxDistance { get { return _maxDistance; } }
 
-        #endregion
+    [Tooltip("Objeto detector de suelo")]
+    [SerializeField] private Transform _floorDetector;
+    public Transform FloorDetector { get { return _floorDetector; } }
 
-        #region Properties
-        
-        private LayerMask _playerLayerMask;
-        public LayerMask PlayerLayerMask { get { return _playerLayerMask; } }
-        private LayerMask _floorLayerMask;
-        public LayerMask FloorLayerMask { get { return _floorLayerMask; } }
-        
+    #endregion
+
+    #region Properties
+
+    private LayerMask _playerLayerMask;
+    public LayerMask PlayerLayerMask { get { return _playerLayerMask; } }
+    private LayerMask _floorLayerMask;
+    public LayerMask FloorLayerMask { get { return _floorLayerMask; } }
+
 
     #endregion
 
@@ -119,25 +122,25 @@ public class BecarioMachine : StateMachine
 
     #region EscapeState
 
-        #region Parameters
+    #region Parameters
 
-        [Header("Estado de Escape")]
-        //Caja de detección del jugador
-        [SerializeField] private Vector3 _detectionBoxSize;
-        public Vector3 DetectionBoxSize { get { return _detectionBoxSize; } }
+    [Header("Estado de Escape")]
+    //Caja de detección del jugador
+    [SerializeField] private Vector3 _detectionBoxSize;
+    public Vector3 DetectionBoxSize { get { return _detectionBoxSize; } }
 
-        [SerializeField] private Vector3 _detectionBoxOffset;
-        public Vector3 DetectionBoxOffset { get { return _detectionBoxOffset; } }
+    [SerializeField] private Vector3 _detectionBoxOffset;
+    public Vector3 DetectionBoxOffset { get { return _detectionBoxOffset; } }
 
-        [Tooltip("Tiempo en el que se actualiza la posición del jugador para el escape")]
-        [SerializeField] private float _escapeTime;
-        public float EscapeTime { get { return _escapeTime; } }
+    [Tooltip("Tiempo en el que se actualiza la posición del jugador para el escape")]
+    [SerializeField] private float _escapeTime;
+    public float EscapeTime { get { return _escapeTime; } }
 
-        [Tooltip("Tiempo de parada entre cada patrullaje")]
-        [SerializeField] private float _stopEscapeTime;
-        public float StopEscapeTime { get { return _stopEscapeTime; } }
+    [Tooltip("Tiempo de parada entre cada patrullaje")]
+    [SerializeField] private float _stopEscapeTime;
+    public float StopEscapeTime { get { return _stopEscapeTime; } }
 
-        #endregion
+    #endregion
 
     #region Properties
 
@@ -165,21 +168,21 @@ public class BecarioMachine : StateMachine
     #region Parameters
 
     [Header("Estado de Ataque")]
-        //Caja de ataque del enemigo
-        [SerializeField] Vector3 _attackBoxSize;
-        public Vector3 AttackBoxSize { get { return _attackBoxSize; } }
-        [SerializeField] Vector3 _attackBoxOffset;
-        public Vector3 AttackBoxOffset { get { return _attackBoxOffset; } }
+    //Caja de ataque del enemigo
+    [SerializeField] Vector3 _attackBoxSize;
+    public Vector3 AttackBoxSize { get { return _attackBoxSize; } }
+    [SerializeField] Vector3 _attackBoxOffset;
+    public Vector3 AttackBoxOffset { get { return _attackBoxOffset; } }
 
-        [Tooltip("Tiempo entre ataques")]
-        [SerializeField] private float _attackTime;
-        public float AttackTime { get { return _attackTime; } }
+    [Tooltip("Tiempo entre ataques")]
+    [SerializeField] private float _attackTime;
+    public float AttackTime { get { return _attackTime; } }
 
-        #endregion
+    #endregion
 
-        #region Properties
+    #region Properties
 
-        private float _currentAttackTime;
+    private float _currentAttackTime;
 
     #endregion
 
@@ -192,22 +195,22 @@ public class BecarioMachine : StateMachine
     public bool PatrolToEscape()
     {
         //si el enemigo detecta al jugador
-        return Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask);     
+        return Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask);
     }
     public bool EscapeToPatrol()
     {
         //si el enemigo deja de detectar al jugador
-        return !Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask);     
+        return !Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask);
     }
     public bool PatrolToAttack()
     {
         //si el enemigo detecta al jugador en el área de ataque
-        return Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);        
+        return Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);
     }
     public bool AttackToPatrol()
     {
         //si el enemigo deja de detectar al jugador en el área de ataque
-        return !Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);      
+        return !Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);
     }
     public bool EscapeToStop()
     {
@@ -220,12 +223,12 @@ public class BecarioMachine : StateMachine
     public bool StopToAttack()
     {
         //si el enemigo detectar al jugador en el área de ataque
-        return Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);        
+        return Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);
     }
     public bool AttackToStop()
     {
         //si el enemigo detectar al jugador en el área de ataque, pero sigue en el área de detección
-        return !Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);     
+        return !Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);
     }
     #endregion
 
