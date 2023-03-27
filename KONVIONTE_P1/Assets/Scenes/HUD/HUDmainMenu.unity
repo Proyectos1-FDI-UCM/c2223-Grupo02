@@ -187,17 +187,17 @@ MonoBehaviour:
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: a38bc1d0b7e755a47bbc89919b3da666, type: 3}
+  m_PointAction: {fileID: 6147080960578716782, guid: a38bc1d0b7e755a47bbc89919b3da666, type: 3}
+  m_MoveAction: {fileID: -8203434414157257327, guid: a38bc1d0b7e755a47bbc89919b3da666, type: 3}
+  m_SubmitAction: {fileID: -6109764995135311946, guid: a38bc1d0b7e755a47bbc89919b3da666, type: 3}
+  m_CancelAction: {fileID: 2504125141093597416, guid: a38bc1d0b7e755a47bbc89919b3da666, type: 3}
+  m_LeftClickAction: {fileID: -7842987227492571052, guid: a38bc1d0b7e755a47bbc89919b3da666, type: 3}
+  m_MiddleClickAction: {fileID: 5936780873509130202, guid: a38bc1d0b7e755a47bbc89919b3da666, type: 3}
+  m_RightClickAction: {fileID: -7913065250493790513, guid: a38bc1d0b7e755a47bbc89919b3da666, type: 3}
+  m_ScrollWheelAction: {fileID: -2488614169940078414, guid: a38bc1d0b7e755a47bbc89919b3da666, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 8395741534190373563, guid: a38bc1d0b7e755a47bbc89919b3da666, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 3196144121582894555, guid: a38bc1d0b7e755a47bbc89919b3da666, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
 --- !u!1 &909833297 stripped
@@ -345,6 +345,18 @@ PrefabInstance:
       value: Exit Button
       objectReference: {fileID: 0}
     - target: {fileID: 265566381, guid: 39ea826680f64a74fa4d3be09a5e505c, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.47058827
+      objectReference: {fileID: 0}
+    - target: {fileID: 265566381, guid: 39ea826680f64a74fa4d3be09a5e505c, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.7960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 265566381, guid: 39ea826680f64a74fa4d3be09a5e505c, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.9450981
+      objectReference: {fileID: 0}
+    - target: {fileID: 265566381, guid: 39ea826680f64a74fa4d3be09a5e505c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 916847462}
@@ -487,6 +499,18 @@ PrefabInstance:
     - target: {fileID: 6064504543112565573, guid: 39ea826680f64a74fa4d3be09a5e505c, type: 3}
       propertyPath: m_Colors.m_PressedColor.r
       value: 0.7372549
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064504543112565573, guid: 39ea826680f64a74fa4d3be09a5e505c, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.47058827
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064504543112565573, guid: 39ea826680f64a74fa4d3be09a5e505c, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.7960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064504543112565573, guid: 39ea826680f64a74fa4d3be09a5e505c, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.9450981
       objectReference: {fileID: 0}
     - target: {fileID: 6064504543112565573, guid: 39ea826680f64a74fa4d3be09a5e505c, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
