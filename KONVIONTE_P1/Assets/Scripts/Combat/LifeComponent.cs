@@ -8,6 +8,8 @@ public class LifeComponent : MonoBehaviour
     #region Parameters
     [SerializeField] private int _maxLife;
     Animator _myAnimator;
+
+    [SerializeField] private ParticleSystem SuperHit;
     #endregion
 
     #region Properties
@@ -51,14 +53,17 @@ public class LifeComponent : MonoBehaviour
         {
             if(GameManager.Instance.AudioManager != null)   
             GameManager.Instance.AudioManager.Play("PlayerHit");
+            
         }
         //Si moñeco no inmortal, recibe daño
         if (!_immortal)
         {
             _life -= damage;
+            SuperHit.Play();
+            
 
             //Si recibe daño mortal muere, logicamente
-            if(_life <= 0)
+            if (_life <= 0)
             {
                 Death();
             }
