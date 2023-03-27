@@ -169,7 +169,7 @@ public class BullyMachine : StateMachine
     public Vector3 AttackBoxOffset { get { return _attackBoxOffset; } }
 
     [Space(5)]
-    [Tooltip("Daño del Ataque fuerte del jugador")]
+    [Tooltip("Daño del Ataque fuerte del jugador")] //Esto se refiere al ataque fuerte del enemigo, no del juagador
     [SerializeField] private int _strongAttack;
     public int StrongAttack { get { return _strongAttack; } }
 
@@ -347,7 +347,7 @@ public class BullyMachine : StateMachine
         return Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask) 
             && (_myLifeComponent.CurrentLife < _myLifeComponent.MaxLife / 4) ;
     }
-    public bool ToAttack()
+    public bool ToAttack() //Esta que hace?
     {
         return Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);
     }
@@ -410,6 +410,7 @@ public class BullyMachine : StateMachine
         _waitToEscape = () => WaitToEscape();
 
         _toAttack = () => ToAttack();
+
         //Inicialización de las transiciones
 
         InicializaTransicion(ByBPatrolState, bullyPersecutionState, _patrolToPersecution);
