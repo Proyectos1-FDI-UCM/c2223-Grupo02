@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ParticleSystemJobs;
 
 //ESTE SCRIPT VA ATTACHADO TANTO AL JUGADOR COMO A LOS ENEMIGOS
 public class LifeComponent : MonoBehaviour
@@ -59,7 +60,10 @@ public class LifeComponent : MonoBehaviour
         if (!_immortal)
         {
             _life -= damage;
-            SuperHit.Play();
+            if (SuperHit != null)
+            {
+                SuperHit.Play();
+            }
             
 
             //Si recibe daño mortal muere, logicamente
