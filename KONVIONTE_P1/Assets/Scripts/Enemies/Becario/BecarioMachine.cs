@@ -194,19 +194,16 @@ public class BecarioMachine : StateMachine
         //si el enemigo detecta al jugador
         return Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask);     
     }
-
     public bool EscapeToPatrol()
     {
         //si el enemigo deja de detectar al jugador
         return !Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask);     
     }
-
     public bool PatrolToAttack()
     {
         //si el enemigo detecta al jugador en el área de ataque
         return Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);        
     }
-
     public bool AttackToPatrol()
     {
         //si el enemigo deja de detectar al jugador en el área de ataque
@@ -225,7 +222,6 @@ public class BecarioMachine : StateMachine
         //si el enemigo detectar al jugador en el área de ataque
         return Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);        
     }
-
     public bool AttackToStop()
     {
         //si el enemigo detectar al jugador en el área de ataque, pero sigue en el área de detección
@@ -254,10 +250,8 @@ public class BecarioMachine : StateMachine
         becarioEscapeState = new BecarioEscapeState(this);
         becarioStopState = new BecarioStopState(this);
         becarioAttackState = new BecarioAttackState(this);
-        
 
-
-        //añadir los estados al diccionario
+        //Añadir los estados al diccionario
         _stateTransitions.Add(ByBPatrolState, new List<Transition>());
         _stateTransitions.Add(becarioAttackState, new List<Transition>());
         _stateTransitions.Add(becarioStopState, new List<Transition>());

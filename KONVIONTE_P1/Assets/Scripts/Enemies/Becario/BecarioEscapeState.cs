@@ -73,5 +73,4 @@ public class BecarioEscapeState : State
         _currentEscapeTime = 0;
         _currentStopTime = _stopEscapeTime;
     }
-
 }
