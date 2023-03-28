@@ -23,5 +23,4 @@ public class DialogueTrigger : MonoBehaviour
             TriggerDialogue();
         }
     }
-
 }

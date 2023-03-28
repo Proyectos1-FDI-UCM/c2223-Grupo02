@@ -98,6 +98,15 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Carteles"",
+                    ""type"": ""Button"",
+                    ""id"": ""c7d3f7c7-0872-41f7-83a7-0964b91f9401"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -320,6 +329,17 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Ability"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c609ad1b-e25c-4261-ba10-58bbdd204419"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Carteles"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -336,6 +356,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player_Parry = m_Player.FindAction("Parry", throwIfNotFound: true);
         m_Player_Quit = m_Player.FindAction("Quit", throwIfNotFound: true);
         m_Player_Ability = m_Player.FindAction("Ability", throwIfNotFound: true);
+        m_Player_Carteles = m_Player.FindAction("Carteles", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -403,6 +424,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Parry;
     private readonly InputAction m_Player_Quit;
     private readonly InputAction m_Player_Ability;
+    private readonly InputAction m_Player_Carteles;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -415,6 +437,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public InputAction @Parry => m_Wrapper.m_Player_Parry;
         public InputAction @Quit => m_Wrapper.m_Player_Quit;
         public InputAction @Ability => m_Wrapper.m_Player_Ability;
+        public InputAction @Carteles => m_Wrapper.m_Player_Carteles;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -448,6 +471,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Ability.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbility;
                 @Ability.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbility;
                 @Ability.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbility;
+                @Carteles.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCarteles;
+                @Carteles.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCarteles;
+                @Carteles.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCarteles;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -476,6 +502,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Ability.started += instance.OnAbility;
                 @Ability.performed += instance.OnAbility;
                 @Ability.canceled += instance.OnAbility;
+                @Carteles.started += instance.OnCarteles;
+                @Carteles.performed += instance.OnCarteles;
+                @Carteles.canceled += instance.OnCarteles;
             }
         }
     }
@@ -490,5 +519,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         void OnParry(InputAction.CallbackContext context);
         void OnQuit(InputAction.CallbackContext context);
         void OnAbility(InputAction.CallbackContext context);
+        void OnCarteles(InputAction.CallbackContext context);
     }
 }

@@ -59,6 +59,11 @@ public class DialogueManager : MonoBehaviour
 
         // Primera frase
         NextSentence();
+
+        // Desactivar el input y parar el juego
+        GameManager.Instance.InputOff();
+        Time.timeScale = 0f;
+
     }
 
     /// <summary>
@@ -86,6 +91,11 @@ public class DialogueManager : MonoBehaviour
     {
         //desactiva la ui
         SetDialogueUI(false);
+
+        //activa el input y sigue el juego
+        GameManager.Instance.InputOn();
+        Time.timeScale = 1.0f;
+
     }
 
     private void SetDialogueUI(bool On)

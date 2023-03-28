@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Camara.unity
     guid: fd3b6b3336d17804e9f093f6830d8524
+  - enabled: 1
+    path: Assets/Scenes/PlayTestingRatas 1.unity
+    guid: f8dfdd1ee3cd6a74a8bf39b6c8d06131
   m_configObjects: {}
