@@ -262,6 +262,7 @@ MonoBehaviour:
   _waitBoxOffset: {x: 0, y: 1, z: 0}
   _detectionBoxSize: {x: 6, y: 2, z: 0}
   _detectionBoxOffset: {x: 0, y: 1, z: 0}
+  _escapeSpeed: 4
   _escapeTime: 1
   _stopEscapeTime: 2
 --- !u!114 &1886094971767836441
