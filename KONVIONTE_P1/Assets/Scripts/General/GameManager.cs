@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     #region UI
     [SerializeField] 
     private UIManager _UIManager;
+    public UIManager UIManager { get { return _UIManager; } }
     #endregion
 
     #region Spawn position del nivel

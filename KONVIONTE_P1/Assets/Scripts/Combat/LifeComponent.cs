@@ -52,8 +52,9 @@ public class LifeComponent : MonoBehaviour
     {
         if (GetComponent<ParryComponent>() != null)
         {
-            if(GameManager.Instance.AudioManager != null)   
-            GameManager.Instance.AudioManager.Play("PlayerHit");
+            if(GameManager.Instance.AudioManager != null) {
+                GameManager.Instance.AudioManager.Play("PlayerHit"); }  
+            
             
         }
         //Si moñeco no inmortal, recibe daño
