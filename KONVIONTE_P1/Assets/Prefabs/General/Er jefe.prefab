@@ -80,7 +80,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  _followCamera: {fileID: 0}
   _UIManager: {fileID: 0}
   _spawnTransform: {fileID: 391608736}
   _audioManager: {fileID: 0}
@@ -130,8 +129,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6346709447776289746}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: CanFollow
-        m_Mode: 0
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -226,6 +225,50 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 8575943c-f478-42ec-9e01-6e77d90fc43a
     m_ActionName: Player/Ability[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c7d3f7c7-0872-41f7-83a7-0964b91f9401
+    m_ActionName: Player/Carteles[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 65bdc849-5aee-4f7b-8589-99b276c7140c
+    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a2f42981-4b08-4533-9309-34e71bc045ec
+    m_ActionName: UI/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3312e9fb-8782-4406-92b4-f8d2608ca582
+    m_ActionName: UI/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fb42b91b-dc22-45e8-9b30-0a6f54d3ceb8
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 90439160-0f5f-431a-b86b-6c003f2d8bc0
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1c20ce04-a563-47d5-b617-2428adc4f375
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 33da4ef2-b8e1-4370-860e-a4e71358ab39
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e0de9b1c-25e5-4d1c-adc6-8dd6bf38d9c4
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dde26895-d505-4a6c-ab2d-9aaf8c9cdb46
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fe2a0dbf-598e-4073-87e1-5acad1686ff6
+    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

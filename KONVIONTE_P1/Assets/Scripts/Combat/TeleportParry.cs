@@ -46,6 +46,10 @@ public class TeleportParry : MonoBehaviour
     LayerMask _floorMask;
     float _distance;
     #endregion
+
+    #region Accessors
+    public bool TpDone { get { return _telepotDone; } }
+    #endregion
     // Start is called before the first frame update
     void Start()
     {
