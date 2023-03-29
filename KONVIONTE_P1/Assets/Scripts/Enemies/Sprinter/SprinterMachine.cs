@@ -40,9 +40,8 @@ public class SprinterMachine : StateMachine
     #region States
 
     private ByBPatrolState ByBPatrolState;
-    private BullyWaitState StopState;
     //private SprinterAttackState sprinterAttackState;
-    //private BecarioStopState becarioStopState;
+    private BecarioStopState becarioStopState;
     //private SprinterDashState sprinterDashState;
 
     #endregion
@@ -105,36 +104,6 @@ public class SprinterMachine : StateMachine
 
     #endregion
 
-    #region EscapeState
-
-    #region Parameters
-
-    [Header("Estado de Escape")]
-    //Caja de detección del jugador
-    [SerializeField] private Vector3 _detectionBoxSize;
-    public Vector3 DetectionBoxSize { get { return _detectionBoxSize; } }
-
-    [SerializeField] private Vector3 _detectionBoxOffset;
-    public Vector3 DetectionBoxOffset { get { return _detectionBoxOffset; } }
-
-    [Tooltip("Tiempo en el que se actualiza la posición del jugador para el escape")]
-    [SerializeField] private float _escapeTime;
-    public float EscapeTime { get { return _escapeTime; } }
-
-    [Tooltip("Tiempo de parada entre cada patrullaje")]
-    [SerializeField] private float _stopEscapeTime;
-    public float StopEscapeTime { get { return _stopEscapeTime; } }
-
-    #endregion
-
-    #region Properties
-
-    private float _currentEscapeTime;
-    private float _currentStopEscapeTime;
-    #endregion
-
-    #endregion
-
     #region StopState
 
     #region Parameters
@@ -173,15 +142,27 @@ public class SprinterMachine : StateMachine
 
     #endregion
 
+    #region DashState
+
+    #region Parameters
+
+    #endregion
+
+    #region Properties
+
+    #endregion
+
+    #endregion
+
     #region Methods
 
     #region Condiciones de transición
 
-    public bool DetectionZone()
-    {
-        //si el enemigo detecta al jugador
-        return Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask);
-    }
+    //public bool DetectionZone()
+    //{
+    //    //si el enemigo detecta al jugador
+    //    //return Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask);
+    //}
     
     #endregion
 
@@ -205,18 +186,17 @@ public class SprinterMachine : StateMachine
         //Inicialización de los estados (constructora)
         ByBPatrolState = new ByBPatrolState(this);
         //becarioEscapeState = new BecarioEscapeState(this);
-        StopState = new BullyWaitState(this);
         //becarioAttackState = new BecarioAttackState(this);
 
         ////Añadir los estados al diccionario
         _stateTransitions.Add(ByBPatrolState, new List<Transition>());
         //_stateTransitions.Add(becarioAttackState, new List<Transition>());
-        _stateTransitions.Add(StopState, new List<Transition>());
+        //_stateTransitions.Add(StopState, new List<Transition>());
         //_stateTransitions.Add(becarioEscapeState, new List<Transition>());
 
         ////Inicialización de las condiciones de las transiciones
-        _patrolToStop = () => DetectionZone();
-        _stopToPatrol = () => !DetectionZone();
+        //_patrolToStop = () => DetectionZone();
+        //_stopToPatrol = () => !DetectionZone();
 
         //_patrolToAttack = () => PatrolToAttack();
         //_attackToPatrol = () => AttackToPatrol();
@@ -228,8 +208,8 @@ public class SprinterMachine : StateMachine
         //_attackToStop = () => AttackToStop();
 
         ////Inicialización de las transiciones
-        InicializaTransicion(ByBPatrolState, StopState, _patrolToStop);
-        InicializaTransicion(StopState, ByBPatrolState, _stopToPatrol);
+        //InicializaTransicion(ByBPatrolState, StopState, _patrolToStop);
+        //InicializaTransicion(StopState, ByBPatrolState, _stopToPatrol);
 
         //InicializaTransicion(ByBPatrolState, becarioAttackState, _patrolToAttack);
         //InicializaTransicion(becarioAttackState, ByBPatrolState, _attackToPatrol);
@@ -252,7 +232,7 @@ public class SprinterMachine : StateMachine
     {
         Tick();
         //Caja de detección (PARA DEBUGS)
-        Box.ShowBox(_detectionBoxSize, _detectionBoxOffset, _myTransform);
+        //Box.ShowBox(_detectionBoxSize, _detectionBoxOffset, _myTransform);
         Box.ShowBox(_attackBoxSize, _attackBoxOffset, _myTransform);
     }
 }
