@@ -103,7 +103,7 @@ public class FollowCamera : MonoBehaviour
         // Se modifica la pos de la camara
         _myTransform.position = new Vector3(_horizontalMovement, _myTransform.position.y, _zOffset);
         // Aumenta la interpolacion
-        _interpolation += speed * Time.deltaTime;
+        //_interpolation += speed * Time.deltaTime;
     }
 
     private void VerticalFollow()

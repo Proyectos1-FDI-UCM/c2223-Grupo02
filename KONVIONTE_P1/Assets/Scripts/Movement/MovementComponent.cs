@@ -7,14 +7,11 @@ using UnityEngine.UIElements;
 
 public class MovementComponent : MonoBehaviour
 {
-    #region Properties
+    #region References
     private Animator _myAnimator;
     private Transform _myTransform;
 
-    private Vector3 _directionVector;
-    public Vector3 _lastDirection;
-    
-    private float _speed = 0f;
+    private TeleportParry _teleport;
     #endregion
 
     #region Accessors
@@ -28,6 +25,10 @@ public class MovementComponent : MonoBehaviour
     #endregion
     #region properties
     private float _epsilon = 0.0001f;
+    private Vector3 _directionVector;
+    public Vector3 _lastDirection;
+
+    private float _speed = 0f;
     #endregion
 
     public float Speed { get { return _speed; } }
