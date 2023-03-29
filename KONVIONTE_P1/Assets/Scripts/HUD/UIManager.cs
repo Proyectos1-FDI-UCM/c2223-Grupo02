@@ -9,11 +9,14 @@ public class UIManager : MonoBehaviour
     #region References
     [SerializeField] GameObject pauseFirstButton;
     [SerializeField] GameObject optionsFirstButton;
+    [SerializeField] GameObject dialogeFirstButton;
 
     [Tooltip("El cronómetro")]
     [SerializeField] private Timer _UITimer;
     [Tooltip("La barra de vida")]
     [SerializeField] private HealthBar _UIHealthBar;
+    [SerializeField] private GameObject _dialogueUI;
+    [SerializeField] private GameObject _InGameUI;
     [SerializeField]
     private GameObject _pauseMenu;
 
@@ -53,6 +56,20 @@ public class UIManager : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(pauseFirstButton);
         }
+    }
+    public void SetDialogueUI(bool On)
+    {
+        if (On)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(dialogeFirstButton);
+        }
+        else
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+        }
+        _dialogueUI.SetActive(On);
+        _InGameUI.SetActive(!On);
     }
     #endregion
 

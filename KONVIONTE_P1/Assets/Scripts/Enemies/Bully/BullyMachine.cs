@@ -231,6 +231,10 @@ public class BullyMachine : StateMachine
     [SerializeField] private Vector3 _detectionBoxOffset;
     public Vector3 DetectionBoxOffset { get { return _detectionBoxOffset; } }
 
+    [Tooltip("Velocidad a al que huye")]
+    [SerializeField] private float _escapeSpeed;
+    public float EscapeSpeed { get { return _escapeSpeed; } }
+
     [Tooltip("Tiempo en el que se actualiza la posición del jugador para el escape")]
     [SerializeField] private float _escapeTime;
     public float EscapeTime { get { return _escapeTime; } }

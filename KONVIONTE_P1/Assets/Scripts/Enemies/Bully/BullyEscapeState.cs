@@ -16,14 +16,14 @@ public class BullyEscapeState : State
 
     private float _escapeTime;
     private float _stopEscapeTime;
-    private float _originalMaxSpeed;
-
+    private float _escapeSpeed;
     #endregion
 
     #region Properties
 
     private float _currentEscapeTime;
     private float _currentStopTime;
+    private float _originalMaxSpeed;
 
     #endregion
 
@@ -32,7 +32,7 @@ public class BullyEscapeState : State
         _currentEscapeTime = 0;
         _currentStopTime = _stopEscapeTime;
         _originalMaxSpeed = _myMovementComponent.MaxMovementSpeed;
-        _myMovementComponent.SetMaxSpeed(4);//cambiar a un parametro mas adelante
+        _myMovementComponent.SetMaxSpeed(_escapeSpeed);//cambiar a un parametro mas adelante
     }
     public void Tick()
     {
@@ -71,7 +71,7 @@ public class BullyEscapeState : State
         _playerTransform = myMachine.PlayerTransform;
         _myTransform = myMachine.MyTransform;
         _myMovementComponent = myMachine.MyMovementComponent;
-
+        _escapeSpeed = myMachine.EscapeSpeed;
 
     }
 }

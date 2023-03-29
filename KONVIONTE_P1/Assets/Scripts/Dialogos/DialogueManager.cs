@@ -14,8 +14,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TMP_Text _dialogueName;
     [SerializeField] private TMP_Text _dialogueText;
 
-    [SerializeField] private GameObject _dialogueUI;
-    [SerializeField] private GameObject _InGameUI;
+    
     #endregion
 
     #region Properties
@@ -34,6 +33,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         _sentences = new Queue<string>();
+        Debug.Log(_sentences);
     }
 
     /// <summary>
@@ -43,7 +43,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         //activa la UI
-        SetDialogueUI(true);
+        GameManager.Instance.UIManager.SetDialogueUI(true);
 
         // Cambia el nombre de quien habla
         _dialogueName.text = dialogue.name;
@@ -71,8 +71,10 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     public void NextSentence()
     {
+
+        Debug.Log(_sentences.Count);
         // Si no quedan frases
-        if(_sentences.Count == 0)
+        if (_sentences.Count == 0)
         {
             // Se termina el dialogo
             EndDialogue();
@@ -90,7 +92,7 @@ public class DialogueManager : MonoBehaviour
     private void EndDialogue()
     {
         //desactiva la ui
-        SetDialogueUI(false);
+        GameManager.Instance.UIManager.SetDialogueUI(false);
 
         //activa el input y sigue el juego
         GameManager.Instance.InputOn();
@@ -98,9 +100,9 @@ public class DialogueManager : MonoBehaviour
 
     }
 
-    private void SetDialogueUI(bool On)
-    {
-        _dialogueUI.SetActive(On);
-        _InGameUI.SetActive(!On);
-    }
+    //private void SetDialogueUI(bool On)
+    //{
+    //    _dialogueUI.SetActive(On);
+    //    _InGameUI.SetActive(!On);
+    //}
 }

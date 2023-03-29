@@ -40,7 +40,7 @@ public class SprinterMachine : StateMachine
     #region States
 
     private ByBPatrolState ByBPatrolState;
-    private BullyWaitState bullyWaitState;
+    private BullyWaitState StopState;
     //private SprinterAttackState sprinterAttackState;
     //private BecarioStopState becarioStopState;
     //private SprinterDashState sprinterDashState;
@@ -49,30 +49,15 @@ public class SprinterMachine : StateMachine
 
     #region Transitions
 
-    private Transition FromPatrolToEscape;
-    private Transition FromEscapeToPatrol;
-
-    private Transition FromPatrolToAttack;
-    private Transition FromAttackToPatrol;
-
-    private Transition FromEscapeToAttack;
-    private Transition FromAttackToEscape;
+    private Transition FromPatrolToStop;
+    private Transition FromStopToPatrol;
 
     #endregion
 
     #region Condiciones de las transiciones
 
-    private Func<bool> _patrolToEscape;
-    private Func<bool> _escapeToPatrol;
-
-    private Func<bool> _patrolToAttack;
-    private Func<bool> _attackToPatrol;
-
-    private Func<bool> _escapeToStop;
-    private Func<bool> _stopToEscape;
-
-    private Func<bool> _stopToAttack;
-    private Func<bool> _attackToStop;
+    private Func<bool> _patrolToStop;
+    private Func<bool> _stopToPatrol;
 
     #endregion
 
@@ -192,44 +177,12 @@ public class SprinterMachine : StateMachine
 
     #region Condiciones de transición
 
-    public bool PatrolToEscape()
+    public bool DetectionZone()
     {
         //si el enemigo detecta al jugador
         return Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask);
     }
-    public bool EscapeToPatrol()
-    {
-        //si el enemigo deja de detectar al jugador
-        return !Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask);
-    }
-    public bool PatrolToAttack()
-    {
-        //si el enemigo detecta al jugador en el área de ataque
-        return Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);
-    }
-    public bool AttackToPatrol()
-    {
-        //si el enemigo deja de detectar al jugador en el área de ataque
-        return !Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);
-    }
-    public bool EscapeToStop()
-    {
-        return Box.DetectSomethingBox(_stopBoxSize, _stopBoxOffset, _myTransform, _playerLayerMask);
-    }
-    public bool StopToEscape()
-    {
-        return !Box.DetectSomethingBox(_stopBoxSize, _stopBoxOffset, _myTransform, _playerLayerMask);
-    }
-    public bool StopToAttack()
-    {
-        //si el enemigo detectar al jugador en el área de ataque
-        return Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);
-    }
-    public bool AttackToStop()
-    {
-        //si el enemigo detectar al jugador en el área de ataque, pero sigue en el área de detección
-        return !Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);
-    }
+    
     #endregion
 
     #endregion   
@@ -247,24 +200,23 @@ public class SprinterMachine : StateMachine
         _playerTransform = GameManager.Player.transform;
         _myCombatController = GetComponent<CombatController>();
         _myAnimator = GetComponent<Animator>();
-        //Comentado para evitar error de compilacion
-        //por favor no os dediqueis a copiar y pegar codigo sin aseguraros que compila en unity
+   
 
         //Inicialización de los estados (constructora)
-        //ByBPatrolState = new ByBPatrolState(this);
+        ByBPatrolState = new ByBPatrolState(this);
         //becarioEscapeState = new BecarioEscapeState(this);
-        //becarioStopState = new BecarioStopState(this);
+        StopState = new BullyWaitState(this);
         //becarioAttackState = new BecarioAttackState(this);
 
         ////Añadir los estados al diccionario
-        //_stateTransitions.Add(ByBPatrolState, new List<Transition>());
+        _stateTransitions.Add(ByBPatrolState, new List<Transition>());
         //_stateTransitions.Add(becarioAttackState, new List<Transition>());
-        //_stateTransitions.Add(becarioStopState, new List<Transition>());
+        _stateTransitions.Add(StopState, new List<Transition>());
         //_stateTransitions.Add(becarioEscapeState, new List<Transition>());
 
         ////Inicialización de las condiciones de las transiciones
-        //_patrolToEscape = () => PatrolToEscape();
-        //_escapeToPatrol = () => EscapeToPatrol();
+        _patrolToStop = () => DetectionZone();
+        _stopToPatrol = () => !DetectionZone();
 
         //_patrolToAttack = () => PatrolToAttack();
         //_attackToPatrol = () => AttackToPatrol();
@@ -276,8 +228,8 @@ public class SprinterMachine : StateMachine
         //_attackToStop = () => AttackToStop();
 
         ////Inicialización de las transiciones
-        //InicializaTransicion(ByBPatrolState, becarioEscapeState, _patrolToEscape);
-        //InicializaTransicion(becarioEscapeState, ByBPatrolState, _escapeToPatrol);
+        InicializaTransicion(ByBPatrolState, StopState, _patrolToStop);
+        InicializaTransicion(StopState, ByBPatrolState, _stopToPatrol);
 
         //InicializaTransicion(ByBPatrolState, becarioAttackState, _patrolToAttack);
         //InicializaTransicion(becarioAttackState, ByBPatrolState, _attackToPatrol);
