@@ -73,7 +73,7 @@ public class FollowCamera : MonoBehaviour
             == GameManager.Player.GetComponent<MovementComponent>().MaxMovementSpeed)
         {
             // Reset de la interpolacion
-            _interpolation = 0;
+            _interpolation = 1;
 
             // Direccion
             if((Vector2)GameManager.Player.GetComponent<MovementComponent>().Direction == Vector2.right)
@@ -89,7 +89,7 @@ public class FollowCamera : MonoBehaviour
         }
         else
         {
-            _interpolation = 0;
+            _interpolation = 1;
 
             return false;
         }
@@ -98,12 +98,11 @@ public class FollowCamera : MonoBehaviour
     private void HorizontalFollow(float targetPosition, float speed)
     {
         // Se hace un lerpeo entre la pos del player y la pos objetivo
-        // _direction cambia la direccion de movimiento de la camara segun la del jugador
-        _horizontalMovement = Mathf.Lerp(_myTransform.position.x, targetPosition, speed * Time.deltaTime);
+        _horizontalMovement = Mathf.Lerp(_myTransform.position.x, targetPosition, _interpolation * Time.deltaTime);
         // Se modifica la pos de la camara
         _myTransform.position = new Vector3(_horizontalMovement, _myTransform.position.y, _zOffset);
         // Aumenta la interpolacion
-        //_interpolation += speed * Time.deltaTime;
+        _interpolation += speed * Time.deltaTime;
     }
 
     private void VerticalFollow()
