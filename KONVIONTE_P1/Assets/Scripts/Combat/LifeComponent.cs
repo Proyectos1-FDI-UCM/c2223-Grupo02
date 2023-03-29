@@ -10,7 +10,7 @@ public class LifeComponent : MonoBehaviour
     [SerializeField] private int _maxLife;
     Animator _myAnimator;
 
-    [SerializeField] private ParticleSystem SuperHit;
+    [SerializeField] private ParticleSystem _superHit;
     #endregion
 
     #region Properties
@@ -60,12 +60,8 @@ public class LifeComponent : MonoBehaviour
         if (!_immortal)
         {
             _life -= damage;
-            if (SuperHit != null)
-            {
-                SuperHit.Play();
-            }
+            if (_superHit != null) { _superHit.Play(); }
             
-
             //Si recibe daño mortal muere, logicamente
             if (_life <= 0)
             {
@@ -102,7 +98,7 @@ public class LifeComponent : MonoBehaviour
     private void Death()
     {
         _myAnimator.SetTrigger("Death");
-        if(GetComponent<ParryComponent>() != null)
+        if (GetComponent<ParryComponent>() != null)
         {
             GameManager.Instance.ResetLevel();
         }
