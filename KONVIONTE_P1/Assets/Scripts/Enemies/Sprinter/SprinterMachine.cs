@@ -40,9 +40,9 @@ public class SprinterMachine : StateMachine
     #region States
 
     private ByBPatrolState ByBPatrolState;
-    //private SprinterAttackState sprinterAttackState;
+    private SprinterAttackState sprinterAttackState;
     private BecarioStopState becarioStopState;
-    //private SprinterDashState sprinterDashState;
+    private DashState dashState;
 
     #endregion
 
@@ -185,14 +185,15 @@ public class SprinterMachine : StateMachine
 
         //Inicialización de los estados (constructora)
         ByBPatrolState = new ByBPatrolState(this);
-        //becarioEscapeState = new BecarioEscapeState(this);
-        //becarioAttackState = new BecarioAttackState(this);
+        //becarioStopState = new BecarioStopState(this);
+        //sprinterAttackState = new SprinterAttackState(this);
+        //dashState = new DashState(this);
 
         ////Añadir los estados al diccionario
         _stateTransitions.Add(ByBPatrolState, new List<Transition>());
-        //_stateTransitions.Add(becarioAttackState, new List<Transition>());
-        //_stateTransitions.Add(StopState, new List<Transition>());
-        //_stateTransitions.Add(becarioEscapeState, new List<Transition>());
+        _stateTransitions.Add(sprinterAttackState, new List<Transition>());
+        _stateTransitions.Add(becarioStopState, new List<Transition>());
+        //_stateTransitions.Add(dashState, new List<Transition>());
 
         ////Inicialización de las condiciones de las transiciones
         //_patrolToStop = () => DetectionZone();
@@ -201,21 +202,21 @@ public class SprinterMachine : StateMachine
         //_patrolToAttack = () => PatrolToAttack();
         //_attackToPatrol = () => AttackToPatrol();
 
-        //_escapeToStop = () => EscapeToStop();
-        //_stopToEscape = () => StopToEscape();
+        //_dashToStop = () => DashToStop();
+        //_stopToDash = () => StopToDash();
 
         //_stopToAttack = () => StopToAttack();
         //_attackToStop = () => AttackToStop();
 
         ////Inicialización de las transiciones
-        //InicializaTransicion(ByBPatrolState, StopState, _patrolToStop);
-        //InicializaTransicion(StopState, ByBPatrolState, _stopToPatrol);
+        //InicializaTransicion(ByBPatrolState, bexarioStopState, _patrolToStop);
+        //InicializaTransicion(becarioStopState, ByBPatrolState, _stopToPatrol);
 
-        //InicializaTransicion(ByBPatrolState, becarioAttackState, _patrolToAttack);
-        //InicializaTransicion(becarioAttackState, ByBPatrolState, _attackToPatrol);
+        //InicializaTransicion(ByBPatrolState, sprinterAttackState, _patrolToAttack);
+        //InicializaTransicion(sprinterAttackState, ByBPatrolState, _attackToPatrol);
 
-        //InicializaTransicion(becarioEscapeState, becarioStopState, _escapeToStop);
-        //InicializaTransicion(becarioStopState, becarioEscapeState, _stopToEscape);
+        //InicializaTransicion(dashState, becarioStopState, _escapeToStop);
+        //InicializaTransicion(becarioStopState, dashState, _stopToEscape);
 
         //InicializaTransicion(becarioStopState, becarioAttackState, _stopToAttack);
         //InicializaTransicion(becarioAttackState, becarioStopState, _attackToStop);
