@@ -987,5 +987,17 @@ PrefabInstance:
       propertyPath: _superHit
       value: 
       objectReference: {fileID: 176088327}
+    - target: {fileID: 1886094971767836444, guid: a220574dfb1caa145a11f5d41927bf9f, type: 3}
+      propertyPath: _attackTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886094971767836444, guid: a220574dfb1caa145a11f5d41927bf9f, type: 3}
+      propertyPath: _waitBoxSize.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1886094971767836444, guid: a220574dfb1caa145a11f5d41927bf9f, type: 3}
+      propertyPath: _attackBoxSize.x
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a220574dfb1caa145a11f5d41927bf9f, type: 3}

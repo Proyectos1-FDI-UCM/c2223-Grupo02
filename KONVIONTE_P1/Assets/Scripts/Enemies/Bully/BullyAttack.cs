@@ -55,26 +55,20 @@ public class BullyAttack : State
         {
             //El tipo de ataque se elige de manera aleatoria con un random
 
-            _attackType = Random.Range(0, 1);
+            _attackType = Random.Range(0, 2);
 
+            _myAnimator.SetFloat("AttackType", _attackType);
             //Ataque en área
             if (_attackType == 1)             
-            {
-                               
+            {            
                 //Daño del ataque en área
                 _myAttackComponent.SetDamage(_softAttack);
-
-                //Hacemos que mire al lado contrario al jugador
-                _myMovementComponent.SetDirection(GameManager.DirectionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
-
-                //Atacamos
-                _myCombatController.Atack(GameManager.DirectionComponent.X_Directions(_playerTransform.position - _myTransform.position, 4));
-
-
             }
             //Ataque fuerte
-            else { _myAttackComponent.SetDamage(_strongAttack); }
-
+            else 
+            { 
+                _myAttackComponent.SetDamage(_strongAttack); 
+            }
             //Que mire al jugador para atacar (¿Al final esto sobra?)
             _myMovementComponent.SetDirection(GameManager.DirectionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
 
