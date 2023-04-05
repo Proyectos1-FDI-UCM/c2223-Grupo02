@@ -61,7 +61,7 @@ public class DashComponent : MonoBehaviour
 
     #region Methods
     /// <summary>
-    /// Habilita poder dashear desde el Game Manager
+    /// Habilita poder dashear
     /// </summary>
     /// <param name="canDash"></param>
     /// <returns></returns>
@@ -130,7 +130,7 @@ public class DashComponent : MonoBehaviour
         }
         else
         {
-            _dashDirection = GameManager.Player.transform.position - _myTransform.position;
+            _dashDirection = (GameManager.Player.transform.position - _myTransform.position).normalized;
         }  
     }
 
@@ -157,7 +157,7 @@ public class DashComponent : MonoBehaviour
     /// </summary>
     private void DashDamage()
     {
-        _attack.TryAplyDamage();
+        //_attack.TryAplyDamage();
     }
     #endregion
 }

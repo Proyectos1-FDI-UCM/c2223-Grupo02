@@ -32,6 +32,9 @@ public class SprinterMachine : StateMachine
     private CombatController _myCombatController;
     public CombatController MyCombatController { get { return _myCombatController; } }
 
+    private DashComponent _myDashComponent;
+    public DashComponent MyDashComponent { get { return _myDashComponent; } }
+
     private Animator _myAnimator;
     public Animator MyAnimator { get { return _myAnimator; } }
 
@@ -39,9 +42,9 @@ public class SprinterMachine : StateMachine
 
     #region States
 
-    private ByBPatrolState ByBPatrolState;
+    private ByBPatrolState PatrolState;
     private SprinterAttackState sprinterAttackState;
-    private BecarioStopState becarioStopState;
+    private BecarioStopState StopState;
     private DashState dashState;
 
     #endregion
@@ -50,6 +53,7 @@ public class SprinterMachine : StateMachine
 
     private Transition FromPatrolToStop;
     private Transition FromStopToPatrol;
+    private Transition FromPatrolToDash;
 
     #endregion
 
@@ -57,6 +61,29 @@ public class SprinterMachine : StateMachine
 
     private Func<bool> _patrolToStop;
     private Func<bool> _stopToPatrol;
+
+    #endregion
+
+    #region TransitionParameters
+    [Header("AreaDetección")]
+    //Caja de detección del jugador
+    [SerializeField] private Vector3 _detectionBoxSize;
+    public Vector3 DetectionBoxSize { get { return _detectionBoxSize; } }
+
+    [SerializeField] private Vector3 _detectionBoxOffset;
+    public Vector3 DetectionBoxOffset { get { return _detectionBoxOffset; } }
+    
+    [Header("StopArea")]    
+    [SerializeField] Vector3 _stopBoxSize;
+    public Vector3 StopBoxSize { get { return _stopBoxSize; } }
+    [SerializeField] Vector3 _stopBoxOffset;
+    public Vector3 StopBoxOffset { get { return _stopBoxOffset; } }
+
+    [Header("AttackArea")]
+    [SerializeField] Vector3 _attackBoxSize;
+    public Vector3 AttackBoxSize { get { return _attackBoxSize; } }
+    [SerializeField] Vector3 _attackBoxOffset;
+    public Vector3 AttackBoxOffset { get { return _attackBoxOffset; } }
 
     #endregion
 
@@ -88,6 +115,7 @@ public class SprinterMachine : StateMachine
     [Tooltip("Objeto detector de suelo")]
     [SerializeField] private Transform _floorDetector;
     public Transform FloorDetector { get { return _floorDetector; } }
+   
 
     #endregion
 
@@ -107,12 +135,7 @@ public class SprinterMachine : StateMachine
     #region StopState
 
     #region Parameters
-    [Header("Estado parado")]
-    //Caja de ataque del enemigo
-    [SerializeField] Vector3 _stopBoxSize;
-    public Vector3 StopBoxSize { get { return _stopBoxSize; } }
-    [SerializeField] Vector3 _stopBoxOffset;
-    public Vector3 StopBoxOffset { get { return _stopBoxOffset; } }
+
     #endregion
 
     #endregion
@@ -123,10 +146,7 @@ public class SprinterMachine : StateMachine
 
     [Header("Estado de Ataque")]
     //Caja de ataque del enemigo
-    [SerializeField] Vector3 _attackBoxSize;
-    public Vector3 AttackBoxSize { get { return _attackBoxSize; } }
-    [SerializeField] Vector3 _attackBoxOffset;
-    public Vector3 AttackBoxOffset { get { return _attackBoxOffset; } }
+   
 
     [Tooltip("Tiempo entre ataques")]
     [SerializeField] private float _attackTime;
@@ -158,11 +178,11 @@ public class SprinterMachine : StateMachine
 
     #region Condiciones de transición
 
-    //public bool DetectionZone()
-    //{
-    //    //si el enemigo detecta al jugador
-    //    //return Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask);
-    //}
+    public bool DetectionZone()
+    {
+        //si el enemigo detecta al jugador
+        return Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask);
+    }
     
     #endregion
 
@@ -180,24 +200,25 @@ public class SprinterMachine : StateMachine
         _myMovementComponent = GetComponent<MovementComponent>();
         _playerTransform = GameManager.Player.transform;
         _myCombatController = GetComponent<CombatController>();
+        _myDashComponent = GetComponent<DashComponent>();
         _myAnimator = GetComponent<Animator>();
    
 
         //Inicialización de los estados (constructora)
-        ByBPatrolState = new ByBPatrolState(this);
+        PatrolState = new ByBPatrolState(this);
         //becarioStopState = new BecarioStopState(this);
         //sprinterAttackState = new SprinterAttackState(this);
-        //dashState = new DashState(this);
+        dashState = new DashState(this);
 
         ////Añadir los estados al diccionario
-        _stateTransitions.Add(ByBPatrolState, new List<Transition>());
-        _stateTransitions.Add(sprinterAttackState, new List<Transition>());
-        _stateTransitions.Add(becarioStopState, new List<Transition>());
-        //_stateTransitions.Add(dashState, new List<Transition>());
+        _stateTransitions.Add(PatrolState, new List<Transition>());
+        //_stateTransitions.Add(sprinterAttackState, new List<Transition>());
+        //_stateTransitions.Add(becarioStopState, new List<Transition>());
+        _stateTransitions.Add(dashState, new List<Transition>());
 
         ////Inicialización de las condiciones de las transiciones
-        //_patrolToStop = () => DetectionZone();
-        //_stopToPatrol = () => !DetectionZone();
+        _patrolToStop = () => DetectionZone();
+        _stopToPatrol = () => !DetectionZone();
 
         //_patrolToAttack = () => PatrolToAttack();
         //_attackToPatrol = () => AttackToPatrol();
@@ -221,8 +242,11 @@ public class SprinterMachine : StateMachine
         //InicializaTransicion(becarioStopState, becarioAttackState, _stopToAttack);
         //InicializaTransicion(becarioAttackState, becarioStopState, _attackToStop);
 
+        InicializaTransicion(PatrolState, dashState, _patrolToStop);
+        InicializaTransicion(dashState, PatrolState, _stopToPatrol);
+
         //establecer el estado inicial
-        _currentState = ByBPatrolState;
+        _currentState = PatrolState;
 
         //establecer transiciones iniciales
         _currentTransitions = _stateTransitions[_currentState];
@@ -232,8 +256,10 @@ public class SprinterMachine : StateMachine
     void Update()
     {
         Tick();
+
+        Debug.Log(_currentState);
         //Caja de detección (PARA DEBUGS)
-        //Box.ShowBox(_detectionBoxSize, _detectionBoxOffset, _myTransform);
+        Box.ShowBox(_detectionBoxSize, _detectionBoxOffset, _myTransform);
         Box.ShowBox(_attackBoxSize, _attackBoxOffset, _myTransform);
     }
 }
