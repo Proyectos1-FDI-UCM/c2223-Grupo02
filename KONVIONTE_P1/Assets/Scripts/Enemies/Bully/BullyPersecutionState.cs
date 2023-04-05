@@ -44,4 +44,11 @@ public class BullyPersecutionState : State
         _myMovementComponent = myMachine.MyMovementComponent;
         _myAnimator = myMachine.MyAnimator;
     }
+    public BullyPersecutionState(SprinterMachine myMachine)
+    {
+        _playerTransform = myMachine.PlayerTransform;
+        _myTransform = myMachine.MyTransform;
+        _myMovementComponent = myMachine.MyMovementComponent;
+        _myAnimator = myMachine.MyAnimator;
+    }
 }

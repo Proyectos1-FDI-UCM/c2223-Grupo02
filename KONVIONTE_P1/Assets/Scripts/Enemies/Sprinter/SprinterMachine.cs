@@ -43,6 +43,7 @@ public class SprinterMachine : StateMachine
     #region States
 
     private ByBPatrolState PatrolState;
+    private BullyPersecutionState PersecutionState;
     private SprinterAttackState sprinterAttackState;
     private BecarioStopState StopState;
     private DashState dashState;
@@ -58,9 +59,9 @@ public class SprinterMachine : StateMachine
     #endregion
 
     #region Condiciones de las transiciones
-
-    private Func<bool> _patrolToStop;
-    private Func<bool> _stopToPatrol;
+    private Func<bool> _ToPersecution;
+    private Func<bool> _ToDash;
+    private Func<bool> _ToPatrol;
 
     #endregion
 
@@ -183,7 +184,14 @@ public class SprinterMachine : StateMachine
         //si el enemigo detecta al jugador
         return Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask);
     }
-    
+    public float PlayerDistance()
+    {
+        return (MyTransform.position - PlayerTransform.position).magnitude;
+    }
+    public bool AttackZone()
+    {
+        return Box.DetectSomethingBox(_attackBoxSize, _attackBoxOffset, _myTransform, _playerLayerMask);
+    }
     #endregion
 
     #endregion   
@@ -206,19 +214,22 @@ public class SprinterMachine : StateMachine
 
         //Inicialización de los estados (constructora)
         PatrolState = new ByBPatrolState(this);
+        PersecutionState = new BullyPersecutionState(this);
         //becarioStopState = new BecarioStopState(this);
         //sprinterAttackState = new SprinterAttackState(this);
         dashState = new DashState(this);
 
         ////Añadir los estados al diccionario
         _stateTransitions.Add(PatrolState, new List<Transition>());
+        _stateTransitions.Add(PersecutionState, new List<Transition>());
         //_stateTransitions.Add(sprinterAttackState, new List<Transition>());
         //_stateTransitions.Add(becarioStopState, new List<Transition>());
         _stateTransitions.Add(dashState, new List<Transition>());
 
         ////Inicialización de las condiciones de las transiciones
-        _patrolToStop = () => DetectionZone();
-        _stopToPatrol = () => !DetectionZone();
+        _ToPersecution = () => DetectionZone();
+        _ToDash = () => DetectionZone() && PlayerDistance() < 3;
+        _ToPatrol = () => !DetectionZone();
 
         //_patrolToAttack = () => PatrolToAttack();
         //_attackToPatrol = () => AttackToPatrol();
@@ -242,8 +253,13 @@ public class SprinterMachine : StateMachine
         //InicializaTransicion(becarioStopState, becarioAttackState, _stopToAttack);
         //InicializaTransicion(becarioAttackState, becarioStopState, _attackToStop);
 
-        InicializaTransicion(PatrolState, dashState, _patrolToStop);
-        InicializaTransicion(dashState, PatrolState, _stopToPatrol);
+        InicializaTransicion(PatrolState, PersecutionState, _ToPersecution);
+
+        InicializaTransicion(PersecutionState, dashState, _ToDash);
+
+
+        InicializaTransicion(PersecutionState, PatrolState, _ToPatrol);
+        InicializaTransicion(dashState, PatrolState, _ToPatrol);
 
         //establecer el estado inicial
         _currentState = PatrolState;
