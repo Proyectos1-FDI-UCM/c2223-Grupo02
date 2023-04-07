@@ -33,7 +33,6 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         _sentences = new Queue<string>();
-        Debug.Log(_sentences);
     }
 
     /// <summary>
@@ -71,8 +70,6 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     public void NextSentence()
     {
-
-        Debug.Log(_sentences.Count);
         // Si no quedan frases
         if (_sentences.Count == 0)
         {
