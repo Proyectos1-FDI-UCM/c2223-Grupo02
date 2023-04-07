@@ -19,13 +19,21 @@ public class DialogueManager : MonoBehaviour
 
     #region Properties
     private Queue<string> _sentences;
+    private Queue<Dialogue> _dialogues;
+
+    private List<DialogueKey> _carteles;
 
     public static DialogueManager Instance { get; private set; }
     #endregion
 
+    #region Methods
+
+    #region Unity Methods
+
     private void Awake()
     {
         Instance = this;
+        _carteles = new List<DialogueKey>();
     }
 
 
@@ -33,14 +41,18 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         _sentences = new Queue<string>();
-        Debug.Log(_sentences);
+        _dialogues = new Queue<Dialogue>();
     }
+
+    #endregion
+
+    #region Dialogos
 
     /// <summary>
     /// Para empezar el dialogo se llama desde el DialogueTriggger
     /// </summary>
     /// <param name="dialogue"></param>
-    public void StartDialogue(Dialogue dialogue)
+    private void StartDialogue(Dialogue dialogue)
     {
         //activa la UI
         GameManager.Instance.UIManager.SetDialogueUI(true);
@@ -52,18 +64,34 @@ public class DialogueManager : MonoBehaviour
         _sentences.Clear();
 
         // Agregamos todas las frases a la cola
-        foreach(string sentence in dialogue.sentences)
+        foreach (string sentence in dialogue.sentences)
         {
             _sentences.Enqueue(sentence);
         }
 
         // Primera frase
         NextSentence();
+    }
+
+    public void StartDialogue(Dialogue[] dialogues)
+    {
+        //limpiamos la cola
+        _dialogues.Clear();
+
+        //añadimos los dialogos a la cola
+        foreach (Dialogue dialog in dialogues)
+        {
+            _dialogues.Enqueue(dialog);
+        }
+
+        //empezamos el primer dialogo
+        Dialogue dialogue = _dialogues.Dequeue();
+
+        StartDialogue(dialogue);
 
         // Desactivar el input y parar el juego
         GameManager.Instance.InputOff();
         Time.timeScale = 0f;
-
     }
 
     /// <summary>
@@ -71,13 +99,20 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     public void NextSentence()
     {
-
-        Debug.Log(_sentences.Count);
         // Si no quedan frases
         if (_sentences.Count == 0)
         {
-            // Se termina el dialogo
-            EndDialogue();
+            //si no quedan dialogos en la cola
+            if (_dialogues.Count == 0)
+            {
+                // Se termina el dialogo
+                EndDialogue();
+            }
+            else
+            {
+                //empezar el siguiente dialogo en cola
+                StartDialogue(_dialogues.Dequeue());
+            }
         }
         else
         {
@@ -97,12 +132,35 @@ public class DialogueManager : MonoBehaviour
         //activa el input y sigue el juego
         GameManager.Instance.InputOn();
         Time.timeScale = 1.0f;
-
     }
 
-    //private void SetDialogueUI(bool On)
-    //{
-    //    _dialogueUI.SetActive(On);
-    //    _InGameUI.SetActive(!On);
-    //}
+    #endregion
+
+
+    #region Carteles
+
+    public void AddCartel(DialogueKey cartel)
+    {
+        _carteles.Add(cartel);
+    }
+
+    //recorremos toda la lista de cartales intentando activarlos, solo se activa en el que esté el jugador
+    public void MuestraTextoCarteles(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            foreach(DialogueKey cartel in _carteles)
+            {
+                cartel.TriggerDialogue();
+            }
+        }
+    }
+
+
+    #endregion
+
+    #endregion
+
+
+
 }
