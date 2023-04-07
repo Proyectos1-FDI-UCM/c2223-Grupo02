@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using OurNamespace;
+using System.Runtime.InteropServices;
+
 public class SprinterMachine : StateMachine
 {
     //#region Máquina de estados
@@ -22,6 +24,9 @@ public class SprinterMachine : StateMachine
     private Transform _myTransform;
     public Transform MyTransform { get { return _myTransform; } }
 
+    private LifeComponent _myLifeComponent;
+    public LifeComponent MyLifeComponent { get { return _myLifeComponent; } }
+
     private MovementComponent _myMovementComponent;
     public MovementComponent MyMovementComponent { get { return _myMovementComponent; } }
 
@@ -31,6 +36,9 @@ public class SprinterMachine : StateMachine
     //Esta es sobre todo del ataque, pero...
     private CombatController _myCombatController;
     public CombatController MyCombatController { get { return _myCombatController; } }
+
+    private AtackComponent _myAttackComponent;
+    public AtackComponent MyAttackComponent { get { return _myAttackComponent; } }
 
     private DashComponent _myDashComponent;
     public DashComponent MyDashComponent { get { return _myDashComponent; } }
@@ -52,16 +60,17 @@ public class SprinterMachine : StateMachine
 
     #region Transitions
 
-    private Transition FromPatrolToStop;
-    private Transition FromStopToPatrol;
-    private Transition FromPatrolToDash;
+    
 
     #endregion
 
     #region Condiciones de las transiciones
     private Func<bool> _ToPersecution;
     private Func<bool> _ToDash;
+    private Func<bool> _fromDashToPatrol;
     private Func<bool> _ToPatrol;
+    private Func<bool> _ToAttack;
+    private Func<bool> _ExitAttack;
 
     #endregion
 
@@ -85,6 +94,10 @@ public class SprinterMachine : StateMachine
     public Vector3 AttackBoxSize { get { return _attackBoxSize; } }
     [SerializeField] Vector3 _attackBoxOffset;
     public Vector3 AttackBoxOffset { get { return _attackBoxOffset; } }
+
+    [Header("Distances")]
+    [SerializeField] float _exitDashDistance;
+    [SerializeField] float _enterDashDistance;
 
     #endregion
 
@@ -164,14 +177,17 @@ public class SprinterMachine : StateMachine
     #endregion
 
     #region DashState
-
+    [Header("DashState")]
     #region Parameters
+    [Tooltip("Tiempo entre dashes")]
+    [SerializeField] private float _dashTime;
+    public float DashTime { get { return _dashTime; } }
 
     #endregion
 
     #region Properties
 
-    #endregion
+    #endregion 
 
     #endregion
 
@@ -184,9 +200,23 @@ public class SprinterMachine : StateMachine
         //si el enemigo detecta al jugador
         return Box.DetectSomethingBox(_detectionBoxSize, _detectionBoxOffset, _myTransform, _playerLayerMask);
     }
-    public float PlayerDistance()
+    /// <summary>
+    /// distance from the player to change state
+    /// </summary>
+    /// <param name="distance"></param>
+    /// <returns></returns>
+    public bool PlayerDistance(float distance)
     {
-        return (MyTransform.position - PlayerTransform.position).magnitude;
+        return (MyTransform.position - PlayerTransform.position).magnitude < distance;
+    }
+    /// <summary>
+    /// checks if the current life is avobe the life Limit to change of state
+    /// </summary>
+    /// <param name="lifeLimit"></param>
+    /// <returns></returns>
+    public bool LifeLimit(int lifeLimit)
+    {
+        return lifeLimit > _myLifeComponent.CurrentLife;
     }
     public bool AttackZone()
     {
@@ -205,6 +235,7 @@ public class SprinterMachine : StateMachine
 
         //inicializacion de las referencias de la maquina de estados
         _myTransform = transform;
+        _myLifeComponent = GetComponent<LifeComponent>();
         _myMovementComponent = GetComponent<MovementComponent>();
         _playerTransform = GameManager.Player.transform;
         _myCombatController = GetComponent<CombatController>();
@@ -216,50 +247,36 @@ public class SprinterMachine : StateMachine
         PatrolState = new ByBPatrolState(this);
         PersecutionState = new BullyPersecutionState(this);
         //becarioStopState = new BecarioStopState(this);
-        //sprinterAttackState = new SprinterAttackState(this);
+        sprinterAttackState = new SprinterAttackState(this);
         dashState = new DashState(this);
 
         ////Añadir los estados al diccionario
         _stateTransitions.Add(PatrolState, new List<Transition>());
         _stateTransitions.Add(PersecutionState, new List<Transition>());
-        //_stateTransitions.Add(sprinterAttackState, new List<Transition>());
+        _stateTransitions.Add(sprinterAttackState, new List<Transition>());
         //_stateTransitions.Add(becarioStopState, new List<Transition>());
         _stateTransitions.Add(dashState, new List<Transition>());
 
         ////Inicialización de las condiciones de las transiciones
         _ToPersecution = () => DetectionZone();
-        _ToDash = () => DetectionZone() && PlayerDistance() < 3;
+        _ToDash = () => DetectionZone() && PlayerDistance(_enterDashDistance);
+        _fromDashToPatrol = () => PlayerDistance(_exitDashDistance);
         _ToPatrol = () => !DetectionZone();
-
-        //_patrolToAttack = () => PatrolToAttack();
-        //_attackToPatrol = () => AttackToPatrol();
-
-        //_dashToStop = () => DashToStop();
-        //_stopToDash = () => StopToDash();
-
-        //_stopToAttack = () => StopToAttack();
-        //_attackToStop = () => AttackToStop();
+        _ToAttack = () => AttackZone();
+        _ExitAttack = () => !AttackZone();
 
         ////Inicialización de las transiciones
-        //InicializaTransicion(ByBPatrolState, bexarioStopState, _patrolToStop);
-        //InicializaTransicion(becarioStopState, ByBPatrolState, _stopToPatrol);
-
-        //InicializaTransicion(ByBPatrolState, sprinterAttackState, _patrolToAttack);
-        //InicializaTransicion(sprinterAttackState, ByBPatrolState, _attackToPatrol);
-
-        //InicializaTransicion(dashState, becarioStopState, _escapeToStop);
-        //InicializaTransicion(becarioStopState, dashState, _stopToEscape);
-
-        //InicializaTransicion(becarioStopState, becarioAttackState, _stopToAttack);
-        //InicializaTransicion(becarioAttackState, becarioStopState, _attackToStop);
 
         InicializaTransicion(PatrolState, PersecutionState, _ToPersecution);
 
         InicializaTransicion(PersecutionState, dashState, _ToDash);
 
+        //InicializaTransicion(PersecutionState, PatrolState, _ToPatrol);
+        InicializaTransicion(dashState, PersecutionState, _ToPatrol);
 
-        InicializaTransicion(PersecutionState, PatrolState, _ToPatrol);
-        InicializaTransicion(dashState, PatrolState, _ToPatrol);
+
+        InicializaTransicion(dashState, sprinterAttackState, _ToAttack);
+        InicializaTransicion(sprinterAttackState, dashState, _ExitAttack);
 
         //establecer el estado inicial
         _currentState = PatrolState;

@@ -9,24 +9,24 @@ public class DashState : State
     private float _originalMaxSpeeed;
 
 
-    private float _dashTimer;
     private float _dashTime;
+    private float _currentDashTime;
     public void OnEnter()
     {
         _originalMaxSpeeed = _movementComponent.MaxMovementSpeed;
         _movementComponent.SetMaxSpeed(0);
-        _dashTime = 1;
+        _currentDashTime = _dashTime;
     }
 
     public void Tick()
     {
-        if(_dashTime > 1)
+        if(_currentDashTime > _dashTime)
         {
-            _dashTime = 0;
+            _currentDashTime = 0;
             _dashComponent.Dashing(true);
         }
 
-        _dashTime += Time.deltaTime;
+        _currentDashTime += Time.deltaTime;
     }
 
     public void OnExit()
@@ -37,5 +37,7 @@ public class DashState : State
     {
         _movementComponent = myMachine.MyMovementComponent;
         _dashComponent = myMachine.MyDashComponent;
+
+        _dashTime = myMachine.DashTime;
     }
 }
