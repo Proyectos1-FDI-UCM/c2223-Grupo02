@@ -71,6 +71,7 @@ public class SprinterMachine : StateMachine
     private Func<bool> _ToPatrol;
     private Func<bool> _ToAttack;
     private Func<bool> _ExitAttack;
+    private Func<bool> _closePersecution;
 
     #endregion
 
@@ -98,6 +99,7 @@ public class SprinterMachine : StateMachine
     [Header("Distances")]
     [SerializeField] float _exitDashDistance;
     [SerializeField] float _enterDashDistance;
+    [SerializeField] float _closePersecutionDistance;
 
     #endregion
 
@@ -259,11 +261,12 @@ public class SprinterMachine : StateMachine
 
         ////Inicialización de las condiciones de las transiciones
         _ToPersecution = () => DetectionZone();
-        _ToDash = () => DetectionZone() && PlayerDistance(_enterDashDistance);
+        _ToDash = () => DetectionZone() && PlayerDistance(_enterDashDistance) && !PlayerDistance(_closePersecutionDistance);
         _fromDashToPatrol = () => PlayerDistance(_exitDashDistance);
         _ToPatrol = () => !DetectionZone();
         _ToAttack = () => AttackZone();
         _ExitAttack = () => !AttackZone();
+        _closePersecution = () => PlayerDistance(_closePersecutionDistance);
 
         ////Inicialización de las transiciones
 
@@ -273,8 +276,9 @@ public class SprinterMachine : StateMachine
 
         //InicializaTransicion(PersecutionState, PatrolState, _ToPatrol);
         InicializaTransicion(dashState, PersecutionState, _ToPatrol);
+        InicializaTransicion(dashState, PersecutionState, _closePersecution);
 
-
+        InicializaTransicion(PersecutionState, sprinterAttackState, _ToAttack);
         InicializaTransicion(dashState, sprinterAttackState, _ToAttack);
         InicializaTransicion(sprinterAttackState, dashState, _ExitAttack);
 

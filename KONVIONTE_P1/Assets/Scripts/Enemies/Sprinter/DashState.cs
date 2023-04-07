@@ -6,6 +6,8 @@ public class DashState : State
 {
     DashComponent _dashComponent;
     MovementComponent _movementComponent;
+    private Transform _playerTransform;
+    private Transform _myTransform;
     private float _originalMaxSpeeed;
 
 
@@ -15,11 +17,12 @@ public class DashState : State
     {
         _originalMaxSpeeed = _movementComponent.MaxMovementSpeed;
         _movementComponent.SetMaxSpeed(0);
-        _currentDashTime = _dashTime;
+        //_currentDashTime = _dashTime;
     }
 
     public void Tick()
     {
+        _movementComponent.SetDirection(GameManager.DirectionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
         if(_currentDashTime > _dashTime)
         {
             _currentDashTime = 0;
@@ -35,9 +38,12 @@ public class DashState : State
     }
     public DashState(SprinterMachine myMachine)
     {
+        _playerTransform = myMachine.PlayerTransform;
+        _myTransform = myMachine.MyTransform;
         _movementComponent = myMachine.MyMovementComponent;
         _dashComponent = myMachine.MyDashComponent;
 
         _dashTime = myMachine.DashTime;
+        _currentDashTime = _dashTime;
     }
 }

@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da041330c02804847ada100536585fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 4
+  _damage: 10
 --- !u!198 &178562986 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 1583749855065643754, guid: c14b9d4d91aec9947a7cf9a6d1bae5ef, type: 3}
@@ -739,22 +739,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b11b2b50e77d3974c9ced61f98dff44a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _detectionBoxSize: {x: 4, y: 2, z: 0}
+  _detectionBoxSize: {x: 6, y: 2, z: 0}
   _detectionBoxOffset: {x: 0, y: 1, z: 0}
   _stopBoxSize: {x: 0, y: 0, z: 0}
   _stopBoxOffset: {x: 0, y: 0, z: 0}
-  _attackBoxSize: {x: 1.2, y: 1, z: 0}
+  _attackBoxSize: {x: 0.7, y: 1, z: 0}
   _attackBoxOffset: {x: 0, y: 0, z: 0}
-  _exitDashDistance: 6
-  _enterDashDistance: 2
+  _exitDashDistance: 4
+  _enterDashDistance: 4
+  _closePersecutionDistance: 2
   _routineTime: 2
   _stopTime: 1
   _raycastWallDistance: 2
   _raycastFloorDistance: 2
   _maxDistance: 0.5
   _floorDetector: {fileID: 106873334}
-  _attackTime: 1
-  _dashTime: 2
+  _attackTime: 0.8
+  _dashTime: 0.7
 --- !u!95 &737088753
 Animator:
   serializedVersion: 4
@@ -808,7 +809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691c4d39f5b40a94b99eb0634c554834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dashDistance: 1.5
+  _dashDistance: 3
   _dashTime: 0.1
 --- !u!114 &737088757
 MonoBehaviour:
