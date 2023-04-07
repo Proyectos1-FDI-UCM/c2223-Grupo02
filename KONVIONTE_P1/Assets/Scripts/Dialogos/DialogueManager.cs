@@ -21,12 +21,19 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> _sentences;
     private Queue<Dialogue> _dialogues;
 
+    private List<DialogueKey> _carteles;
+
     public static DialogueManager Instance { get; private set; }
     #endregion
+
+    #region Methods
+
+    #region Unity Methods
 
     private void Awake()
     {
         Instance = this;
+        _carteles = new List<DialogueKey>();
     }
 
 
@@ -36,6 +43,10 @@ public class DialogueManager : MonoBehaviour
         _sentences = new Queue<string>();
         _dialogues = new Queue<Dialogue>();
     }
+
+    #endregion
+
+    #region Dialogos
 
     /// <summary>
     /// Para empezar el dialogo se llama desde el DialogueTriggger
@@ -53,7 +64,7 @@ public class DialogueManager : MonoBehaviour
         _sentences.Clear();
 
         // Agregamos todas las frases a la cola
-        foreach(string sentence in dialogue.sentences)
+        foreach (string sentence in dialogue.sentences)
         {
             _sentences.Enqueue(sentence);
         }
@@ -87,12 +98,12 @@ public class DialogueManager : MonoBehaviour
     /// Este metodo lo llama el trigger en pantalla (un boton p.ej)
     /// </summary>
     public void NextSentence()
-    {     
+    {
         // Si no quedan frases
         if (_sentences.Count == 0)
         {
             //si no quedan dialogos en la cola
-            if(_dialogues.Count == 0)
+            if (_dialogues.Count == 0)
             {
                 // Se termina el dialogo
                 EndDialogue();
@@ -101,7 +112,7 @@ public class DialogueManager : MonoBehaviour
             {
                 //empezar el siguiente dialogo en cola
                 StartDialogue(_dialogues.Dequeue());
-            }            
+            }
         }
         else
         {
@@ -122,5 +133,34 @@ public class DialogueManager : MonoBehaviour
         GameManager.Instance.InputOn();
         Time.timeScale = 1.0f;
     }
+
+    #endregion
+
+
+    #region Carteles
+
+    public void AddCartel(DialogueKey cartel)
+    {
+        _carteles.Add(cartel);
+    }
+
+    //recorremos toda la lista de cartales intentando activarlos, solo se activa en el que esté el jugador
+    public void MuestraTextoCarteles(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            foreach(DialogueKey cartel in _carteles)
+            {
+                cartel.TriggerDialogue();
+            }
+        }
+    }
+
+
+    #endregion
+
+    #endregion
+
+
 
 }

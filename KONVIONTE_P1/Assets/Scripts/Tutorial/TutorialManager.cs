@@ -5,9 +5,7 @@ using System;
 
 /*
  Cosas a implementar 
-Los dialogos de los carteles solo se muestran cuando se toca x boton y se muestra una imagen con el boton que es -hecho
-El juego se para con los dialogos - hecho
-Pasillo infinito en la charla con el simbionte
+
  
  
  
@@ -49,7 +47,7 @@ public class TutorialManager : MonoBehaviour
         _player = GameManager.Player;
 
         //desactivar todas las componentes adecuadas
-        SetComponents(false);
+        //SetComponents(false);
 
         //desactivar el input del GM
         _gameManager.InputOff();

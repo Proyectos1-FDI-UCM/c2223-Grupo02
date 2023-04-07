@@ -8,9 +8,15 @@ public class DialogueKey : MonoBehaviour
 
     private bool _inZone = false;
 
-    public void TriggerDialogue(InputAction.CallbackContext context)
+    private void Start()
     {
-        if (context.started && _inZone) 
+        DialogueManager.Instance.AddCartel(this);
+        _image.SetActive(false);
+    }
+
+    public void TriggerDialogue()
+    {
+        if (_inZone) 
         {
             DialogueManager.Instance.StartDialogue(_dialogues);            
         }
