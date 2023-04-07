@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class DialogueKey : MonoBehaviour
 {
-    [SerializeField] private Dialogue _dialogue;
+    [SerializeField] private Dialogue[] _dialogues;
 
     [SerializeField] private GameObject _image;
 
@@ -12,7 +12,7 @@ public class DialogueKey : MonoBehaviour
     {
         if (context.started && _inZone) 
         {
-            DialogueManager.Instance.StartDialogue(_dialogue);            
+            DialogueManager.Instance.StartDialogue(_dialogues);            
         }
     }
 

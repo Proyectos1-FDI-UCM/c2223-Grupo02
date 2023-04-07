@@ -19,6 +19,7 @@ public class DialogueManager : MonoBehaviour
 
     #region Properties
     private Queue<string> _sentences;
+    private Queue<Dialogue> _dialogues;
 
     public static DialogueManager Instance { get; private set; }
     #endregion
@@ -33,13 +34,14 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         _sentences = new Queue<string>();
+        _dialogues = new Queue<Dialogue>();
     }
 
     /// <summary>
     /// Para empezar el dialogo se llama desde el DialogueTriggger
     /// </summary>
     /// <param name="dialogue"></param>
-    public void StartDialogue(Dialogue dialogue)
+    private void StartDialogue(Dialogue dialogue)
     {
         //activa la UI
         GameManager.Instance.UIManager.SetDialogueUI(true);
@@ -58,23 +60,48 @@ public class DialogueManager : MonoBehaviour
 
         // Primera frase
         NextSentence();
+    }
+
+    public void StartDialogue(Dialogue[] dialogues)
+    {
+        //limpiamos la cola
+        _dialogues.Clear();
+
+        //añadimos los dialogos a la cola
+        foreach (Dialogue dialog in dialogues)
+        {
+            _dialogues.Enqueue(dialog);
+        }
+
+        //empezamos el primer dialogo
+        Dialogue dialogue = _dialogues.Dequeue();
+
+        StartDialogue(dialogue);
 
         // Desactivar el input y parar el juego
         GameManager.Instance.InputOff();
         Time.timeScale = 0f;
-
     }
 
     /// <summary>
     /// Este metodo lo llama el trigger en pantalla (un boton p.ej)
     /// </summary>
     public void NextSentence()
-    {
+    {     
         // Si no quedan frases
         if (_sentences.Count == 0)
         {
-            // Se termina el dialogo
-            EndDialogue();
+            //si no quedan dialogos en la cola
+            if(_dialogues.Count == 0)
+            {
+                // Se termina el dialogo
+                EndDialogue();
+            }
+            else
+            {
+                //empezar el siguiente dialogo en cola
+                StartDialogue(_dialogues.Dequeue());
+            }            
         }
         else
         {
@@ -94,12 +121,6 @@ public class DialogueManager : MonoBehaviour
         //activa el input y sigue el juego
         GameManager.Instance.InputOn();
         Time.timeScale = 1.0f;
-
     }
 
-    //private void SetDialogueUI(bool On)
-    //{
-    //    _dialogueUI.SetActive(On);
-    //    _InGameUI.SetActive(!On);
-    //}
 }
