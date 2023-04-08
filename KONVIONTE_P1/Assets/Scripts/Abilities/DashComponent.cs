@@ -13,6 +13,7 @@ public class DashComponent : MonoBehaviour
     private Mouse _mouse;
     private Gamepad _gamepad;
     private AtackComponent _attack;
+    private Animator _myAnimator;
     #endregion
     #region Parameters
     [SerializeField] private float _dashDistance;
@@ -35,6 +36,7 @@ public class DashComponent : MonoBehaviour
         _gamepad = Gamepad.current;
         _myTransform = transform;
         _movement = GetComponent<MovementComponent>();
+        _myAnimator = GetComponent<Animator>();
         _direction = GameManager.DirectionComponent;
         _floorMask = LayerMask.GetMask("Floor");
         _maxDashDistance = _dashDistance;
@@ -67,6 +69,7 @@ public class DashComponent : MonoBehaviour
     /// <returns></returns>
     public void Dashing(bool canDash)
     {
+        _myAnimator.SetTrigger("Dash");
         _putoDasheo = canDash;
         TryDash();
     }

@@ -320,6 +320,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3229762132671292843, guid: dead257545a754340a2deee90e150bcc, type: 3}
+      propertyPath: _accelerationTime
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3229762132671292846, guid: dead257545a754340a2deee90e150bcc, type: 3}
       propertyPath: _baseDamage
       value: 5
@@ -745,7 +749,7 @@ MonoBehaviour:
   _stopBoxOffset: {x: 0, y: 0, z: 0}
   _attackBoxSize: {x: 0.7, y: 1, z: 0}
   _attackBoxOffset: {x: 0, y: 0, z: 0}
-  _exitDashDistance: 4
+  _exitDashDistance: 3
   _enterDashDistance: 4
   _closePersecutionDistance: 2
   _routineTime: 2
@@ -809,7 +813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691c4d39f5b40a94b99eb0634c554834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dashDistance: 3
+  _dashDistance: 2.3
   _dashTime: 0.1
 --- !u!114 &737088757
 MonoBehaviour:
@@ -925,6 +929,10 @@ PrefabInstance:
     - target: {fileID: 3852443420143546455, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.0048828125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263252323790611130, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7471763953744293655, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
       propertyPath: m_AnchoredPosition.y

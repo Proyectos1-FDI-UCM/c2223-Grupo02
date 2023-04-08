@@ -26,14 +26,14 @@ public class SprinterAttackState : State
 
     public void OnEnter()
     {
-        _currentAttackTime = 0;
-
         //Fijarse en que ese sea el nombre del bool en la animación
         _myAnimator.SetBool("AttackState", true);
 
         _originalMaxSpeed = _myMovementComponent.MaxMovementSpeed;
         //Hacemos que se quede quieto mientras pega
         _myMovementComponent.SetMaxSpeed(0);
+
+        _attackType = 1;
     }
 
     public void Tick()
@@ -41,13 +41,14 @@ public class SprinterAttackState : State
         _currentAttackTime -= Time.deltaTime;
         if (_currentAttackTime < 0)
         {
-            
+            _attackType = Random.Range(0, 3);
+            _myAnimator.SetFloat("AttackType",_attackType);
             //Que mire al jugador para atacar (¿Al final esto sobra?)
             _myMovementComponent.SetDirection(GameManager.DirectionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
 
             //Ataca
             _myCombatController.Atack(GameManager.DirectionComponent.X_Directions(_playerTransform.position - _myTransform.position, 4));
-            _currentAttackTime = _attackTime;
+            _currentAttackTime = Random.Range(_attackTime,_attackTime+1);
             Debug.Log("AtaqueSprinter");
         }
     }
@@ -68,5 +69,6 @@ public class SprinterAttackState : State
         _myAnimator = myMachine.MyAnimator;
 
         _attackTime = myMachine.AttackTime;
+        _currentAttackTime = 0;
     }
 }
