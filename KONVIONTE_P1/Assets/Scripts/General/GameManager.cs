@@ -179,7 +179,7 @@ public class GameManager : MonoBehaviour
     /// <param name="context"></param>
     public void Jump(InputAction.CallbackContext context)
     {
-        if (!_input) return;
+        if (!_input || !TutorialManager.Instance.CanJump()) return;
 
         if (context.performed)
         {

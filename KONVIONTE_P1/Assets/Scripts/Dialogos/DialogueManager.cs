@@ -32,8 +32,10 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
+        //estos 2 tienen que ir aqui porque se usan en el start de los dialogos
         Instance = this;
         _carteles = new List<DialogueKey>();
+
     }
 
 
@@ -42,6 +44,8 @@ public class DialogueManager : MonoBehaviour
     {
         _sentences = new Queue<string>();
         _dialogues = new Queue<Dialogue>();
+
+        if (_sentences.Count == 0 && _dialogues.Count == 0) EndDialogue();  
     }
 
     #endregion
@@ -158,6 +162,12 @@ public class DialogueManager : MonoBehaviour
 
 
     #endregion
+
+
+    public bool DialogueFinished()
+    {
+        return Time.timeScale != 0;
+    }
 
     #endregion
 

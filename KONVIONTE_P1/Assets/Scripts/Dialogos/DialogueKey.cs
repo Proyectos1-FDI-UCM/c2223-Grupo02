@@ -6,6 +6,9 @@ public class DialogueKey : MonoBehaviour
 
     [SerializeField] private GameObject _image;
 
+    [SerializeField]
+    private bool _increaseTutorialState = false;
+
     private bool _inZone = false;
 
     private void Start()
@@ -36,6 +39,12 @@ public class DialogueKey : MonoBehaviour
         {
             _inZone = false;
             _image.SetActive(false);
+
+            if (_increaseTutorialState)
+            {
+                TutorialManager.Instance.IncreaseState();
+            }
+
         }
     }    
 }

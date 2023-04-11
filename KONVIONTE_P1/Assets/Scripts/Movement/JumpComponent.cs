@@ -19,9 +19,12 @@ public class JumpComponent : MonoBehaviour
     private Transform _myTransform;
     private Collider2D _myCollider;
     private Animator _myAnimator;
+
     [SerializeField] private LayerMask _floorMask;
+    //[SerializeField] private LayerMask _originalFloorMask;
+    //[SerializeField] private LayerMask _nullMask;
     #endregion
-    #region Prarameters
+    #region Parameters
     [SerializeField]
     [Tooltip("Altura del Salto")]
     private float _heightToPeak;
@@ -57,14 +60,14 @@ public class JumpComponent : MonoBehaviour
         // La velocidad de bajada depende del tiempo y la altura a la que queramos llegar
         _fallSpeed = _heightToPeak / _descensionTime;
         _upIniSpeed = (2 * _heightToPeak) / _ascensionTime;
-        _isGrounded = true;
+        _isGrounded = false;
     }
 
     //fixed update para regular la gravedad
     private void FixedUpdate()
     {
         // IMPORTANTE Para testear en ejecucion
-        // _upIniSpeed = (2 * _heightToPeak) / _ascensionTime;
+        //_upIniSpeed = (2 * _heightToPeak) / _ascensionTime;
         // Gravedad Magia de la física de la ESO
         if (_velocity <= 0 ||
             (_canceled && _velocity < (_upIniSpeed * _speedDivider)) || 
@@ -150,12 +153,23 @@ public class JumpComponent : MonoBehaviour
         return detected;
     }
 
+    /*
+    public void CantJump()
+    {
+        _floorMask = _nullMask;
+    }
+    public void CanJump()
+    {
+        _floorMask = _originalFloorMask;
+    }
+    */
+
     //private void OnDrawGizmos()
     //{
     //}
     //private void OnDrawGizmosSelected()
     //{
     //    Gizmos.DrawCube(_myCollider.bounds.center, _myCollider.bounds.size - (Vector3)new Vector2(0, .1f));
-        
+
     //}
 }
