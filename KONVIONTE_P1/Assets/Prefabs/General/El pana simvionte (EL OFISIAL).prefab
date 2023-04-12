@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -1045962970, guid: 1d1330c69e316724696569efae6a65a2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8a279edbe876ab04989520bf6d9d342f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -233,7 +233,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 1ca664947804af747b8a4f10a94b654e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -255,7 +255,7 @@ Animator:
   m_GameObject: {fileID: 4330029317084274270}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c73588a2382d0df498c3afc27bb35bc8, type: 2}
+  m_Controller: {fileID: 9100000, guid: cdaa3c249170e414ebebdbe7762d7dc9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -302,10 +302,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ccca61728d8454696bf7480d46a008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lastDirection: {x: 0, y: 0, z: 0}
   _maxMovementSpeed: 6
   _accelerationTime: 1
   _deccelerationTime: 0.5
+  _lastDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &4330029317084274343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,6 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxLife: 100
+  _superHit: {fileID: 0}
 --- !u!114 &7360945658986034746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,6 +428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dashDistance: 2
   _dashTime: 0.1
+  _putoDasheo: 0
 --- !u!114 &-7727388860901181041
 MonoBehaviour:
   m_ObjectHideFlags: 0

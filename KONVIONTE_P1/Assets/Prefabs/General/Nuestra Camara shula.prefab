@@ -103,3 +103,5 @@ MonoBehaviour:
   _zOffset: -20
   _yOffset: 1
   _xOffset: 10
+  _leftBoundarie: 0
+  _rightBoundarie: 0
