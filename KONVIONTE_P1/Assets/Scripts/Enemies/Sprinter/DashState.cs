@@ -25,7 +25,7 @@ public class DashState : State
         _movementComponent.SetDirection(GameManager.DirectionComponent.X_Directions(_playerTransform.position - _myTransform.position, 2));
         if(_currentDashTime > _dashTime)
         {
-            _currentDashTime = Random.Range(0,1);
+            _currentDashTime = Random.Range(0,0.2f);
             _dashComponent.Dashing(true);
         }
 

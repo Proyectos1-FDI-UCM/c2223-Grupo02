@@ -22,7 +22,7 @@ public class DashComponent : MonoBehaviour
     #endregion
     #region Properties
     private float _dashSpeed;
-    private bool _putoDasheo;
+    [SerializeField] private bool _putoDasheo;
     private float _time;
     private Vector3 _dashDirection;
     private float _rayDistance;
@@ -54,7 +54,7 @@ public class DashComponent : MonoBehaviour
             PerformDash(_dashDistance);
 
             // Si eres el enemigo y has terminado el dash haces el daño de la estela
-            if (_time <= 0 && gameObject.GetComponent<ParryComponent>() == null)
+            if (_time <= 0 && _parry == null)
             {
                 DashDamage();
             }
@@ -71,11 +71,13 @@ public class DashComponent : MonoBehaviour
     /// <returns></returns>
     public void Dashing(bool canDash)
     {
-        if(_parry.Parried && _parry.SearchCollision())
+        if (_parry == null || _parry.Encontrao)
         {
+            Debug.Log("tuviejadashea");
             _myAnimator.SetTrigger("Dash");
             _putoDasheo = canDash;
             TryDash();
+            _parry.SetEncontrao(false);
         }
     }
 
@@ -124,7 +126,7 @@ public class DashComponent : MonoBehaviour
     /// </summary>
     private void DashDirection()
     {
-        if (gameObject.GetComponent<ParryComponent>() != null)
+        if (_parry != null)
         {
             // Si hay gamepad leemos el joystick
             if (_gamepad != null)
