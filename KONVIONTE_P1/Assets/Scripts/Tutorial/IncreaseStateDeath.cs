@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class IncreaseStateDeath : MonoBehaviour
-{
+{		
     #region References
-    [SerializeField]
-    UnityEvent OnDeath;
+
     #endregion	
 
     #region Parameters
@@ -26,7 +24,7 @@ public class IncreaseStateDeath : MonoBehaviour
 
     private void OnDisable()
     {
-        OnDeath.Invoke();
+        TutorialManager.Instance.IncreaseState();
     }
 
 
