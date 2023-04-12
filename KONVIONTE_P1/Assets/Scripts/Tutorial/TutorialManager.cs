@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.InputSystem;
 
 //cambiar desactivar componentes por desactivar input,
 //usar la gravedad siempre
@@ -9,14 +10,23 @@ using System;
 public class TutorialManager : MonoBehaviour
 {
     [SerializeField]
+    private PlayerInput _playerInput;
+
+
+    [Tooltip("Estado inicial del tutorial, 0 para tutorial normal, -1 para desactivar todo lo relativo al tutorial")]
+    [SerializeField]
+    private int _initialTutorialState;
+
+    [SerializeField]
     private int _tutorialState;
 
     /*
+   -1 = no hay tutorial
     0 = start
     1 = 
     
      
-     
+    
      
      */
 
@@ -25,11 +35,12 @@ public class TutorialManager : MonoBehaviour
     
     private GameObject _player;
     private GameManager _gameManager;
-
+    [Tooltip("Barra de vida")]
     [SerializeField]
     private GameObject _lifeUI;
     [SerializeField]
     private GameObject _abilitiesUI;
+    [Tooltip("Cronometro")]
     [SerializeField]
     private GameObject _timeUI;
 
@@ -43,7 +54,9 @@ public class TutorialManager : MonoBehaviour
 
     private bool _tutorial;
 
-    private bool _canJump;
+    private InputAction _jump;
+    private InputAction _attack;
+    private InputAction _parry;
 
     #endregion
 
@@ -67,29 +80,19 @@ public class TutorialManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+
         //seteo del player y el GM
         _player = GameManager.Player;
         _gameManager = GameManager.Instance;
 
-
-        //desactivar todas las componentes adecuadas
-        //SetComponents(false);
-
-        //desactivar el input del GM
-        //_gameManager.InputOff();
-
-        //desactivar la UI
-        _lifeUI.SetActive(false);
-        _abilitiesUI.SetActive(false);  
-        _timeUI.SetActive(false);
-
+        _jump = _playerInput.currentActionMap.FindAction("Jump");
+        _attack = _playerInput.currentActionMap.FindAction("Atack");
+        _parry = _playerInput.currentActionMap.FindAction("Parry");
 
         //seteo del estado del tutorial
-        _tutorial = true;
-        _tutorialState = -1;
-
-        
-
+        _tutorialState = _initialTutorialState;
+       
         OnEnterState(_tutorialState);
 
     }
@@ -174,20 +177,34 @@ public class TutorialManager : MonoBehaviour
     }
     private void OnEnterState(int state)
     {
-        if (state == -1) _canJump = true;
-
-        if (state == 0)
+        if (state == -1)
         {
+            _tutorial = false;
+        } 
+        else if (state == 0)
+        {
+            //no se si esto luego se usa
+            _tutorial = true;
+
+            //desactivar todas las componentes adecuadas
+            SetComponents(false);
+
+            //desactivar la UI
+            _lifeUI.SetActive(false);
+            _abilitiesUI.SetActive(false);
+            _timeUI.SetActive(false);
+
+            //empezar el primer dialogo
             DialogueManager.Instance.StartDialogue(_StartDialogue);
         }
         else if (state == 1)
         {
             ActivaMovimiento();
             ActivaAnimaciones();
-            _canJump = false;
 
-            //_player.GetComponent<JumpComponent>().CantJump();
-
+            SetAccion(_jump, false);
+            SetAccion(_attack, false);
+            SetAccion(_parry, false);
         }
         else if (state == 2)
         {
@@ -217,7 +234,11 @@ public class TutorialManager : MonoBehaviour
 
     #endregion
 
-    public bool CanJump() { return _canJump; }
+    private void SetAccion(InputAction action,bool value)
+    {
+        if (value) action.Enable();
+        else action.Disable();
+    }
 
 
     #endregion

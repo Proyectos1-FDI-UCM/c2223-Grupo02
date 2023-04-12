@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 6346709447776289744}
   - component: {fileID: 4778255286185743554}
   - component: {fileID: 1224969341}
+  - component: {fileID: -5471493590541100303}
   m_Layer: 0
   m_Name: Er jefe
   m_TagString: Untagged
@@ -298,3 +299,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ccaa8b0f17349e42939492fd28a78e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5471493590541100303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6346709447776289757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ba8d1645eade749845299fa73ee1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerInput: {fileID: 6346709447776289744}
+  _initialTutorialState: -1
+  _tutorialState: 0
+  _lifeUI: {fileID: 0}
+  _abilitiesUI: {fileID: 0}
+  _timeUI: {fileID: 0}
+  _StartDialogue: []
