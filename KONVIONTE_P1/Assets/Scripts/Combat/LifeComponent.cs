@@ -101,7 +101,7 @@ public class LifeComponent : MonoBehaviour
     /// <summary>
     /// Destruye el <paramref name="gameObject"/> y activa la animacion
     /// </summary>
-    private void Death()
+    public void Death()
     {
         _myAnimator.SetTrigger("Death");
         if (GetComponent<ParryComponent>() != null)
