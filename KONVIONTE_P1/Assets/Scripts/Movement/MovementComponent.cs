@@ -34,8 +34,9 @@ public class MovementComponent : MonoBehaviour
 
     public float Speed { get { return _speed; } }
     public float MaxMovementSpeed { get { return _maxMovementSpeed; } }
-    // Start is called before the first frame update
-    void Start()
+
+    //awake para que no afecte el orden de ejecucion
+    void Awake()
     {
         _myTransform = transform;  
         _myAnimator = GetComponent<Animator>();
@@ -105,7 +106,8 @@ public class MovementComponent : MonoBehaviour
     public void SetDirection(Vector3 direction)
     {
         _directionVector = direction;
-        _myAnimator.SetBool("IsMoving", _directionVector.magnitude != 0);
+        //la interrogacion para que no de error
+        _myAnimator?.SetBool("IsMoving", _directionVector.magnitude != 0);
     }
     public void SetMaxSpeed(float speed)
     {

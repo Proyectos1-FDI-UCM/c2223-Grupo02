@@ -23,7 +23,9 @@ public class TutorialManager : MonoBehaviour
     /*
    -1 = no hay tutorial
     0 = start
-    1 = 
+    1 = movimiento
+    2 = parreo
+    3 = salto y ataque 
     
      
     
@@ -102,10 +104,12 @@ public class TutorialManager : MonoBehaviour
     {
         TickState(_tutorialState);
 
+        /*
         if (_tutorial)
         {
             _gameManager.SetTime(120);
         }
+        */
     }
 
     #endregion
@@ -122,7 +126,6 @@ public class TutorialManager : MonoBehaviour
         _player.GetComponent<LifeComponent>().enabled = On;
         _player.GetComponent<KnockbackComponent>().enabled = On;
         _player.GetComponent<DashComponent>().enabled = On;
-
         _player.GetComponent<MovementComponent>().enabled = On;
         _player.GetComponent<Animator>().enabled = On;
         _player.GetComponent<BoxCollider2D>().enabled = On;
@@ -208,13 +211,38 @@ public class TutorialManager : MonoBehaviour
         }
         else if (state == 2)
         {
+            SetAccion(_parry, true);
+            _player.GetComponent<ParryComponent>().enabled = true;
+            _player.GetComponent<TeleportParry>().enabled = true;
+            _player.GetComponent<KnockbackComponent>().enabled = true;
 
+
+        }
+        else if( state == 3)
+        {
+            _player.GetComponent<LifeComponent>().enabled = true;
+            _lifeUI.SetActive(true);
+
+        }
+        else if(state == 4)
+        {
+            _player.GetComponent<CombatController>().enabled = true;
+
+            SetAccion(_attack, true);
+            SetAccion(_jump, true);
+        }
+        else if(state == 5)
+        {
+            _timeUI.SetActive(true);       
         }
         //...
     }
     private void TickState(int state)
     {
-        if(state == 0)
+        //para no morir por tiempo
+        if(state >-1 && state < 5)_gameManager.SetTime(120);
+
+        if (state == 0)
         {
             if (DialogueManager.Instance.DialogueFinished())
             {

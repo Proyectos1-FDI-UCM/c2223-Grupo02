@@ -123,8 +123,9 @@ public class TeleportParry : MonoBehaviour
     /// </summary>
     private void Teleport()
     {
-        _animator.SetBool("IsFreeze", false);
-        _animator.SetBool("Teleport",true);
+        //interrogaciones para que no de errores
+        _animator?.SetBool("IsFreeze", false);
+        _animator?.SetBool("Teleport",true);
         _predictionTransform.gameObject.SetActive(false);
     }
     /// <summary>

@@ -36,14 +36,16 @@ public class DialogueManager : MonoBehaviour
         Instance = this;
         _carteles = new List<DialogueKey>();
 
+        _sentences = new Queue<string>();
+        _dialogues = new Queue<Dialogue>();
+
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        _sentences = new Queue<string>();
-        _dialogues = new Queue<Dialogue>();
+        
 
         if (_sentences.Count == 0 && _dialogues.Count == 0) EndDialogue();  
     }
