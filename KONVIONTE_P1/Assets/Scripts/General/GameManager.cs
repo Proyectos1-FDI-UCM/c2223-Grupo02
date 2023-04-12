@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
     static public DirectionComponent DirectionComponent { get { return _directionComponent; } }
 
     #endregion
+
     #region Parameters
     [SerializeField]
     [Tooltip("Tiempo en segundos que dura el nivel")]
@@ -69,6 +70,7 @@ public class GameManager : MonoBehaviour
 
    
     #endregion
+
     #region Properties
 
     private float _currentTime;

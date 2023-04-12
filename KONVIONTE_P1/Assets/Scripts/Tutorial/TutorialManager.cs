@@ -73,7 +73,7 @@ public class TutorialManager : MonoBehaviour
 
 
         //desactivar todas las componentes adecuadas
-        SetComponents(false);
+        //SetComponents(false);
 
         //desactivar el input del GM
         //_gameManager.InputOff();
@@ -86,7 +86,7 @@ public class TutorialManager : MonoBehaviour
 
         //seteo del estado del tutorial
         _tutorial = true;
-        _tutorialState = 0;
+        _tutorialState = -1;
 
         
 
@@ -174,6 +174,8 @@ public class TutorialManager : MonoBehaviour
     }
     private void OnEnterState(int state)
     {
+        if (state == -1) _canJump = true;
+
         if (state == 0)
         {
             DialogueManager.Instance.StartDialogue(_StartDialogue);

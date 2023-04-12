@@ -16,6 +16,7 @@ using static UnityEngine.UI.Image;
 public class JumpComponent : MonoBehaviour
 {
     #region References
+
     private Transform _myTransform;
     private Collider2D _myCollider;
     private Animator _myAnimator;
@@ -25,6 +26,7 @@ public class JumpComponent : MonoBehaviour
     //[SerializeField] private LayerMask _nullMask;
     #endregion
     #region Parameters
+
     [SerializeField]
     [Tooltip("Altura del Salto")]
     private float _heightToPeak;
@@ -40,6 +42,7 @@ public class JumpComponent : MonoBehaviour
 
     #endregion
     #region Properties
+
     private bool _canceled;
     private bool _isGrounded;
     private float _velocity;
@@ -47,6 +50,7 @@ public class JumpComponent : MonoBehaviour
     private float _gravity;
     private float _fallSpeed;
     private float _upIniSpeed;
+
     #endregion
 
     // Start is called before the first frame update
