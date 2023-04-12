@@ -277,10 +277,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ccca61728d8454696bf7480d46a008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lastDirection: {x: 0, y: 0, z: 0}
   _maxMovementSpeed: 2
   _accelerationTime: 0
   _deccelerationTime: 0
+  _lastDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &1886094971767836447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,8 +306,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40a090e3d357c1419b98d4b0a5d1227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxLife: 200
-  SuperHit: {fileID: 1141202327266014121}
+  _maxLife: 250
+  _superHit: {fileID: 1583749855065643754, guid: c14b9d4d91aec9947a7cf9a6d1bae5ef, type: 3}
 --- !u!50 &1886094971767836443
 Rigidbody2D:
   serializedVersion: 4
@@ -406,11 +406,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c14b9d4d91aec9947a7cf9a6d1bae5ef, type: 3}
---- !u!198 &1141202327266014121 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 1583749855065643754, guid: c14b9d4d91aec9947a7cf9a6d1bae5ef, type: 3}
-  m_PrefabInstance: {fileID: 1886094971716086083}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3203964487772671319 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3916449267050456084, guid: c14b9d4d91aec9947a7cf9a6d1bae5ef, type: 3}
