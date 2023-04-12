@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 391608735}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -75.52, y: -4.14, z: 0}
+  m_LocalPosition: {x: -19.52, y: -4.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -84,7 +84,7 @@ MonoBehaviour:
   _UIManager: {fileID: 0}
   _spawnTransform: {fileID: 391608736}
   _audioManager: {fileID: 0}
-  _maxLevelTime: 5000
+  _maxLevelTime: 120
 --- !u!114 &6346709447776289744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,9 +312,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInput: {fileID: 6346709447776289744}
-  _initialTutorialState: -1
+  _initialTutorialState: 0
   _tutorialState: 0
   _lifeUI: {fileID: 0}
   _abilitiesUI: {fileID: 0}
   _timeUI: {fileID: 0}
-  _StartDialogue: []
+  _StartDialogue:
+  - name: sfas
+    sentences:
+    - asfsadfasdfds
