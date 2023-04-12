@@ -26,7 +26,7 @@ public class TutorialManager : MonoBehaviour
     1 = movimiento
     2 = parreo
     3 = salto y ataque 
-    
+    4 
      
     
      
@@ -152,7 +152,6 @@ public class TutorialManager : MonoBehaviour
 
     #region States Logic
 
-
     //cambia el estado siempre, no verifica ninguna condicion, haciendo el OnExit y el OnEnter correspondientes
     public void IncreaseState()
     {
@@ -230,6 +229,8 @@ public class TutorialManager : MonoBehaviour
 
             SetAccion(_attack, true);
             SetAccion(_jump, true);
+
+            _abilitiesUI.SetActive(true);
         }
         else if(state == 5)
         {
