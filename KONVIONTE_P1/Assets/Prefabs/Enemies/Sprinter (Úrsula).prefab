@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da041330c02804847ada100536585fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 10
+  _damage: 15
 --- !u!1 &2932186502406950907
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,7 +242,7 @@ MonoBehaviour:
   _maxDistance: 0.5
   _floorDetector: {fileID: 2932186501793487590}
   _attackTime: 0.8
-  _dashTime: 0.7
+  _dashTime: 1.5
 --- !u!114 &2932186502406950911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,6 +314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dashDistance: 2.3
   _dashTime: 0.1
+  _putoDasheo: 0
 --- !u!114 &2932186502406950885
 MonoBehaviour:
   m_ObjectHideFlags: 0

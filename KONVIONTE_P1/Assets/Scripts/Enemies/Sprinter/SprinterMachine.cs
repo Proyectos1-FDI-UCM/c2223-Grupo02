@@ -72,6 +72,7 @@ public class SprinterMachine : StateMachine
     private Func<bool> _ToAttack;
     private Func<bool> _ExitAttack;
     private Func<bool> _closePersecution;
+    private Func<bool> _realToPatrol;
 
     #endregion
 
@@ -260,6 +261,7 @@ public class SprinterMachine : StateMachine
         _stateTransitions.Add(dashState, new List<Transition>());
 
         ////Inicialización de las condiciones de las transiciones
+        
         _ToPersecution = () => DetectionZone();
         _ToDash = () => DetectionZone() && PlayerDistance(_enterDashDistance) && !PlayerDistance(_closePersecutionDistance);
         _fromDashToPatrol = () => PlayerDistance(_exitDashDistance);
@@ -267,7 +269,7 @@ public class SprinterMachine : StateMachine
         _ToAttack = () => AttackZone();
         _ExitAttack = () => !AttackZone();
         _closePersecution = () => PlayerDistance(_closePersecutionDistance);
-
+        _realToPatrol = () => !PlayerDistance(10);
         ////Inicialización de las transiciones
 
         InicializaTransicion(PatrolState, PersecutionState, _ToPersecution);
@@ -282,6 +284,7 @@ public class SprinterMachine : StateMachine
         InicializaTransicion(dashState, sprinterAttackState, _ToAttack);
         InicializaTransicion(sprinterAttackState, dashState, _ExitAttack);
 
+        InicializaTransicion(PersecutionState, PatrolState, _realToPatrol);
         //establecer el estado inicial
         _currentState = PatrolState;
 
