@@ -124,11 +124,11 @@ MonoBehaviour:
     group: {fileID: -3836641899421752532, guid: 43879d8bf9bc79048a09c07f783ff93f, type: 2}
     pause: 0
   - name: BackgroundMusic
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: d7c65f8768a739643bc3a6de0f6c8354, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
-    loop: 0
+    loop: 1
     group: {fileID: -4282677434249850717, guid: 43879d8bf9bc79048a09c07f783ff93f, type: 2}
     pause: 0
   - name: EnemyHit
