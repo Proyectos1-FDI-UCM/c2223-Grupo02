@@ -14,6 +14,7 @@ public class DashComponent : MonoBehaviour
     private Gamepad _gamepad;
     private AtackComponent _attack;
     private Animator _myAnimator;
+    private ParryComponent _parry;
     #endregion
     #region Parameters
     [SerializeField] private float _dashDistance;
@@ -40,6 +41,7 @@ public class DashComponent : MonoBehaviour
         _direction = GameManager.DirectionComponent;
         _floorMask = LayerMask.GetMask("Floor");
         _maxDashDistance = _dashDistance;
+        _parry = GetComponent<ParryComponent>();
     }
 
     // Update is called once per frame
@@ -69,9 +71,12 @@ public class DashComponent : MonoBehaviour
     /// <returns></returns>
     public void Dashing(bool canDash)
     {
-        _myAnimator.SetTrigger("Dash");
-        _putoDasheo = canDash;
-        TryDash();
+        if(_parry.Parried && _parry.SearchCollision())
+        {
+            _myAnimator.SetTrigger("Dash");
+            _putoDasheo = canDash;
+            TryDash();
+        }
     }
 
     /// <summary>
