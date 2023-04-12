@@ -132,6 +132,7 @@ public class GameManager : MonoBehaviour
 
     void FixedUpdate()
     {
+        Debug.Log(_playerInputActions.Player.HorizontalMove.ReadValue<Vector2>());
         if (_input && _playerTeleportParry.TpDone) _playerMovementComponent.SetDirection(_playerInputActions.Player.HorizontalMove.ReadValue<Vector2>());
         else _playerMovementComponent.SetDirection(Vector3.zero);
     }
@@ -168,6 +169,7 @@ public class GameManager : MonoBehaviour
     /// <param name="callbackContext"></param>
     public void PlayerAtack(InputAction.CallbackContext callbackContext)
     {
+
         if (!_input) return;
         if (callbackContext.performed && _playerTeleportParry._telepotDone)
         {
@@ -185,6 +187,7 @@ public class GameManager : MonoBehaviour
 
         if (context.performed)
         {
+
             _playerJumpComponent.Jump(true,false);
         }
         if (context.canceled)

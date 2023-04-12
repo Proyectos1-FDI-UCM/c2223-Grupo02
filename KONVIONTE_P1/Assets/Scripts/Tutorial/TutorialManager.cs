@@ -202,8 +202,8 @@ public class TutorialManager : MonoBehaviour
         }
         else if (state == 1)
         {
-            ActivaMovimiento();
             ActivaAnimaciones();
+            ActivaMovimiento();
 
             SetAccion(_jump, false);
             SetAccion(_attack, false);

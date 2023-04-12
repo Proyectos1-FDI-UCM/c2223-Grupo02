@@ -50,6 +50,13 @@ public class TeleportParry : MonoBehaviour
     #region Accessors
     public bool TpDone { get { return _telepotDone; } }
     #endregion
+
+    //por orden de ejcucion y activacion de componentes
+    private void Awake()
+    {
+        _telepotDone = true;
+
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -60,7 +67,6 @@ public class TeleportParry : MonoBehaviour
         _myTransform = transform;
         //set parameters
         _currentTime = 0;
-        _telepotDone = true;
         _floorMask = LayerMask.GetMask("Floor");
         _animator = GetComponent<Animator>();
     }
