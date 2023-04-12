@@ -1041,6 +1041,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2263fc8689529374f816ffe1903e59be, type: 3}
+--- !u!114 &533780637 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6205056481600194658, guid: 2263fc8689529374f816ffe1903e59be, type: 3}
+  m_PrefabInstance: {fileID: 533780636}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4872fbf67138c47893e3603722b729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &553015433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62621,7 +62632,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 30
-      m_TileSpriteIndex: 21
+      m_TileSpriteIndex: 17
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -62631,7 +62642,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 29
-      m_TileSpriteIndex: 20
+      m_TileSpriteIndex: 18
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -62671,7 +62682,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 13
-      m_TileSpriteIndex: 18
+      m_TileSpriteIndex: 20
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -62681,7 +62692,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 6
-      m_TileSpriteIndex: 17
+      m_TileSpriteIndex: 21
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -62891,15 +62902,15 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 501001302, guid: e95b232ebc25ad34ea92bc2a4748baac, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: ffe3830a0a59ecf46911266a351e917d, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 1709760999, guid: b0b2f2c9d243bd044922c90ed2fe4515, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 8533e8f38012d4a45b0e3048cac6eb0e, type: 3}
+    m_Data: {fileID: 21300000, guid: bb11e58968146694a9095a3a5eb1c147, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 9bc493b5f71b76d4da88211f76bd8005, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: bb11e58968146694a9095a3a5eb1c147, type: 3}
+    m_Data: {fileID: 21300000, guid: 8533e8f38012d4a45b0e3048cac6eb0e, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 1709760999, guid: b0b2f2c9d243bd044922c90ed2fe4515, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: ffe3830a0a59ecf46911266a351e917d, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1580368804, guid: 3b7b272c8cb924244b0abe25a9cad3b5, type: 3}
   - m_RefCount: 1
@@ -63036,6 +63047,10 @@ PrefabInstance:
       propertyPath: _UIManager
       value: 
       objectReference: {fileID: 262990782}
+    - target: {fileID: 6346709447776289746, guid: 3bafe3acf271b514ebce447a3e3c731c, type: 3}
+      propertyPath: _audioManager
+      value: 
+      objectReference: {fileID: 533780637}
     - target: {fileID: 6346709447776289746, guid: 3bafe3acf271b514ebce447a3e3c731c, type: 3}
       propertyPath: _followCamera
       value: 
