@@ -202,6 +202,26 @@ public class ParryComponent : MonoBehaviour
     {
         _parried = false;
     }
+
+    public bool SearchCollision()
+    {
+        int i = 0;
+        bool found = false;
+        while (i < _colisions.Length && !found)
+        {
+            if (_colisions[i].GetComponent<DashComponent>() != null)
+            {
+                found = true;
+            }
+            else
+            {
+                i++;
+            }
+        }
+
+        return found;
+    }
+
     //para verlo to guapo en la escena manin
     private void OnDrawGizmos()
     {
