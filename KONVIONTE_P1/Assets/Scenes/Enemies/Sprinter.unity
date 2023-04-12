@@ -329,6 +329,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7424433407946624582, guid: dead257545a754340a2deee90e150bcc, type: 3}
+      propertyPath: _player
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424433407946624582, guid: dead257545a754340a2deee90e150bcc, type: 3}
       propertyPath: _dashTime
       value: 0.5
       objectReference: {fileID: 0}
@@ -815,6 +819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dashDistance: 2.3
   _dashTime: 0.1
+  _putoDasheo: 0
 --- !u!114 &737088757
 MonoBehaviour:
   m_ObjectHideFlags: 0
