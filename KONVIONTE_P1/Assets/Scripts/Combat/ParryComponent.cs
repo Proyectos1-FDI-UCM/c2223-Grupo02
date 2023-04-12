@@ -98,6 +98,7 @@ public class ParryComponent : MonoBehaviour
 
         _parried = false;
         _canParry = true;
+        _encontrao = false;
 
         _parryCurrentTime = _parryTime;
 

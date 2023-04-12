@@ -52,6 +52,7 @@ public class DashComponent : MonoBehaviour
         {
             // Dash
             PerformDash(_dashDistance);
+            Debug.Log("si");
 
             // Si eres el enemigo y has terminado el dash haces el daño de la estela
             if (_time <= 0 && _parry == null)
@@ -77,7 +78,7 @@ public class DashComponent : MonoBehaviour
             _myAnimator.SetTrigger("Dash");
             _putoDasheo = canDash;
             TryDash();
-            _parry.SetEncontrao(false);
+            _parry?.SetEncontrao(false);
         }
     }
 
