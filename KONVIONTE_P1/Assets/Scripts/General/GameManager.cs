@@ -114,6 +114,7 @@ public class GameManager : MonoBehaviour
         SpawnPlayer();
         _currentTime = _maxLevelTime;
         _audioManager.Play("BackgroundNoise");
+        _audioManager.Play("BackgroundMusic");
     }
 
     // Update is called once per frame

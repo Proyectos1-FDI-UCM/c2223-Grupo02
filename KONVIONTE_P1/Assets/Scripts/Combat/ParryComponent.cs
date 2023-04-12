@@ -67,6 +67,8 @@ public class ParryComponent : MonoBehaviour
 
     public bool _damageBoosted;
     private int _boostDamage;
+
+    private bool _encontrao;
     #endregion
     #region Accesors
     public bool CanParry
@@ -76,6 +78,10 @@ public class ParryComponent : MonoBehaviour
     public bool Parried
     {
         get { return _parried; }
+    }
+    public bool Encontrao
+    {
+        get { return _encontrao; }
     }
     #endregion
   
@@ -184,6 +190,7 @@ public class ParryComponent : MonoBehaviour
         //Debug.Log("is freeze");
         //Time.timeScale = 0;
 
+        _encontrao = SearchCollision();
     }
     //Llamar un frame despues del tryAtack para resetear?
     /// <summary>
@@ -203,23 +210,31 @@ public class ParryComponent : MonoBehaviour
         _parried = false;
     }
 
-    public bool SearchCollision()
+    private bool SearchCollision()
     {
+        Debug.Log("tuvieja1");
         int i = 0;
         bool found = false;
         while (i < _colisions.Length && !found)
         {
-            if (_colisions[i].GetComponent<DashComponent>() != null)
+            if (_colisions[i].transform.parent.gameObject.GetComponent<DashComponent>() != null)
             {
                 found = true;
+                Debug.Log("tuvieja2");
             }
             else
             {
                 i++;
+                Debug.Log("tuvieja3");
             }
         }
 
         return found;
+    }
+
+    public void SetEncontrao(bool On)
+    {
+        _encontrao = On;
     }
 
     //para verlo to guapo en la escena manin
