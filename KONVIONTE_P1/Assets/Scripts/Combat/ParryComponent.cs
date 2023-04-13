@@ -70,6 +70,7 @@ public class ParryComponent : MonoBehaviour
 
     private bool _encontrao;
     #endregion
+
     #region Accesors
     public bool CanParry
     {

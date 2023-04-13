@@ -10,11 +10,11 @@ public class AbilityBar : MonoBehaviour
     [Tooltip("Slider encargado de la barra de habilidad")]
     [SerializeField] Slider _slider;
 
-    [SerializeField] float _maxTime;
+    [SerializeField] int _maxChances;
     #endregion
 
     #region Variables
-    private float _currentTime;
+    private float _chances;
 
     //Mientras no tenemos referencia al script que nos tiene que dar la señal dejamos el bool
     private bool _TimeOn = true;
@@ -22,35 +22,44 @@ public class AbilityBar : MonoBehaviour
 
     #region References
     //hacer referencia al script que mande el mensaje de habilidad x robada
+
+    private DashComponent _playerDash;
+    private ParryComponent _playerParry;
+
+
     #endregion
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //Al principio el tiempo transcurrido es igual al máximo
-        _currentTime = _maxTime;
+        _playerDash = GameManager.Player.GetComponent<DashComponent>();
+        _playerParry = GameManager.Player.GetComponent<ParryComponent>();
 
-        //Stteamos el tiempo máximo de la habilidad
-        _slider.maxValue = _maxTime;
+        //Al principio no tenemos Dash
+        _chances = 0;
+
+        //Seteamos el maximo número de intentos
+        _slider.maxValue = _maxChances;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_TimeOn)
+        //si se realiza un dash
+        if (_playerParry.Encontrao)
         {
-            _currentTime -= Time.deltaTime;
+            _chances++;
+            _slider.value = _chances;
 
-            if (_currentTime <= 0)
-            {
-                Debug.Log("fin habilidad");
-                _TimeOn = false;
-            }
-            _slider.value = _currentTime;
         }
-        
+        else 
+        {
+            _slider.value = 0;
+            Debug.Log("fin habilidad");
+            //Si se te acaban los intentos se te quita la habilidad
+        }
     }
 
     
