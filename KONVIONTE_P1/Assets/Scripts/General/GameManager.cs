@@ -76,7 +76,14 @@ public class GameManager : MonoBehaviour
     private float _currentTime;
     private bool _input;
     #endregion
-    
+
+    #region Scenes
+
+    public string _resetLevelScene; 
+
+
+    #endregion
+
     private void Awake()
     {
         //seteo de la escala de tiempo
@@ -240,7 +247,8 @@ public class GameManager : MonoBehaviour
     #endregion
     public void ResetLevel()
     {
-        SceneManager.LoadScene(3);
+        //SceneManager.LoadScene(3);
+        SceneManager.LoadScene(_resetLevelScene);
     }
     private void SpawnPlayer()
     {

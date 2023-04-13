@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Timer _UITimer;
     [Tooltip("La barra de vida")]
     [SerializeField] private HealthBar _UIHealthBar;
+
     [SerializeField] private GameObject _dialogueUI;
     [SerializeField] private GameObject _InGameUI;
     [SerializeField]
@@ -22,6 +23,11 @@ public class UIManager : MonoBehaviour
 
     public Timer UITimer { get { return _UITimer; } }
 
+    [SerializeField] private GameObject _abilities;
+    
+    public GameObject Timer { get { return _UITimer.gameObject; } }
+    public GameObject HealthBar { get { return _UIHealthBar.gameObject; } }
+    public GameObject Abilities { get { return _abilities; } }
     //[Tooltip("El ataque cargado")]
     //[SerializeField] private Smite _UISmite;
 
@@ -72,6 +78,19 @@ public class UIManager : MonoBehaviour
         _InGameUI.SetActive(!On);
     }
     #endregion
+
+
+    #region Accesors
+
+    private static UIManager _instance;
+    public static UIManager Instance { get { return _instance; } }
+
+    #endregion
+
+    private void Awake()
+    {
+        _instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()

@@ -82,7 +82,9 @@ public class TutorialManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        _lifeUI = UIManager.Instance.HealthBar;
+        _abilitiesUI = UIManager.Instance.Abilities;
+        _timeUI = UIManager.Instance.Timer;
 
         //seteo del player y el GM
         _player = GameManager.Player;
