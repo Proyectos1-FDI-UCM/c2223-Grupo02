@@ -665,7 +665,11 @@ MonoBehaviour:
   _dialogueUI: {fileID: 4094506743549296409}
   _InGameUI: {fileID: 4094506744075011202}
   _pauseMenu: {fileID: 4094506745267073396}
+  _optionsMenu: {fileID: 4094506744002117718}
   _abilities: {fileID: 4094506745348201046}
+  _audioMixer: {fileID: 24100000, guid: 43879d8bf9bc79048a09c07f783ff93f, type: 2}
+  _SFX: {fileID: 4094506745386773469}
+  _music: {fileID: 4094506744141655198}
 --- !u!1 &4094506743520223973
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,7 +764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4094506743549296389
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1791,7 +1795,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4094506743784713603}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4094506744002117718}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &4094506743794993524
 GameObject:
   m_ObjectHideFlags: 0
@@ -3094,8 +3110,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 4094506744267277697}
   m_HandleRect: {fileID: 4094506743502743526}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
+  m_MinValue: -80
+  m_MaxValue: 20
   m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
@@ -3783,7 +3799,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: PauseGame
+        m_MethodName: ResumeGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7993,10 +8009,10 @@ RectTransform:
   m_Father: {fileID: 4094506745462303656}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1, y: 0.07374668}
-  m_SizeDelta: {x: -23.452103, y: -13.1814995}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 46, y: 0.07374668}
+  m_SizeDelta: {x: 66.5479, y: 14.8185005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4094506745348201040
 CanvasRenderer:
@@ -8185,8 +8201,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 4094506743383506444}
   m_HandleRect: {fileID: 4094506745026956716}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
+  m_MinValue: -80
+  m_MaxValue: 20
   m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
