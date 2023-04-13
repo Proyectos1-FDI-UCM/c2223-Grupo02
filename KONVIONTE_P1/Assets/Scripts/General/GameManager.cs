@@ -275,6 +275,7 @@ public class GameManager : MonoBehaviour
         _UIManager.ShowOptions(false);
         AudioManager.Instance.ResumeSound.Invoke();
         Time.timeScale = 1;
+        _UIManager.PauseMenu(false);
     }
 
     public void QuitGame()
