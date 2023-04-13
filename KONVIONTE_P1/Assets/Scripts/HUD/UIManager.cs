@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -20,6 +22,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _InGameUI;
     [SerializeField]
     private GameObject _pauseMenu;
+    [SerializeField] private GameObject _optionsMenu;
 
     public Timer UITimer { get { return _UITimer; } }
 
@@ -33,6 +36,12 @@ public class UIManager : MonoBehaviour
 
     //[Tooltip("")]
     //[SerializeField] private Smite _UISmite;
+    [SerializeField]
+    private AudioMixer _audioMixer;
+    [SerializeField]
+    private Slider _SFX;
+    [SerializeField]
+    private Slider _music;
 
     #endregion
 
@@ -43,7 +52,7 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Properties
-    
+
     #endregion
 
     #region Methods
@@ -63,6 +72,10 @@ public class UIManager : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(pauseFirstButton);
         }
+    }
+    public void ShowOptions(bool show)
+    {
+        _optionsMenu.SetActive(show);
     }
     public void SetDialogueUI(bool On)
     {
@@ -102,6 +115,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        _audioMixer.SetFloat("Efects", _SFX.value);
+        _audioMixer.SetFloat("Music", _music.value);
     }
 }
