@@ -236,11 +236,11 @@ MonoBehaviour:
   _exitDashDistance: 3
   _enterDashDistance: 4
   _closePersecutionDistance: 2
-  _routineTime: 2
+  _routineTime: 1
   _stopTime: 1
   _raycastWallDistance: 2
-  _raycastFloorDistance: 2
-  _maxDistance: 0.5
+  _raycastFloorDistance: 0.9
+  _maxDistance: 0.9
   _floorDetector: {fileID: 2932186501793487590}
   _attackTime: 0.8
   _dashTime: 1.5
