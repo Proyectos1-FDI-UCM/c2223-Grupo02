@@ -289,22 +289,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3229762132671292843, guid: dead257545a754340a2deee90e150bcc, type: 3}
-      propertyPath: _accelerationTime
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3229762132671292846, guid: dead257545a754340a2deee90e150bcc, type: 3}
-      propertyPath: _baseDamage
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7424433407946624582, guid: dead257545a754340a2deee90e150bcc, type: 3}
-      propertyPath: _dashTime
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7424433407946624582, guid: dead257545a754340a2deee90e150bcc, type: 3}
-      propertyPath: _dashDistance
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dead257545a754340a2deee90e150bcc, type: 3}
 --- !u!114 &223942587 stripped
@@ -636,7 +620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8358887279887475759, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}

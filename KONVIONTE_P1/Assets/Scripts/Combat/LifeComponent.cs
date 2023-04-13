@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.ParticleSystemJobs;
 
 //ESTE SCRIPT VA ATTACHADO TANTO AL JUGADOR COMO A LOS ENEMIGOS
 public class LifeComponent : MonoBehaviour
