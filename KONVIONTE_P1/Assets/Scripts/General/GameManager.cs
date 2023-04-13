@@ -272,6 +272,7 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         InputOn();
+        _UIManager.ShowOptions(false);
         AudioManager.Instance.ResumeSound.Invoke();
         Time.timeScale = 1;
     }

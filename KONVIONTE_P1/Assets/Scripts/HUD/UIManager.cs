@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _InGameUI;
     [SerializeField]
     private GameObject _pauseMenu;
+    [SerializeField] private GameObject _optionsMenu;
 
     public Timer UITimer { get { return _UITimer; } }
 
@@ -71,6 +72,10 @@ public class UIManager : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(pauseFirstButton);
         }
+    }
+    public void ShowOptions(bool show)
+    {
+        _optionsMenu.SetActive(show);
     }
     public void SetDialogueUI(bool On)
     {
