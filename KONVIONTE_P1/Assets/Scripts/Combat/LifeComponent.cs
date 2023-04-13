@@ -103,7 +103,10 @@ public class LifeComponent : MonoBehaviour
     /// </summary>
     public void Death()
     {
-        _myAnimator.SetTrigger("Death");
+        if(_myAnimator != null)
+        {
+            _myAnimator.SetTrigger("Death");
+        }
         if (GetComponent<ParryComponent>() != null)
         {
             GameManager.Instance.ResetLevel();
