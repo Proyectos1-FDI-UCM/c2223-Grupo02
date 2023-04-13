@@ -634,7 +634,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &821658169
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2341,8 +2341,8 @@ RectTransform:
   m_Father: {fileID: 5317300009965858540}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.8, y: 0}
+  m_AnchorMax: {x: 0.8, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.000045776367}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2949,10 +2949,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 2510267178788220328}
   m_HandleRect: {fileID: 8326682249311499747}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
-  m_WholeNumbers: 1
-  m_Value: 0
+  m_MinValue: -80
+  m_MaxValue: 20
+  m_WholeNumbers: 0
+  m_Value: -12
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3752,7 +3752,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7194609203025479338}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2820969381656319834}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &1794674143139363486
 GameObject:
   m_ObjectHideFlags: 0
@@ -3787,7 +3799,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.8, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.000045776367}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4693,7 +4705,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.8, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.000045776367}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4844,8 +4856,8 @@ RectTransform:
   m_Father: {fileID: 5819272596430185501}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.8, y: 0}
+  m_AnchorMax: {x: 0.8, y: 1}
   m_AnchoredPosition: {x: 0, y: 0.000045776367}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7311,10 +7323,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 2584791535047557551}
   m_HandleRect: {fileID: 1910746187194136986}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 100
-  m_WholeNumbers: 1
-  m_Value: 0
+  m_MinValue: -80
+  m_MaxValue: 20
+  m_WholeNumbers: 0
+  m_Value: -12
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8204,7 +8216,11 @@ MonoBehaviour:
   _dialogueUI: {fileID: 821658168}
   _InGameUI: {fileID: 4263252323790611130}
   _pauseMenu: {fileID: 481824824}
+  _optionsMenu: {fileID: 2820969381656319834}
   _abilities: {fileID: 8358887280346513475}
+  _audioMixer: {fileID: 24100000, guid: 43879d8bf9bc79048a09c07f783ff93f, type: 2}
+  _SFX: {fileID: 1662228983590984217}
+  _music: {fileID: 8303959657692914355}
 --- !u!1 &8358887280346513475
 GameObject:
   m_ObjectHideFlags: 0
