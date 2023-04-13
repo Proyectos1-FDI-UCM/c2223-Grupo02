@@ -69,8 +69,9 @@ public class FollowCamera : MonoBehaviour
     private bool CanFollow()
     {
         // La camara se descentra si el jugador alcanza su velocidad maxima
-        if(GameManager.Player.GetComponent<MovementComponent>().Speed 
-            == GameManager.Player.GetComponent<MovementComponent>().MaxMovementSpeed)
+        if((GameManager.Player.GetComponent<MovementComponent>().Speed 
+            == GameManager.Player.GetComponent<MovementComponent>().MaxMovementSpeed) && 
+             !GameManager.Player.GetComponent<ParryComponent>().Parried)
         {
             // Reset de la interpolacion
             _interpolation = 1;

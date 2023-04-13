@@ -19,6 +19,7 @@ public class DashComponent : MonoBehaviour
     #region Parameters
     [SerializeField] private float _dashDistance;
     [SerializeField] private float _dashTime;
+    [SerializeField] private ParticleSystem _dashParticle;
     #endregion
     #region Properties
     private float _dashSpeed;
@@ -74,11 +75,13 @@ public class DashComponent : MonoBehaviour
     {
         if (_parry == null || _parry.Encontrao)
         {
+            if (_dashParticle != null) { _dashParticle.Play(); }
             Debug.Log("tuviejadashea");
             _myAnimator.SetTrigger("Dash");
             _putoDasheo = canDash;
             TryDash();
             _parry?.SetEncontrao(false);
+            
         }
     }
 
@@ -159,7 +162,7 @@ public class DashComponent : MonoBehaviour
         // Realiza el dash
         if(_rayDistance != 0)
         {
-            _dashDistance -= _rayDistance;
+            _dashDistance -= _rayDistance;   
         }
     }
 
