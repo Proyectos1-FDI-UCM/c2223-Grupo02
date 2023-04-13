@@ -19,6 +19,7 @@ public class LifeComponent : MonoBehaviour
     * Si false, todo ocurre normal.
     * Si true, la vida no baja
     */
+    [SerializeField]
     private bool _immortal = false;
 
     #endregion
