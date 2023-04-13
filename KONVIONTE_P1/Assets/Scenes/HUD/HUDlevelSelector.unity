@@ -751,7 +751,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Lvl1_1
+          m_StringArgument: Lvl 1_1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1471778814
@@ -810,7 +810,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1604981764
 RectTransform:
   m_ObjectHideFlags: 0
@@ -875,7 +875,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1604981766}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1743516643}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Lvl 2_1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1604981766
 MonoBehaviour:
   m_ObjectHideFlags: 0
