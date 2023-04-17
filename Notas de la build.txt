@@ -1,0 +1,33 @@
+NICE TO HAVE:
+-Musica en el menu inicial y en el selector de niveles (puede ser la misma o algo muy suave pero para que no quede vacio)
+-Algun efecto de sonido al seleccionar con el raton el nivel
+-Sonido cuando entras a los dialogos
+-Sonido mas adecuado para el rayo
+-Feedback de que el parry no lo puedes spawnear siempre 
+(decirlo de alguna manera en los dialogos o poner algun tipo de contador en pantalla de cuanto le queda para poder volver a parrear)
+-Sonido al saltar
+
+
+ALGO MAS IMPORTANTE:
+-Poder ir del selector de niveles al menu inicial (con el esc por ejemplo)
+-En el menu de opciones no está el boton de la habilidad
+-Especificar con que boton se parrea con el dialogo o separar la guia de controles con las opciones 
+(y quizas añadir alguna otra opcion mas en ese menu)(esto es mas feedback del jugador)
+-Los ajustes de efectos y musica se cambian muy rapido
+-Que los ajustes de sonido se mantengan al recargar la escena cuando mueres
+-Explicar en algun lado lo del tp del parry, las 8 direcciones y el tp instantaneo
+-Desactivar la barra de habilidades al principio
+-Balancear el bully para que ataque mas rapido (en comparacion al becario es muy lento) y hacer que se acerque mas al personaje para atacarle
+(se podria diferenciar entre cuando el jugador está quieto o en movimiento para esto)
+-La barra de habilidades no se quita por tiempo(o eso parece o no se va disminuyendo), su tamaño no se ajusta al marco
+-Hacer que al tepearte no conserves la inercia (en muchas situaciones es molesto porque no se tiene en cuenta y te mueve mucho)
+-El nivel 2 es demasiado largo y a lo mejor seria buena idea poner un checkpoint, mas tiempo en el nivel 1-2
+
+BUGS:
+-Bug el fuego del smite no desaparece (se para la animacion pero no se quita)(no se cuando ocurre ni como forzarlo pero alguna vez pasa)
+-Bug se queda pillado en la animacion y no se puede hacer nada (creo que es cosa del parry y los rayos)
+-Bug enganchado en la primera pared del nivel 2
+-Bug a veces los rayos te atacan de mas 
+-Se puede saltar sin tocar el suelo al caer de una plataforma
+-En algunas situaciones te puedes seguir metiendo en los muros(en este caso ha sido con el knockback del rallo)
+-Con el dash te puedes colar en las paredes
