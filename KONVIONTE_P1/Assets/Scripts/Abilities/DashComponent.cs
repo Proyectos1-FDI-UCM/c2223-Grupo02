@@ -162,7 +162,8 @@ public class DashComponent : MonoBehaviour
         // Realiza el dash
         if(_rayDistance != 0)
         {
-            _dashDistance -= _rayDistance;   
+            //hay que restar la diferencia entre la distancia del dash y la distancia del rayo
+            _dashDistance -= (_dashDistance-_rayDistance);
         }
     }
 
