@@ -142,6 +142,10 @@ public class JumpComponent : MonoBehaviour
                 _position = 0;
             }
         }
+        else
+        {
+            _isGrounded = false;
+        }
     }
 
     private bool DetectRoof()

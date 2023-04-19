@@ -90,6 +90,7 @@ public class ParryComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("ParryComponent" + gameObject.name);
         _enemyAtackLayer = LayerMask.GetMask("EnemyAtack");       
         _myTransform = transform;
         //CUIDADO ESTO SOLO FUNCIONA SEGUN LA JERARQUIA

@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(_playerInputActions.Player.HorizontalMove.ReadValue<Vector2>());
+        //Debug.Log(_playerInputActions.Player.HorizontalMove.ReadValue<Vector2>());
         if (_input && _playerTeleportParry.TpDone) _playerMovementComponent.SetDirection(_playerInputActions.Player.HorizontalMove.ReadValue<Vector2>());
         else _playerMovementComponent.SetDirection(Vector3.zero);
     }

@@ -60,6 +60,7 @@ public class TeleportParry : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("TeleportComponent" + gameObject.name);
         _mouse = Mouse.current;
         _gamepad = Gamepad.current;
         _myDirectionComponent = GameManager.DirectionComponent;
