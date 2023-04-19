@@ -23,7 +23,7 @@ public class Smite : MonoBehaviour
     {
         _parryComponent = GameManager.Instance._playerParryComponent;
         _myAnimator = GetComponentInChildren<Animator>();
-        Debug.Log(_parryComponent);
+        //Debug.Log(_parryComponent);
         //Debería estar en False, pero para testing es True
         _myAnimator.SetBool("IsSmiting", true);        
     }
