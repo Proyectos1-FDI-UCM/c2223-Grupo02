@@ -270,7 +270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _increaseTutorialState
@@ -294,7 +294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[1].sentences.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[2].sentences.Array.size
@@ -302,7 +302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[0].sentences.Array.data[0]
-      value: Ese es diferente al otro
+      value: Ese es diferente al otro.
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[0].sentences.Array.data[1]
@@ -317,8 +317,13 @@ PrefabInstance:
       value: Como el tipico bully del cole
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
+      propertyPath: _dialogues.Array.data[1].sentences.Array.data[2]
+      value: "Prueba a hacer parry cuando te ataque, te sentiras con mucha m\xE1s
+        fuerza durante unos segundos."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[2].sentences.Array.data[0]
-      value: Vamos a por el
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
@@ -63415,7 +63420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _increaseTutorialState
@@ -63423,14 +63428,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[0].name
-      value: Simbionte
+      value: tu
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[1].name
-      value: Tu
+      value: Simbionte
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[2].name
+      value: Tu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
+      propertyPath: _dialogues.Array.data[3].name
       value: Simbionte
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
@@ -63439,15 +63448,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[1].sentences.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[2].sentences.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
+      propertyPath: _dialogues.Array.data[3].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[0].sentences.Array.data[0]
-      value: Oye, ve a por ese.
+      value: Que es esa cosa fea?!
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[0].sentences.Array.data[1]
@@ -63455,11 +63468,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[1].sentences.Array.data[0]
-      value: "Est\xE1 huyendo."
+      value: Y yo que pensaba que sabias leer y todo...
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
+      propertyPath: _dialogues.Array.data[1].sentences.Array.data[1]
+      value: Es un simbionte, aunque no parece muy fuerte.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
+      propertyPath: _dialogues.Array.data[1].sentences.Array.data[2]
+      value: Ve a por el.
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[2].sentences.Array.data[0]
-      value: Pues corre.
+      value: Pero esta huyendo.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
+      propertyPath: _dialogues.Array.data[3].sentences.Array.data[0]
+      value: 'Pues corre.
+
+
+        (Click izquierdo para pegar)'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
@@ -64478,7 +64506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _increaseTutorialState
@@ -64490,10 +64518,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[1].name
-      value: Tu
+      value: tu
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[2].name
+      value: Simbionte
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
+      propertyPath: _dialogues.Array.data[3].name
+      value: Tu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
+      propertyPath: _dialogues.Array.data[4].name
       value: Simbionte
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
@@ -64502,15 +64538,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[1].sentences.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[2].sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
+      propertyPath: _dialogues.Array.data[3].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
+      propertyPath: _dialogues.Array.data[4].sentences.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[0].sentences.Array.data[0]
-      value: "Cuidado con eso de ah\xED."
+      value: Cuidao con eso de ahi chiquilla.
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[0].sentences.Array.data[1]
@@ -64518,11 +64562,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[1].sentences.Array.data[0]
-      value: No puedo esquivarlo
+      value: Ahora escucho voces de la nada
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
+      propertyPath: _dialogues.Array.data[1].sentences.Array.data[1]
+      value: Genial...
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[2].sentences.Array.data[0]
-      value: Confia en mi. Parrea.
+      value: 'Deja de quejarte '
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
+      propertyPath: _dialogues.Array.data[2].sentences.Array.data[1]
+      value: Tienes que salir de aqui cuanto antes.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
+      propertyPath: _dialogues.Array.data[3].sentences.Array.data[0]
+      value: No puedo pasar por ahi.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
+      propertyPath: _dialogues.Array.data[4].sentences.Array.data[0]
+      value: 'Confia en mi. Parrea.
+
+        (Click derecho cerca del rayo)'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
@@ -64894,7 +64956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _increaseTutorialState
@@ -64902,19 +64964,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[0].name
+      value: tu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
+      propertyPath: _dialogues.Array.data[1].name
       value: Simbionte
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[0].sentences.Array.size
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
+      propertyPath: _dialogues.Array.data[1].sentences.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[0].sentences.Array.data[0]
-      value: Salta, salta conmigo
+      value: Ahi arriba no llego ni de broma.
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[0].sentences.Array.data[1]
-      value: Digo SALTA
+      value: 'Digo SALTA
+
+        (Espacio)'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
+      propertyPath: _dialogues.Array.data[1].sentences.Array.data[0]
+      value: 'No me seas mamarracha y salta que para algo tienes piernas.
+
+        (Espacio)'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
+      propertyPath: _dialogues.Array.data[1].sentences.Array.data[1]
+      value: 'Digo SALTA
+
+        (Espacio)'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
@@ -65143,7 +65227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[0].sentences.Array.data[0]
-      value: Hay una pared. No podemos pasar por aqui
+      value: Hay una pared. No podemos pasar por aqui.
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[0].sentences.Array.data[1]
@@ -65151,7 +65235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[1].sentences.Array.data[0]
-      value: Que eso no te impida.
+      value: Te ahogas en un vaso de agua hija,
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[1].sentences.Array.data[1]
@@ -66943,11 +67027,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[0].sentences.Array.data[0]
-      value: Que lugar mas raro.
+      value: Agh... Acabo de... salir de ahi? Que asco...
       objectReference: {fileID: 0}
     - target: {fileID: 7548058830245873964, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
       propertyPath: _dialogues.Array.data[0].sentences.Array.data[1]
-      value: Oh, mira. Un cartel
+      value: Tal vez en ese cartel diga que es este lugar.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92ac0530451121b4298645a5cfb918f9, type: 3}
