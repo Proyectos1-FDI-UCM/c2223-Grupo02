@@ -28,7 +28,7 @@ BUGS:
 -Bug se queda pillado en la animacion y no se puede hacer nada (creo que es cosa del parry y los rayos)
 -Bug enganchado en la primera pared del nivel 1_2
 -Bug a veces los rayos te atacan de mas 
--Se puede saltar sin tocar el suelo al caer de una plataforma
+-Se puede saltar sin tocar el suelo al caer de una plataforma (TESTINGGGGG)
 -En algunas situaciones te puedes seguir metiendo en los muros(en este caso ha sido con el knockback del rallo)
--Con el dash te puedes colar en las paredes
--El sprinter se queda colado en las paredes
+-Con el dash te puedes colar en las paredes (TESTINGGGGGG)
+-El sprinter se queda colado en las paredes (TESTINGGGGGG)
