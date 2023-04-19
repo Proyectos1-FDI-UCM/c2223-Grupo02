@@ -80,6 +80,7 @@ public class KnockbackComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("KnockBackComponent" + gameObject.name);
         _myTransform = transform;
         _myAnimator = GetComponent<Animator>();
         _floorLayerMask = LayerMask.GetMask("Floor");
