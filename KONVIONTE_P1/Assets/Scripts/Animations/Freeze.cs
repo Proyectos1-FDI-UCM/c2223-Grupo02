@@ -9,7 +9,7 @@ public class Freeze : StateMachineBehaviour
     {
         GameManager.Instance.SetPhysics(false);
         GameManager.Instance.InmortalityPlayer(true);
-        Debug.Log("Tu vieja congelada");
+        //Debug.Log("Tu vieja congelada");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

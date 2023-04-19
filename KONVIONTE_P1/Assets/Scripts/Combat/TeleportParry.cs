@@ -13,6 +13,7 @@ public class TeleportParry : MonoBehaviour
     [SerializeField]
     private Transform _predictionTransform;
     private DirectionComponent _myDirectionComponent;
+    private MovementComponent _movementComponent;
     private Mouse _mouse;
     private Gamepad _gamepad;
     private Transform _myTransform;
@@ -64,6 +65,7 @@ public class TeleportParry : MonoBehaviour
         _mouse = Mouse.current;
         _gamepad = Gamepad.current;
         _myDirectionComponent = GameManager.DirectionComponent;
+        _movementComponent = GetComponent<MovementComponent>();
         _parryComponent= GetComponent<ParryComponent>();
         _myTransform = transform;
         //set parameters
@@ -111,6 +113,7 @@ public class TeleportParry : MonoBehaviour
         AudioManager.Instance.Play("Freeze");
         _animator.SetBool("IsFreeze",true);
         _predictionTransform.gameObject.SetActive(true);
+        _movementComponent.SetSpeed(0);
         _telepotDone = false;
         _currentTime = 0;
     }
@@ -143,11 +146,11 @@ public class TeleportParry : MonoBehaviour
     {
         if (_distance == 0)
         {
-            _myTransform.localPosition += _moveToVector * _teleportDistance;
+            _myTransform.position += _moveToVector * _teleportDistance;
         }
         else
         {
-            _myTransform.localPosition += _moveToVector * (_distance - _marginTeleport);
+            _myTransform.position += _moveToVector * (_distance - _marginTeleport);
         }
         _telepotDone = true;
         AudioManager.Instance.Play("Teleport");

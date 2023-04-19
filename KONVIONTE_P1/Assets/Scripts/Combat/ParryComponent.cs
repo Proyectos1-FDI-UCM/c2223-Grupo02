@@ -223,12 +223,12 @@ public class ParryComponent : MonoBehaviour
             if (_colisions[i].transform.parent.gameObject.GetComponent<DashComponent>() != null)
             {
                 found = true;
-                Debug.Log("tuvieja2");
+                //Debug.Log("tuvieja2");
             }
             else
             {
                 i++;
-                Debug.Log("tuvieja3");
+                //Debug.Log("tuvieja3");
             }
         }
 

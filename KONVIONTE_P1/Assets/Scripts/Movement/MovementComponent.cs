@@ -113,4 +113,8 @@ public class MovementComponent : MonoBehaviour
     {
         _maxMovementSpeed = speed;
     }
+    public void SetSpeed(float speed)
+    {
+        _speed = speed;
+    }
 }
