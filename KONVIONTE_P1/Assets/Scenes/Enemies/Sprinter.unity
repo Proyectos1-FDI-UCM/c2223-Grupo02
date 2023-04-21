@@ -710,6 +710,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2932186501840324371, guid: 6a31c4b234cf0fc4c82841de8fc714fc, type: 3}
+      propertyPath: _damage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932186502406950880, guid: 6a31c4b234cf0fc4c82841de8fc714fc, type: 3}
+      propertyPath: _attackTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932186502406950880, guid: 6a31c4b234cf0fc4c82841de8fc714fc, type: 3}
+      propertyPath: _stopBoxSize.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932186502406950880, guid: 6a31c4b234cf0fc4c82841de8fc714fc, type: 3}
+      propertyPath: _stopBoxSize.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932186502406950880, guid: 6a31c4b234cf0fc4c82841de8fc714fc, type: 3}
+      propertyPath: _exitDashDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932186502406950880, guid: 6a31c4b234cf0fc4c82841de8fc714fc, type: 3}
+      propertyPath: _enterDashDistance
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932186502406950880, guid: 6a31c4b234cf0fc4c82841de8fc714fc, type: 3}
+      propertyPath: _detectionBoxSize.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932186502406950883, guid: 6a31c4b234cf0fc4c82841de8fc714fc, type: 3}
+      propertyPath: _dashDistance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2932186502406950907, guid: 6a31c4b234cf0fc4c82841de8fc714fc, type: 3}
       propertyPath: m_Name
       value: "Sprinter (\xDArsula)"
