@@ -63063,6 +63063,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1516185422}
+    - target: {fileID: 4094506743468422948, guid: 19278a0ea7b1e4e4f8a96c427dde6962, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeScene
+      objectReference: {fileID: 0}
     - target: {fileID: 4094506743503825994, guid: 19278a0ea7b1e4e4f8a96c427dde6962, type: 3}
       propertyPath: m_Name
       value: La Pantallita shula OnFire 1
@@ -63151,16 +63155,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD:KONVIONTE_P1/Assets/Scenes/Testing/Lasers.unity
     - target: {fileID: 4094506743630751170, guid: 19278a0ea7b1e4e4f8a96c427dde6962, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.0048828125
+=======
+    - target: {fileID: 4094506743549296409, guid: 19278a0ea7b1e4e4f8a96c427dde6962, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+>>>>>>> parent of abbf50b (Cronometro):KONVIONTE_P1/Assets/Scenes/Testing/Lásers.unity
       objectReference: {fileID: 0}
     - target: {fileID: 4094506744188356214, guid: 19278a0ea7b1e4e4f8a96c427dde6962, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 14628181}
+<<<<<<< HEAD:KONVIONTE_P1/Assets/Scenes/Testing/Lasers.unity
     - target: {fileID: 4094506744409808544, guid: 19278a0ea7b1e4e4f8a96c427dde6962, type: 3}
       propertyPath: m_IsActive
+=======
+    - target: {fileID: 4094506744434824875, guid: 19278a0ea7b1e4e4f8a96c427dde6962, type: 3}
+      propertyPath: m_AnchorMax.y
+>>>>>>> parent of abbf50b (Cronometro):KONVIONTE_P1/Assets/Scenes/Testing/Lásers.unity
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4094506745047746317, guid: 19278a0ea7b1e4e4f8a96c427dde6962, type: 3}
@@ -63171,10 +63186,25 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD:KONVIONTE_P1/Assets/Scenes/Testing/Lasers.unity
     - target: {fileID: 4384351198960489732, guid: 19278a0ea7b1e4e4f8a96c427dde6962, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+=======
+    - target: {fileID: 4094506745348201046, guid: 19278a0ea7b1e4e4f8a96c427dde6962, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094506745465151690, guid: 19278a0ea7b1e4e4f8a96c427dde6962, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -27.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094506745465151690, guid: 19278a0ea7b1e4e4f8a96c427dde6962, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 54.5
+      objectReference: {fileID: 0}
+>>>>>>> parent of abbf50b (Cronometro):KONVIONTE_P1/Assets/Scenes/Testing/Lásers.unity
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19278a0ea7b1e4e4f8a96c427dde6962, type: 3}
 --- !u!114 &1030891427 stripped
