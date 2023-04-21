@@ -419,9 +419,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83b6f70244623c46a59e771b0875bdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseFirstButton: {fileID: 0}
+  optionsFirstButton: {fileID: 0}
+  dialogeFirstButton: {fileID: 0}
   _UITimer: {fileID: 304401816}
   _UIHealthBar: {fileID: 934824279}
+  _dialogueUI: {fileID: 0}
+  _InGameUI: {fileID: 0}
   _pauseMenu: {fileID: 0}
+  _optionsMenu: {fileID: 0}
+  _abilities: {fileID: 0}
+  _audioMixer: {fileID: 0}
+  _SFX: {fileID: 0}
+  _music: {fileID: 0}
 --- !u!4 &2054658982
 Transform:
   m_ObjectHideFlags: 0
@@ -444,6 +454,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 821658168, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8358887279768211996, guid: e5b0a7f838e25124f885bfa31578f13b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
