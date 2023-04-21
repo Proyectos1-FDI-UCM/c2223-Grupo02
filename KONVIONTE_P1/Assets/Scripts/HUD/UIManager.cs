@@ -34,24 +34,12 @@ public class UIManager : MonoBehaviour
     //[Tooltip("El ataque cargado")]
     //[SerializeField] private Smite _UISmite;
 
-    //[Tooltip("")]
-    //[SerializeField] private Smite _UISmite;
     [SerializeField]
     private AudioMixer _audioMixer;
     [SerializeField]
     private Slider _SFX;
     [SerializeField]
     private Slider _music;
-
-    #endregion
-
-    #region Parameters
-
-
-
-    #endregion
-
-    #region Properties
 
     #endregion
 
