@@ -20,7 +20,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HUD/HUDtimeIsUp.unity
     guid: eddf93fd12e97914ba690e679ef1332e
-  - enabled: 1
-    path: Assets/Scenes/HUD/HUDcredits.unity
-    guid: a60d77828a3d290408e6a3120a196896
   m_configObjects: {}
