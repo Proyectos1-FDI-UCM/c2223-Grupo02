@@ -64087,7 +64087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9678e56a4b39f0f41b5bb911e3e6945d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: Lvl 1_2
+  SceneName: Escena selector niveles
 --- !u!61 &1561408798
 BoxCollider2D:
   m_ObjectHideFlags: 0
