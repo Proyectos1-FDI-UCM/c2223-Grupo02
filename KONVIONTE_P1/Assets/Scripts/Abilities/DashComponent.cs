@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
@@ -28,6 +29,7 @@ public class DashComponent : MonoBehaviour
     private Vector3 _dashDirection;
     private float _rayDistance;
     private LayerMask _floorMask;
+    private LayerMask _playerMask;
     private float _maxDashDistance;
     #endregion
 
@@ -41,8 +43,13 @@ public class DashComponent : MonoBehaviour
         _myAnimator = GetComponent<Animator>();
         _direction = GameManager.DirectionComponent;
         _floorMask = LayerMask.GetMask("Floor");
-        _maxDashDistance = _dashDistance;
+        _playerMask = LayerMask.GetMask("Player");
         _parry = GetComponent<ParryComponent>();
+
+        if(_parry != null)
+        {
+            _maxDashDistance = _dashDistance;
+        }
     }
 
     // Update is called once per frame
@@ -51,6 +58,9 @@ public class DashComponent : MonoBehaviour
         // Si puedes dashear
         if (_putoDasheo)
         {
+            // Solo el enemigo
+            DashDistance();
+
             // Dash
             PerformDash(_dashDistance);
             Debug.Log("si");
@@ -160,10 +170,10 @@ public class DashComponent : MonoBehaviour
         _rayDistance = Physics2D.Raycast(_myTransform.position, (Vector2)_dashDirection, _dashDistance, _floorMask).distance;
 
         // Realiza el dash
-        if(_rayDistance != 0)
+        if (_rayDistance != 0)
         {
             //hay que restar la diferencia entre la distancia del dash y la distancia del rayo
-            _dashDistance -= (_dashDistance-_rayDistance);
+            _dashDistance -= (_dashDistance - _rayDistance);
         }
     }
 
@@ -173,6 +183,19 @@ public class DashComponent : MonoBehaviour
     private void DashDamage()
     {
         //_attack.TryAplyDamage();
+    }
+
+    private float PlayerDistance()
+    {
+        return (GameManager.Player.transform.position - _myTransform.position).magnitude + 1;
+    }
+
+    private void DashDistance()
+    {
+        if(_parry == null)
+        {
+            _dashDistance = PlayerDistance();
+        }
     }
     #endregion
 }
