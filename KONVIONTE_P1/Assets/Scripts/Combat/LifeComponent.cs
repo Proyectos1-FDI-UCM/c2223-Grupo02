@@ -109,7 +109,15 @@ public class LifeComponent : MonoBehaviour
         }
         if (GetComponent<ParryComponent>() != null)
         {
-            GameManager.Instance.ResetLevel();
+            //si no estamos en una escena de testing
+            if (!GameManager.Instance._testingRespawn)
+            {
+                GameManager.Instance.ResetLevel();
+            }
+            else
+            {
+                GameManager.Instance.ResetTesting();
+            }
         }
         gameObject.SetActive(false);
     }

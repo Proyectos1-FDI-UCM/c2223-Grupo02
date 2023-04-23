@@ -77,10 +77,14 @@ public class GameManager : MonoBehaviour
     private bool _input;
     #endregion
 
+
+
+
     #region Scenes
 
-    public string _resetLevelScene; 
+    public string _resetLevelScene;
 
+    public bool _testingRespawn;
 
     #endregion
 
@@ -288,6 +292,11 @@ public class GameManager : MonoBehaviour
         _currentTime = time;
     }
 
+    public void ResetTesting()
+    {
+        Invoke("ResetLevel", 3f);
+    }
+    
 
     #endregion
 
