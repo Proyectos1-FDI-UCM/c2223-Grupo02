@@ -86,6 +86,8 @@ public class GameManager : MonoBehaviour
 
     public bool _testingRespawn;
 
+    public float _respawnTimeDelay = 3f;
+
     #endregion
 
     private void Awake()
@@ -294,7 +296,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetTesting()
     {
-        Invoke("ResetLevel", 3f);
+        Invoke("ResetLevel", _respawnTimeDelay);
     }
     
 
