@@ -39,6 +39,10 @@ public class Cronometer : MonoBehaviour
     {
         _time = _time;
     }
+    public void CronoWorks(bool On)
+    {
+        _cronoWorks = On;
+    }
 
     #endregion
 
