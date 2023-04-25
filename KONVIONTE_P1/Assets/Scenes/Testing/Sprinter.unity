@@ -47988,11 +47988,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6346709447776289746, guid: 3bafe3acf271b514ebce447a3e3c731c, type: 3}
       propertyPath: _resetLevelScene
-      value: Lvl 1_1
+      value: Sprinter
       objectReference: {fileID: 0}
     - target: {fileID: 6346709447776289746, guid: 3bafe3acf271b514ebce447a3e3c731c, type: 3}
       propertyPath: _respawnTimeDelay
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6346709447776289747, guid: 3bafe3acf271b514ebce447a3e3c731c, type: 3}
       propertyPath: m_RootOrder

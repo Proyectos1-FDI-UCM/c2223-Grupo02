@@ -47988,11 +47988,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6346709447776289746, guid: 3bafe3acf271b514ebce447a3e3c731c, type: 3}
       propertyPath: _resetLevelScene
-      value: Lvl 1_1
+      value: Bully
       objectReference: {fileID: 0}
     - target: {fileID: 6346709447776289746, guid: 3bafe3acf271b514ebce447a3e3c731c, type: 3}
       propertyPath: _respawnTimeDelay
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6346709447776289747, guid: 3bafe3acf271b514ebce447a3e3c731c, type: 3}
       propertyPath: m_RootOrder
@@ -48419,7 +48419,7 @@ Transform:
   m_Children:
   - {fileID: 351173723}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1996902867
 GameObject:
