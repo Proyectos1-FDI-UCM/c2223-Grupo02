@@ -19,6 +19,18 @@ namespace OurNamespace
         }
 
         /// <summary>
+        /// Muestra la caja con los parametros que se le dan
+        /// </summary>
+        public static void ShowBox(Vector3 _boxSize, Vector3 _boxOffSet, Vector3 _spawnPoint)
+        {
+            //pintado de la caja
+            Debug.DrawRay(_spawnPoint - _boxSize + new Vector3(_boxOffSet.x, _boxOffSet.y), Vector2.right);
+            Debug.DrawRay(_spawnPoint + _boxSize + new Vector3(_boxOffSet.x, _boxOffSet.y), Vector2.left);
+            Debug.DrawRay(_spawnPoint - _boxSize + new Vector3(_boxOffSet.x, _boxOffSet.y), Vector2.up);
+            Debug.DrawRay(_spawnPoint + _boxSize + new Vector3(_boxOffSet.x, _boxOffSet.y), Vector2.down);
+        }
+
+        /// <summary>
         /// Devuelve si detecta lo que se le ha pedido o no
         /// </summary>     
         public static bool DetectSomethingBox(Vector3 _boxSize, Vector3 _boxOffSet, Transform _spawnTransform, LayerMask _layerToFliter)
@@ -28,6 +40,16 @@ namespace OurNamespace
 
             Collider2D _colliderResult = Physics2D.OverlapArea(_spawnTransform.position - _boxSize + new Vector3(_boxOffSet.x * _direction, _boxOffSet.y) //punto 1 de la caja
                                           , _spawnTransform.position + _boxSize + new Vector3(_boxOffSet.x * _direction, _boxOffSet.y), //punto 2 de la caja
+                                           _layerToFliter);//capa que filtra la detección
+            return _colliderResult != null;
+        }
+        /// <summary>
+        /// Devuelve si detecta lo que se le ha pedido o no
+        /// </summary>     
+        public static bool DetectSomethingBox(Vector3 _boxSize, Vector3 _boxOffSet,Vector3 _spawnPoint, LayerMask _layerToFliter)
+        {            
+            Collider2D _colliderResult = Physics2D.OverlapArea(_spawnPoint - _boxSize + new Vector3(_boxOffSet.x , _boxOffSet.y) //punto 1 de la caja
+                                          , _spawnPoint + _boxSize + new Vector3(_boxOffSet.x , _boxOffSet.y), //punto 2 de la caja
                                            _layerToFliter);//capa que filtra la detección
             return _colliderResult != null;
         }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
+using OurNamespace;
 
 public class TeleportParry : MonoBehaviour
 {
@@ -37,6 +38,11 @@ public class TeleportParry : MonoBehaviour
 
     [SerializeField]
     float _limitTime;
+
+
+    [SerializeField] private Vector3 _box;
+    [SerializeField] private Vector3 _boxOffset;
+
     #endregion
 
     #region Properties
@@ -78,8 +84,7 @@ public class TeleportParry : MonoBehaviour
     void Update()
     {
         //calculo de parámetros
-        _currentTime += Time.unscaledDeltaTime;
-        _distance = Physics2D.Raycast(_myTransform.position, _moveToVector, _teleportDistance, _floorMask).distance;
+        _currentTime += Time.deltaTime;
 
         if (_gamepad != null)
         {
@@ -89,6 +94,10 @@ public class TeleportParry : MonoBehaviour
         {
             _moveToVector = _myDirectionComponent.X_Directions(Camera.main.ScreenToWorldPoint(_mouse.position.ReadValue()) - _myTransform.position,8);
         }
+
+        //margin teleport *2 para hacer un rayo un poco mas largo de lo debido
+        _distance = Physics2D.Raycast(_myTransform.position, _moveToVector, _teleportDistance +_marginTeleport *2, _floorMask).distance;
+        
         //reposicionamiento del trasform de predicción
         if(_distance == 0)
         {
@@ -103,6 +112,12 @@ public class TeleportParry : MonoBehaviour
         {
             Teleport();
         }
+
+
+        Vector3 auxPoint = _distance == 0 ? _myTransform.position + _moveToVector * _teleportDistance : _myTransform.position + _moveToVector * (_distance - _marginTeleport);
+
+
+        Box.ShowBox(_box, _boxOffset, auxPoint);
     }
     /// <summary>
     /// Desactiva la gravedad y permite ver la posición donde se ubicará el jugador
@@ -144,14 +159,40 @@ public class TeleportParry : MonoBehaviour
     /// </summary>
     private void TeleportEvent()
     {
-        if (_distance == 0)
+        Vector3 auxPoint = _distance == 0 ? _myTransform.position + _moveToVector * _teleportDistance : _myTransform.position + _moveToVector * (_distance - _marginTeleport);
+
+
+        //vemos si en el punto en el que estamos vamos a tocar la pared
+        bool tocaPared = Box.DetectSomethingBox(_box, _boxOffset, auxPoint, _floorMask);
+        float marginMultiplier = 1;
+
+        //si la tocamos, vamos incrementando poco a poco el margen hasta no tocarla (lo de margin teleport <10 es por si acaso para no colgar el programa)
+        while (tocaPared && marginMultiplier < 10)
         {
-            _myTransform.position += _moveToVector * _teleportDistance;
+            marginMultiplier += 0.1f;
+            auxPoint = _distance == 0 ? _myTransform.position + _moveToVector * _teleportDistance  : _myTransform.position + _moveToVector * (_distance - (_marginTeleport * marginMultiplier));
+            tocaPared = Box.DetectSomethingBox(_box, _boxOffset, auxPoint, _floorMask);
+        }
+
+        //Debug.Log(marginMultiplier);
+
+        //esto es para no crashear el juego en el bucle y ver si hemos salido del bucle por eso o no
+        if (marginMultiplier < 10)
+        {
+            if (_distance == 0)
+            {
+                _myTransform.position += _moveToVector * _teleportDistance;
+            }
+            else
+            {
+                _myTransform.position += _moveToVector * (_distance - _marginTeleport * marginMultiplier);
+            }
         }
         else
         {
-            _myTransform.position += _moveToVector * (_distance - _marginTeleport);
+            //Debug.Log(_distance);
         }
+
         _telepotDone = true;
         AudioManager.Instance.Play("Teleport");
         _animator.SetBool("Teleport", true);
