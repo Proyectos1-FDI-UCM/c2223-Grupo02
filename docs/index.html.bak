@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Parrysite</title>
+
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+		<!-- Custom styles for this template -->
+		<link href="./css/videogame.css" rel="stylesheet">
+		<link rel="icon" href="./images/Logo.jpg">
+	
+	</head>
+  
+	<body style="background-color:#090b3f;">
+  
+		<main role="main">
+			<!-- HEADER SECTION -->
+			<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
+			<img class="images-header images-fluid" src="./images/header.jpg" alt="Header image" width="435" height="150">
+			</div>
+
+
+			<!-- Marketing messaging 
+			================================================== -->
+			<!-- Wrap the rest of the page in another container to center all the content. -->
+
+			<div class="container marketing">
+			<font color="#f1cb78" face ="Candara">
+			<div class="row">
+				<!-- Left column -->
+				<div class="col-md-7">
+            
+					<h5>by Konvionte Studios</h5>
+					
+					<h2>Escapa del laboratorio</h2>
+					<p>De repente, oyes una voz dentro de ti. Al abrir los ojos, ves que estás en una sala oscura y hay cristales rotos a tu alrededor. Una vez 
+					más, oyes esa voz de tu interior. "Más te vale huir si quieres sobrevivir". Pese a la confusión, decides obedecer a la misteriosa voz.</p>
+			
+					<p>Recorre las distintas salas del laboratorio.</br>
+					Utiliza tus nuevas habilidades para sortear obstáculos.</br>
+					Lucha contra los mutantes que encontrarás en el lugar.</br>
+					Desafía al tiempo, porque, Tempus Fugit.</p>
+			
+					<h2>Características</h2>
+					<ul>
+						<li>Género: plataformas, combate</li>
+						<li>Plataformas: PC</li>
+						<li>Rating: 16</li>
+						<li>Modo historia</li>
+						<li>1 jugador</li>
+					</ul>
+
+					<h2>Desarrolladores:</h2>
+					<ul>
+						<li>Paula Alemany Rodríguez</li>
+						<li>Luis Enrique Cabello Blanco</li>
+						<li>Samuel García Bazán</li>
+						<li>Denisa Juarranz Berindea</li>
+						<li>Jaime Vicente Arroyo</li>
+					</ul>
+						
+					<h3>Fecha de lanzamiento: 14 de mayo 2023</h3>
+					<!-- Paste URL between "" in href="" -->
+					<a href="https://drive.google.com/drive/folders/19NgHtuO1fGR-PIZimKfq35Yh9jLsmCZ4?usp=share_link" class="btn btn-primary" role="button" aria-pressed="true">Download now</a> 
+					
+					<h2>Valoraciones</h2>
+					<ul>
+						<li>"He llorado. Las nuevas generaciones vienen muy fuerte." </br>
+						~ Hideo Kojima ~</p>
+						
+						<li>"¿Es esto el nuevo Sekiro 2D?" </br>
+						~ Hidetaka Miyazaki ~</p>
+						
+						<li>"Demasiado para el NO-E3." </br>
+						~ El Doritos ~</p>
+						
+						<li>"Estad atentos a los próximos trabajos de este estudio. Estos chicos prometen." </br>
+						~ Tito Phil ~</p>
+					</ul>
+
+				</div>
+          
+				<!-- Right column -->
+				<div class="col-md-5">
+
+					<!-- IMAGES AND YOUTUBE VIDEOS-->
+            
+					<!-- Youtube Video -->
+					<div class="media-item">
+						<div class="embed-responsive embed-responsive-16by9">
+						<iframe src="https://www.youtube.com/embed/ww87R3VtQjc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+						</div>
+					</div>
+
+					<!-- Images -->
+					<div class="media-item">
+						<a href="images/Portada.jpg">
+							<img src="images/Portada.jpg" alt="Portada" class="img-thumbnail" width="500" height="667">
+						</a>
+					</div>
+						
+					<div class="media-item">
+						<a href="images/Captura2.jpg">
+							<img src="images/Captura2.jpg" alt="Enemigos" class="img-thumbnail">
+						</a>
+					</div>
+										
+					<div class="media-item">
+						<a href="images/Captura3.jpg">
+							<img src="images/Captura3.jpg" alt="Captura 2" class="img-thumbnail">
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- /END MARKETING -->
+			</font>
+			</div><!-- /.container -->
+			
+			<!-- LOGO -->
+			<font color="#ffffff" face ="Arial" size=30>
+			<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center">
+			<img class="images-header images-fluid" src="./images/Logo.jpg" alt="Logo image" width="200" height="200">
+			</br>KONVIONTE</br>
+			S T U D I O S
+			</div>
+			</font>
+			
+			<!-- FOOTER -->
+			<footer class="container">
+				<hr class="footer-divider">
+				<p class="float-right"><a href="#">Back to top</a></p>
+				<p>Proyectos 1. Curso 2022 - 2023. Konvionte Studios</p>
+				<p>Grado en Desarrollo de Videojuegos &middot; <a target="_blank" href="http://informatica.ucm.es">Facultad de Informática</a> &middot; <a target="_blank" href="http://www.ucm.es">UCM</a></p>
+			</footer>
+		</main>
+	</body>
+</html>
