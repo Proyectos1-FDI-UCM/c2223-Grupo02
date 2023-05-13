@@ -550,7 +550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6064504543112565573, guid: 39ea826680f64a74fa4d3be09a5e505c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: HUDTesting
+      value: HUDlevelSelector
       objectReference: {fileID: 0}
     - target: {fileID: 6064504543112565573, guid: 39ea826680f64a74fa4d3be09a5e505c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

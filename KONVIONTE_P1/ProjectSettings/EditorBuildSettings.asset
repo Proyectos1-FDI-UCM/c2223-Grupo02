@@ -5,31 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/HUD/HUDmainMenu.unity
     guid: 0316d0162077bae43a59fa599e791c87
   - enabled: 1
-    path: Assets/Scenes/HUD/HUDTesting.unity
-    guid: c4be6f1e010fee84499383bc88c994ee
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+    path: Assets/Scenes/HUD/HUDlevelSelector.unity
+    guid: 7bf618dafa14971408daa5acd3205c42
+  - enabled: 1
+    path: Assets/Scenes/Level 1/Lvl 1_1.unity
+    guid: 86e8552d476fb5d4e91571afbfe831e4
+  - enabled: 1
+    path: Assets/Scenes/Level 1/Lvl 1_2.unity
+    guid: abc1677257a844441b3c0d93e8beb4c2
+  - enabled: 1
+    path: Assets/Scenes/Level 2/Lvl 2_1.unity
+    guid: aaf3bfc9bef292443adc79e2608f6273
   - enabled: 1
     path: Assets/Scenes/HUD/HUDtimeIsUp.unity
     guid: eddf93fd12e97914ba690e679ef1332e
   - enabled: 1
-    path: Assets/Scenes/Testing/Sprinter.unity
-    guid: d72127d185177ab4990631e432588631
-  - enabled: 1
-    path: Assets/Scenes/Testing/Bully.unity
-    guid: 2ac849ad27e94034a90dc82d366ae6d2
-  - enabled: 1
-    path: Assets/Scenes/Testing/Lasers.unity
-    guid: ff68d92430aa2bd409fb6ac20ba7b2b4
-  - enabled: 1
-    path: Assets/Scenes/Testing/Plataforms.unity
-    guid: 7b1d58a951409a14d8b4787e0f113c0e
+    path: Assets/Scenes/HUD/HUDcredits.unity
+    guid: a60d77828a3d290408e6a3120a196896
   m_configObjects: {}
